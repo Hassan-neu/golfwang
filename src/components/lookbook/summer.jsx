@@ -34,7 +34,7 @@ const Summer = () => {
                             head&apos;s wishlist
                         </p>
                         <div className="border-b-2 border-black text-sm font-semibold self-start">
-                            <Link href="/shop">SHOP NOW</Link>
+                            <Link href="/catalog/all">SHOP NOW</Link>
                         </div>
                     </div>
                     <div className="w-64 h-80 relative">

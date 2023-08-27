@@ -117,7 +117,7 @@ const Hero = () => {
                         </div>
                     </div>
                     <div className="border-b-2 border-black text-sm font-semibold self-center">
-                        <Link href="/shop">SHOP</Link>
+                        <Link href="/catalog/all">SHOP</Link>
                     </div>
                 </div>
             </div>

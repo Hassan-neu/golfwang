@@ -8,7 +8,7 @@ const Navbar = ({ className }) => {
                 <div className="text-xs flex items-center">
                     <ol className="flex gap-10">
                         <li>
-                            <Link href="/shop">SHOP</Link>
+                            <Link href="/catalog/all">SHOP</Link>
                         </li>
                         <li>
                             <Link href="/lookbook">LOOKBOOK</Link>

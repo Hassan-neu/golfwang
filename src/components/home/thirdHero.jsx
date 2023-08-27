@@ -175,7 +175,7 @@ const ThirdHero = () => {
                             it merch&quot;
                         </div>
                         <div className="text-xs border-b-2 border-transparent hover:border-black transition-all">
-                            <Link href="/shop">SHOP NOW</Link>
+                            <Link href="/catalog/all">SHOP NOW</Link>
                         </div>
                     </div>
                 </div>

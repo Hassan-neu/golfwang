@@ -24,7 +24,7 @@ const Footer = () => {
                     <div className="text-xs ">
                         <ul className="flex flex-col gap-3">
                             <li>
-                                <Link href="/shop">SHOP</Link>
+                                <Link href="/catalog/all">SHOP</Link>
                             </li>
                             <li>
                                 <Link href="/lookbook">LOOKBOOK</Link>
@@ -37,23 +37,23 @@ const Footer = () => {
                     <div className="text-xs">
                         <ul className="flex flex-col gap-3">
                             <li>
-                                <Link href="/shop">INSTAGRAM</Link>
+                                <Link href="/">INSTAGRAM</Link>
                             </li>
                             <li>
-                                <Link href="/lookbook">TUMBLR</Link>
+                                <Link href="/">TUMBLR</Link>
                             </li>
                             <li>
-                                <Link href="/retail">TWITTER</Link>
+                                <Link href="/">TWITTER</Link>
                             </li>
                             <li>
-                                <Link href="/info">GOLF de Fleur</Link>
+                                <Link href="/">GOLF de Fleur</Link>
                             </li>
                         </ul>
                     </div>
                     <div className="text-xs">
                         <ul className="flex flex-col gap-3">
                             <li>
-                                <Link href="/shop">LOGIN</Link>
+                                <Link href="/">LOGIN</Link>
                             </li>
                             <li>
                                 <Link href="/lookbook">CART</Link>

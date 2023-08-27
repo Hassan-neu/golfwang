@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-const ShopLayout = ({ children }) => {
+const ProductLayout = ({ children }) => {
     return (
         <div className="flex flex-col overflow-hidden">
             <Navbar />
@@ -11,4 +11,4 @@ const ShopLayout = ({ children }) => {
     );
 };
 
-export default ShopLayout;
+export default ProductLayout;

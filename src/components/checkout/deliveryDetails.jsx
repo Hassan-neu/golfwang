@@ -6,7 +6,7 @@ import Accordion from "./accordion";
 const DeliveryDetails = () => {
     const [] = useState({});
     return (
-        <form className="flex flex-col gap-6 w-1/2 h-full">
+        <div className="flex flex-col gap-6 w-1/2 h-full">
             <div className="flex flex-col gap-4">
                 <h3 className="text-xl font-medium">CONTACT INFORMATION</h3>
                 <div className="grid grid-cols-2 auto-rows-auto gap-2">
@@ -182,7 +182,7 @@ const DeliveryDetails = () => {
                     PAY AND MAKE ORDER
                 </button>
             </div>
-        </form>
+        </div>
     );
 };
 

@@ -1,6 +1,6 @@
 "use client";
-import Banner from "@/components/shop/banner";
-import ShopItems from "@/components/shop/shopItems";
+import Banner from "@/components/catalog/banner";
+import ShopItems from "@/components/catalog/shopItems";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
