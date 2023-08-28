@@ -10,3 +10,6 @@
 .hidescroll::-webkit-scrollbar {
     display: none;
 }
+.season:hover + div {
+    opacity: 1;
+}

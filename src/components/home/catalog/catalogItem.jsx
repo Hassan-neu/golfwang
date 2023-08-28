@@ -9,7 +9,7 @@ const CatalogItem = ({ item, children }) => {
                     <button className="px-3 py-1 rounded-full border text-xs">
                         4 ITEMS
                     </button>
-                    <Link href=""> -&gt;</Link>
+                    <div> -&gt;</div>
                 </div>
                 <div className=" w-full h-full">{children}</div>
             </div>

@@ -72,7 +72,7 @@ const Hero = () => {
     }, []);
     return (
         <main ref={main} className="h-screen overflow-hidden">
-            <div className="h-screen rounded-b-3xl bg-blue-500 flex flex-col gap-40 ">
+            <div className="h-screen rounded-b-3xl bg-white flex flex-col gap-40 border-2">
                 <Navbar className={"mt-20"} />
                 <div className="flex flex-col self-stretch text-center gap-28 relative">
                     <div className="relative ">

@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 const Navbar = ({ className }) => {
     return (
-        <div className={`px-10 py-4 border ${className ? className : ""}`}>
+        <div className={`px-10 py-4 border-y-2 ${className ? className : ""}`}>
             <div className="flex gap-2 justify-between font-semibold">
                 <div className="text-xs flex items-center">
                     <ol className="flex gap-10">
@@ -11,7 +11,7 @@ const Navbar = ({ className }) => {
                             <Link href="/catalog/all">SHOP</Link>
                         </li>
                         <li>
-                            <Link href="/lookbook">LOOKBOOK</Link>
+                            <Link href="/collections">LOOKBOOK</Link>
                         </li>
                         <li>
                             <Link href="/info">INFO</Link>

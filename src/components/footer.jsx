@@ -12,13 +12,15 @@ const Footer = () => {
                 <p>FREE SHIPING FOR ALL ORDERS OVER $150</p>
             </div>
             <div className="flex gap-3 items-center justify-between py-4 bg-black text-white px-10">
-                <div className="flex flex-col gap-3  self-start items-start">
-                    <div className="bg-yellow-400 font-extrabold px-3">
+                <div className="flex flex-col gap-2 self-start items-start">
+                    <div className="text-3xl font-extrabold">
                         <Link href="/">
                             <h4>GOLF</h4>
                         </Link>
                     </div>
-                    <div className="text-gray-300">GOLF WANG &copy; 2023</div>
+                    <div className="text-gray-400 text-sm">
+                        GOLF WANG &copy; 2023
+                    </div>
                 </div>
                 <div className="flex gap-16 w-3/5 justify-evenly">
                     <div className="text-xs ">
@@ -27,7 +29,7 @@ const Footer = () => {
                                 <Link href="/catalog/all">SHOP</Link>
                             </li>
                             <li>
-                                <Link href="/lookbook">LOOKBOOK</Link>
+                                <Link href="/collections">LOOKBOOK</Link>
                             </li>
                             <li>
                                 <Link href="/info">INFO</Link>

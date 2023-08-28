@@ -5,7 +5,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-const Page = () => {
+const Page = ({ params: { cat } }) => {
     const main = useRef();
     const banner = useRef();
     const shopImage = useRef();
@@ -40,7 +40,7 @@ const Page = () => {
     return (
         <div ref={main} className="px-10">
             <Banner banner={banner} />
-            <ShopItems shopImage={shopImage} />
+            <ShopItems shopImage={shopImage} cat={cat} />
         </div>
     );
 };

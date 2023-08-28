@@ -8,7 +8,7 @@ const Page = () => {
     const [info, setInfo] = useState(<ShippingInfo />);
     const [tab, setTab] = useState("SHIPPING INFO");
     return (
-        <main className="flex flex-col gap-6 px-10 min-h-screen">
+        <main className="flex flex-col gap-6 px-10 min-h-screen my-6">
             <div className="text-6xl font-semibold border-b py-4">
                 <h1>INFO</h1>
             </div>

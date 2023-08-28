@@ -12,8 +12,6 @@ const ThirdHero = () => {
     const thirdBox = useRef();
     const fourthBox = useRef();
     const fifthBox = useRef();
-    const bigBox = useRef();
-    const screen = useRef();
     useEffect(() => {
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -26,33 +24,6 @@ const ThirdHero = () => {
         });
         const ctx = gsap.context(() => {}, box);
         ctx.add(() => {
-            tl.fromTo(
-                screen.current,
-                {
-                    top: "70%",
-                    opacity: 0,
-                    scale: 0.5,
-                },
-                {
-                    top: "35%",
-                    yPercent: -50,
-                    scale: 1,
-                    opacity: 1,
-                }
-            );
-            tl.fromTo(
-                bigBox.current,
-                {
-                    rotate: 180,
-                    opacity: 0,
-                    scale: 0,
-                },
-                {
-                    rotate: 0,
-                    opacity: 1,
-                    scale: 1,
-                }
-            );
             tl.fromTo(
                 firstBox.current,
                 {
@@ -69,14 +40,12 @@ const ThirdHero = () => {
             tl.fromTo(
                 secondBox.current,
                 {
-                    right: "-50vw",
-                    top: "-50vh",
-                    opacity: 0,
+                    right: 40,
+                    top: 112,
                 },
                 {
-                    top: 112,
-                    right: 40,
-                    opacity: 1,
+                    top: 150,
+                    right: 70,
                 }
             );
             tl.fromTo(
@@ -164,10 +133,7 @@ const ThirdHero = () => {
                         className="w-full h-full"
                     />
                 </div>
-                <div
-                    ref={bigBox}
-                    className="w-[600px] h-[450px] rounded-3xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white flex flex-col justify-end py-8"
-                >
+                <div className="w-[600px] h-[450px] rounded-3xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white flex flex-col justify-end py-8">
                     <div className="flex flex-col gap-2 items-center self-center w-2/3 font-semibold">
                         <div className="text-xl text-center">
                             &quot;These are actually clothing pieces. It&apos;s
@@ -179,10 +145,7 @@ const ThirdHero = () => {
                         </div>
                     </div>
                 </div>
-                <div
-                    ref={screen}
-                    className="w-44 h-80 border absolute top-[35%] -translate-y-1/2  self-center bg-yellow-400 shadow-[-15px_15px_green]"
-                >
+                <div className="w-44 h-80 border absolute top-[35%] -translate-y-1/2  self-center bg-yellow-400 shadow-[-15px_15px_green]">
                     <Image
                         src="/home/tylerhome1.png"
                         alt="tyler-home-1"

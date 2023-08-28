@@ -1,5 +1,6 @@
 import React from "react";
 import Btn from "../buttons/btn";
+import Link from "next/link";
 const NewArivals = () => {
     return (
         <div className="flex flex-col gap-4 px-10 h-screen justify-center border border-gray-400 rounded-3xl mt-5">
@@ -7,7 +8,9 @@ const NewArivals = () => {
                 <div className="text-xl font-semibold">
                     <h2>NEW ARRIVALS</h2>
                 </div>
-                <Btn>SHOW MORE</Btn>
+                <Btn>
+                    <Link href={"/catalog/new"}>SHOW MORE</Link>
+                </Btn>
             </div>
             <div className="flex gap-2 w-full flex-nowrap overflow-x-scroll py-10 hidescroll transition">
                 <div className="w-56 h-56 border shrink-0"></div>
