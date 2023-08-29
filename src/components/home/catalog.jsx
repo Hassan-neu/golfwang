@@ -11,10 +11,12 @@ const Catalog = () => {
                 <div className="text-xl font-semibold">
                     <h2>CATALOG</h2>
                 </div>
-                <Btn>SHOP NOW</Btn>
+                <Btn>
+                    <Link href={"/catalog/all"}>SHOP NOW</Link>
+                </Btn>
             </div>
             <div className="flex gap-2 [&>a:nth-child(4n+1)]:h-96 [&>a:nth-child(2n+2)]:h-[320px] [&>a:nth-child(3)]:h-[430px] [&>a]:w-1/2 items-start">
-                <Link href={"/catalog/all"}>
+                <Link href={"/catalog/tops"}>
                     <CatalogItem item={"Tops"}>
                         <Image
                             src={"/home/tops.png"}

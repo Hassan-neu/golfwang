@@ -1,10 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Winter from "@/components/collections/winter";
 import Autumn from "@/components/collections/autumn";
 import Summer from "@/components/collections/summer";
+import { useCart } from "@/utils/libs/cart";
 const Page = () => {
     const [season, setSeason] = useState("WINTER");
+
     return (
         <main className="min-h-screen py-4 my-6">
             <div className="flex gap-3 items-center text-xs px-5">
