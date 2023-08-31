@@ -6,24 +6,23 @@ import Image from "next/image";
 
 const Catalog = () => {
     return (
-        <div className="flex flex-col gap-4 px-10 h-screen justify-center border-t border-gray-400 rounded-3xl mt-5">
+        <div className="flex flex-col gap-4 px-2 md:px-10 h-[70vh] md:h-screen  justify-start md:justify-center md:border-t md:border-gray-400 rounded-3xl mt-14 md:mt-5">
             <div className="flex justify-between">
-                <div className="text-xl font-semibold">
+                <div className="text-xl md:text-4xl font-medium">
                     <h2>CATALOG</h2>
                 </div>
-                <Btn>
+                <Btn className={"hidden md:block"}>
                     <Link href={"/catalog/all"}>SHOP NOW</Link>
                 </Btn>
             </div>
-            <div className="flex gap-2 [&>a:nth-child(4n+1)]:h-96 [&>a:nth-child(2n+2)]:h-[320px] [&>a:nth-child(3)]:h-[430px] [&>a]:w-1/2 items-start">
+            <div className="flex gap-2 overflow-scroll md:overflow-hidden [&>a]:h-96 md:[&>a:nth-child(4n+1)]:h-[430px] md:[&>a:nth-child(2n+2)]:h-96 md:[&>a:nth-child(3)]:h-[480px] [&>a]:w-3/4 [&>a]:shrink-0 md:[&>a]:shrink items-start">
                 <Link href={"/catalog/tops"}>
                     <CatalogItem item={"Tops"}>
                         <Image
                             src={"/home/tops.png"}
-                            width={300}
-                            height={400}
+                            fill={true}
                             alt="tops"
-                            className="hover:scale-110 [transition:transform_.5s_ease-in]"
+                            className="md:hover:scale-110 [transition:transform_.5s_ease-in]"
                         />
                     </CatalogItem>
                 </Link>
@@ -31,10 +30,9 @@ const Catalog = () => {
                     <CatalogItem item={"Hat"}>
                         <Image
                             src={"/home/hats.png"}
-                            width={300}
-                            height={400}
+                            fill={true}
                             alt="hat"
-                            className="hover:scale-110 [transition:transform_.5s_ease-in]"
+                            className="md:hover:scale-110 [transition:transform_.5s_ease-in]"
                         />
                     </CatalogItem>
                 </Link>
@@ -42,10 +40,9 @@ const Catalog = () => {
                     <CatalogItem item={"Bottoms"}>
                         <Image
                             src={"/home/bottoms.png"}
-                            width={300}
-                            height={400}
+                            fill={true}
                             alt="bottoms"
-                            className="hover:scale-110 [transition:transform_.5s_ease-in]"
+                            className="md:hover:scale-110 [transition:transform_.5s_ease-in]"
                         />
                     </CatalogItem>
                 </Link>
@@ -53,10 +50,9 @@ const Catalog = () => {
                     <CatalogItem item={"Accessories"}>
                         <Image
                             src={"/home/accessories.png"}
-                            width={300}
-                            height={400}
+                            fill={true}
                             alt="accessories"
-                            className="hover:scale-110 [transition:transform_.5s_ease-in]"
+                            className="md:hover:scale-110 [transition:transform_.5s_ease-in]"
                         />
                     </CatalogItem>
                 </Link>
@@ -64,14 +60,16 @@ const Catalog = () => {
                     <CatalogItem item={"Music"}>
                         <Image
                             src={"/home/music.png"}
-                            width={300}
-                            height={400}
+                            fill={true}
                             alt="music"
-                            className="hover:scale-110 [transition:transform_.5s_ease-in]"
+                            className="md:hover:scale-110 [transition:transform_.5s_ease-in]"
                         />
                     </CatalogItem>
                 </Link>
             </div>
+            <Btn className={"py-4 self-stretch bg-black text-white md:hidden"}>
+                <Link href={"/catalog/all"}>SHOP NOW</Link>
+            </Btn>
         </div>
     );
 };

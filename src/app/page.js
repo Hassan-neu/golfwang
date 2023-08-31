@@ -17,7 +17,6 @@ export default function Home() {
             <About />
             <Collections />
             <Socials />
-            <Footer />
         </main>
     );
 }
