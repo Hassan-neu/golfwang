@@ -2,10 +2,10 @@ import React from "react";
 
 const PrivacyStatement = () => {
     return (
-        <div className="flex flex-col gap-4 w-3/5">
+        <div className="flex flex-col gap-4 w-full md:w-3/5">
             <div className="flex flex-col gap-2">
-                <h2 className="font-bold text-sm">GENERAL</h2>
-                <p>
+                <h2 className="font-bold text-xs md:text-sm">GENERAL</h2>
+                <p className="text-xs md:text-sm lg:text-base">
                     Golfwang.com stive to ensure that its services are
                     accessible to people with disabilities. Golfwang.com has
                     invested a significant amount of resources to help ensure
@@ -19,8 +19,8 @@ const PrivacyStatement = () => {
                 </p>
             </div>
             <div className="flex flex-col gap-2">
-                <h2 className="font-bold text-sm">DISCLAIMER</h2>
-                <p>
+                <h2 className="font-bold text-xs md:text-sm">DISCLAIMER</h2>
+                <p className="text-xs md:text-sm lg:text-base">
                     Golfwang.com continues its effort to constantly improve the
                     accessiblity of its site and services in the belief that it
                     is our collective moral obligation to allow seamless,
@@ -36,8 +36,8 @@ const PrivacyStatement = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-                <h2 className="font-bold text-sm">HERE FOR YOU</h2>
-                <p>
+                <h2 className="font-bold text-xs md:text-sm">HERE FOR YOU</h2>
+                <p className="text-xs md:text-sm lg:text-base">
                     If you are experiencing difficulty with any content on
                     Golgwang.com or require any assistance with any part of our
                     site, please contact us during normal business hours as
@@ -45,8 +45,8 @@ const PrivacyStatement = () => {
                 </p>
             </div>
             <div className="flex flex-col gap-2">
-                <h2 className="font-bold text-sm">CONTACT US</h2>
-                <p>
+                <h2 className="font-bold text-xs md:text-sm">CONTACT US</h2>
+                <p className="text-xs md:text-sm lg:text-base">
                     If you wish to report an accessiblity issue, have any
                     questions or need assistance, please contact Golfwang.com
                     via Customer Support.
