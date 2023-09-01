@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Collections = () => {
     return (
-        <div className="flex flex-col gap-3 md:gap-6 px-2 md:px-10 md:h-[120vh] justify-center md:border border-gray-400 rounded-3xl mt-14 md:mt-5">
+        <div className="flex flex-col gap-3 lg:gap-6 px-2 md:px-5 lg:p-10 md:h-[80vh] lg:h-[120vh] justify-center lg:border border-gray-400 rounded-3xl mt-14 lg:mt-5">
             <div className="flex justify-between">
                 <div className="text-xl md:text-4xl font-medium">
                     <h2>COLLECTIONS</h2>
@@ -14,7 +14,7 @@ const Collections = () => {
                     <Link href={"/collections"}>SHOW MORE</Link>
                 </Btn>
             </div>
-            <div className="hidden border-t md:flex justify-center items-center gap-[32rem] py-2 h-2/5 relative">
+            <div className="hidden border-t lg:flex justify-center items-center gap-[32rem] py-2 h-2/5 relative">
                 <div className="-rotate-90 flex flex-col items-center gap-1 h-min">
                     <div className="text-5xl font-light inline text-gray-400 ">
                         <p className="hover:text-black cursor-pointer season">
@@ -153,8 +153,8 @@ const Collections = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex gap-3 overflow-scroll      md:hidden">
-                <div className="w-3/4 h-[360px] shrink-0  flex flex-col">
+            <div className="flex gap-3 overflow-scroll      lg:hidden">
+                <div className="w-3/4 h-[360px] md:w-2/5 gap-1  shrink-0  flex flex-col">
                     <div className="relative h-[95%]">
                         <Image
                             src={"/winter/wmodel9.png"}
@@ -162,9 +162,11 @@ const Collections = () => {
                             fill={true}
                         />
                     </div>
-                    <p className="text-xs uppercase">Fall/Winter 2022</p>
+                    <p className="text-xs md:text-sm uppercase self-center">
+                        Fall/Winter 2022
+                    </p>
                 </div>
-                <div className="w-3/4 h-[360px] shrink-0  flex flex-col">
+                <div className="w-3/4 h-[360px] md:w-2/5 gap-1 shrink-0  flex flex-col">
                     <div className="relative h-[95%]">
                         <Image
                             src={"/autumn/autmodel9.png"}
@@ -172,19 +174,23 @@ const Collections = () => {
                             fill={true}
                         />
                     </div>
-                    <p className="text-xs uppercase">Autumn 2022</p>
+                    <p className="text-xs md:text-sm uppercase self-center">
+                        Autumn 2022
+                    </p>
                 </div>
-                <div className="w-3/4 h-[360px] shrink-0  flex flex-col ">
+                <div className="w-3/4 h-[360px] md:w-2/5 gap-1 shrink-0  flex flex-col ">
                     <div className="relative h-[95%]">
                         <Image
                             src={"/summer/summodel9.png"}
                             alt="summer-2022"
                             fill={true}
                         />
-                        <p className="text-xs uppercase">Summer 2022</p>
+                        <p className="text-xs md:text-sm uppercase self-center">
+                            Summer 2022
+                        </p>
                     </div>
                 </div>
-                <div className="w-3/4 h-[360px] shrink-0  flex flex-col">
+                <div className="w-3/4 h-[360px] md:w-2/5 gap-1 shrink-0  flex flex-col">
                     <div className="relative h-[95%]">
                         <Image
                             src={"/summer/summodel6.png"}
@@ -192,9 +198,11 @@ const Collections = () => {
                             fill={true}
                         />
                     </div>
-                    <p className="text-xs uppercase">Summer 2022</p>
+                    <p className="text-xs md:text-sm uppercase self-center">
+                        Summer 2022
+                    </p>
                 </div>
-                <div className="w-3/4 h-[360px] shrink-0  flex flex-col">
+                <div className="w-3/4 h-[360px] md:w-2/5 gap-1 shrink-0  flex flex-col">
                     <div className="relative h-[95%]">
                         <Image
                             src={"/winter/wmodel7.png"}
@@ -202,9 +210,11 @@ const Collections = () => {
                             fill={true}
                         />
                     </div>
-                    <p className="text-xs uppercase">Winter 2022</p>
+                    <p className="text-xs md:text-sm uppercase self-center">
+                        Winter 2022
+                    </p>
                 </div>
-                <div className="w-3/4 h-[360px] shrink-0  flex flex-col">
+                <div className="w-3/4 h-[360px] md:w-2/5 gap-1 shrink-0  flex flex-col">
                     <div className="relative h-[95%]">
                         <Image
                             src={"/autumn/autmodel5.png"}
@@ -212,16 +222,18 @@ const Collections = () => {
                             fill={true}
                         />
                     </div>
-                    <p className="text-xs uppercase">Autumn 2022</p>
+                    <p className="text-xs md:text-sm uppercase self-center">
+                        Autumn 2022
+                    </p>
                 </div>
             </div>
             <Btn className={"py-4 bg-black text-white md:hidden"}>
                 <Link href={"/collections"}>SHOW MORE</Link>
             </Btn>
-            <div className="flex md:justify-center md:items-center bg-[url('/home/yellow.png')] bg-center md:rounded-[30px] px-3 py-10 border-2 md:border-black">
-                <div className="flex flex-col gap-3 md:gap-4 w-full md:w-2/5 md:items-start">
+            <div className="flex md:justify-center md:mt-auto md:items-center bg-[url('/home/yellow.png')] bg-cover bg-center lg:rounded-[30px] px-3 py-10 border-2 lg:border-black">
+                <div className="flex flex-col gap-3 lg:gap-4 w-full md:w-3/4 lg:w-2/5 lg:items-start">
                     <div className="flex flex-col gap-1 items-center">
-                        <h2 className="text-xl font-medium md:text-4xl md:font-medium">
+                        <h2 className="text-xl font-medium md:text-4xl lg:font-medium">
                             SUBSCRIBE TO NEWSLETTER
                         </h2>
                         <p className="text-gray-400 text-[10px] md:text-sm">
@@ -238,9 +250,9 @@ const Collections = () => {
                             name="email"
                             id="email"
                             placeholder="E-mail"
-                            className="border border-black focus:outline-none px-4 py-3 md:py-2 w-full placeholder:text-sm"
+                            className="border border-black focus:outline-none px-4 py-3 lg:py-2 w-full placeholder:text-sm"
                         />
-                        <button className="bg-black px-4 py-4  md:py-2 text-white text-xs">
+                        <button className="bg-black px-4 py-4  lg:py-2 text-white text-xs">
                             SUBSCRIBE
                         </button>
                     </form>

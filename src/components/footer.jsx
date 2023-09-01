@@ -4,7 +4,7 @@ import React from "react";
 const Footer = () => {
     return (
         <div className="flex flex-col border mt-5">
-            <div className="flex gap-10 overflow-scroll bg-yellow-400 p-1 text-xs font-bold">
+            <div className="flex gap-10 overflow-scroll bg-yellow-400 p-1 text-xs font-bold hidescroll">
                 <p className="shrink-0">
                     FREE SHIPING FOR ALL ORDERS OVER $150
                 </p>
@@ -21,7 +21,7 @@ const Footer = () => {
                     FREE SHIPING FOR ALL ORDERS OVER $150
                 </p>
             </div>
-            <div className="flex flex-col gap-3 items-center justify-between px-2 py-3  bg-black text-white md:flex-row md:px-10 md:py-4">
+            <div className="flex flex-col gap-3 items-center justify-between px-2 py-3  bg-black text-white lg:flex-row md:px-5 lg:px-10 lg:py-4">
                 <div className="flex flex-col gap-2 self-start items-start">
                     <div className="text-3xl font-extrabold">
                         <Link href="/">
@@ -32,7 +32,7 @@ const Footer = () => {
                         GOLF WANG &copy; 2023
                     </div>
                 </div>
-                <div className="flex justify-between w-full md:gap-16 md:w-3/5 md:justify-evenly">
+                <div className="flex justify-between w-full lg:gap-16 lg:w-3/5 lg:justify-evenly">
                     <div className="text-xs">
                         <ul className="flex flex-col gap-2">
                             <li>

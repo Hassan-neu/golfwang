@@ -23,7 +23,7 @@ const Hero = () => {
             repeat: -1,
         });
         mm.add(
-            "(min-width:768px)",
+            "(min-width:1024px)",
             () => {
                 const tl = gsap.timeline({
                     scrollTrigger: {
@@ -80,13 +80,13 @@ const Hero = () => {
     return (
         <main
             ref={main}
-            className="h-[80vh] px-2 md:px-0 md:h-screen overflow-hidden"
+            className="h-[60vh] md:h-[70vh] px-2 md:px-5 lg:px-0 lg:h-screen overflow-hidden"
         >
-            <div className="h-[80vh] md:h-screen md:rounded-b-3xl bg-white flex flex-col gap-4 md:gap-40 md:border-2">
-                <div className="flex h-full flex-col p-5 md:self-stretch text-center md:gap-28 relative border-2 md:border-none">
-                    <div className="relative h-full md:flex md:flex-col md:justify-center">
-                        <div className="flex gap-[450px] mt-16 md:mt-0 md:h-[30%]">
-                            <div className="hidden md:flex md:flex-col md:items-start md:ml-60 text-sm self-end">
+            <div className="h-[60vh] md:h-[70vh] lg:h-screen lg:rounded-b-3xl bg-[url('/home/noise.png')] bg-[color:#f2f2f2] flex flex-col gap-4 lg:gap-40 lg:border-2">
+                <div className="flex h-full flex-col p-5 md:p-10 lg:self-stretch text-center lg:gap-28 relative border border-neutral-400 lg:border-none">
+                    <div className="relative h-full lg:flex lg:flex-col lg:justify-center">
+                        <div className="flex gap-[450px] mt-5 md:mt-10 lg:mt-0 lg:h-[30%]">
+                            <div className="hidden lg:flex lg:flex-col lg:items-start lg:ml-60 text-sm self-end">
                                 <span>More than merch</span>
                                 <span>More than streetwear</span>
                             </div>
@@ -96,12 +96,12 @@ const Hero = () => {
                                 width={130}
                                 height={130}
                                 alt="rotating-golf-wang"
-                                className="mr-8 w-16 h-16 md:w-32 md:h-32 ml-auto md:m-0"
+                                className="w-16 h-16 md:w-32 md:h-32 mr-8 md:mr-20 ml-auto lg:m-0"
                             />
                         </div>
                         <div
                             ref={text}
-                            className="hidden text-[9rem] font-black relative md:flex md:h-1/2 md:justify-center"
+                            className="hidden text-[9rem] font-black relative lg:flex lg:h-1/2 lg:justify-center"
                         >
                             <h1 className=" [transform:scale(1.7,1)]">
                                 GOLF WANG
@@ -109,25 +109,25 @@ const Hero = () => {
                         </div>
                         <div
                             ref={frameOne}
-                            className="border-2 bg-red-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-12 w-52 md:w-80 h-60 md:h-[400px]"
+                            className="border-2 bg-red-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-12 w-48 md:w-80 h-56 md:h-[400px]"
                         >
                             {/* <Image src="" width={200} height={250} alt="hello" /> */}
                         </div>
                         <div
                             ref={frameTwo}
-                            className="border-2 bg-violet-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-52 md:w-80 h-60 md:h-[400px]"
+                            className="border-2 bg-violet-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-48 md:w-80 h-56 md:h-[400px]"
                         >
                             {/* <Image src="" width={200} height={250} alt="hello" /> */}
                         </div>
                         <div
                             ref={frameThree}
-                            className="border-2 bg-green-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-6 w-52 md:w-80 h-60 md:h-[400px]"
+                            className="border-2 bg-green-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-6 w-48 md:w-80 h-56 md:h-[400px]"
                         >
                             hello
                             {/* <Image src="" width={200} height={250} alt="hello" /> */}
                         </div>
                     </div>
-                    <div className="border-b-2 border-black text-sm font-semibold self-center">
+                    <div className="border-b-2 border-black text-xs md:text-sm font-semibold self-center">
                         <Link href="/catalog/all">SHOP NOW</Link>
                     </div>
                 </div>

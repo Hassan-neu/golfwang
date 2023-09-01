@@ -13,16 +13,17 @@ const About = () => {
     useEffect(() => {
         const mm = gsap.matchMedia();
         mm.add(
-            "(min-width:768px)",
+            "(min-width:1024px)",
             () => {
                 gsap.from(slideDown.current, {
                     scrollTrigger: {
                         trigger: aboutMain.current,
                         start: "top center",
-                        toggleActions: "restart reverse restart reset",
+                        toggleActions: "restart reverse restart reverse",
                     },
-                    top: "-20rem",
+                    top: "-1rem",
                     opacity: 0,
+                    zIndex: -1,
                     duration: 1,
                 });
                 gsap.fromTo(
@@ -38,7 +39,7 @@ const About = () => {
                         scrollTrigger: {
                             trigger: aboutMain.current,
                             start: "top center",
-                            toggleActions: "restart none restart",
+                            toggleActions: "restart reverse restart reverse",
                         },
                     }
                 );
@@ -50,10 +51,10 @@ const About = () => {
     return (
         <div
             ref={aboutMain}
-            className="flex h-[50vh] md:h-[80vh] justify-center items-start y-10 md:py-0 px-2 md:px-10 md:border-b rounded-b-3xl border-gray-400 mt-5"
+            className="flex h-[50vh] md:h-[65vh] lg:h-[80vh] justify-center items-start y-10 lg:py-0 px-2 md:px-5 lg:px-10 lg:border-b rounded-b-3xl border-gray-400 mt-5"
         >
-            <div className="flex flex-col justify-center h-full md:h-[450px] border md:border-0 w-full bg-[url('/home/pinkbg.png')] bg-center md:bg-[url('/home/bgbox.png')] bg-cover md:bg-contain px-4 py-10 md:p-6 md:pr-10 bg-no-repeat relative">
-                <div className="flex flex-col gap-10 md:gap-16 w-full z-20">
+            <div className="flex flex-col justify-center h-full md:h-[520px] lg:h-[450px] border lg:border-0 w-full bg-[url('/home/pinkbg.png')] bg-center md:bg-[url('/home/bgbox.png')] bg-cover lg:bg-contain px-4 py-10 lg:p-6 lg:pr-10 bg-no-repeat relative">
+                <div className="flex flex-col gap-10 md:h-full md:justify-between lg:justify-center lg:gap-16 w-full z-20">
                     <div className="flex justify-between">
                         <div className="text-xl md:text-4xl font-medium">
                             <h2>ABOUT US</h2>
@@ -62,10 +63,10 @@ const About = () => {
                             READ MORE
                         </Btn>
                     </div>
-                    <div className="flex flex-col md:flex-row gap-2 justify-between items-center">
+                    <div className="flex flex-col lg:flex-row gap-2 justify-between items-center">
                         <div
                             ref={slideIn}
-                            className="hidden md:block w-72 h-48 border shrink-0 relative opacity-0"
+                            className="hidden lg:block w-72 h-48 border shrink-0 relative opacity-0"
                         >
                             <Image
                                 src={"/home/tylerhome7.png"}
@@ -75,7 +76,7 @@ const About = () => {
                                 className="w-full h-full"
                             />
                         </div>
-                        <div className="md:w-2/3 md:text-justify text-xl md:text-3xl font-medium md:indent-28">
+                        <div className="lg:w-2/3 lg:text-justify text-xl md:text-4xl lg:text-3xl font-medium lg:indent-28">
                             <p>
                                 Golf Wang is an american streetwear brand
                                 established in 2011 by american musician Tyler,
@@ -92,7 +93,7 @@ const About = () => {
                 </div>
                 <div
                     ref={slideDown}
-                    className="w-28 h-32 top-10 right-10 md:w-48 md:h-60 absolute md:top-20 md:right-64 z-10"
+                    className="w-28 h-32 top-10 right-10 md:w-48 md:h-60 absolute md:top-24 lg:top-20 md:right-1/2 md:translate-x-1/2 lg:right-64 z-10"
                 >
                     <Image
                         src={"/home/tylerhome8.png"}
