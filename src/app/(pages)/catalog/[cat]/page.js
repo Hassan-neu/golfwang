@@ -10,6 +10,7 @@ const Page = ({ params: { cat } }) => {
     const banner = useRef();
     const shopImage = useRef();
     useEffect(() => {
+        const mm = gsap.matchMedia();
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: banner.current,
@@ -19,26 +20,30 @@ const Page = ({ params: { cat } }) => {
                 toggleActions: "play none reverse",
             },
         });
-        const ctx = gsap.context(() => {}, main);
-        ctx.add(() => {
-            tl.to(banner.current, {
-                backgroundSize: "calc(100% + 0.5vh)",
-                backgroundPosition: "30% 60%",
-                duration: 1,
-            });
-            tl.to(
-                shopImage.current,
-                {
-                    backgroundSize: 600,
+        mm.add(
+            "(min-width:1024px)",
+            () => {
+                tl.to(banner.current, {
+                    backgroundSize: "calc(100% + 0.5vh)",
+                    backgroundPosition: "30% 60%",
                     duration: 1,
-                },
-                "-=1"
-            );
-        });
-        return () => ctx.revert();
+                });
+                tl.to(
+                    shopImage.current,
+                    {
+                        backgroundSize: 600,
+                        duration: 1,
+                    },
+                    "-=1"
+                );
+            },
+            main
+        );
+
+        return () => mm.revert();
     }, []);
     return (
-        <div ref={main} className="px-10">
+        <div ref={main} className="px-2 md:px-5 lg:px-10">
             <Banner banner={banner} />
             <ShopItems shopImage={shopImage} cat={cat} />
         </div>

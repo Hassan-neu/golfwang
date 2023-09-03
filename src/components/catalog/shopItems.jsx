@@ -4,11 +4,13 @@ import React from "react";
 import { useState } from "react";
 import FilterBtn from "../buttons/filterBtn";
 import { useRouter } from "next/navigation";
+import Itemcard from "./itemcard";
+import Btn from "../buttons/btn";
 const ShopItems = ({ shopImage, cat }) => {
     const [sortBy, setSortBy] = useState("newest");
     const router = useRouter();
     return (
-        <main className="flex flex-col gap-6 h-[120vh] mt-4">
+        <main className="flex flex-col gap-6 min-h-screen mt-4">
             <div className="flex justify-between text-xs font-semibold">
                 <div className="flex items-center">
                     <ul className="flex gap-3">
@@ -80,19 +82,28 @@ const ShopItems = ({ shopImage, cat }) => {
                     <p className="text-sm self-start text-gray-400">(67)</p>
                 </div>
             </div>
-            <div className="flex gap-2 h-full">
-                <div className="grid grid-cols-3 grid-rows-[repeat(2,1fr)] w-2/3 gap-2">
-                    <div className="border border-green-500"></div>
-                    <div className="border border-green-500"></div>
-                    <div className="border border-green-500"></div>
-                    <div className="border border-green-500"></div>
-                    <div className="border border-green-500"></div>
-                    <div className="border border-green-500"></div>
+            <div className="flex flex-col lg:flex-row gap-2 h-full">
+                <div className="w-full grid grid-cols-1 md:grid-cols-2 auto-rows-fr lg:grid-cols-3 md:auto-rows-auto lg:w-2/3 gap-4 md:gap-2 md:[&>div:nth-child(5)]:col-span-full md:[&>div:nth-child(8)]:col-span-full lg:[&>div:nth-child(5)]:col-span-1 lg:[&>div:nth-child(8)]:col-span-1">
+                    <Itemcard />
+                    <Itemcard />
+                    <Itemcard />
+                    <Itemcard />
+                    <Itemcard />
+                    <Itemcard />
+                    <Itemcard />
+                    <Itemcard />
                 </div>
                 <div
                     ref={shopImage}
-                    className="border border-red-500 w-1/3 bg-[url('/shop/shop1.png')] bg-[size:800px] bg-center bg-no-repeat"
+                    className="hidden lg:block h-screen border border-red-500 w-1/3 bg-[url('/shop/shop1.png')] bg-[size:800px] bg-center bg-no-repeat"
                 ></div>
+                <Btn
+                    className={
+                        "py-4 uppercase bg-black text-white md:self-center md:px-20 lg:hidden"
+                    }
+                >
+                    Show More
+                </Btn>
             </div>
         </main>
     );
