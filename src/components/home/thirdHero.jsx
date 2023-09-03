@@ -70,9 +70,9 @@ const ThirdHero = () => {
     return (
         <main
             ref={box}
-            className="h-[65vh] md:h-[95vh] lg:h-[130vh] overflow-hidden mt-14 md:mt-20 lg:mt-5 px-2 md:px-5 lg:p-0"
+            className="md:h-[95vh] lg:h-[130vh] overflow-hidden mt-14 md:mt-20 lg:mt-5 px-2 md:px-5 lg:p-0"
         >
-            <div className="py-10 lg:py-0 h-full lg:h-full bg-[url('/home/pinkbg.png')] bg-center bg-cover flex justify-center items-center relative">
+            <div className=" px-4 pt-80 pb-10 md:pt-52 md:pb-10 lg:py-0 h-full lg:h-full bg-[url('/home/pinkbg.png')] bg-center bg-cover flex justify-center items-center relative">
                 <div
                     ref={firstBox}
                     className="hidden lg:block w-48 h-44 border absolute top-28 -left-28 bg-green-500 z-40"
@@ -109,7 +109,7 @@ const ThirdHero = () => {
                         className="w-full h-full"
                     />
                 </div>
-                <div className="hidden md:flex  md:w-[90%] md:h-[80%] lg:w-[60%] lg:h-[78%] max-h-[705px] max-w-[897px] rounded-[50px] border-2 absolute md:bottom-16  lg:bottom-24 left-1/2 -translate-x-1/2  bg-white justify-center py-8">
+                <div className="hidden md:flex md:w-[95%] md:h-[80%] lg:w-[80%] lg:h-[80%] max-h-[705px] max-w-[897px] rounded-[50px] border-2 absolute md:bottom-16  lg:bottom-24 left-1/2 -translate-x-1/2  bg-white justify-center py-8">
                     <div className="flex flex-col gap-2 items-center self-end md:w-4/5 lg:w-[60%] font-medium">
                         <div className="text-[10px] flex items-center gap-2">
                             <p>Tyler Gregory Okonma</p>
@@ -127,13 +127,12 @@ const ThirdHero = () => {
                     </div>
                 </div>
 
-                <div className="w-44 h-72 md:w-2/5 md:h-3/5 lg:w-[402px] lg:h-[567px] absolute top-10 left-1/2 -translate-x-1/2 bg-[url('/home/whiteandyellow.svg')]  bg-contain bg-no-repeat">
+                <div className="w-44 h-72 md:w-2/5 md:h-3/5 lg:w-[402px] lg:h-[567px] absolute top-4 left-1/2 -translate-x-1/2 bg-[url('/home/whiteandyellow.svg')] bg-center bg-contain bg-no-repeat">
                     <Image
                         src="/home/tylerhome1.png"
                         alt="tyler-home-1"
-                        width={402}
-                        height={548}
-                        className="object-cover scale-[1.2] md:scale-125 mt-4 md:mt-10 overflow-visible"
+                        fill={true}
+                        className="md:max-h-full md:max-w-full mt-4  overflow-visible"
                     />
                 </div>
 
@@ -161,13 +160,13 @@ const ThirdHero = () => {
                         className="w-full h-full"
                     />
                 </div>
-                <div className="md:hidden flex flex-col gap-1 items-center self-end w-[80%] font-medium">
+                <div className="md:hidden flex flex-col gap-2 items-center self-end font-medium">
                     <div className="text-[10px] flex items-center gap-2">
                         <p>Tyler Gregory Okonma</p>
                         <p>&#x25A0;</p>
                         <p>Founder</p>
                     </div>
-                    <div className="text-xl text-center">
+                    <div className="text-xl leading-none text-center">
                         &quot;These are actually clothing pieces. It&apos;s a
                         store. It&apos;s ran like a line. Don&apos;t call it
                         merch&quot;

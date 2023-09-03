@@ -80,13 +80,13 @@ const Hero = () => {
     return (
         <main
             ref={main}
-            className="h-[60vh] md:h-[70vh] px-2 md:px-5 lg:px-0 lg:h-screen overflow-hidden"
+            className="md:h-[80vh] px-2 md:px-5 lg:px-0 lg:h-screen overflow-hidden"
         >
-            <div className="h-[60vh] md:h-[70vh] lg:h-screen lg:rounded-b-3xl bg-[url('/home/noise.png')] bg-[color:#f2f2f2] flex flex-col gap-4 lg:gap-40 lg:border-2">
-                <div className="flex h-full flex-col p-5 md:p-10 lg:self-stretch text-center lg:gap-28 relative border border-neutral-400 lg:border-none">
-                    <div className="relative h-full lg:flex lg:flex-col lg:justify-center">
-                        <div className="flex gap-[450px] mt-5 md:mt-10 lg:mt-0 lg:h-[30%]">
-                            <div className="hidden lg:flex lg:flex-col lg:items-start lg:ml-60 text-sm self-end">
+            <div className="md:h-[80vh] lg:h-screen lg:rounded-b-3xl bg-[url('/home/noise.png')] bg-[color:#f2f2f2] flex flex-col gap-4 lg:gap-40 lg:border-2">
+                <div className="flex h-full flex-col gap-40 pt-40 pb-10 md:p-10 lg:self-stretch text-center lg:gap-28 relative border border-neutral-400 lg:border-none">
+                    <div className="h-full lg:flex lg:flex-col lg:justify-center">
+                        <div className="flex gap-[530px] mt-5 md:mt-10 lg:mt-0 lg:h-[30%]">
+                            <div className="hidden  md:absolute md:top-1/2 md:left-28 md:z-50 lg:static md:flex md:flex-col md:items-start lg:ml-32 text-sm self-end">
                                 <span>More than merch</span>
                                 <span>More than streetwear</span>
                             </div>
@@ -96,36 +96,36 @@ const Hero = () => {
                                 width={130}
                                 height={130}
                                 alt="rotating-golf-wang"
-                                className="w-16 h-16 md:w-32 md:h-32 mr-8 md:mr-20 ml-auto lg:m-0"
+                                className="w-16 h-16 absolute top-10 right-0 md:static md:w-32 md:h-32 mr-[30%] md:mr-[15%] ml-auto lg:m-0"
                             />
                         </div>
                         <div
                             ref={text}
-                            className="hidden text-[9rem] font-black relative lg:flex lg:h-1/2 lg:justify-center"
+                            className="hidden text-[9rem] font-black  lg:flex lg:h-1/2 lg:justify-center"
                         >
                             <h1 className=" [transform:scale(1.7,1)]">
                                 GOLF WANG
                             </h1>
                         </div>
-                        <div
-                            ref={frameOne}
-                            className="border-2 bg-red-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-12 w-48 md:w-80 h-56 md:h-[400px]"
-                        >
-                            {/* <Image src="" width={200} height={250} alt="hello" /> */}
-                        </div>
-                        <div
-                            ref={frameTwo}
-                            className="border-2 bg-violet-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-48 md:w-80 h-56 md:h-[400px]"
-                        >
-                            {/* <Image src="" width={200} height={250} alt="hello" /> */}
-                        </div>
-                        <div
-                            ref={frameThree}
-                            className="border-2 bg-green-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-6 w-48 md:w-80 h-56 md:h-[400px]"
-                        >
-                            hello
-                            {/* <Image src="" width={200} height={250} alt="hello" /> */}
-                        </div>
+                    </div>
+                    <div
+                        ref={frameOne}
+                        className="border-2 bg-red-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-12 w-48 md:w-80 h-56 md:h-[400px]"
+                    >
+                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                    </div>
+                    <div
+                        ref={frameTwo}
+                        className="border-2 bg-violet-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-48 md:w-80 h-56 md:h-[400px]"
+                    >
+                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                    </div>
+                    <div
+                        ref={frameThree}
+                        className="border-2 bg-green-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-6 w-48 md:w-80 h-56 md:h-[400px]"
+                    >
+                        hello
+                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
                     </div>
                     <div className="border-b-2 border-black text-xs md:text-sm font-semibold self-center">
                         <Link href="/catalog/all">SHOP NOW</Link>

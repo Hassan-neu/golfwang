@@ -51,9 +51,9 @@ const About = () => {
     return (
         <div
             ref={aboutMain}
-            className="flex h-[50vh] md:h-[65vh] lg:h-[80vh] justify-center items-start y-10 lg:py-0 px-2 md:px-5 lg:px-10 lg:border-b rounded-b-3xl border-gray-400 mt-5"
+            className="flex lg:h-[80vh] justify-center items-start y-10 lg:py-0 px-2 md:px-5 lg:px-10 lg:border-b rounded-b-3xl border-gray-400 mt-14 lg:mt-5"
         >
-            <div className="flex flex-col justify-center h-full md:h-[520px] lg:h-[450px] border lg:border-0 w-full bg-[url('/home/pinkbg.png')] bg-center md:bg-[url('/home/bgbox.png')] bg-cover lg:bg-contain px-4 py-10 lg:p-6 lg:pr-10 bg-no-repeat relative">
+            <div className="flex flex-col justify-center md:h-[520px] lg:h-[450px] border lg:border-0 w-full bg-[url('/home/pinkbg.png')] bg-center md:bg-[url('/home/bgbox.png')] bg-cover px-4 py-10 lg:p-6 lg:pr-10 bg-no-repeat relative">
                 <div className="flex flex-col gap-10 md:h-full md:justify-between lg:justify-center lg:gap-16 w-full z-20">
                     <div className="flex justify-between">
                         <div className="text-xl md:text-4xl font-medium">
@@ -76,7 +76,7 @@ const About = () => {
                                 className="w-full h-full"
                             />
                         </div>
-                        <div className="lg:w-2/3 lg:text-justify text-xl md:text-4xl lg:text-3xl font-medium lg:indent-28">
+                        <div className="leading-none lg:w-2/3 lg:text-justify text-xl md:text-4xl lg:text-3xl font-medium lg:indent-28">
                             <p>
                                 Golf Wang is an american streetwear brand
                                 established in 2011 by american musician Tyler,
