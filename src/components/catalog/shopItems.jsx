@@ -92,6 +92,7 @@ const ShopItems = ({ shopImage, cat }) => {
                     <Itemcard />
                     <Itemcard />
                     <Itemcard />
+                    <Itemcard />
                 </div>
                 <div
                     ref={shopImage}

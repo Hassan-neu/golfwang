@@ -1,18 +1,18 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import Cart from "./cart/cart";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsHandbag } from "react-icons/bs";
-const Navbar = ({ className }) => {
+import { useCart } from "@/utils/libs/cart";
+const Navbar = () => {
     const [openNav, setOpenNav] = useState(false);
+    const setCart = useCart((cart) => cart.setCart);
+    const openCart = useCart((cart) => cart.openCart);
     return (
-        <div
-            className={`px-2 py-4 ${
-                className ? className : ""
-            }md:px-5 lg:px-10 lg:py-4`}
-        >
+        <div className={`px-2 py-4 md:px-5 lg:px-10 lg:py-4 relative`}>
             <div className="flex gap-2 justify-between lg:font-semibold relative">
                 <div
                     className="text-gray-400 lg:hidden"
@@ -26,15 +26,15 @@ const Navbar = ({ className }) => {
                         openNav
                             ? "-top-4 left-0 -translate-x-3"
                             : " -top-4 -left-full -translate-x-28"
-                    } px-5 py-2 md:px-4 w-screen md:w-[45%] h-screen z-50 [transition:all_.2s_ease-in-out] bg-white lg:static  lg:items-center lg:text-xs lg:w-auto lg:h-auto  lg:p-0 lg:translate-x-0`}
+                    } px-5 py-2 md:px-4 w-screen md:w-[45%] h-screen z-50 [transition:all_.2s_linear] bg-white lg:static  lg:items-center lg:text-xs lg:w-auto lg:h-auto lg:p-0 lg:translate-x-0`}
                 >
                     <ul className="flex flex-col w-full gap-4 lg:gap-10 lg:flex-row lg:font-semibold">
-                        <div className="text-lg flex justify-between items-center py-2 border-b lg:hidden">
+                        <li className="text-lg flex justify-between items-center py-2 border-b lg:hidden">
                             <div>MENU</div>
                             <div onClick={() => setOpenNav(false)}>
                                 <RxCross1 size={20} />
                             </div>
-                        </div>
+                        </li>
                         <li>
                             <Link href="/catalog/all">SHOP</Link>
                         </li>
@@ -62,21 +62,20 @@ const Navbar = ({ className }) => {
                                 <AiOutlineUser size={20} />
                             </Link>
                         </li>
-                        <li className="hidden lg:flex">
-                            <Link href="/cart">CART</Link>
+                        <li className="hidden lg:flex" onClick={setCart}>
+                            <button>CART</button>
                             <p className=" text-gray-400">(0)</p>
                         </li>
-                        <li className="relative lg:hidden">
-                            <Link href="/cart">
-                                <BsHandbag size={20} />
-                                <p className="absolute px-1 top-1/2 left-1/2 bg-gray-400 text-gray-900 rounded-full">
-                                    0
-                                </p>
-                            </Link>
+                        <li className="relative lg:hidden" onClick={setCart}>
+                            <BsHandbag size={20} />
+                            <p className="absolute px-1 top-1/2 left-1/2 bg-gray-400 text-gray-900 rounded-full">
+                                0
+                            </p>
                         </li>
                     </ul>
                 </div>
             </div>
+            {openCart && <Cart />}
         </div>
     );
 };

@@ -1,32 +1,9 @@
 import React from "react";
-
-const CartItem = () => {
+const CartItem = ({ children }) => {
     return (
         <div className="flex flex-col gap-4 w-1/2">
             <h2 className="text-2xl ">YOUR CART (0)</h2>
-            <div className="flex gap-10 pb-2 border-b">
-                <div className="flex gap-3">
-                    <div className="w-48 h-52 border"></div>
-                    <div className="flex flex-col gap-1">
-                        <h3 className="text-sm font-bold">PRODUCT NAME</h3>
-                        <p className="text-gray-400">
-                            Color: <span>Yellow</span>
-                        </p>
-                        <p className="text-gray-400">
-                            Size: <span>Yellow</span>
-                        </p>
-                        <p className="text-gray-400">
-                            Price: <span>$255</span>
-                        </p>
-                    </div>
-                </div>
-                <div className="flex gap-10 ml-auto">
-                    <h3 className="text-sm font-bold text-gray-400">
-                        QUANTITY: <span>1</span>
-                    </h3>
-                    <h3 className="text-sm font-bold">$255</h3>
-                </div>
-            </div>
+            {children}
             <div className="flex gap-2 border-b pb-5">
                 <input
                     type="text"

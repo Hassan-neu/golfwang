@@ -4,28 +4,74 @@ import React from "react";
 const Footer = () => {
     return (
         <div className="flex flex-col border mt-5">
-            <div className="flex gap-10 overflow-scroll bg-yellow-400 p-1 text-xs font-bold hidescroll">
-                <p className="shrink-0">
-                    FREE SHIPING FOR ALL ORDERS OVER $150
-                </p>
-                <p className="shrink-0">
-                    FREE SHIPING FOR ALL ORDERS OVER $150
-                </p>
-                <p className="shrink-0">
-                    FREE SHIPING FOR ALL ORDERS OVER $150
-                </p>
-                <p className="shrink-0">
-                    FREE SHIPING FOR ALL ORDERS OVER $150
-                </p>
-                <p className="shrink-0">
-                    FREE SHIPING FOR ALL ORDERS OVER $150
-                </p>
+            <div className="bg-yellow-400 p-1 text-xs overflow-hidden font-bold">
+                <div className="w-full flex gap-10  marquee hidescroll">
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                    <p>&#x25A0;</p>
+                    <p className="shrink-0">
+                        FREE SHIPING FOR ALL ORDERS OVER $150
+                    </p>
+                </div>
             </div>
             <div className="flex flex-col gap-3 items-center justify-between px-2 py-3  bg-black text-white lg:flex-row md:px-5 lg:px-10 lg:py-4">
                 <div className="flex flex-col gap-2 self-start items-start">
                     <div className="text-3xl font-extrabold">
                         <Link href="/">
-                            <h4>GOLF</h4>
+                            <h1>GOLF</h1>
                         </Link>
                     </div>
                     <div className="text-gray-400 text-sm">

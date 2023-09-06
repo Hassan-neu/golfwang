@@ -13,3 +13,15 @@
 .season:hover + div {
     opacity: 1;
 }
+.marquee {
+    animation: marquee 20s infinite linear;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% - 2.5rem));
+    }
+}

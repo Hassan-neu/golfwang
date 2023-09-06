@@ -1,21 +1,34 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-import Accordion from "./accordion";
 
 const DeliveryDetails = () => {
-    const [] = useState({});
+    const [deliveryDetails, setDeliveryDetails] = useState({
+        firstname: "",
+        lastname: "",
+        email: "",
+        phone: "",
+        shippingType: "",
+        paymentMode: "",
+    });
+    const handleChange = (e) => {
+        setDeliveryDetails((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
+    };
     return (
-        <div className="flex flex-col gap-6 w-1/2 h-full">
+        <form className="flex flex-col gap-6 w-full lg:w-1/2 h-full">
             <div className="flex flex-col gap-4">
                 <h3 className="text-xl font-medium">CONTACT INFORMATION</h3>
-                <div className="grid grid-cols-2 auto-rows-auto gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 auto-rows-auto gap-2">
                     <input
                         type="text"
                         name="firstname"
                         id="firstname"
                         placeholder="First name"
                         className="px-3 py-2 border border-black focus:border-2 focus:outline-none"
+                        onChange={handleChange}
                     />
                     <input
                         type="text"
@@ -23,6 +36,7 @@ const DeliveryDetails = () => {
                         id="lastname"
                         placeholder="Last name"
                         className="px-3 py-2 border border-black focus:border-2 focus:outline-none"
+                        onChange={handleChange}
                     />
                     <input
                         type="email"
@@ -30,6 +44,7 @@ const DeliveryDetails = () => {
                         id="email"
                         placeholder="E-mail"
                         className="px-3 py-2 border border-black focus:border-2 focus:outline-none"
+                        onChange={handleChange}
                     />
                     <input
                         type="tel`"
@@ -37,6 +52,7 @@ const DeliveryDetails = () => {
                         id="phone"
                         placeholder="Phone"
                         className="px-3 py-2 border border-black focus:border-2 focus:outline-none"
+                        onChange={handleChange}
                     />
                 </div>
             </div>
@@ -44,7 +60,7 @@ const DeliveryDetails = () => {
                 <div className="flex justify-between items-center pb-3 border-b">
                     <h3 className="text-xl font-medium ">DELIVERY</h3>
                     <div className="text-xs underline">
-                        <Link href=""> SHIPPING INFO</Link>
+                        <Link href="/info"> SHIPPING INFO</Link>
                     </div>
                 </div>
                 <div className="flex flex-col gap-2">
@@ -54,8 +70,10 @@ const DeliveryDetails = () => {
                                 <div className="w-[12px] h-[12px] rounded-full border border-black flex items-center justify-center">
                                     <input
                                         type="radio"
-                                        name="shipping"
+                                        name="shippingType"
                                         id="domestic"
+                                        value={"domestic"}
+                                        onChange={handleChange}
                                         className="appearance-none w-[7px] h-[7px] rounded-full checked:bg-black"
                                     />
                                 </div>
@@ -73,7 +91,9 @@ const DeliveryDetails = () => {
                                 <h2>FREE</h2>
                             </div>
                         </div>
-                        Hello
+                        {deliveryDetails.shippingType === "domestic" && (
+                            <p>Hello</p>
+                        )}
                     </div>
 
                     <div className="flex flex-col gap-2 border-b pb-4">
@@ -82,8 +102,10 @@ const DeliveryDetails = () => {
                                 <div className="w-[12px] h-[12px] rounded-full border border-black flex justify-center items-center">
                                     <input
                                         type="radio"
-                                        name="shipping"
+                                        name="shippingType"
                                         id="international"
+                                        value={"international"}
+                                        onChange={handleChange}
                                         className="appearance-none w-[7px] h-[7px] rounded-full checked:bg-black"
                                     />
                                 </div>
@@ -101,7 +123,9 @@ const DeliveryDetails = () => {
                                 <h2>$30</h2>
                             </div>
                         </div>
-                        Hello
+                        {deliveryDetails.shippingType === "international" && (
+                            <p>Hello</p>
+                        )}
                     </div>
                 </div>
             </div>
@@ -114,14 +138,16 @@ const DeliveryDetails = () => {
                                 <div className="w-[12px] h-[12px] rounded-full border border-black flex justify-center items-center">
                                     <input
                                         type="radio"
-                                        name="payment"
-                                        id="creditcard"
+                                        name="paymentMode"
+                                        id="flutterwave"
+                                        value={"flutterwave"}
+                                        onChange={handleChange}
                                         className="appearance-none w-[7px] h-[7px] rounded-full checked:bg-black"
                                     />
                                 </div>
 
                                 <h2 className="text-sm font-medium">
-                                    CREDIT CARD
+                                    FLUTTERWAVE
                                 </h2>
                             </div>
                             <div className="text-sm font-medium">
@@ -137,13 +163,16 @@ const DeliveryDetails = () => {
                                 <div className="w-[12px] h-[12px] rounded-full border border-black flex justify-center items-center">
                                     <input
                                         type="radio"
-                                        name="payment"
-                                        id="international"
-                                        readOnly
+                                        name="paymentMode"
+                                        id="paystack"
+                                        value={"paystack"}
+                                        onChange={handleChange}
                                         className="appearance-none w-[7px] h-[7px] rounded-full checked:bg-black"
                                     />
                                 </div>
-                                <h2 className="text-sm font-medium">PAYPAL</h2>
+                                <h2 className="text-sm font-medium">
+                                    PAYSTACK
+                                </h2>
                             </div>
                             <div className="text-sm font-medium">
                                 <h2>$30</h2>
@@ -151,12 +180,32 @@ const DeliveryDetails = () => {
                         </div>
                         <p> Hello </p>
                     </div>
-                    <Accordion mode="JAPAIIIING" iName="payment" id="Jappi">
-                        Hello
-                    </Accordion>
-                    <Accordion mode="BAPAIIIING" iName="payment" id="Bappi">
-                        Hello
-                    </Accordion>
+                </div>
+            </div>
+            <div className="flex flex-col gap-2 lg:hidden">
+                <div className="flex flex-col md:flex-row gap-2 border-b pb-5">
+                    <input
+                        type="text"
+                        name="voucher"
+                        id="voucher"
+                        placeholder="Discount code"
+                        className="px-3 py-2 w-full md:w-4/5 border border-black focus:border-2 focus:outline-none"
+                    />
+                    <button className="bg-black text-white py-3 md:w-1/5 text-sm border">
+                        APPLY
+                    </button>
+                </div>
+                <div className="flex justify-between pb-3 border-b text-gray-400">
+                    <h3 className="text-sm font-medium">DISCOUNT</h3>
+                    <p>$0</p>
+                </div>
+                <div className="flex justify-between pb-3 border-b text-gray-400">
+                    <h3 className="text-sm font-medium">SHIPPING</h3>
+                    <p>$0</p>
+                </div>
+                <div className="flex justify-between pb-3 border-b text-4xl text-black">
+                    <h3>TOTAL</h3>
+                    <p>$255</p>
                 </div>
             </div>
             <div className="flex flex-col gap-3">
@@ -182,7 +231,7 @@ const DeliveryDetails = () => {
                     PAY AND MAKE ORDER
                 </button>
             </div>
-        </div>
+        </form>
     );
 };
 

@@ -11,26 +11,31 @@ const Page = ({ params: { id } }) => {
     });
     const [showDetails, setShowDetails] = useState(false);
     return (
-        <div className="mt-10 flex flex-col gap-2 px-10 h-[calc(100vh_-_100px)] ">
+        <div className="mt-10 flex flex-col gap-2 px-2 md:px-5 lg:px-10 min-h-[calc(100vh_-_100px)] ">
             <div className="text-xs font-semibold">
                 <p>Link -&gt; Link -&gt; {id}</p>
             </div>
-            <div className="flex gap-4 h-full">
-                <div className="w-3/5 h-full border relative bg-green-500">
-                    <div
-                        ref={ghost}
-                        className="w-72 h-72 opacity-0 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border bg-green-200"
-                    ></div>
+            <div className="flex flex-col lg:flex-row gap-4 h-full">
+                <div className="lg:w-3/5 flex gap-2 lg:flex-col lg:h-screen overflow-scroll hidescroll">
+                    <div className="w-11/12 lg:w-full h-80 md:h-96 lg:h-full border relative bg-[#f2f2f2] bg-[url('/home/noise.png')] shrink-0">
+                        <div
+                            ref={ghost}
+                            className="w-72 h-72 opacity-0 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border bg-green-200"
+                        ></div>
+                    </div>
+                    <div className="w-11/12 lg:w-full h-80 md:h-96 lg:h-full border relative bg-[#f2f2f2] bg-[url('/home/noise.png')] shrink-0"></div>
                 </div>
-                <div className="flex flex-col gap-14 w-2/5">
+                <div className="flex flex-col gap-7 lg:gap-14 lg:w-2/5">
                     <div className="flex flex-col gap-1">
-                        <h2 className="text-3xl font-bold">{id}</h2>
-                        <p>$1000</p>
+                        <h2 className="text-2xl md:text-4xl lg:text-3xl font-bold">
+                            {id}
+                        </h2>
+                        <p className="md:text-xl">$1000</p>
                     </div>
                     <div className="flex flex-col">
-                        <div className="h-10 border-t flex justify-between items-center text-xs font-semibold">
+                        <div className="lg:h-10 border-t flex gap-2 flex-col md:flex-row justify-between lg:items-center text-xs lg:text-xs font-semibold py-2">
                             <div>Color:</div>
-                            <div className="flex gap-1">
+                            <div className="flex  gap-1">
                                 <OptionsBtn
                                     isActive={order.color === "MUSTARD"}
                                     onClick={() =>
@@ -67,7 +72,7 @@ const Page = ({ params: { id } }) => {
                             </div>
                         </div>
 
-                        <div className="h-10 border-y flex justify-between items-center text-xs font-semibold">
+                        <div className="lg:h-10 border-y flex flex-col gap-2 md:flex-row justify-between lg:items-center text-xs lg:text-xs font-semibold py-2">
                             <div>Size:</div>
                             <div className="flex gap-1">
                                 <OptionsBtn
@@ -127,7 +132,7 @@ const Page = ({ params: { id } }) => {
                                 </OptionsBtn>
                             </div>
                         </div>
-                        <div className="flex gap-2 justify-between mt-2 h-max">
+                        <div className="hidden lg:flex gap-2 justify-between mt-2 h-max">
                             <button
                                 className="underline self-start text-xs"
                                 onClick={() => setShowDetails(!showDetails)}
@@ -148,7 +153,7 @@ const Page = ({ params: { id } }) => {
                             )}
                         </div>
                     </div>
-                    <div className="text-xs">
+                    <div className="text-xs md:text-sm lg:text-xs">
                         <button
                             className="w-full py-3 text-white font-bold bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black"
                             onClick={() => ghostSwipe(ghost)}
@@ -157,8 +162,10 @@ const Page = ({ params: { id } }) => {
                         </button>
                     </div>
                     <div className="flex flex-col gap-1">
-                        <h4 className="font-semibold">DESCRIPTION</h4>
-                        <p className="text-sm">
+                        <h4 className="font-semibold text-xs md:text-base">
+                            DESCRIPTION
+                        </h4>
+                        <p className="text-xs md:text-sm text-neutral-500">
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Recusandae velit animi a optio ex culpa ipsum
                             laboriosam quae accusamus cumque.

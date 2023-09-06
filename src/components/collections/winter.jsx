@@ -19,9 +19,7 @@ const Winter = () => {
                     <Image
                         src="/winter/wmodel11.png"
                         alt="winter-model-11"
-                        width={400}
-                        height={500}
-                        className="w-full h-full"
+                        fill={true}
                     />
                 </div>
             </div>
@@ -42,21 +40,17 @@ const Winter = () => {
                         <Image
                             src="/winter/wmodel9.png"
                             alt="winter-model-9"
-                            width={400}
-                            height={500}
-                            className="w-full h-full"
+                            fill={true}
                         />
                         <div className="w-full h-full absolute -top-8 -left-8 border -z-20"></div>
                         <div className="bg-yellow-400 w-full h-full absolute -top-4 -left-4 border -z-10"></div>
                     </div>
                 </div>
-                <div className="w-2/5 h-full">
+                <div className="w-2/5 h-full relative">
                     <Image
                         src="/winter/wmodel10.png"
                         alt="winter-model-10"
-                        width={400}
-                        height={500}
-                        className="w-full h-full"
+                        fill={true}
                     />
                 </div>
             </div>
@@ -68,32 +62,26 @@ const Winter = () => {
                 </p>
             </div>
             <div className="hidden lg:flex gap-3 h-[95vh] justify-center">
-                <div className="w-[35%] h-full">
+                <div className="w-[35%] h-full relative">
                     <Image
                         src="/winter/wmodel6.png"
                         alt="winter-model-6"
-                        width={400}
-                        height={500}
-                        className="w-full h-full"
+                        fill={true}
                     />
                 </div>
                 <div className="flex flex-col gap-3 w-64">
-                    <div className="w-full h-1/2">
+                    <div className="w-full h-1/2 relative">
                         <Image
                             src="/winter/wmodel8.png"
                             alt="winter-model-8"
-                            width={400}
-                            height={500}
-                            className="w-full h-full"
+                            fill={true}
                         />
                     </div>
-                    <div className="w-full h-1/2">
+                    <div className="w-full h-1/2 relative">
                         <Image
                             src="/winter/wmodel7.png"
                             alt="winter-model-7"
-                            width={400}
-                            height={500}
-                            className="w-full h-full"
+                            fill={true}
                         />
                     </div>
                 </div>
@@ -110,32 +98,26 @@ const Winter = () => {
                 </p>
             </div>
             <div className="hidden lg:flex gap-3 h-[150vh] justify-center px-5">
-                <div className="w-3/5 h-full shrink-0">
+                <div className="w-3/5 h-full shrink-0 relative">
                     <Image
                         src="/winter/wmodel3.png"
                         alt="winter-model-3"
-                        width={400}
-                        height={500}
-                        className="w-full h-full object-cover"
+                        fill={true}
                     />
                 </div>
                 <div className="flex flex-col gap-3 w-full">
-                    <div className="w-[45%] h-[30%] shrink-0">
+                    <div className="w-[45%] h-[30%] relative shrink-0">
                         <Image
                             src="/winter/wmodel5.png"
                             alt="winter-model-5"
-                            width={400}
-                            height={500}
-                            className="w-full h-full"
+                            fill={true}
                         />
                     </div>
-                    <div className="w-full h-full">
+                    <div className="w-full h-full relative">
                         <Image
                             src="/winter/wmodel4.png"
                             alt="winter-model-4"
-                            width={400}
-                            height={500}
-                            className="w-full h-full"
+                            fill={true}
                         />
                     </div>
                 </div>
@@ -145,26 +127,22 @@ const Winter = () => {
                     <Image
                         src="/winter/wmodel2.png"
                         alt="winter-model-2"
-                        width={400}
-                        height={500}
-                        className="w-full h-full"
+                        fill={true}
                     />
                     <div className="w-full h-full absolute -top-8 -left-8 border -z-20"></div>
                     <div className="bg-yellow-400 w-full h-full absolute -top-4 -left-4 border -z-10"></div>
                 </div>
 
-                <div className="w-2/5 h-full">
+                <div className="w-2/5 h-full relative">
                     <Image
                         src="/winter/wmodel1.png"
-                        width={400}
-                        height={500}
+                        fill={true}
                         alt="winter-model-1"
-                        className="w-full h-full"
                     />
                 </div>
             </div>
 
-            <div className="flex gap-4 overflow-scroll h-[50vh] md:h-[65vh] lg:hidden">
+            <div className="flex gap-4 overflow-scroll h-[50vh] md:h-[65vh] lg:hidden hidescroll">
                 <div className="w-3/4 md:w-2/3 h-full border shrink-0 relative">
                     <Image
                         src="/winter/wmodel10.png"

@@ -8,6 +8,7 @@ const cart = (set) => ({
     ],
     totalPrice: 0,
     totalQty: 0,
+    openCart: false,
     addProduct: (product) =>
         set((prev) => ({ products: [...prev.products, product] })),
     deleteProduct: (id) =>
@@ -33,6 +34,10 @@ const cart = (set) => ({
                 (total, product) => total + product.qty,
                 0
             ),
+        })),
+    setCart: () =>
+        set((prev) => ({
+            openCart: !prev.openCart,
         })),
 });
 

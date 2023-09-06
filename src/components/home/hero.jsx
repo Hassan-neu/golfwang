@@ -101,7 +101,7 @@ const Hero = () => {
                         </div>
                         <div
                             ref={text}
-                            className="hidden text-[9rem] font-black  lg:flex lg:h-1/2 lg:justify-center"
+                            className="hidden text-[9vw] font-black  lg:flex lg:h-1/2 lg:justify-center"
                         >
                             <h1 className=" [transform:scale(1.7,1)]">
                                 GOLF WANG
