@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-const ProductCard = ({ ar }) => {
-    const { name, color, size, price, qty } = ar;
+const ProductCard = ({ product }) => {
+    const { name, color, size, price, qty } = product;
     return (
         <div className="flex gap-2 border-b w-full py-2">
             <div className="w-56 h-60 relative border shrink-0">
@@ -9,7 +9,7 @@ const ProductCard = ({ ar }) => {
             </div>
             <div className="flex flex-col md:flex-row md:w-full">
                 <div className="flex flex-col gap-2">
-                    <h3 className="text-sm font-bold">{name}</h3>
+                    <h1 className="text-sm font-bold">{name}</h1>
                     <p className="text-neutral-400 text-sm">
                         Color: <span>{color}</span>
                     </p>

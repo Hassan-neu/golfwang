@@ -1,14 +1,42 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
-const cart = (set) => ({
+const StoreCart = (set) => ({
     products: [
-        { id: "1", name: "shoe", color: "red", price: 200, qty: 10 },
-        { id: "2", name: "shirt", color: "green", price: 500, qty: 10 },
-        { id: "3", name: "pants", color: "blue", price: 600, qty: 10 },
+        {
+            id: 1,
+            name: "Adidas Bennasi",
+            color: "yellow",
+            size: "XL",
+            price: 50,
+            qty: 2,
+        },
+        {
+            id: 2,
+            name: "Street Jumper",
+            color: "black",
+            size: "SM",
+            price: 150,
+            qty: 1,
+        },
+        {
+            id: 3,
+            name: "Argentina 1999",
+            color: "Blue",
+            size: "XXL",
+            price: 200,
+            qty: 3,
+        },
+        {
+            id: 4,
+            name: "Liverpool 1975",
+            color: "red",
+            size: "M",
+            price: 250,
+            qty: 1,
+        },
     ],
     totalPrice: 0,
     totalQty: 0,
-    openCart: false,
     addProduct: (product) =>
         set((prev) => ({ products: [...prev.products, product] })),
     deleteProduct: (id) =>
@@ -35,10 +63,6 @@ const cart = (set) => ({
                 0
             ),
         })),
-    setCart: () =>
-        set((prev) => ({
-            openCart: !prev.openCart,
-        })),
 });
 
-export const useCart = create(persist(devtools(cart), { name: "cart" }));
+export const useStoreCart = create(devtools(StoreCart));

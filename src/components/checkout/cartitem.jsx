@@ -1,9 +1,9 @@
 import React from "react";
 const CartItem = ({ children }) => {
     return (
-        <div className="flex flex-col gap-4 w-1/2">
+        <div className="hidden lg:flex flex-col gap-4 w-1/2">
             <h2 className="text-2xl ">YOUR CART (0)</h2>
-            {children}
+            <div className="flex flex-col gap-2">{children}</div>
             <div className="flex gap-2 border-b pb-5">
                 <input
                     type="text"

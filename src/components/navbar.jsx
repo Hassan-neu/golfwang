@@ -6,11 +6,10 @@ import { HiMiniBars3 } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsHandbag } from "react-icons/bs";
-import { useCart } from "@/utils/libs/cart";
 const Navbar = () => {
     const [openNav, setOpenNav] = useState(false);
-    const setCart = useCart((cart) => cart.setCart);
-    const openCart = useCart((cart) => cart.openCart);
+    const [openCart, setOpenCart] = useState(false);
+
     return (
         <div className={`px-2 py-4 md:px-5 lg:px-10 lg:py-4 relative`}>
             <div className="flex gap-2 justify-between lg:font-semibold relative">
@@ -62,11 +61,17 @@ const Navbar = () => {
                                 <AiOutlineUser size={20} />
                             </Link>
                         </li>
-                        <li className="hidden lg:flex" onClick={setCart}>
+                        <li
+                            className="hidden lg:flex"
+                            onClick={() => setOpenCart(true)}
+                        >
                             <button>CART</button>
                             <p className=" text-gray-400">(0)</p>
                         </li>
-                        <li className="relative lg:hidden" onClick={setCart}>
+                        <li
+                            className="relative lg:hidden"
+                            onClick={() => setOpenCart(true)}
+                        >
                             <BsHandbag size={20} />
                             <p className="absolute px-1 top-1/2 left-1/2 bg-gray-400 text-gray-900 rounded-full">
                                 0
@@ -75,7 +80,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-            {openCart && <Cart />}
+            {openCart && <Cart setOpenCart={setOpenCart} />}
         </div>
     );
 };
