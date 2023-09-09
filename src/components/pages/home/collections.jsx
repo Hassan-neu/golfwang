@@ -2,6 +2,7 @@ import React from "react";
 import Btn from "../../shared/buttons/btn";
 import Link from "next/link";
 import Image from "next/image";
+import Checkbox from "@/components/shared/checkbox";
 
 const Collections = () => {
     return (
@@ -570,16 +571,7 @@ const Collections = () => {
                             SUBSCRIBE
                         </button>
                     </form>
-                    <div className="flex gap-2 items-center">
-                        <span className="w-[12px] h-[12px] border border-black flex justify-center items-center">
-                            <input
-                                type="checkbox"
-                                name="agreement"
-                                id="agreement"
-                                className="appearance-none m-auto w-[7px] h-[7px] checked:bg-black"
-                            />
-                        </span>
-
+                    <Checkbox>
                         <p className="text-xs">
                             I agree to{" "}
                             <Link href="" className="underline">
@@ -587,7 +579,7 @@ const Collections = () => {
                                 personal data protection policy
                             </Link>
                         </p>
-                    </div>
+                    </Checkbox>
                 </div>
             </div>
         </div>

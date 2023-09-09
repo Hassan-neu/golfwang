@@ -1,4 +1,5 @@
 "use client";
+import Checkbox from "@/components/shared/checkbox";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -209,16 +210,7 @@ const DeliveryDetails = () => {
                 </div>
             </div>
             <div className="flex flex-col gap-3">
-                <div className="flex gap-2 items-center">
-                    <span className="w-[12px] h-[12px] border border-black flex justify-center items-center">
-                        <input
-                            type="checkbox"
-                            name="agreement"
-                            id="agreement"
-                            className="appearance-none w-[7px] h-[7px] checked:bg-black"
-                        />
-                    </span>
-
+                <Checkbox>
                     <p className="text-xs">
                         I agree to{" "}
                         <Link href="" className="underline">
@@ -226,7 +218,7 @@ const DeliveryDetails = () => {
                             personal data protection policy
                         </Link>
                     </p>
-                </div>
+                </Checkbox>
                 <button className="w-full py-3 text-white bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black">
                     PAY AND MAKE ORDER
                 </button>

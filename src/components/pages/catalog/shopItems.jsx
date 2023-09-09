@@ -2,72 +2,19 @@
 import React from "react";
 import { useState } from "react";
 import FilterBtn from "@/components/shared/buttons/filterBtn";
-import { useRouter } from "next/navigation";
 import Itemcard from "./itemcard";
 import Btn from "@/components/shared/buttons/btn";
 import SortOptions from "./sortOption";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
-const ShopItems = ({ shopImage, cat }) => {
+import FilterOptions from "./filterOptions";
+const ShopItems = ({ shopImage, filter }) => {
     const [sortBy, setSortBy] = useState("newest");
-    const router = useRouter();
     return (
         <main className="flex flex-col gap-6 min-h-screen mt-4">
-            <div className="flex justify-between text-xs font-semibold">
-                <div className="flex items-center">
-                    <ul className="flex gap-3">
-                        <FilterBtn
-                            isActive={cat === "all"}
-                            onClick={() => router.push("/catalog/all")}
-                        >
-                            ALL
-                        </FilterBtn>
-                        <FilterBtn
-                            isActive={cat === "new"}
-                            onClick={() => router.push("/catalog/new")}
-                        >
-                            NEW
-                        </FilterBtn>
-                        <FilterBtn
-                            isActive={cat === "tops"}
-                            onClick={() => router.push("/catalog/tops")}
-                        >
-                            TOPS
-                        </FilterBtn>
-                        <FilterBtn
-                            isActive={cat === "bottoms"}
-                            onClick={() => router.push("/catalog/bottoms")}
-                        >
-                            BOTTOMS
-                        </FilterBtn>
-
-                        <FilterBtn
-                            isActive={cat === "hats"}
-                            onClick={() => router.push("/catalog/hats")}
-                        >
-                            HATS
-                        </FilterBtn>
-                        <FilterBtn
-                            isActive={cat === "accessories"}
-                            onClick={() => router.push("/catalog/accessories")}
-                        >
-                            ACCESSORIES
-                        </FilterBtn>
-                        <FilterBtn
-                            isActive={cat === "music"}
-                            onClick={() => router.push("/catalog/music")}
-                        >
-                            MUSIC
-                        </FilterBtn>
-                    </ul>
+            <div className="flex justify-between text-xs ">
+                <div className="flex gap-7 font-light">
+                    <FilterOptions />
                 </div>
-
-                <div className="flex gap-3 items-center">
+                <div className="flex gap-3 items-center font-bold">
                     <label htmlFor="sort" className=" text-gray-500">
                         SORT BY:
                     </label>
@@ -76,7 +23,7 @@ const ShopItems = ({ shopImage, cat }) => {
             </div>
             <div className="pb-1 text-5xl font-medium border-b border-b-fuchsia-600 mt-6">
                 <div className="flex gap-3">
-                    <h3 className="uppercase">{cat}</h3>
+                    <h3 className="uppercase">{filter}</h3>
                     <p className="text-sm self-start text-gray-400">(67)</p>
                 </div>
             </div>

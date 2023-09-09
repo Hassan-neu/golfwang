@@ -6,12 +6,14 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { Arrow } from "@radix-ui/react-select";
 
 const SortOptions = () => {
     return (
-        <Select onValueChange={(value) => console.log(value)}>
-            <SelectTrigger className="w-[180px] underline border-0 focus:ring-0 shadow-none text-xs">
+        <Select
+            onValueChange={(value) => console.log(value)}
+            defaultValue="NEWEST"
+        >
+            <SelectTrigger className="w-[120px] underline border-0 focus:ring-0 shadow-none text-xs">
                 <SelectValue placeholder="NEWEST" />
             </SelectTrigger>
             <SelectContent>
@@ -21,7 +23,6 @@ const SortOptions = () => {
                     position={"popper"}
                 >
                     NEWEST
-                    <Arrow />
                 </SelectItem>
                 <SelectItem className="text-xs" value="PRICE LOW">
                     PRICE LOW
