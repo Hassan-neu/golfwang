@@ -1,24 +1,36 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import FilterBtn from "@/components/shared/buttons/filterBtn";
 import Itemcard from "./itemcard";
 import Btn from "@/components/shared/buttons/btn";
 import SortOptions from "./sortOption";
 import FilterOptions from "./filterOptions";
+import FilterMobile from "./filterMobile";
+import SortMobile from "./sortMobile";
 const ShopItems = ({ shopImage, filter }) => {
     const [sortBy, setSortBy] = useState("newest");
     return (
         <main className="flex flex-col gap-6 min-h-screen mt-4">
             <div className="flex justify-between text-xs ">
-                <div className="flex gap-7 font-light">
-                    <FilterOptions />
+                <div className="flex items-center">
+                    <div className="hidden gap-7 font-light lg:flex">
+                        <FilterOptions />
+                    </div>
+                    <div className="lg:hidden">
+                        <FilterMobile />
+                    </div>
                 </div>
-                <div className="flex gap-3 items-center font-bold">
-                    <label htmlFor="sort" className=" text-gray-500">
-                        SORT BY:
-                    </label>
-                    <SortOptions />
+                <div className="flex items-center">
+                    <div className="hidden lg:flex gap-3 items-center font-bold">
+                        <label htmlFor="sort" className=" text-gray-500">
+                            SORT BY:
+                        </label>
+
+                        <SortOptions />
+                    </div>
+                    <div className="lg:hidden">
+                        <SortMobile />
+                    </div>
                 </div>
             </div>
             <div className="pb-1 text-5xl font-medium border-b border-b-fuchsia-600 mt-6">
