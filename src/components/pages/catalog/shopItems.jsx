@@ -1,11 +1,18 @@
 "use client";
-import Image from "next/image";
 import React from "react";
 import { useState } from "react";
-import FilterBtn from "../buttons/filterBtn";
+import FilterBtn from "@/components/shared/buttons/filterBtn";
 import { useRouter } from "next/navigation";
 import Itemcard from "./itemcard";
-import Btn from "../buttons/btn";
+import Btn from "@/components/shared/buttons/btn";
+import SortOptions from "./sortOption";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 const ShopItems = ({ shopImage, cat }) => {
     const [sortBy, setSortBy] = useState("newest");
     const router = useRouter();
@@ -64,16 +71,7 @@ const ShopItems = ({ shopImage, cat }) => {
                     <label htmlFor="sort" className=" text-gray-500">
                         SORT BY:
                     </label>
-                    <select
-                        name="sort"
-                        id="sort"
-                        className="focus:outline-none focus:underline focus:underline-offset-2"
-                        onChange={(e) => setSortBy(e.target.value)}
-                    >
-                        <option value="newest">NEWEST</option>
-                        <option value="lowprice">PRICE LOW</option>
-                        <option value="highprice">PRICE HIGH</option>
-                    </select>
+                    <SortOptions />
                 </div>
             </div>
             <div className="pb-1 text-5xl font-medium border-b border-b-fuchsia-600 mt-6">

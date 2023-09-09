@@ -1,9 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Winter from "@/components/collections/winter";
-import Autumn from "@/components/collections/autumn";
-import Summer from "@/components/collections/summer";
-import { useCart } from "@/utils/libs/cart";
+import Winter from "@/components/pages/collections/winter";
+import Autumn from "@/components/pages/collections/autumn";
+import Summer from "@/components/pages/collections/summer";
 const Page = () => {
     const [season, setSeason] = useState("WINTER");
 

@@ -1,5 +1,5 @@
 "use client";
-import { useStoreCart } from "@/utils/libs/cart";
+import { useStoreCart } from "@/libs/cart";
 import Image from "next/image";
 import React from "react";
 
@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
             <div className="w-56 h-60 relative border shrink-0 bg-[#f2f2f2] bg-[url('/home/noise.png')]">
                 <Image src={"/home/hats.png"} alt="item-1" fill={true} />
             </div>
-            <div className="flex flex-col md:w-full">
+            <div className="flex flex-col w-full">
                 <div className="flex flex-col md:flex-row">
                     <div className="flex flex-col gap-2">
                         <h3 className="text-sm font-bold uppercase">{name}</h3>

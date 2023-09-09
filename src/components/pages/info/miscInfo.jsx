@@ -17,7 +17,7 @@ const MiscInfo = () => {
                 <h2 className="font-bold text-xs md:text-sm">
                     PRODUCT AVAILABILITY
                 </h2>
-                <p className="text-xs md:text-sm` lg:text-base">
+                <p className="text-xs md:text-sm lg:text-base">
                     Although availability may be indicated on our website, we
                     cannot guarantee product availability. We reserve the right,
                     without liability or prior notice to revise, discontinue, or

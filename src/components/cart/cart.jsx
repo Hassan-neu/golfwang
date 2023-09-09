@@ -2,12 +2,12 @@
 import React from "react";
 import ProductCard from "./productCard";
 import { RxCross2 } from "react-icons/rx";
-import { useStoreCart } from "@/utils/libs/cart";
+import { useStoreCart } from "@/libs/cart";
 const Cart = ({ setOpenCart }) => {
     const products = useStoreCart((cart) => cart.products);
     return (
-        <div className="flex flex-col h-screen w-[45%] py-6 px-10 fixed top-0 right-0 bg-white z-50 ">
-            <div className="flex justify-between pb-5 border-b">
+        <div className="flex flex-col h-screen w-full lg:w-[45%] py-4 px-2 md:px-5 lg:px-10 fixed top-0 right-0  bg-white z-50 ">
+            <div className="flex justify-between pb-4 border-b">
                 <h2 className="text-xl">YOUR CART (0)</h2>
                 <button className="text-2xl" onClick={() => setOpenCart(false)}>
                     <RxCross2 size={25} />

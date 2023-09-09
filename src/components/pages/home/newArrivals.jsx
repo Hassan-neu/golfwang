@@ -1,5 +1,5 @@
 import React from "react";
-import Btn from "../buttons/btn";
+import Btn from "../../shared/buttons/btn";
 import Link from "next/link";
 import Image from "next/image";
 const NewArivals = () => {

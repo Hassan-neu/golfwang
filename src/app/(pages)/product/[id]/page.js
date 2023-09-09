@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { useState } from "react";
-import OptionsBtn from "@/components/buttons/optionsBtn";
+import OptionsBtn from "@/components/shared/buttons/optionsBtn";
 import ghostSwipe from "@/utils/functions/ghostSwipe";
 const Page = ({ params: { id } }) => {
     const ghost = useRef();

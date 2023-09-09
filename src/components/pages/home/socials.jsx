@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Btn from "../buttons/btn";
+import Btn from "../../shared/buttons/btn";
 
 const Socials = () => {
     return (

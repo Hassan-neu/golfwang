@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import Btn from "../buttons/btn";
+import Btn from "../../shared/buttons/btn";
 import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";

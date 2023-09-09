@@ -1,5 +1,5 @@
 import React from "react";
-import Btn from "../buttons/btn";
+import Btn from "../../shared/buttons/btn";
 import Link from "next/link";
 import CatalogItem from "./catalog/catalogItem";
 import Image from "next/image";

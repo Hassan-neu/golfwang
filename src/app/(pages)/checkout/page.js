@@ -1,9 +1,9 @@
 "use client";
-import ProductCard from "@/components/checkout/productCard";
-import CartItem from "@/components/checkout/cartitem";
-import DeliveryDetails from "@/components/checkout/deliveryDetails";
+import ProductCard from "@/components/pages/checkout/productCard";
+import CartItem from "@/components/pages/checkout/cartitem";
+import DeliveryDetails from "@/components/pages/checkout/deliveryDetails";
 import React, { useState } from "react";
-import { useStoreCart } from "@/utils/libs/cart";
+import { useStoreCart } from "@/libs/cart";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 const Page = () => {
     const [openCart, setOpenCart] = useState(false);
@@ -13,7 +13,7 @@ const Page = () => {
             <div className="text-4xl md:text-6xl font-semibold border-b py-4">
                 <h1>CHECKOUT</h1>
             </div>
-            <div className="flex flex-col gap-2 lg:hidden`">
+            <div className="flex flex-col gap-2 lg:hidden">
                 <button
                     className="text-2xl flex justify-between"
                     onClick={() => setOpenCart(!openCart)}

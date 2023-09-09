@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import ShippingInfo from "@/components/info/shippingInfo";
-import MiscInfo from "@/components/info/miscInfo";
-import PrivacyStatement from "@/components/info/privacyStatement";
-import TabBtn from "@/components/info/tabBtn";
+import ShippingInfo from "@/components/pages/info/shippingInfo";
+import MiscInfo from "@/components/pages/info/miscInfo";
+import PrivacyStatement from "@/components/pages/info/privacyStatement";
+import TabBtn from "@/components/pages/info/tabBtn";
 const Page = () => {
     const [info, setInfo] = useState(<ShippingInfo />);
     const [tab, setTab] = useState("SHIPPING INFO");

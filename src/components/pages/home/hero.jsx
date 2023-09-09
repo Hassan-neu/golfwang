@@ -85,7 +85,7 @@ const Hero = () => {
                 <div className="flex h-full flex-col gap-40 pt-40 pb-10 md:p-10 lg:self-stretch text-center lg:gap-28 relative border border-neutral-400 lg:border-none">
                     <div className="h-full lg:flex lg:flex-col lg:justify-center">
                         <div className="flex gap-[530px] mt-5 md:mt-10 lg:mt-0 lg:h-[30%]">
-                            <div className="hidden  md:absolute md:top-1/2 md:left-28 md:z-50 lg:static md:flex md:flex-col md:items-start lg:ml-32 text-sm self-end">
+                            <div className="hidden  md:absolute md:top-1/2 md:left-28 md:z-30 lg:static md:flex md:flex-col md:items-start lg:ml-32 text-sm self-end">
                                 <span>More than merch</span>
                                 <span>More than streetwear</span>
                             </div>

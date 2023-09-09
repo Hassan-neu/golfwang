@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Btn from "../buttons/btn";
+import Btn from "@/components/shared/buttons/btn";
 
-const Winter = () => {
+const Autumn = () => {
     return (
         <div className="flex flex-col h-full gap-5">
             <div className="relative">
@@ -12,7 +12,7 @@ const Winter = () => {
                         COLLECTION:
                     </h1>
                     <h1 className="lg:[transform:scale(1.15,1.15)]">
-                        FALL / WINTER 2022
+                        AUTUMN 2022
                     </h1>
                 </div>
                 <div className="hidden lg:block w-56 h-32 border absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
@@ -38,8 +38,8 @@ const Winter = () => {
                     </div>
                     <div className="w-64 h-80 relative">
                         <Image
-                            src="/winter/wmodel9.png"
-                            alt="winter-model-9"
+                            src="/autumn/autmodel10.png"
+                            alt="autumn-model-10"
                             fill={true}
                         />
                         <div className="w-full h-full absolute -top-8 -left-8 border -z-20"></div>
@@ -48,8 +48,8 @@ const Winter = () => {
                 </div>
                 <div className="w-2/5 h-full relative">
                     <Image
-                        src="/winter/wmodel10.png"
-                        alt="winter-model-10"
+                        src="/autumn/autmodel9.png"
+                        alt="autumn-model-9"
                         fill={true}
                     />
                 </div>
@@ -64,23 +64,23 @@ const Winter = () => {
             <div className="hidden lg:flex gap-3 h-[95vh] justify-center">
                 <div className="w-[35%] h-full relative">
                     <Image
-                        src="/winter/wmodel6.png"
-                        alt="winter-model-6"
+                        src="/autumn/autmodel6.png"
+                        alt="autumn-model-6"
                         fill={true}
                     />
                 </div>
                 <div className="flex flex-col gap-3 w-64">
                     <div className="w-full h-1/2 relative">
                         <Image
-                            src="/winter/wmodel8.png"
-                            alt="winter-model-8"
+                            src="/autumn/autmodel8.png"
+                            alt="autumn-model-8"
                             fill={true}
                         />
                     </div>
                     <div className="w-full h-1/2 relative">
                         <Image
-                            src="/winter/wmodel7.png"
-                            alt="winter-model-7"
+                            src="/autumn/autmodel7.png"
+                            alt="autumn-model-7"
                             fill={true}
                         />
                     </div>
@@ -100,23 +100,23 @@ const Winter = () => {
             <div className="hidden lg:flex gap-3 h-[150vh] justify-center px-5">
                 <div className="w-3/5 h-full shrink-0 relative">
                     <Image
-                        src="/winter/wmodel3.png"
-                        alt="winter-model-3"
+                        src="/autumn/autmodel3.png"
+                        alt="autumn-model-3"
                         fill={true}
                     />
                 </div>
                 <div className="flex flex-col gap-3 w-full">
-                    <div className="w-[45%] h-[30%] relative shrink-0">
+                    <div className="w-[45%] h-[30%] shrink-0 relative">
                         <Image
-                            src="/winter/wmodel5.png"
-                            alt="winter-model-5"
+                            src="/autumn/autmodel5.png"
+                            alt="autumn-model-5"
                             fill={true}
                         />
                     </div>
                     <div className="w-full h-full relative">
                         <Image
-                            src="/winter/wmodel4.png"
-                            alt="winter-model-4"
+                            src="/autumn/autmodel4.png"
+                            alt="autumn-model-4"
                             fill={true}
                         />
                     </div>
@@ -125,8 +125,8 @@ const Winter = () => {
             <div className="hidden lg:flex gap-2 h-screen justify-center">
                 <div className="w-64 h-80 self-end relative">
                     <Image
-                        src="/winter/wmodel2.png"
-                        alt="winter-model-2"
+                        src="/autumn/autmodel2.png"
+                        alt="autumn-model-2"
                         fill={true}
                     />
                     <div className="w-full h-full absolute -top-8 -left-8 border -z-20"></div>
@@ -135,81 +135,80 @@ const Winter = () => {
 
                 <div className="w-2/5 h-full relative">
                     <Image
-                        src="/winter/wmodel1.png"
+                        src="/autumn/autmodel1.png"
+                        alt="autumn-model-1"
                         fill={true}
-                        alt="winter-model-1"
                     />
                 </div>
             </div>
-
             <div className="flex gap-4 overflow-scroll h-[50vh] md:h-[65vh] lg:hidden hidescroll">
                 <div className="w-3/4 md:w-2/3 h-full border shrink-0 relative">
                     <Image
-                        src="/winter/wmodel10.png"
-                        alt="winter-model-10"
+                        src="/autumn/autmodel9.png"
+                        alt="autumn-model-9"
                         fill={true}
                     />
                 </div>
                 <div className="w-3/4 md:w-2/3 h-full border shrink-0 relative">
                     <Image
-                        src="/winter/wmodel9.png"
-                        alt="winter-model-9"
+                        src="/autumn/autmodel10.png"
+                        alt="autumn-model-10"
                         fill={true}
                     />
                 </div>
                 <div className="w-3/4 md:w-2/3 h-full border shrink-0 relative">
                     <Image
-                        src="/winter/wmodel6.png"
-                        alt="winter-model-6"
+                        src="/autumn/autmodel6.png"
+                        alt="autumn-model-6"
                         fill={true}
                     />
                 </div>
                 <div className="w-3/4 md:w-2/3 h-full border shrink-0 relative">
                     <Image
-                        src="/winter/wmodel8.png"
-                        alt="winter-model-8"
+                        src="/autumn/autmodel8.png"
+                        alt="autumn-model-8"
                         fill={true}
                     />
                 </div>
                 <div className="w-3/4 md:w-2/3 h-full border shrink-0 relative">
                     <Image
-                        src="/winter/wmodel7.png"
-                        alt="winter-model-7"
+                        src="/autumn/autmodel7.png"
+                        alt="autumn-model-7"
                         fill={true}
                     />
                 </div>
                 <div className="w-3/4 md:w-2/3 h-full border shrink-0 relative">
                     <Image
-                        src="/winter/wmodel3.png"
-                        alt="winter-model-3"
+                        src="/autumn/autmodel3.png"
+                        alt="autumn-model-3"
                         fill={true}
                     />
                 </div>
                 <div className="w-3/4 md:w-2/3 h-full border shrink-0 relative">
                     <Image
-                        src="/winter/wmodel5.png"
-                        alt="winter-model-5"
+                        src="/autumn/autmodel5.png"
+                        alt="autumn-model-5"
                         fill={true}
                     />
                 </div>
                 <div className="w-3/4 md:w-2/3 h-full border shrink-0 relative">
                     <Image
-                        src="/winter/wmodel4.png"
-                        alt="winter-model-4"
+                        src="/autumn/autmodel4.png"
+                        alt="autumn-model-4"
                         fill={true}
                     />
                 </div>
                 <div className="w-3/4 md:w-2/3 h-full border shrink-0 relative">
                     <Image
-                        src="/winter/wmodel2.png"
-                        alt="winter-model-2"
+                        src="/autumn/autmodel2.png"
+                        alt="autumn-model-2"
                         fill={true}
                     />
                 </div>
                 <div className="w-3/4 md:w-2/3 h-full border shrink-0 relative">
                     <Image
-                        src="/winter/wmodel1.png"
-                        alt="winter-model-1"
+                        src="/autumn/autmodel1.png"
+                        alt="autumn-model-1"
                         fill={true}
                     />
                 </div>
@@ -237,4 +236,4 @@ const Winter = () => {
     );
 };
 
-export default Winter;
+export default Autumn;

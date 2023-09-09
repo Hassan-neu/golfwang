@@ -1,10 +1,10 @@
-import Hero from "@/components/home/hero";
-import NewArivals from "@/components/home/newArrivals";
-import ThirdHero from "@/components/home/thirdHero";
-import Catalog from "@/components/home/catalog";
-import About from "@/components/home/about";
-import Collections from "@/components/home/collections";
-import Socials from "@/components/home/socials";
+import Hero from "@/components/pages/home/hero";
+import NewArivals from "@/components/pages/home/newArrivals";
+import ThirdHero from "@/components/pages/home/thirdHero";
+import Catalog from "@/components/pages/home/catalog";
+import About from "@/components/pages/home/about";
+import Collections from "@/components/pages/home/collections";
+import Socials from "@/components/pages/home/socials";
 export default function Home() {
     return (
         <main className="">

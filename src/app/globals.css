@@ -14,7 +14,7 @@
     opacity: 1;
 }
 .marquee {
-    animation: marquee 20s infinite linear;
+    animation: marquee 100s infinite linear;
 }
 
 @keyframes marquee {
