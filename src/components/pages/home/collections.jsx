@@ -571,7 +571,7 @@ const Collections = () => {
                             SUBSCRIBE
                         </button>
                     </form>
-                    <Checkbox>
+                    <Checkbox name="agreement">
                         <p className="text-xs">
                             I agree to{" "}
                             <Link href="" className="underline">

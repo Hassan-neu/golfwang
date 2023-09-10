@@ -45,7 +45,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <div className="ml-10 lg:ml-0 bg-yellow-400 font-extrabold px-3">
+                <div className="ml-10 lg:ml-0 bg-yellow-300 font-extrabold px-3">
                     <Link href="/">
                         <h4>GOLF</h4>
                     </Link>

@@ -7,10 +7,33 @@ import {
     HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { useRouter } from "next/navigation";
+import { useRef, useState } from "react";
 const FilterOptions = () => {
+    const hoverCard = useRef();
     const router = useRouter();
+    const [filterOption, setFilterOption] = useState({
+        filterKey: "",
+        filterValue: [],
+    });
+    const handleFilter = (e) =>
+        setFilterOption((prev) =>
+            e.target.checked
+                ? {
+                      filterKey: e.target.name,
+                      filterValue: [...prev.filterValue, e.target.value],
+                  }
+                : {
+                      filterKey: prev.filterKey,
+                      filterValue: prev.filterValue.filter(
+                          (val) => val !== e.target.value
+                      ),
+                  }
+        );
+    const resetFilter = (status) => {
+        !status && setFilterOption({ filterKey: "", filterValue: [] });
+    };
     return (
-        <>
+        <div className="hidden gap-7 font-light lg:flex" ref={hoverCard}>
             <HoverCard>
                 <HoverCardTrigger
                     onClick={() => router.push("/catalog/all")}
@@ -26,16 +49,36 @@ const FilterOptions = () => {
                                     TOPS
                                 </h1>
                                 <div className="flex flex-col gap-2">
-                                    <Checkbox name="tops" id="all">
+                                    <Checkbox
+                                        name="tops"
+                                        id="tops"
+                                        value={"all"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">ALL</p>
                                     </Checkbox>
-                                    <Checkbox name="tops" id="jacket">
+                                    <Checkbox
+                                        name="tops"
+                                        id="tops"
+                                        value={"jacket"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">JACKET</p>
                                     </Checkbox>
-                                    <Checkbox name="tops" id="knitwear">
+                                    <Checkbox
+                                        name="tops"
+                                        id="tops"
+                                        value={"knitwear"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">KNITWEAR</p>
                                     </Checkbox>
-                                    <Checkbox name="tops" id="tees">
+                                    <Checkbox
+                                        name="tops"
+                                        id="tops"
+                                        value={"tees"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">TEES</p>
                                     </Checkbox>
                                 </div>
@@ -45,16 +88,36 @@ const FilterOptions = () => {
                                     BOTTOMS
                                 </h1>
                                 <div className="flex flex-col gap-2">
-                                    <Checkbox name="bottoms" id="all">
+                                    <Checkbox
+                                        name="bottoms"
+                                        id="bottoms"
+                                        value={"all"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">ALL</p>
                                     </Checkbox>
-                                    <Checkbox name="bottoms" id="pants">
+                                    <Checkbox
+                                        name="bottoms"
+                                        id="bottoms"
+                                        value={"pants"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">PANTS</p>
                                     </Checkbox>
-                                    <Checkbox name="bottoms" id="underwear">
+                                    <Checkbox
+                                        name="bottoms"
+                                        id="bottoms"
+                                        value={"underwear"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">UNDERWEAR</p>
                                     </Checkbox>
-                                    <Checkbox name="bottoms" id="shorts">
+                                    <Checkbox
+                                        name="bottoms"
+                                        id="bottoms"
+                                        value={"shorts"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">SHORTS</p>
                                     </Checkbox>
                                 </div>
@@ -64,13 +127,28 @@ const FilterOptions = () => {
                                     HATS
                                 </h1>
                                 <div className="flex flex-col gap-2">
-                                    <Checkbox name="hats" id="all">
+                                    <Checkbox
+                                        name="hats"
+                                        id="hats"
+                                        value={"all"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">ALL</p>
                                     </Checkbox>
-                                    <Checkbox name="hats" id="beanies">
+                                    <Checkbox
+                                        name="hats"
+                                        id="hats"
+                                        value={"beanies"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">BEANIES</p>
                                     </Checkbox>
-                                    <Checkbox name="hats" id="caps">
+                                    <Checkbox
+                                        name="hats"
+                                        id="hats"
+                                        value={"caps"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">CAPS</p>
                                     </Checkbox>
                                 </div>
@@ -80,16 +158,36 @@ const FilterOptions = () => {
                                     ACCESSORIES
                                 </h1>
                                 <div className="flex flex-col gap-2">
-                                    <Checkbox name="accessories" id="all">
+                                    <Checkbox
+                                        name="accessories"
+                                        id="accessories"
+                                        value={"all"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">ALL</p>
                                     </Checkbox>
-                                    <Checkbox name="accessories" id="bag">
+                                    <Checkbox
+                                        name="accessories"
+                                        id="accessories"
+                                        value={"bag"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">BAG</p>
                                     </Checkbox>
-                                    <Checkbox name="accessories" id="stickers">
+                                    <Checkbox
+                                        name="accessories"
+                                        id="accessories"
+                                        value={"stickers"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">STICKERS</p>
                                     </Checkbox>
-                                    <Checkbox name="accessories" id="slides">
+                                    <Checkbox
+                                        name="accessories"
+                                        id="accessories"
+                                        value={"slides"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">SLIDES</p>
                                     </Checkbox>
                                 </div>
@@ -99,13 +197,28 @@ const FilterOptions = () => {
                                     MUSIC
                                 </h1>
                                 <div className="flex flex-col gap-2">
-                                    <Checkbox name="music" id="all">
+                                    <Checkbox
+                                        name="music"
+                                        id="music"
+                                        value={"all"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">ALL</p>
                                     </Checkbox>
-                                    <Checkbox name="music" id="vinyl">
+                                    <Checkbox
+                                        name="music"
+                                        id="music"
+                                        value={"vinyl"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">VINYL</p>
                                     </Checkbox>
-                                    <Checkbox name="music" id="cassette">
+                                    <Checkbox
+                                        name="music"
+                                        id="music"
+                                        value={"cassette"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">CASSETTE</p>
                                     </Checkbox>
                                 </div>
@@ -139,16 +252,36 @@ const FilterOptions = () => {
                                     TOPS
                                 </h1>
                                 <div className="flex flex-col gap-2">
-                                    <Checkbox name="tops" id="all">
+                                    <Checkbox
+                                        name="tops"
+                                        id="tops"
+                                        value={"all"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">ALL</p>
                                     </Checkbox>
-                                    <Checkbox name="tops" id="jacket">
+                                    <Checkbox
+                                        name="tops"
+                                        id="tops"
+                                        value={"jacket"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">JACKET</p>
                                     </Checkbox>
-                                    <Checkbox name="tops" id="knitwear">
+                                    <Checkbox
+                                        name="tops"
+                                        id="tops"
+                                        value={"knitwear"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">KNITWEAR</p>
                                     </Checkbox>
-                                    <Checkbox name="tops" id="tees">
+                                    <Checkbox
+                                        name="tops"
+                                        id="tops"
+                                        value={"tees"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">TEES</p>
                                     </Checkbox>
                                 </div>
@@ -158,16 +291,36 @@ const FilterOptions = () => {
                                     BOTTOMS
                                 </h1>
                                 <div className="flex flex-col gap-2">
-                                    <Checkbox name="bottoms" id="all">
+                                    <Checkbox
+                                        name="bottoms"
+                                        id="bottoms"
+                                        value={"all"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">ALL</p>
                                     </Checkbox>
-                                    <Checkbox name="bottoms" id="pants">
+                                    <Checkbox
+                                        name="bottoms"
+                                        id="bottoms"
+                                        value={"pants"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">PANTS</p>
                                     </Checkbox>
-                                    <Checkbox name="bottoms" id="underwear">
+                                    <Checkbox
+                                        name="bottoms"
+                                        id="bottoms"
+                                        value={"underwear"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">UNDERWEAR</p>
                                     </Checkbox>
-                                    <Checkbox name="bottoms" id="shorts">
+                                    <Checkbox
+                                        name="bottoms"
+                                        id="bottoms"
+                                        value={"shorts"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">SHORTS</p>
                                     </Checkbox>
                                 </div>
@@ -177,13 +330,28 @@ const FilterOptions = () => {
                                     HATS
                                 </h1>
                                 <div className="flex flex-col gap-2">
-                                    <Checkbox name="hats" id="all">
+                                    <Checkbox
+                                        name="hats"
+                                        id="hats"
+                                        value={"all"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">ALL</p>
                                     </Checkbox>
-                                    <Checkbox name="hats" id="beanies">
+                                    <Checkbox
+                                        name="hats"
+                                        id="hats"
+                                        value={"beanies"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">BEANIES</p>
                                     </Checkbox>
-                                    <Checkbox name="hats" id="caps">
+                                    <Checkbox
+                                        name="hats"
+                                        id="hats"
+                                        value={"caps"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">CAPS</p>
                                     </Checkbox>
                                 </div>
@@ -193,16 +361,36 @@ const FilterOptions = () => {
                                     ACCESSORIES
                                 </h1>
                                 <div className="flex flex-col gap-2">
-                                    <Checkbox name="accessories" id="all">
+                                    <Checkbox
+                                        name="accessories"
+                                        id="accessories"
+                                        value={"all"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">ALL</p>
                                     </Checkbox>
-                                    <Checkbox name="accessories" id="bag">
+                                    <Checkbox
+                                        name="accessories"
+                                        id="accessories"
+                                        value={"bag"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">BAG</p>
                                     </Checkbox>
-                                    <Checkbox name="accessories" id="stickers">
+                                    <Checkbox
+                                        name="accessories"
+                                        id="accessories"
+                                        value={"stickers"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">STICKERS</p>
                                     </Checkbox>
-                                    <Checkbox name="accessories" id="slides">
+                                    <Checkbox
+                                        name="accessories"
+                                        id="accessories"
+                                        value={"slides"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">SLIDES</p>
                                     </Checkbox>
                                 </div>
@@ -212,13 +400,28 @@ const FilterOptions = () => {
                                     MUSIC
                                 </h1>
                                 <div className="flex flex-col gap-2">
-                                    <Checkbox name="music" id="all">
+                                    <Checkbox
+                                        name="music"
+                                        id="music"
+                                        value={"all"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">ALL</p>
                                     </Checkbox>
-                                    <Checkbox name="music" id="vinyl">
+                                    <Checkbox
+                                        name="music"
+                                        id="music"
+                                        value={"vinyl"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">VINYL</p>
                                     </Checkbox>
-                                    <Checkbox name="music" id="cassette">
+                                    <Checkbox
+                                        name="music"
+                                        id="music"
+                                        value={"cassette"}
+                                        onChange={handleFilter}
+                                    >
                                         <p className="text-[10px]">CASSETTE</p>
                                     </Checkbox>
                                 </div>
@@ -247,16 +450,36 @@ const FilterOptions = () => {
                 <HoverCardContent className="w-max" align="start">
                     <div className="flex flex-col gap-8">
                         <div className="flex gap-5">
-                            <Checkbox name="tops" id="all">
+                            <Checkbox
+                                name="tops"
+                                id="tops"
+                                value={"all"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">ALL</p>
                             </Checkbox>
-                            <Checkbox name="tops" id="jacket">
+                            <Checkbox
+                                name="tops"
+                                id="tops"
+                                value={"jacket"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">JACKET</p>
                             </Checkbox>
-                            <Checkbox name="tops" id="knitwear">
+                            <Checkbox
+                                name="tops"
+                                id="tops"
+                                value={"knitwear"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">KNITWEAR</p>
                             </Checkbox>
-                            <Checkbox name="tops" id="tees">
+                            <Checkbox
+                                name="tops"
+                                id="tops"
+                                value={"tees"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">TEES</p>
                             </Checkbox>
                         </div>
@@ -283,16 +506,36 @@ const FilterOptions = () => {
                 <HoverCardContent className="w-max" align="start">
                     <div className="flex flex-col gap-8">
                         <div className="flex gap-5">
-                            <Checkbox name="bottoms" id="all">
+                            <Checkbox
+                                name="bottoms"
+                                id="bottoms"
+                                value={"all"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">ALL</p>
                             </Checkbox>
-                            <Checkbox name="bottoms" id="pants">
+                            <Checkbox
+                                name="bottoms"
+                                id="bottoms"
+                                value={"pants"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">PANTS</p>
                             </Checkbox>
-                            <Checkbox name="bottoms" id="underwear">
+                            <Checkbox
+                                name="bottoms"
+                                id="bottoms"
+                                value={"underwear"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">UNDERWEAR</p>
                             </Checkbox>
-                            <Checkbox name="bottoms" id="shorts">
+                            <Checkbox
+                                name="bottoms"
+                                id="bottoms"
+                                value={"shorts"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">SHORTS</p>
                             </Checkbox>
                         </div>
@@ -319,13 +562,28 @@ const FilterOptions = () => {
                 <HoverCardContent className="w-max" align="start">
                     <div className="flex flex-col gap-8">
                         <div className="flex gap-5">
-                            <Checkbox name="hats" id="all">
+                            <Checkbox
+                                name="hats"
+                                id="hats"
+                                value={"all"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">ALL</p>
                             </Checkbox>
-                            <Checkbox name="hats" id="beanies">
+                            <Checkbox
+                                name="hats"
+                                id="hats"
+                                value={"beanies"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">BEANIES</p>
                             </Checkbox>
-                            <Checkbox name="hats" id="caps">
+                            <Checkbox
+                                name="hats"
+                                id="hats"
+                                value={"caps"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">CAPS</p>
                             </Checkbox>
                         </div>
@@ -352,16 +610,36 @@ const FilterOptions = () => {
                 <HoverCardContent className="w-max" align="start">
                     <div className="flex flex-col gap-8">
                         <div className="flex gap-5">
-                            <Checkbox name="accessories" id="all">
+                            <Checkbox
+                                name="accessories"
+                                id="accessories"
+                                value={"all"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">ALL</p>
                             </Checkbox>
-                            <Checkbox name="accessories" id="bag">
+                            <Checkbox
+                                name="accessories"
+                                id="accessories"
+                                value={"bag"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">BAG</p>
                             </Checkbox>
-                            <Checkbox name="accessories" id="stickers">
+                            <Checkbox
+                                name="accessories"
+                                id="accessories"
+                                value={"stickers"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">STICKERS</p>
                             </Checkbox>
-                            <Checkbox name="accessories" id="slides">
+                            <Checkbox
+                                name="accessories"
+                                id="accessories"
+                                value={"slides"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">SLIDES</p>
                             </Checkbox>
                         </div>
@@ -378,7 +656,7 @@ const FilterOptions = () => {
                     </div>
                 </HoverCardContent>
             </HoverCard>
-            <HoverCard>
+            <HoverCard onOpenChange={resetFilter}>
                 <HoverCardTrigger
                     onClick={() => router.push("/catalog/music")}
                     className="hover:cursor-pointer"
@@ -388,13 +666,28 @@ const FilterOptions = () => {
                 <HoverCardContent className="w-max" align="start">
                     <div className="flex flex-col gap-8">
                         <div className="flex gap-5">
-                            <Checkbox name="music" id="all">
+                            <Checkbox
+                                name="music"
+                                id="music"
+                                value={"all"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">ALL</p>
                             </Checkbox>
-                            <Checkbox name="music" id="vinyl">
+                            <Checkbox
+                                name="music"
+                                id="music"
+                                value={"vinyl"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">VINYL</p>
                             </Checkbox>
-                            <Checkbox name="music" id="cassette">
+                            <Checkbox
+                                name="music"
+                                id="music"
+                                value={"cassette"}
+                                onChange={handleFilter}
+                            >
                                 <p className="text-[10px]">CASSETTE</p>
                             </Checkbox>
                         </div>
@@ -406,12 +699,18 @@ const FilterOptions = () => {
                             >
                                 APPLY
                             </Btn>
-                            <Btn className={" px-6 py-2 text-[9px]"}>RESET</Btn>
+                            <Btn
+                                className={" px-6 py-2 text-[9px]"}
+                                data-name="music"
+                                onClick={resetFilter}
+                            >
+                                RESET
+                            </Btn>
                         </div>
                     </div>
                 </HoverCardContent>
             </HoverCard>
-        </>
+        </div>
     );
 };
 

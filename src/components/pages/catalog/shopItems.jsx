@@ -13,9 +13,7 @@ const ShopItems = ({ shopImage, filter }) => {
         <main className="flex flex-col gap-6 min-h-screen mt-4">
             <div className="flex justify-between text-xs ">
                 <div className="flex items-center">
-                    <div className="hidden gap-7 font-light lg:flex">
-                        <FilterOptions />
-                    </div>
+                    <FilterOptions />
                     <div className="lg:hidden">
                         <FilterMobile />
                     </div>
@@ -40,7 +38,7 @@ const ShopItems = ({ shopImage, filter }) => {
                 </div>
             </div>
             <div className="flex flex-col lg:flex-row gap-2 h-full">
-                <div className="w-full grid grid-cols-1 md:grid-cols-2 auto-rows-fr lg:grid-cols-3 md:auto-rows-auto lg:w-2/3 gap-4 md:gap-2 md:[&>div:nth-child(5)]:col-span-full md:[&>div:nth-child(8)]:col-span-full lg:[&>div:nth-child(5)]:col-span-1 lg:[&>div:nth-child(8)]:col-span-1">
+                <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] md:grid-cols-2 auto-rows-[360px] lg:grid-cols-3 md:auto-rows-auto lg:w-2/3 gap-4 md:gap-2 md:[&>div:nth-child(5)]:col-span-full md:[&>div:nth-child(8)]:col-span-full lg:[&>div:nth-child(5)]:col-span-1 lg:[&>div:nth-child(8)]:col-span-1">
                     <Itemcard />
                     <Itemcard />
                     <Itemcard />
