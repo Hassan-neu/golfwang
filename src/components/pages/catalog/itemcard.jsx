@@ -8,7 +8,7 @@ const Itemcard = () => {
                 <p className="text-neutral-400 text-xs uppercase self-end">
                     3 Colors
                 </p>
-                <div className="w-full md:max-w-[350px] self-center relative h-64">
+                <div className="w-full max-w-[350px] self-center relative h-64">
                     <Image
                         src={"/home/tops.png"}
                         alt={"itemplaceholder"}

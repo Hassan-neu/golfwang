@@ -17,7 +17,7 @@ const FilterMobile = () => {
         filterKey: "",
         filterValue: [],
     });
-    console.log(filterOption);
+    // console.log(filterOption);
     const handleFilter = (e) =>
         setFilterOption((prev) =>
             e.target.checked

@@ -31,7 +31,7 @@ const Page = ({ params: { filter } }) => {
                 tl.to(
                     shopImage.current,
                     {
-                        backgroundSize: 600,
+                        scale: 1.15,
                         duration: 1,
                     },
                     "-=1"

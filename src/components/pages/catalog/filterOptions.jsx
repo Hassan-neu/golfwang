@@ -7,9 +7,8 @@ import {
     HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useState } from "react";
 const FilterOptions = () => {
-    const hoverCard = useRef();
     const router = useRouter();
     const [filterOption, setFilterOption] = useState({
         filterKey: "",
@@ -32,12 +31,13 @@ const FilterOptions = () => {
     const resetFilter = (status) => {
         !status && setFilterOption({ filterKey: "", filterValue: [] });
     };
+    // console.log(filterOption);
     return (
-        <div className="hidden gap-7 font-light lg:flex" ref={hoverCard}>
-            <HoverCard>
+        <div className="hidden gap-7 font-light lg:flex">
+            <HoverCard onOpenChange={resetFilter}>
                 <HoverCardTrigger
                     onClick={() => router.push("/catalog/all")}
-                    className="hover:cursor-pointer"
+                    className="hover:cursor-pointer text-[11px]"
                 >
                     ALL
                 </HoverCardTrigger>
@@ -237,7 +237,7 @@ const FilterOptions = () => {
                     </div>
                 </HoverCardContent>
             </HoverCard>
-            <HoverCard>
+            {/* <HoverCard>
                 <HoverCardTrigger
                     onClick={() => router.push("/catalog/new")}
                     className="hover:cursor-pointer"
@@ -439,11 +439,11 @@ const FilterOptions = () => {
                         </div>
                     </div>
                 </HoverCardContent>
-            </HoverCard>
+            </HoverCard> */}
             <HoverCard>
                 <HoverCardTrigger
                     onClick={() => router.push("/catalog/tops")}
-                    className="hover:cursor-pointer"
+                    className="hover:cursor-pointer text-[11px]"
                 >
                     TOPS
                 </HoverCardTrigger>
@@ -499,7 +499,7 @@ const FilterOptions = () => {
             <HoverCard>
                 <HoverCardTrigger
                     onClick={() => router.push("/catalog/bottoms")}
-                    className="hover:cursor-pointer"
+                    className="hover:cursor-pointer text-[11px]"
                 >
                     BOTTOMS
                 </HoverCardTrigger>
@@ -555,7 +555,7 @@ const FilterOptions = () => {
             <HoverCard>
                 <HoverCardTrigger
                     onClick={() => router.push("/catalog/hats")}
-                    className="hover:cursor-pointer"
+                    className="hover:cursor-pointer text-[11px]"
                 >
                     HATS
                 </HoverCardTrigger>
@@ -603,7 +603,7 @@ const FilterOptions = () => {
             <HoverCard>
                 <HoverCardTrigger
                     onClick={() => router.push("/catalog/accessories")}
-                    className="hover:cursor-pointer"
+                    className="hover:cursor-pointer text-[11px]"
                 >
                     ACCESSORIES
                 </HoverCardTrigger>
@@ -659,7 +659,7 @@ const FilterOptions = () => {
             <HoverCard onOpenChange={resetFilter}>
                 <HoverCardTrigger
                     onClick={() => router.push("/catalog/music")}
-                    className="hover:cursor-pointer"
+                    className="hover:cursor-pointer text-[11px]"
                 >
                     MUSIC
                 </HoverCardTrigger>

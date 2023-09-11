@@ -2,7 +2,6 @@
 import Checkbox from "@/components/shared/checkbox";
 import Link from "next/link";
 import React, { useState } from "react";
-
 const DeliveryDetails = () => {
     const [deliveryDetails, setDeliveryDetails] = useState({
         firstname: "",
@@ -210,7 +209,7 @@ const DeliveryDetails = () => {
                 </div>
             </div>
             <div className="flex flex-col gap-3">
-                <Checkbox>
+                <Checkbox onChange={(e) => console.log(e.target.checked)}>
                     <p className="text-xs">
                         I agree to{" "}
                         <Link href="" className="underline">

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Btn from "../../shared/buttons/btn";
 import Link from "next/link";
@@ -571,7 +572,10 @@ const Collections = () => {
                             SUBSCRIBE
                         </button>
                     </form>
-                    <Checkbox name="agreement">
+                    <Checkbox
+                        name="agreement"
+                        onChange={(e) => console.log(e.target.checked)}
+                    >
                         <p className="text-xs">
                             I agree to{" "}
                             <Link href="" className="underline">
