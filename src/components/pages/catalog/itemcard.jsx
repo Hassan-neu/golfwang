@@ -13,6 +13,7 @@ const Itemcard = () => {
                         src={"/home/tops.png"}
                         alt={"itemplaceholder"}
                         fill={true}
+                        className="lg:hover:scale-110 [transition:transform_.5s_ease-in]"
                     />
                 </div>
             </div>

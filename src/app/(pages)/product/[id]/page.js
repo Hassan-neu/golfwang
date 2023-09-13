@@ -13,7 +13,9 @@ const Page = ({ params: { id } }) => {
     return (
         <div className="mt-10 flex flex-col gap-2 px-2 md:px-5 lg:px-10 min-h-[calc(100vh_-_100px)] ">
             <div className="text-xs font-semibold">
-                <p>Link -&gt; Link -&gt; {id}</p>
+                <p>
+                    {id}-&gt; Link -&gt; {id}
+                </p>
             </div>
             <div className="flex flex-col lg:flex-row gap-4 h-full">
                 <div className="lg:w-3/5 flex gap-2 lg:flex-col lg:h-screen overflow-scroll hidescroll">
@@ -140,7 +142,7 @@ const Page = ({ params: { id } }) => {
                                 Fit Details
                             </button>
                             {showDetails && (
-                                <div className="h-20 w-4/5 text-justify">
+                                <div className="w-4/5 text-justify">
                                     Lorem ipsum dolor sit, amet consectetur
                                     adipisicing elit. Quam perferendis ex
                                     dignissimos, recusandae sit sapiente quia

@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import Itemcard from "./itemcard";
 import Btn from "@/components/shared/buttons/btn";
 import SortOptions from "./sortOption";
@@ -7,9 +6,10 @@ import FilterOptions from "./filterOptions";
 import FilterMobile from "./filterMobile";
 import SortMobile from "./sortMobile";
 import Image from "next/image";
+import Link from "next/link";
 const ShopItems = ({ shopImage, filter }) => {
     return (
-        <main className="flex flex-col gap-6 min-h-screen">
+        <main className="flex flex-col gap-2 md:gap-4 lg:gap-6 min-h-screen mt-4">
             <div className="flex justify-between text-xs ">
                 <div className="flex items-center">
                     <FilterOptions />
@@ -65,10 +65,10 @@ const ShopItems = ({ shopImage, filter }) => {
                         </p>
                     </div>
                 </div>
-                <Btn className="py-4 uppercase bg-black text-white md:self-center md:px-20">
-                    Show More
-                </Btn>
             </div>
+            <Btn className="py-4 uppercase bg-black text-white md:self-center md:px-20">
+                Show More
+            </Btn>
         </main>
     );
 };

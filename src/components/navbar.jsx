@@ -37,7 +37,7 @@ const Navbar = () => {
                             <Link href="/catalog/all">SHOP</Link>
                         </li>
                         <li>
-                            <Link href="/collections">LOOKBOOK</Link>
+                            <Link href="/collections/w2022">LOOKBOOK</Link>
                         </li>
                         <li>
                             <Link href="/info">INFO</Link>

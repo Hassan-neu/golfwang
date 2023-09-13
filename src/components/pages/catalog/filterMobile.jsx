@@ -9,32 +9,13 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 import { IoIosArrowDown } from "react-icons/io";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
+import useHandleFilter from "@/utils/functions/handleFilter";
 const FilterMobile = () => {
     const router = useRouter();
-    const [filterOption, setFilterOption] = useState({
-        filterKey: "",
-        filterValue: [],
-    });
-    // console.log(filterOption);
-    const handleFilter = (e) =>
-        setFilterOption((prev) =>
-            e.target.checked
-                ? {
-                      filterKey: e.target.name,
-                      filterValue: [...prev.filterValue, e.target.value],
-                  }
-                : {
-                      filterKey: prev.filterKey,
-                      filterValue: prev.filterValue.filter(
-                          (val) => val !== e.target.value
-                      ),
-                  }
-        );
-    const resetFilter = (status) => {
-        !status && setFilterOption({ filterKey: "", filterValue: [] });
-    };
+    const { handleFilter, resetFilter, filterOption } = useHandleFilter();
+    console.log(filterOption);
+
     return (
         <Sheet onOpenChange={resetFilter}>
             <SheetTrigger className="flex gap-2 items-center">
@@ -42,7 +23,7 @@ const FilterMobile = () => {
                 <IoIosArrowDown size={18} />
             </SheetTrigger>
             <SheetContent className="w-full" side={"left"}>
-                <SheetHeader>
+                <SheetHeader className="relative -top-4">
                     <SheetTitle>CATEGORY</SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-8">
@@ -240,7 +221,10 @@ const FilterMobile = () => {
                         </div>
                     </div>
                     <div className="flex flex-col gap-2">
-                        <Btn className={" px-6 py-3 text-[9px] bg-yellow-300"}>
+                        <Btn
+                            className={" px-6 py-3 text-[9px] bg-yellow-300"}
+                            onClick={() => console.log(filterOption)}
+                        >
                             APPLY
                         </Btn>
                         <Btn className={" px-6 py-3 text-[9px]"}>RESET</Btn>

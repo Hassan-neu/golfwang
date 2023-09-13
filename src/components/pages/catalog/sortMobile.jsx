@@ -6,10 +6,11 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
-import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import useHandleFilter from "@/utils/functions/handleFilter";
 const SortMobile = () => {
-    const [sort, setSort] = useState("");
+    const { sort, handleSort } = useHandleFilter();
+    console.log(sort);
     return (
         <Sheet>
             <SheetTrigger className="flex gap-2 items-center">
@@ -18,7 +19,9 @@ const SortMobile = () => {
             </SheetTrigger>
             <SheetContent className="w-full">
                 <SheetHeader>
-                    <SheetTitle className="self-start">SORT BY:</SheetTitle>
+                    <SheetTitle className="self-start relative -top-4">
+                        SORT
+                    </SheetTitle>
                 </SheetHeader>
 
                 <div className="flex flex-col gap-3">
@@ -28,7 +31,7 @@ const SortMobile = () => {
                             name="sort"
                             value="newest"
                             id="newest"
-                            onChange={(e) => setSort(e.target.value)}
+                            onChange={(e) => handleSort(e.target.value)}
                         />
                         <label htmlFor="newest">NEWEST</label>
                     </div>
@@ -38,7 +41,7 @@ const SortMobile = () => {
                             name="sort"
                             value="lowprice"
                             id="lowprice"
-                            onChange={(e) => setSort(e.target.value)}
+                            onChange={(e) => handleSort(e.target.value)}
                         />
                         <label htmlFor="lowprice">LOWPRICE</label>
                     </div>
@@ -48,7 +51,7 @@ const SortMobile = () => {
                             name="sort"
                             value="highprice"
                             id="highprice"
-                            onChange={(e) => setSort(e.target.value)}
+                            onChange={(e) => handleSort(e.target.value)}
                         />
                         <label htmlFor="highprice">HIGH PRICE</label>
                     </div>
