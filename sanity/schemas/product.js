@@ -1,12 +1,12 @@
-export const bottoms = {
-    name: "bottoms",
-    title: "Bottoms",
+export const product = {
+    name: "product",
+    title: "Product",
     type: "document",
     fields: [
         {
             name: "name",
             type: "string",
-            title: "Product Name",
+            title: "name",
         },
         {
             name: "price",
@@ -19,6 +19,12 @@ export const bottoms = {
             type: "string",
         },
         {
+            name: "category",
+            title: "Category",
+            type: "reference",
+            to: [{ name: "categories" }],
+        },
+        {
             name: "colors",
             title: "Colors",
             type: "array",
@@ -28,7 +34,7 @@ export const bottoms = {
             name: "sizes",
             title: "Sizes",
             type: "array",
-            of: [{ type: "string" }],
+            of: [{ type: "reference", to: "size" }],
         },
         {
             name: "images",

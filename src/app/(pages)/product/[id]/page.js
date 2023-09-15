@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { useState } from "react";
 import OptionsBtn from "@/components/shared/buttons/optionsBtn";
 import ghostSwipe from "@/utils/functions/ghostSwipe";
+import Btn from "@/components/shared/buttons/btn";
 const Page = ({ params: { id } }) => {
     const ghost = useRef();
     const [order, setOrder] = useState({
@@ -135,12 +136,12 @@ const Page = ({ params: { id } }) => {
                             </div>
                         </div>
                         <div className="hidden lg:flex gap-2 justify-between mt-2 h-max">
-                            <button
+                            <Btn
                                 className="underline self-start text-xs"
                                 onClick={() => setShowDetails(!showDetails)}
                             >
                                 Fit Details
-                            </button>
+                            </Btn>
                             {showDetails && (
                                 <div className="w-4/5 text-justify">
                                     Lorem ipsum dolor sit, amet consectetur
@@ -156,12 +157,12 @@ const Page = ({ params: { id } }) => {
                         </div>
                     </div>
                     <div className="text-xs md:text-sm lg:text-xs">
-                        <button
+                        <Btn
                             className="w-full py-3 text-white font-bold bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black"
                             onClick={() => ghostSwipe(ghost)}
                         >
                             ADD TO CART
-                        </button>
+                        </Btn>
                     </div>
                     <div className="flex flex-col gap-1">
                         <h4 className="font-semibold text-xs md:text-base">

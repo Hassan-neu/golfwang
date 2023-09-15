@@ -8,6 +8,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { BsHandbag } from "react-icons/bs";
 import { signIn } from "next-auth/react";
 import { useStoreCart } from "@/libs/cart";
+import Btn from "./shared/buttons/btn";
 const Navbar = () => {
     const [openNav, setOpenNav] = useState(false);
     const [openCart, setOpenCart] = useState(false);
@@ -53,20 +54,15 @@ const Navbar = () => {
                 <div className="text-xs flex items-center">
                     <ul className="flex gap-7 items-center lg:gap-10">
                         <li className="hidden lg:block">
-                            <button onClick={() => signIn("google")}>
-                                LOGIN
-                            </button>
+                            <Btn onClick={() => signIn("google")}>LOGIN</Btn>
                         </li>
                         <li className="lg:hidden">
-                            <button onClick={() => signIn("google")}>
+                            <Btn onClick={() => signIn("google")}>
                                 <AiOutlineUser size={20} />
-                            </button>
+                            </Btn>
                         </li>
-                        <li
-                            className="hidden lg:flex"
-                            onClick={() => setOpenCart(true)}
-                        >
-                            <button>CART</button>
+                        <li className="hidden lg:flex">
+                            <Btn onClick={() => setOpenCart(true)}>CART</Btn>
                             <p className=" text-gray-400">({totalQty})</p>
                         </li>
                         <li

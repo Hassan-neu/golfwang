@@ -14,8 +14,6 @@ import useHandleFilter from "@/utils/functions/handleFilter";
 const FilterMobile = () => {
     const router = useRouter();
     const { handleFilter, resetFilter, filterOption } = useHandleFilter();
-    console.log(filterOption);
-
     return (
         <Sheet onOpenChange={resetFilter}>
             <SheetTrigger className="flex gap-2 items-center">

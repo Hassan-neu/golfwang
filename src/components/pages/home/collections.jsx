@@ -568,9 +568,9 @@ const Collections = () => {
                             placeholder="E-mail"
                             className="border border-black focus:outline-none px-4 py-3 lg:py-2 w-full placeholder:text-sm"
                         />
-                        <button className="bg-black px-4 py-4  lg:py-2 text-white text-xs">
+                        <Btn className="bg-black px-4 py-4  lg:py-2 text-white text-xs">
                             SUBSCRIBE
-                        </button>
+                        </Btn>
                     </form>
                     <Checkbox
                         name="agreement"

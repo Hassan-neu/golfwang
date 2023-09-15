@@ -10,7 +10,6 @@ import { IoIosArrowDown } from "react-icons/io";
 import useHandleFilter from "@/utils/functions/handleFilter";
 const SortMobile = () => {
     const { sort, handleSort } = useHandleFilter();
-    console.log(sort);
     return (
         <Sheet>
             <SheetTrigger className="flex gap-2 items-center">

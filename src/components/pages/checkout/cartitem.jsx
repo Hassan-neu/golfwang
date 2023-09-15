@@ -1,3 +1,4 @@
+import Btn from "@/components/shared/buttons/btn";
 import React from "react";
 const CartItem = ({ children }) => {
     return (
@@ -12,9 +13,9 @@ const CartItem = ({ children }) => {
                     placeholder="Discount code"
                     className="px-3 py-2 w-4/5 border border-black focus:border-2 focus:outline-none"
                 />
-                <button className="text-gray-400 hover:bg-black hover:text-white py-3 w-1/5 text-sm border">
+                <Btn className="text-gray-400 hover:bg-black hover:text-white py-3 w-1/5 text-sm border">
                     APPLY
-                </button>
+                </Btn>
             </div>
             <div className="flex justify-between pb-3 border-b text-gray-400">
                 <h3 className="text-sm font-medium">DISCOUNT</h3>

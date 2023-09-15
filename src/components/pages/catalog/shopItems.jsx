@@ -6,7 +6,6 @@ import FilterOptions from "./filterOptions";
 import FilterMobile from "./filterMobile";
 import SortMobile from "./sortMobile";
 import Image from "next/image";
-import Link from "next/link";
 const ShopItems = ({ shopImage, filter }) => {
     return (
         <main className="flex flex-col gap-2 md:gap-4 lg:gap-6 min-h-screen mt-4">
@@ -30,14 +29,14 @@ const ShopItems = ({ shopImage, filter }) => {
                     </div>
                 </div>
             </div>
-            <div className="pb-1 text-5xl font-medium border-b mt-4">
+            <div className="pb-1 text-xl lg:text-5xl font-medium border-b mt-4">
                 <div className="flex gap-3">
                     <h3 className="uppercase">{filter}</h3>
                     <p className="text-sm self-start text-gray-400">(67)</p>
                 </div>
             </div>
             <div className="flex flex-col gap-2 h-full">
-                <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] md:grid-cols-2 auto-rows-[360px] lg:grid-cols-5 md:auto-rows-auto gap-4 md:gap-3 md:gap-y-7 md:[&>div:nth-child(5)]:col-span-full md:[&>div:nth-child(8)]:col-span-full lg:[&>div:nth-child(5)]:col-span-1 lg:[&>div:nth-child(8)]:col-span-1">
+                <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] md:grid-cols-2 auto-rows-[360px] lg:grid-cols-5 md:auto-rows-auto gap-4 md:gap-3 md:gap-y-7 md:[&>a:nth-child(5)]:col-span-full md:[&>a:nth-child(8)]:col-span-full lg:[&>a:nth-child(5)]:col-span-1 lg:[&>a:nth-child(8)]:col-span-1">
                     <Itemcard />
                     <Itemcard />
                     <Itemcard />

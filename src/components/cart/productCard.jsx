@@ -2,9 +2,10 @@
 import { useStoreCart } from "@/libs/cart";
 import Image from "next/image";
 import React from "react";
+import Btn from "../shared/buttons/btn";
 
 const ProductCard = ({ product }) => {
-    const { id, name, color, size, price } = product;
+    const { id, name, color, price } = product;
     const deleteProduct = useStoreCart((cart) => cart.deleteProduct);
     const updateQty = useStoreCart((cart) => cart.updateQty);
     return (
@@ -37,12 +38,12 @@ const ProductCard = ({ product }) => {
                         }}
                         className="border border-black p-1 w-14"
                     />
-                    <button
+                    <Btn
                         className="underline"
                         onClick={() => deleteProduct(id)}
                     >
                         REMOVE
-                    </button>
+                    </Btn>
                 </div>
             </div>
         </div>

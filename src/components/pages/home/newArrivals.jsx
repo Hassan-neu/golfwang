@@ -80,12 +80,12 @@ const NewArivals = () => {
                 <Link href={"/catalog/new"}>SHOW MORE</Link>
             </Btn>
             <div className="hidden lg:flex gap-1">
-                <button className="rounded-full w-10 h-10 border flex items-center justify-center text-gray-500">
+                <Btn className="rounded-full w-10 h-10 border flex items-center justify-center text-gray-500">
                     &lt;-
-                </button>
-                <button className="rounded-full w-10 h-10 border flex items-center justify-center text-gray-500">
+                </Btn>
+                <Btn className="rounded-full w-10 h-10 border flex items-center justify-center text-gray-500">
                     -&gt;
-                </button>
+                </Btn>
             </div>
         </div>
     );

@@ -1,4 +1,5 @@
 "use client";
+import Btn from "@/components/shared/buttons/btn";
 import Checkbox from "@/components/shared/checkbox";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -191,9 +192,9 @@ const DeliveryDetails = () => {
                         placeholder="Discount code"
                         className="px-3 py-2 w-full md:w-4/5 border border-black focus:border-2 focus:outline-none"
                     />
-                    <button className="bg-black text-white py-3 md:w-1/5 text-sm border">
+                    <Btn className="bg-black text-white py-3 md:w-1/5 text-sm border">
                         APPLY
-                    </button>
+                    </Btn>
                 </div>
                 <div className="flex justify-between pb-3 border-b text-gray-400">
                     <h3 className="text-sm font-medium">DISCOUNT</h3>
@@ -218,9 +219,9 @@ const DeliveryDetails = () => {
                         </Link>
                     </p>
                 </Checkbox>
-                <button className="w-full py-3 text-white bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black">
+                <Btn className="w-full py-3 text-sm text-white bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black">
                     PAY AND MAKE ORDER
-                </button>
+                </Btn>
             </div>
         </form>
     );

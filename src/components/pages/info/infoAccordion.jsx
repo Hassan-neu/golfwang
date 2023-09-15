@@ -1,4 +1,5 @@
 "use client";
+import Btn from "@/components/shared/buttons/btn";
 import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 const Accordion = ({ policy }) => {
@@ -8,14 +9,14 @@ const Accordion = ({ policy }) => {
     return (
         <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-                <button
+                <Btn
                     className={`font-semibold text-xs md:text-sm uppercase cursor-pointer flex items-center gap-2 ${
                         open ? "underline underline-offset-2" : ""
                     }`}
                     onClick={() => setOpen(!open)}
                 >
                     {title} {open ? <IoIosArrowUp /> : <IoIosArrowDown />}
-                </button>
+                </Btn>
                 {open && (
                     <p className="text-xs md:text-sm lg:text-base">{content}</p>
                 )}

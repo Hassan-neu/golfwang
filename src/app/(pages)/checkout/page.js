@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { useStoreCart } from "@/libs/cart";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import useWindowSize from "@/utils/functions/windowSize";
+import Btn from "@/components/shared/buttons/btn";
 const Page = () => {
     const { size, smallScreen, largeScreen } = useWindowSize();
     const [openCart, setOpenCart] = useState(false);
@@ -17,15 +18,15 @@ const Page = () => {
             </div>
             {smallScreen && (
                 <div className="flex flex-col gap-2">
-                    <button
-                        className="text-xl flex justify-between"
+                    <Btn
+                        className="text-xl flex justify-between border-0"
                         onClick={() => setOpenCart(!openCart)}
                     >
                         <span>YOUR CART (0)</span>
                         <span>
                             {openCart ? <IoIosArrowUp /> : <IoIosArrowDown />}
                         </span>
-                    </button>
+                    </Btn>
                     {openCart && (
                         <div className="flex flex-col gap-2">
                             {products.map((product) => (

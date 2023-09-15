@@ -6,7 +6,7 @@ const OptionsBtn = ({ children, onClick, isActive }) => {
             className={`px-2 py-[2px] border ${
                 isActive ? "bg-yellow-400" : ""
             } transition`}
-            onClick={() => onClick()}
+            onClick={onClick}
         >
             {children}
         </button>
