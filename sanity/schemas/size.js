@@ -4,8 +4,13 @@ export const size = {
     type: "document",
     fields: [
         {
-            name: "sizename",
-            title: "Size name",
+            name: "name",
+            title: "Name",
+            type: "string",
+        },
+        {
+            name: "description",
+            tite: "Description",
             type: "string",
         },
     ],

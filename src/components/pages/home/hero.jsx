@@ -18,7 +18,7 @@ const Hero = () => {
         gsap.to(img.current, {
             rotate: 720,
             duration: 100,
-            ease: "ease-in",
+            ease: "linear",
             repeat: -1,
         });
         mm.add(

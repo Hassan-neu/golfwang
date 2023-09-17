@@ -19,15 +19,17 @@ const Page = ({ params: { id } }) => {
                 </p>
             </div>
             <div className="flex flex-col lg:flex-row gap-4 h-full">
-                <div className="lg:w-3/5 flex gap-2 lg:flex-col lg:h-screen overflow-scroll hidescroll">
-                    <div className="w-11/12 lg:w-full h-80 md:h-96 lg:h-full border relative bg-[#f2f2f2] bg-[url('/home/noise.png')] shrink-0">
-                        <div
-                            ref={ghost}
-                            className="w-72 h-72 opacity-0 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border bg-green-200"
-                        ></div>
+                <div className="flex lg:w-3/5 h-full md:h-[80vh] lg:h-screen relative">
+                    <div className="flex w-full gap-2 lg:flex-col  overflow-scroll hidescroll">
+                        <div className="w-11/12 lg:w-full h-80 md:h-full lg:h-full border relative bg-[#f2f2f2] bg-[url('/home/noise.png')] shrink-0"></div>
+                        <div className="w-11/12 lg:w-full h-80 md:h-full lg:h-full border relative bg-[#f2f2f2] bg-[url('/home/noise.png')] shrink-0"></div>
                     </div>
-                    <div className="w-11/12 lg:w-full h-80 md:h-96 lg:h-full border relative bg-[#f2f2f2] bg-[url('/home/noise.png')] shrink-0"></div>
+                    <div
+                        ref={ghost}
+                        className="w-72 h-72 opacity-0 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border bg-green-200"
+                    ></div>
                 </div>
+
                 <div className="flex flex-col gap-7 lg:gap-14 lg:w-2/5">
                     <div className="flex flex-col gap-1">
                         <h2 className="text-2xl md:text-4xl lg:text-3xl font-bold">
@@ -158,7 +160,7 @@ const Page = ({ params: { id } }) => {
                     </div>
                     <div className="text-xs md:text-sm lg:text-xs">
                         <Btn
-                            className="w-full py-3 text-white font-bold bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black"
+                            className="w-full py-3 text-white font-bold bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black md:py-5"
                             onClick={() => ghostSwipe(ghost)}
                         >
                             ADD TO CART

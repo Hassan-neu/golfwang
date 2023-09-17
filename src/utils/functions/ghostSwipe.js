@@ -1,8 +1,7 @@
-import React from "react";
 import { gsap } from "gsap";
 const ghostSwipe = (ghost) => {
-    const ctx = gsap.context(() => {}, ghost);
-    ctx.add(() => {
+    const mm = gsap.matchMedia();
+    mm.add("(min-width:1024px)", () => {
         gsap.to(ghost.current, {
             opacity: 1,
             duration: 1,
@@ -15,7 +14,7 @@ const ghostSwipe = (ghost) => {
             height: 10,
             opacity: 0.1,
             delay: 0.1,
-            onComplete: () => ctx.revert(),
+            onComplete: () => mm.revert(),
         });
     });
 };
