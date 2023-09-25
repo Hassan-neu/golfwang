@@ -1,12 +1,12 @@
 import React from "react";
 
-const TabBtn = ({ children, isActive, onClick }) => {
+const TabBtn = ({ children, isActive, ...props }) => {
     return (
         <button
             className={`text-left text-sm md:text-lg ${
                 isActive ? "underline underline-offset-2 font-semibold" : ""
             }`}
-            onClick={() => onClick()}
+            {...props}
         >
             {children}
         </button>

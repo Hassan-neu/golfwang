@@ -1,17 +1,43 @@
 "use client";
-import { useStoreCart } from "@/libs/cart";
+import { useCartStore } from "@/libs/cart";
 import Image from "next/image";
 import React from "react";
 import Btn from "../shared/buttons/btn";
+import { urlForImage } from "../../../sanity/lib/image";
 
 const ProductCard = ({ product }) => {
-    const { id, name, color, price } = product;
-    const deleteProduct = useStoreCart((cart) => cart.deleteProduct);
-    const updateQty = useStoreCart((cart) => cart.updateQty);
+    const {
+        _id,
+        name,
+        images,
+        order: { color },
+        price,
+        itemTotal,
+    } = product;
+    const deleteProduct = useCartStore((cart) => cart.deleteProduct);
+    const updateQty = useCartStore((cart) => cart.updateQty);
+    const updatePrice = useCartStore((cart) => cart.updatePrice);
+    const updateTotalQty = useCartStore((cart) => cart.updateTotalQty);
+    const updateItemTotal = useCartStore((cart) => cart.itemTotal);
+    const removeItem = () => {
+        deleteProduct(_id);
+        updatePrice();
+        updateTotalQty();
+    };
+    const changeQty = (e) => {
+        updateQty(_id, parseFloat(e.target.value));
+        updateItemTotal(_id);
+        updateTotalQty();
+        updatePrice();
+    };
     return (
         <div className="flex gap-4 border-b w-full py-2">
             <div className="w-56 h-60 relative border shrink-0 bg-[#f2f2f2] bg-[url('/home/noise.png')]">
-                <Image src={"/home/hats.png"} alt="item-1" fill={true} />
+                <Image
+                    src={urlForImage(images[0]).url()}
+                    alt="item-1"
+                    fill={true}
+                />
             </div>
             <div className="flex flex-col w-full">
                 <div className="flex flex-col md:flex-row">
@@ -23,7 +49,7 @@ const ProductCard = ({ product }) => {
                         <p className="block text-neutral-900">${price}</p>
                     </div>
                     <div className="flex flex-col md:flex-row gap-10 md:ml-auto">
-                        <h3 className="text-sm font-bold">$255</h3>
+                        <h3 className="text-sm font-bold">${itemTotal}</h3>
                     </div>
                 </div>
                 <div className="flex justify-between mt-auto">
@@ -33,15 +59,10 @@ const ProductCard = ({ product }) => {
                         id="qty"
                         defaultValue={1}
                         min={1}
-                        onChange={(e) => {
-                            updateQty(id, parseFloat(e.target.value));
-                        }}
+                        onChange={changeQty}
                         className="border border-black p-1 w-14"
                     />
-                    <Btn
-                        className="underline"
-                        onClick={() => deleteProduct(id)}
-                    >
+                    <Btn className="underline" onClick={removeItem}>
                         REMOVE
                     </Btn>
                 </div>

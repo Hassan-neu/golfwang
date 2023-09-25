@@ -4,7 +4,6 @@ import Btn from "../../shared/buttons/btn";
 import Link from "next/link";
 import Image from "next/image";
 import Checkbox from "@/components/shared/checkbox";
-
 const Collections = () => {
     return (
         <div className="flex flex-col gap-3 lg:gap-6 px-2 md:px-5 lg:p-10 lg:h-[110vh] justify-center lg:border border-gray-400 rounded-3xl mt-14 lg:mt-5">
@@ -557,10 +556,7 @@ const Collections = () => {
                             and special offers
                         </p>
                     </div>
-                    <form
-                        action="POST"
-                        className="flex flex-col md:flex-row gap-4 md:gap-2 w-full"
-                    >
+                    <form className="flex flex-col md:flex-row gap-4 md:gap-2 w-full">
                         <input
                             type="email"
                             name="email"

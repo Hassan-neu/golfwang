@@ -11,7 +11,7 @@ const Catalog = () => {
                 <div className="text-xl md:text-4xl font-medium">
                     <h2>CATALOG</h2>
                 </div>
-                <Btn className={"hidden md:block"}>
+                <Btn className={"hidden border md:block"}>
                     <Link href={"/catalog/all"}>SHOP NOW</Link>
                 </Btn>
             </div>

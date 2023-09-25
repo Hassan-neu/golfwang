@@ -10,12 +10,17 @@ const Accordion = ({ policy }) => {
         <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
                 <Btn
-                    className={`font-semibold text-xs md:text-sm uppercase cursor-pointer flex items-center gap-2 ${
-                        open ? "underline underline-offset-2" : ""
+                    className={`px-0 py-0 font-semibold text-xs md:text-sm uppercase cursor-pointer flex items-center gap-1 self-start ${
+                        open ? "border-b border-neutral-950" : ""
                     }`}
                     onClick={() => setOpen(!open)}
                 >
-                    {title} {open ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                    {title}
+                    {open ? (
+                        <IoIosArrowUp size={20} />
+                    ) : (
+                        <IoIosArrowDown size={20} />
+                    )}
                 </Btn>
                 {open && (
                     <p className="text-xs md:text-sm lg:text-base">{content}</p>

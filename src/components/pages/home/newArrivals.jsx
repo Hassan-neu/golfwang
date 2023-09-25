@@ -9,7 +9,7 @@ const NewArivals = () => {
                 <div className="text-xl md:text-4xl font-medium">
                     <h2>NEW ARRIVALS</h2>
                 </div>
-                <Btn className="hidden md:block">
+                <Btn className="hidden border md:block">
                     <Link href={"/catalog/new"}>SHOW MORE</Link>
                 </Btn>
             </div>

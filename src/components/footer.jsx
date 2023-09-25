@@ -4,7 +4,7 @@ import React from "react";
 const Footer = () => {
     return (
         <div className="flex flex-col border mt-5">
-            <div className="bg-yellow-300 p-1 text-xs overflow-hidden font-bold">
+            <div className="bg-yellow-300 p-1 text-[10px] overflow-hidden font-medium">
                 <div className="w-full flex gap-10  marquee hidescroll">
                     <p className="shrink-0">
                         FREE SHIPING FOR ALL ORDERS OVER $150
@@ -88,7 +88,7 @@ const Footer = () => {
                                 <Link href="/collections/w2022">LOOKBOOK</Link>
                             </li>
                             <li>
-                                <Link href="/info">INFO</Link>
+                                <Link href="/info/shippinginfo">INFO</Link>
                             </li>
                         </ul>
                     </div>

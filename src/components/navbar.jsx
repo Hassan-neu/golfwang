@@ -7,19 +7,21 @@ import { RxCross1 } from "react-icons/rx";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsHandbag } from "react-icons/bs";
 import { signIn } from "next-auth/react";
-import { useStoreCart } from "@/libs/cart";
+import { useCartStore } from "@/libs/cart";
 import Btn from "./shared/buttons/btn";
 const Navbar = () => {
     const [openNav, setOpenNav] = useState(false);
     const [openCart, setOpenCart] = useState(false);
-    const totalQty = useStoreCart((cart) => cart.totalQty);
+    const totalQty = useCartStore((cart) => cart.totalQty);
     const slideNav = openNav ? "left-0" : "-left-[100vw]";
     return (
-        <div className={`px-2 py-4 md:px-5 lg:px-10 lg:py-4 relative`}>
+        <div
+            className={`px-2 py-4 md:px-5 lg:px-10 lg:py-4 relative lg:sticky lg:top-0 lg:bg-white lg:z-50`}
+        >
             <div className="flex gap-2 justify-between lg:font-semibold relative">
                 <div
                     className="text-gray-400 lg:hidden"
-                    onClick={() => setOpenNav(true)}
+                    onClick={() => setOpenNav(!openNav)}
                 >
                     <HiMiniBars3 size={25} />
                 </div>
@@ -41,7 +43,7 @@ const Navbar = () => {
                             <Link href="/collections/w2022">LOOKBOOK</Link>
                         </li>
                         <li>
-                            <Link href="/info">INFO</Link>
+                            <Link href="/info/shippinginfo">INFO</Link>
                         </li>
                     </ul>
                 </div>

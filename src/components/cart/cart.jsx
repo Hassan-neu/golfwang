@@ -2,14 +2,16 @@
 import React from "react";
 import ProductCard from "./productCard";
 import { RxCross2 } from "react-icons/rx";
-import { useStoreCart } from "@/libs/cart";
+import { useCartStore } from "@/libs/cart";
 import Btn from "../shared/buttons/btn";
 const Cart = ({ setOpenCart }) => {
-    const products = useStoreCart((cart) => cart.products);
+    const products = useCartStore((cart) => cart.products);
+    const totalPrice = useCartStore((cart) => cart.totalPrice);
+    const totalQty = useCartStore((cart) => cart.totalQty);
     return (
         <div className="flex flex-col h-screen w-full lg:w-[45%] py-4 px-2 md:px-5 lg:px-10 fixed top-0 right-0  bg-white z-50 ">
             <div className="flex justify-between pb-4 border-b">
-                <h2 className="text-xl">YOUR CART (0)</h2>
+                <h2 className="text-xl">YOUR CART ({totalQty})</h2>
                 <Btn className="text-2xl" onClick={() => setOpenCart(false)}>
                     <RxCross2 size={25} />
                 </Btn>
@@ -19,14 +21,14 @@ const Cart = ({ setOpenCart }) => {
                     Your cart is currently empty
                 </p> */}
                 {products.map((product) => (
-                    <ProductCard key={product.id} product={product} />
+                    <ProductCard key={product._id} product={product} />
                 ))}
             </div>
             <div className="flex flex-col gap-3">
                 <div className="flex justify-between text-xl py-2 border-b">
                     <h2>SUBTOTAL</h2>
 
-                    <h4>$0</h4>
+                    <h4>${totalPrice}</h4>
                 </div>
                 <div>
                     <Btn

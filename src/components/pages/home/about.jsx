@@ -59,7 +59,7 @@ const About = () => {
                         <div className="text-xl md:text-4xl font-medium">
                             <h2>ABOUT US</h2>
                         </div>
-                        <Btn className={"hidden md:block bg-white"}>
+                        <Btn className="hidden border md:block bg-white">
                             READ MORE
                         </Btn>
                     </div>
@@ -93,7 +93,7 @@ const About = () => {
                 </div>
                 <div
                     ref={slideDown}
-                    className="w-28 h-32 top-10 right-10 md:w-48 md:h-60 absolute md:top-24 lg:top-20 md:right-1/2 md:translate-x-1/2 lg:right-64 z-10"
+                    className="w-28 h-32 top-10 right-10 md:w-48 md:h-60 absolute md:top-24 lg:top-20 md:right-1/2 md:translate-x-1/2 lg:right-80 z-10"
                 >
                     <Image
                         src={"/home/tylerhome8.png"}

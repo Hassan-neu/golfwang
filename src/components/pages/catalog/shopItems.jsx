@@ -6,7 +6,13 @@ import FilterOptions from "./filterOptions";
 import FilterMobile from "./filterMobile";
 import SortMobile from "./sortMobile";
 import Image from "next/image";
-const ShopItems = ({ shopImage, filter }) => {
+import { client } from "../../../../sanity/lib/client";
+const ShopItems = async ({ shopImage, filter }) => {
+    const fetchProducts = async () => {
+        const res = await client.fetch(`*[_type=='product']`);
+        return res;
+    };
+    const products = await fetchProducts();
     return (
         <main className="flex flex-col gap-2 md:gap-4 lg:gap-6 min-h-screen mt-4">
             <div className="flex justify-between text-xs ">
@@ -37,18 +43,9 @@ const ShopItems = ({ shopImage, filter }) => {
             </div>
             <div className="flex flex-col gap-2 h-full">
                 <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] md:grid-cols-2 auto-rows-[360px] lg:grid-cols-5 md:auto-rows-auto gap-4 md:gap-3 md:gap-y-7 md:[&>a:nth-child(5)]:col-span-full md:[&>a:nth-child(8)]:col-span-full lg:[&>a:nth-child(5)]:col-span-1 lg:[&>a:nth-child(8)]:col-span-1">
-                    <Itemcard />
-                    <Itemcard />
-                    <Itemcard />
-                    <Itemcard />
-                    <Itemcard />
-                    <Itemcard />
-                    <Itemcard />
-                    <Itemcard />
-                    <Itemcard />
-                    <Itemcard />
-                    <Itemcard />
-                    <Itemcard />
+                    {products?.map((product) => (
+                        <Itemcard key={product._id} product={product} />
+                    ))}
                     <div className="hidden lg:flex flex-col gap-[2px] h-screen col-start-4 col-end-6 row-start-1 row-end-3 ">
                         <div className="w-full self-center relative h-full overflow-hidden">
                             <Image
