@@ -1,51 +1,32 @@
-"use client";
 import Banner from "@/components/pages/catalog/banner";
 import ShopItems from "@/components/pages/catalog/shopItems";
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
-const Page = ({ params: { filter } }) => {
-    const main = useRef();
-    const banner = useRef();
-    const shopImage = useRef();
-    useEffect(() => {
-        const mm = gsap.matchMedia();
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: banner.current,
-                start: "top 20px",
-                endTrigger: shopImage.current,
-                end: "bottom 90%",
-                toggleActions: "play none reverse",
-            },
-        });
-        mm.add(
-            "(min-width:1024px)",
-            () => {
-                tl.to(banner.current, {
-                    backgroundSize: "calc(100% + 0.5vh)",
-                    backgroundPosition: "30% 60%",
-                    duration: 1,
-                });
-                tl.to(
-                    shopImage.current,
-                    {
-                        scale: 1.15,
-                        duration: 1,
-                    },
-                    "-=1"
-                );
-            },
-            main
+import React from "react";
+import { client } from "../../../../../sanity/lib/client";
+import Itemcard from "@/components/pages/catalog/itemcard";
+const Page = async ({ params: { filter } }) => {
+    const fetchProducts = async () => {
+        const res = await client.fetch(
+            `*[_type=='product' && category._ref in *[_type=='category' && name=='${filter}']._id]`,
+            {
+                next: {
+                    revalidate: 30,
+                },
+            }
         );
+        return res;
+    };
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
-        return () => mm.revert();
-    }, []);
+    const products = await fetchProducts();
+
     return (
-        <div ref={main} className="px-2 md:px-5 lg:px-10">
-            <Banner banner={banner} />
-            <ShopItems shopImage={shopImage} filter={filter} />
+        <div className="px-2 md:px-5 lg:px-10">
+            <Banner />
+            <ShopItems filter={filter} count={products.length}>
+                {products?.map((product) => (
+                    <Itemcard key={product._id} product={product} />
+                ))}
+            </ShopItems>
         </div>
     );
 };

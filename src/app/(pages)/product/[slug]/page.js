@@ -1,12 +1,15 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { useState } from "react";
 import OptionsBtn from "@/components/shared/buttons/optionsBtn";
 import ghostSwipe from "@/utils/functions/ghostSwipe";
 import Btn from "@/components/shared/buttons/btn";
 import { useCartStore } from "@/libs/cart";
 import { client } from "../../../../../sanity/lib/client";
+import Image from "next/image";
+import { urlForImage } from "../../../../../sanity/lib/image";
 const Page = ({ params: { slug } }) => {
+    const [product, setProduct] = useState({});
     const addProduct = useCartStore((cart) => cart.addProduct);
     const updatePrice = useCartStore((cart) => cart.updatePrice);
     const updateTotalQty = useCartStore((cart) => cart.updateTotalQty);
@@ -16,16 +19,21 @@ const Page = ({ params: { slug } }) => {
         size: "",
     });
     const [showDetails, setShowDetails] = useState(false);
-    const [product, setProduct] = useState({});
-    const getProduct = async () => {
+    const getProduct = useCallback(async () => {
         const res = await client.fetch(
             `*[_type=='product' && slug.current=='${slug}'][0]`
         );
         setProduct(res);
-    };
+        if (res.colors.length > 0) {
+            setOrder((prev) => ({ ...prev, color: res.colors[0] }));
+        }
+        if (res.sizes.length > 0) {
+            setOrder((prev) => ({ ...prev, size: res.sizes[0] }));
+        }
+    }, [slug]);
     useEffect(() => {
         getProduct();
-    }, []);
+    }, [getProduct]);
     const addToCart = () => {
         ghostSwipe(ghost);
         addProduct({ ...product, order, qty: 1, itemTotal: product.price });
@@ -42,13 +50,31 @@ const Page = ({ params: { slug } }) => {
             <div className="flex flex-col lg:flex-row gap-4 h-full">
                 <div className="flex lg:w-3/5 h-full md:h-[80vh] lg:h-screen relative">
                     <div className="flex w-full gap-2 lg:flex-col  overflow-scroll hidescroll">
-                        <div className="w-11/12 lg:w-full h-80 md:h-full lg:h-full border relative bg-[#f2f2f2] bg-[url('/home/noise.png')] shrink-0"></div>
-                        <div className="w-11/12 lg:w-full h-80 md:h-full lg:h-full border relative bg-[#f2f2f2] bg-[url('/home/noise.png')] shrink-0"></div>
+                        {product?.images?.map((img, i) => (
+                            <div
+                                key={i}
+                                className="w-11/12 lg:w-full h-80 md:h-full lg:h-full border relative bg-[#f2f2f2] bg-[url('/home/noise.png')] shrink-0"
+                            >
+                                <Image
+                                    src={urlForImage(img).url()}
+                                    alt={product?.name}
+                                    fill={true}
+                                />
+                            </div>
+                        ))}
                     </div>
                     <div
                         ref={ghost}
-                        className="w-72 h-72 opacity-0 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border bg-green-200"
-                    ></div>
+                        className="w-72 h-72 opacity-0 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
+                    >
+                        {product.images && (
+                            <Image
+                                src={urlForImage(product.images[0]).url()}
+                                alt={product.name}
+                                fill={true}
+                            />
+                        )}
+                    </div>
                 </div>
 
                 <div className="flex flex-col gap-7 lg:gap-14 lg:w-2/5">
@@ -69,7 +95,7 @@ const Page = ({ params: { slug } }) => {
                                         onClick={() =>
                                             setOrder((prevOrder) => ({
                                                 ...prevOrder,
-                                                color,
+                                                color: color,
                                             }))
                                         }
                                         key={i}
@@ -90,7 +116,7 @@ const Page = ({ params: { slug } }) => {
                                         onClick={() =>
                                             setOrder((prevOrder) => ({
                                                 ...prevOrder,
-                                                size,
+                                                size: size,
                                             }))
                                         }
                                         key={i}

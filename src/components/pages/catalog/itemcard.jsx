@@ -14,7 +14,7 @@ const Itemcard = ({ product }) => {
         <Link href={`/product/${current}`} className="flex flex-col gap-1">
             <div className="flex flex-col p-5 relative border border-neutral-400 bg-[#f2f2f2] bg-[url('/home/noise.png')] ">
                 <p className="text-neutral-400 text-xs uppercase self-end">
-                    {colors.length + " " + "colors"}
+                    {`${colors.length} colors`}
                 </p>
                 <div className="w-full max-w-[350px] self-center relative h-64">
                     <Image
@@ -26,8 +26,8 @@ const Itemcard = ({ product }) => {
                 </div>
             </div>
             <div className="flex flex-col gap-1">
-                <p className="text-sm font-semibold uppercase">{name}</p>
-                <p className="text-xs text-neutral-400">${price}</p>
+                <p className="text-xs font-semibold uppercase">{name}</p>
+                <p className="text-sm text-neutral-400">$ {price}</p>
             </div>
         </Link>
     );

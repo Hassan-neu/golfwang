@@ -12,6 +12,7 @@ const ProductCard = ({ product }) => {
         images,
         order: { color },
         price,
+        qty,
         itemTotal,
     } = product;
     const deleteProduct = useCartStore((cart) => cart.deleteProduct);
@@ -25,7 +26,7 @@ const ProductCard = ({ product }) => {
         updateTotalQty();
     };
     const changeQty = (e) => {
-        updateQty(_id, parseFloat(e.target.value));
+        updateQty(_id, parseInt(e.target.value));
         updateItemTotal(_id);
         updateTotalQty();
         updatePrice();
@@ -35,7 +36,7 @@ const ProductCard = ({ product }) => {
             <div className="w-56 h-60 relative border shrink-0 bg-[#f2f2f2] bg-[url('/home/noise.png')]">
                 <Image
                     src={urlForImage(images[0]).url()}
-                    alt="item-1"
+                    alt={name}
                     fill={true}
                 />
             </div>
@@ -44,7 +45,7 @@ const ProductCard = ({ product }) => {
                     <div className="flex flex-col gap-2">
                         <h3 className="text-sm font-bold uppercase">{name}</h3>
                         <p className="text-neutral-400 text-sm">
-                            Color: <span>{color}</span>
+                            Color: <span>{color.toUpperCase()}</span>
                         </p>
                         <p className="block text-neutral-900">${price}</p>
                     </div>
@@ -55,9 +56,7 @@ const ProductCard = ({ product }) => {
                 <div className="flex justify-between mt-auto">
                     <input
                         type="number"
-                        name="qty"
-                        id="qty"
-                        defaultValue={1}
+                        value={qty}
                         min={1}
                         onChange={changeQty}
                         className="border border-black p-1 w-14"

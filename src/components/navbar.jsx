@@ -8,8 +8,10 @@ import { AiOutlineUser } from "react-icons/ai";
 import { BsHandbag } from "react-icons/bs";
 import { signIn } from "next-auth/react";
 import { useCartStore } from "@/libs/cart";
+import { useSession } from "next-auth/react";
 import Btn from "./shared/buttons/btn";
 const Navbar = () => {
+    const { data: session } = useSession();
     const [openNav, setOpenNav] = useState(false);
     const [openCart, setOpenCart] = useState(false);
     const totalQty = useCartStore((cart) => cart.totalQty);

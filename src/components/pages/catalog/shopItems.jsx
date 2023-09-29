@@ -1,18 +1,39 @@
-import React from "react";
-import Itemcard from "./itemcard";
+"use client";
+import React, { useEffect, useRef } from "react";
 import Btn from "@/components/shared/buttons/btn";
 import SortOptions from "./sortOption";
 import FilterOptions from "./filterOptions";
 import FilterMobile from "./filterMobile";
 import SortMobile from "./sortMobile";
 import Image from "next/image";
-import { client } from "../../../../sanity/lib/client";
-const ShopItems = async ({ shopImage, filter }) => {
-    const fetchProducts = async () => {
-        const res = await client.fetch(`*[_type=='product']`);
-        return res;
-    };
-    const products = await fetchProducts();
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+const ShopItems = ({ filter, children, count }) => {
+    const shopImage = useRef();
+    useEffect(() => {
+        const mm = gsap.matchMedia();
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: shopImage.current,
+                start: "top 20px",
+                end: "bottom 90%",
+                toggleActions: "play none reverse",
+            },
+        });
+        mm.add("(min-width:1024px)", () => {
+            tl.to(
+                shopImage.current,
+                {
+                    scale: 1.15,
+                    duration: 1,
+                },
+                "-=1"
+            );
+        });
+
+        return () => mm.revert();
+    }, []);
     return (
         <main className="flex flex-col gap-2 md:gap-4 lg:gap-6 min-h-screen mt-4">
             <div className="flex justify-between text-xs ">
@@ -38,14 +59,14 @@ const ShopItems = async ({ shopImage, filter }) => {
             <div className="pb-1 text-xl lg:text-5xl font-medium border-b mt-4">
                 <div className="flex gap-3">
                     <h3 className="uppercase">{filter}</h3>
-                    <p className="text-sm self-start text-gray-400">(67)</p>
+                    <p className="text-sm self-start text-gray-400">
+                        ({count})
+                    </p>
                 </div>
             </div>
             <div className="flex flex-col gap-2 h-full">
                 <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] md:grid-cols-2 auto-rows-[360px] lg:grid-cols-5 md:auto-rows-auto gap-4 md:gap-3 md:gap-y-7 md:[&>a:nth-child(5)]:col-span-full md:[&>a:nth-child(8)]:col-span-full lg:[&>a:nth-child(5)]:col-span-1 lg:[&>a:nth-child(8)]:col-span-1">
-                    {products?.map((product) => (
-                        <Itemcard key={product._id} product={product} />
-                    ))}
+                    {children}
                     <div className="hidden lg:flex flex-col gap-[2px] h-screen col-start-4 col-end-6 row-start-1 row-end-3 ">
                         <div className="w-full self-center relative h-full overflow-hidden">
                             <Image

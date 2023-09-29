@@ -1,11 +1,28 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
+import { toast } from "@/components/ui/use-toast";
+import { IoCheckmarkCircleOutline } from "react-icons/io5";
 const CartStore = (set) => ({
     products: [],
     totalPrice: 0,
     totalQty: 0,
     addProduct: (product) =>
-        set((prev) => ({ products: [...prev.products, product] })),
+        set((prev) => {
+            const checkItem = prev.products.some(
+                (pp) => pp._id === product._id
+            );
+            if (checkItem) {
+                return toast({
+                    description: `${product.name.toUpperCase()} already in cart`,
+                });
+            }
+            return (
+                toast({
+                    description: `${product.name.toUpperCase()} added to cart`,
+                }),
+                { products: [...prev.products, product] }
+            );
+        }),
     deleteProduct: (id) =>
         set((prev) => ({
             products: prev.products.filter((product) => product._id !== id),

@@ -1,5 +1,5 @@
 import Hero from "@/components/pages/home/hero";
-import NewArivals from "@/components/pages/home/newArrivals";
+import NewAreivals from "@/components/pages/home/newArrivals";
 import ThirdHero from "@/components/pages/home/thirdHero";
 import Catalog from "@/components/pages/home/catalog";
 import About from "@/components/pages/home/about";
@@ -9,7 +9,7 @@ export default function Home() {
     return (
         <main className="">
             <Hero />
-            <NewArivals />
+            <NewAreivals />
             <ThirdHero />
             <Catalog />
             <About />

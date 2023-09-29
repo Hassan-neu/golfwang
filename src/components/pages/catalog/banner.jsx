@@ -1,6 +1,28 @@
-import React from "react";
-
-const Banner = ({ banner }) => {
+"use client";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+const Banner = () => {
+    const banner = useRef();
+    useEffect(() => {
+        const mm = gsap.matchMedia();
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: banner.current,
+                start: "top 20px",
+                toggleActions: "play none reverse",
+            },
+        });
+        mm.add("(min-width:1024px)", () => {
+            tl.to(banner.current, {
+                backgroundSize: "calc(100% + 0.5vh)",
+                backgroundPosition: "30% 60%",
+                duration: 1,
+            });
+        });
+        return () => mm.revert();
+    }, []);
     return (
         <div
             ref={banner}
