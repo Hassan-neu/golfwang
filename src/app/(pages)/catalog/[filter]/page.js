@@ -3,22 +3,24 @@ import ShopItems from "@/components/pages/catalog/shopItems";
 import React from "react";
 import { client } from "../../../../../sanity/lib/client";
 import Itemcard from "@/components/pages/catalog/itemcard";
-const Page = async ({ params: { filter } }) => {
-    const fetchProducts = async () => {
-        const res = await client.fetch(
-            `*[_type=='product' && category._ref in *[_type=='category' && name=='${filter}']._id]`,
-            {
-                next: {
-                    revalidate: 30,
-                },
-            }
-        );
-        return res;
-    };
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    const products = await fetchProducts();
-
+import NotFound from "@/app/not-found";
+import {
+    catalogProducts,
+    sortProducts,
+} from "../../../../../sanity/queries/queries";
+const Page = async ({ params: { filter }, searchParams: { sort } }) => {
+    const matcher = [
+        "all",
+        "accessories",
+        "tops",
+        "bottoms",
+        "hats",
+        "music",
+    ].some((match) => match === filter);
+    if (!matcher) {
+        return <NotFound />;
+    }
+    const products = await catalogProducts(filter, sort);
     return (
         <div className="px-2 md:px-5 lg:px-10">
             <Banner />
