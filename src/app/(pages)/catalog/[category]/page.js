@@ -8,7 +8,10 @@ import {
     catalogProducts,
     sortProducts,
 } from "../../../../../sanity/queries/queries";
-const Page = async ({ params: { filter }, searchParams: { sort } }) => {
+const Page = async ({
+    params: { category },
+    searchParams: { sort, filter },
+}) => {
     const matcher = [
         "all",
         "accessories",
@@ -16,15 +19,15 @@ const Page = async ({ params: { filter }, searchParams: { sort } }) => {
         "bottoms",
         "hats",
         "music",
-    ].some((match) => match === filter);
+    ].some((match) => match === category);
     if (!matcher) {
         return <NotFound />;
     }
-    const products = await catalogProducts(filter, sort);
+    const products = await catalogProducts(category, sort);
     return (
         <div className="px-2 md:px-5 lg:px-10">
             <Banner />
-            <ShopItems filter={filter} count={products.length}>
+            <ShopItems category={category} count={products.length}>
                 {products?.map((product) => (
                     <Itemcard key={product._id} product={product} />
                 ))}

@@ -6,10 +6,10 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
-import { IoIosArrowDown } from "react-icons/io";
 import useHandleFilter from "@/utils/functions/handleFilter";
+import { IoIosArrowDown } from "react-icons/io";
 const SortMobile = () => {
-    const { sort, handleSort } = useHandleFilter();
+    const { sortMethod } = useHandleFilter();
     return (
         <Sheet>
             <SheetTrigger className="flex gap-2 items-center">
@@ -27,32 +27,29 @@ const SortMobile = () => {
                     <div className="flex gap-1">
                         <input
                             type="radio"
-                            name="sort"
                             value="newest"
                             id="newest"
-                            onChange={(e) => handleSort(e.target.value)}
+                            onChange={(e) => sortMethod(e.target.value)}
                         />
                         <label htmlFor="newest">NEWEST</label>
                     </div>
                     <div className="flex gap-1">
                         <input
                             type="radio"
-                            name="sort"
-                            value="lowprice"
-                            id="lowprice"
-                            onChange={(e) => handleSort(e.target.value)}
+                            value="priceAsc"
+                            id="priceAsc"
+                            onChange={(e) => sortMethod(e.target.value)}
                         />
-                        <label htmlFor="lowprice">LOWPRICE</label>
+                        <label htmlFor="priceAsc">PRICE LOW</label>
                     </div>
                     <div className="flex gap-1">
                         <input
                             type="radio"
-                            name="sort"
-                            value="highprice"
-                            id="highprice"
-                            onChange={(e) => handleSort(e.target.value)}
+                            value="priceDesc"
+                            id="priceDesc"
+                            onChange={(e) => sortMethod(e.target.value)}
                         />
-                        <label htmlFor="highprice">HIGH PRICE</label>
+                        <label htmlFor="priceDesc">PRICE HIGH</label>
                     </div>
                 </div>
             </SheetContent>

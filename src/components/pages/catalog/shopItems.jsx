@@ -9,7 +9,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-const ShopItems = ({ filter, children, count }) => {
+const ShopItems = ({ category, children, count }) => {
     const shopImage = useRef();
     useEffect(() => {
         const mm = gsap.matchMedia();
@@ -58,7 +58,7 @@ const ShopItems = ({ filter, children, count }) => {
             </div>
             <div className="pb-1 text-xl lg:text-5xl font-medium border-b mt-4">
                 <div className="flex gap-3">
-                    <h3 className="uppercase">{filter}</h3>
+                    <h3 className="uppercase">{category}</h3>
                     <p className="text-sm self-start text-gray-400">
                         ({count})
                     </p>

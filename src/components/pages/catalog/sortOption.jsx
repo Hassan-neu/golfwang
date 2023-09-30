@@ -7,14 +7,8 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import useHandleFilter from "@/utils/functions/handleFilter";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
 const SortOptions = () => {
-    const { handleSort, sort } = useHandleFilter();
-    const router = useRouter();
-    const path = usePathname();
-    const sortMethod = (value) => {
-        router.push(`${path}?sort=${value}`);
-    };
+    const { sortMethod } = useHandleFilter();
     return (
         <Select onValueChange={sortMethod} defaultValue="newest">
             <SelectTrigger className="w-max underline border-0 focus:ring-0 shadow-none text-xs">

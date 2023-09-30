@@ -25,9 +25,9 @@ const sortAllProducts = async (sort) => {
     });
     return res;
 };
-const getCategoryProduct = async (filter) => {
+const getCategoryProduct = async (category) => {
     const res = await client.fetch(
-        `*[_type=='product' && category._ref in *[_type=='category' && name=='${filter}']._id] | order(_createdAt desc) `,
+        `*[_type=='product' && category._ref in *[_type=='category' && name=='${category}']._id] | order(_createdAt desc) `,
         {
             next: {
                 revalidate: 30,
@@ -37,7 +37,7 @@ const getCategoryProduct = async (filter) => {
     return res;
 };
 
-export const sortProducts = async (filter, sort) => {
+export const sortProducts = async (category, sort) => {
     const options = {
         newest: "_createdAt desc",
         priceAsc: "price asc",
@@ -45,7 +45,7 @@ export const sortProducts = async (filter, sort) => {
     };
     const sortBy = options[sort];
     const res = await client.fetch(
-        `*[_type=='product' && category._ref in *[_type=='category' && name=='${filter}']._id] | order(${sortBy})`,
+        `*[_type=='product' && category._ref in *[_type=='category' && name=='${category}']._id] | order(${sortBy})`,
         {
             next: {
                 revalidate: 30,
@@ -55,18 +55,18 @@ export const sortProducts = async (filter, sort) => {
     return res;
 };
 
-export const catalogProducts = async (filter, sort) => {
-    if (filter && !sort) {
-        if (filter === "all") {
+export const catalogProducts = async (category, sort) => {
+    if (category && !sort) {
+        if (category === "all") {
             return getAllProducts();
         } else {
-            return getCategoryProduct(filter);
+            return getCategoryProduct(category);
         }
-    } else if (filter && sort) {
-        if (filter === "all") {
+    } else if (category && sort) {
+        if (category === "all") {
             return sortAllProducts(sort);
         } else {
-            return sortProducts(filter, sort);
+            return sortProducts(category, sort);
         }
     }
 };

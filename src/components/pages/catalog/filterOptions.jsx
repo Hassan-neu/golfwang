@@ -8,12 +8,14 @@ import {
     HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 const FilterOptions = () => {
     const router = useRouter();
-    const { handleFilter, resetFilter, filterOption } = useHandleFilter();
+    const { handleFilter, resetFilter, filterMethod, filterOption } =
+        useHandleFilter();
     return (
         <div className="hidden gap-7 font-light lg:flex">
-            <HoverCard onOpenChange={resetFilter}>
+            <HoverCard onOpenChange={(state) => !state && resetFilter}>
                 <HoverCardTrigger
                     onClick={() => router.push("/catalog/all")}
                     className="hover:cursor-pointer text-[11px]"
@@ -40,6 +42,7 @@ const FilterOptions = () => {
                                 <p className="text-[10px]">ALL</p>
                             </Checkbox>
                             <Checkbox
+                                checked={filterOption.value.includes("jacket")}
                                 name="tops"
                                 id="tops"
                                 value={"jacket"}
@@ -48,6 +51,9 @@ const FilterOptions = () => {
                                 <p className="text-[10px]">JACKET</p>
                             </Checkbox>
                             <Checkbox
+                                checked={filterOption.value.includes(
+                                    "knitwear"
+                                )}
                                 name="tops"
                                 id="tops"
                                 value={"knitwear"}
@@ -56,6 +62,7 @@ const FilterOptions = () => {
                                 <p className="text-[10px]">KNITWEAR</p>
                             </Checkbox>
                             <Checkbox
+                                checked={filterOption.value.includes("tees")}
                                 name="tops"
                                 id="tops"
                                 value={"tees"}
@@ -67,13 +74,16 @@ const FilterOptions = () => {
                         <div className="flex gap-2">
                             <Btn
                                 className=" px-6 py-2 text-[9px] bg-yellow-300"
-                                onClick={() =>
-                                    router.push(`/catalog/${filterOption.key}`)
-                                }
+                                onClick={filterMethod}
                             >
                                 APPLY
                             </Btn>
-                            <Btn className={" px-6 py-2 text-[9px]"}>RESET</Btn>
+                            <Btn
+                                className={" px-6 py-2 text-[9px]"}
+                                onClick={resetFilter}
+                            >
+                                RESET
+                            </Btn>
                         </div>
                     </div>
                 </HoverCardContent>
@@ -124,9 +134,7 @@ const FilterOptions = () => {
                         <div className="flex gap-2">
                             <Btn
                                 className=" px-6 py-2 text-[9px] bg-yellow-300"
-                                onClick={() =>
-                                    router.push(`/catalog/${filterOption.key}`)
-                                }
+                                onClick={filterMethod}
                             >
                                 APPLY
                             </Btn>
@@ -173,9 +181,7 @@ const FilterOptions = () => {
                         <div className="flex gap-2">
                             <Btn
                                 className=" px-6 py-2 text-[9px] bg-yellow-300"
-                                onClick={() =>
-                                    router.push(`/catalog/${filterOption.key}`)
-                                }
+                                onClick={filterMethod}
                             >
                                 APPLY
                             </Btn>
@@ -230,9 +236,7 @@ const FilterOptions = () => {
                         <div className="flex gap-2">
                             <Btn
                                 className=" px-6 py-2 text-[9px] bg-yellow-300"
-                                onClick={() =>
-                                    router.push(`/catalog/${filterOption.key}`)
-                                }
+                                onClick={filterMethod}
                             >
                                 APPLY
                             </Btn>
@@ -279,9 +283,7 @@ const FilterOptions = () => {
                         <div className="flex gap-2">
                             <Btn
                                 className="px-6 py-2 text-[9px] bg-yellow-300"
-                                onClick={() =>
-                                    router.push(`/catalog/${filterOption.key}`)
-                                }
+                                onClick={filterMethod}
                             >
                                 APPLY
                             </Btn>

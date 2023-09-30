@@ -1,12 +1,21 @@
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 const useHandleFilter = () => {
+    const router = useRouter();
+    const path = usePathname();
+    const searchParams = useSearchParams();
+    const sortMethod = (value) => {
+        const params = new URLSearchParams(searchParams);
+        params.set("sort", value);
+        params.toString();
+        return router.push(`${path}?${params}`);
+    };
     const [filterOption, setFilterOption] = useState({
         key: "",
         value: [],
     });
-    const [sort, setSort] = useState("NEWEST");
-    const resetFilter = (status) => {
-        !status && setFilterOption({ key: "", value: [] });
+    const resetFilter = () => {
+        setFilterOption({ key: "", value: [] });
     };
     const handleFilter = (e) => {
         setFilterOption((prev) =>
@@ -21,10 +30,21 @@ const useHandleFilter = () => {
                   }
         );
     };
-    const handleSort = (value) => {
-        setSort(value);
+
+    const filterMethod = () => {
+        const params = new URLSearchParams(searchParams);
+        params.set("filter", filterOption.value.join(","));
+        params.toString();
+        return router.push(`${filterOption.key}?${params}`);
     };
-    return { filterOption, resetFilter, handleFilter, handleSort, sort };
+
+    return {
+        filterOption,
+        resetFilter,
+        handleFilter,
+        sortMethod,
+        filterMethod,
+    };
 };
 
 export default useHandleFilter;
