@@ -8,7 +8,12 @@ import { urlForImage } from "../../../../sanity/lib/image";
 const NewArrivals = async () => {
     const getProducts = async () => {
         const res = await client.fetch(
-            `*[_type=='product'] | order(_createdAt desc)[0..5]`
+            `*[_type=='product'] | order(_createdAt desc)[0..5]`,
+            {
+                next: {
+                    revalidate: 3600,
+                },
+            }
         );
         return res;
     };

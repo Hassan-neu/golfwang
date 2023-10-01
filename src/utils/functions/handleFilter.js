@@ -18,17 +18,22 @@ const useHandleFilter = () => {
         setFilterOption({ key: "", value: [] });
     };
     const handleFilter = (e) => {
-        setFilterOption((prev) =>
-            e.target.checked
-                ? {
-                      key: e.target.name,
-                      value: [...prev.value, e.target.value],
-                  }
-                : {
-                      key: prev.key,
-                      value: prev.value.filter((val) => val !== e.target.value),
-                  }
-        );
+        setFilterOption((prev) => {
+            if (e.target.checked) {
+                if (prev.key && e.target.name !== prev.key) {
+                    return { key: e.target.name, value: [e.target.value] };
+                } else
+                    return {
+                        key: e.target.name,
+                        value: [...prev.value, e.target.value],
+                    };
+            } else {
+                return {
+                    key: prev.key,
+                    value: prev.value.filter((val) => val !== e.target.value),
+                };
+            }
+        });
     };
 
     const filterMethod = () => {
