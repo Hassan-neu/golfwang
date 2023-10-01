@@ -44,7 +44,7 @@ const ShopItems = ({ category, children, count }) => {
                     </div>
                 </div>
                 <div className="flex items-center">
-                    <div className="hidden lg:flex gap-3 items-center font-bold">
+                    <div className="hidden lg:flex  items-center font-bold">
                         <label htmlFor="sort" className=" text-gray-500">
                             SORT BY:
                         </label>

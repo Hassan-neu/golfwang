@@ -11,12 +11,15 @@ import {
 import { IoIosArrowDown } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import useHandleQuery from "@/utils/functions/handleQuery";
+import { useState } from "react";
 const FilterMobile = () => {
+    const [openPan, setOpenPan] = useState(false);
     const router = useRouter();
     const { handleFilter, resetFilter, filterMethod, filterOption } =
         useHandleQuery();
+    const closePanel = () => setTimeout(() => setOpenPan(false), 500);
     return (
-        <Sheet onOpenChange={resetFilter}>
+        <Sheet open={openPan} onOpenChange={() => setOpenPan(!openPan)}>
             <SheetTrigger className="flex gap-2 items-center">
                 <span>CATEGORY</span>
                 <IoIosArrowDown size={18} />
@@ -28,14 +31,16 @@ const FilterMobile = () => {
                 <div className="flex flex-col gap-8">
                     <div className="grid grid-cols-2 auto-rows-auto gap-5">
                         <div className="flex flex-col gap-3 items-start">
-                            <h1
-                                className="text-xs font-medium text-neutral-500"
-                                onClick={() => router.push("/catalog/tops")}
-                            >
+                            <h1 className="text-xs font-medium text-neutral-500">
                                 TOPS
                             </h1>
                             <div className="flex flex-col gap-2">
-                                <Checkbox name="tops" id="tops" value={"all"}>
+                                <Checkbox
+                                    name="tops"
+                                    id="tops"
+                                    value={"all"}
+                                    onClick={() => router.push("tops")}
+                                >
                                     <p className="text-[10px]">ALL</p>
                                 </Checkbox>
                                 <Checkbox
@@ -72,10 +77,7 @@ const FilterMobile = () => {
                             </div>
                         </div>
                         <div className="flex flex-col gap-3 items-start">
-                            <h1
-                                className="text-xs font-medium text-neutral-500"
-                                onClick={() => router.push("/catalog/bottoms")}
-                            >
+                            <h1 className="text-xs font-medium text-neutral-500">
                                 BOTTOMS
                             </h1>
                             <div className="flex flex-col gap-2">
@@ -83,7 +85,7 @@ const FilterMobile = () => {
                                     name="bottoms"
                                     id="bottoms"
                                     value={"all"}
-                                    onChange={handleFilter}
+                                    onClick={() => router.push("bottoms")}
                                 >
                                     <p className="text-[10px]">ALL</p>
                                 </Checkbox>
@@ -123,10 +125,7 @@ const FilterMobile = () => {
                             </div>
                         </div>
                         <div className="flex flex-col gap-3 items-start">
-                            <h1
-                                className="text-xs font-medium text-neutral-500"
-                                onClick={() => router.push("/catalog/hats")}
-                            >
+                            <h1 className="text-xs font-medium text-neutral-500">
                                 HATS
                             </h1>
                             <div className="flex flex-col gap-2">
@@ -134,7 +133,7 @@ const FilterMobile = () => {
                                     name="hats"
                                     id="hats"
                                     value={"all"}
-                                    onChange={handleFilter}
+                                    onClick={() => router.push("hats")}
                                 >
                                     <p className="text-[10px]">ALL</p>
                                 </Checkbox>
@@ -161,12 +160,7 @@ const FilterMobile = () => {
                             </div>
                         </div>
                         <div className="flex flex-col gap-3 items-start">
-                            <h1
-                                className="text-xs font-medium text-neutral-500"
-                                onClick={() =>
-                                    router.push("/catalog/accessories")
-                                }
-                            >
+                            <h1 className="text-xs font-medium text-neutral-500">
                                 ACCESSORIES
                             </h1>
                             <div className="flex flex-col gap-2">
@@ -174,7 +168,7 @@ const FilterMobile = () => {
                                     name="accessories"
                                     id="accessories"
                                     value={"all"}
-                                    onChange={handleFilter}
+                                    onClick={() => router.push("accessories")}
                                 >
                                     <p className="text-[10px]">ALL</p>
                                 </Checkbox>
@@ -212,10 +206,7 @@ const FilterMobile = () => {
                             </div>
                         </div>
                         <div className="flex flex-col gap-3 items-start">
-                            <h1
-                                className="text-xs font-medium text-neutral-500"
-                                onClick={() => router.push("/catalog/music")}
-                            >
+                            <h1 className="text-xs font-medium text-neutral-500">
                                 MUSIC
                             </h1>
                             <div className="flex flex-col gap-2">
@@ -223,7 +214,7 @@ const FilterMobile = () => {
                                     name="music"
                                     id="music"
                                     value={"all"}
-                                    onChange={handleFilter}
+                                    onClick={() => router.push("music")}
                                 >
                                     <p className="text-[10px]">ALL</p>
                                 </Checkbox>
@@ -255,7 +246,10 @@ const FilterMobile = () => {
                     <div className="flex flex-col gap-2">
                         <Btn
                             className={" px-6 py-3 text-[9px] bg-yellow-300"}
-                            onClick={filterMethod}
+                            onClick={() => {
+                                filterMethod();
+                                closePanel();
+                            }}
                         >
                             APPLY
                         </Btn>
