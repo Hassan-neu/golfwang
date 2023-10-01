@@ -6,10 +6,10 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
-import useHandleFilter from "@/utils/functions/handleFilter";
+import useHandleQuery from "@/utils/functions/handleQuery";
 import { IoIosArrowDown } from "react-icons/io";
 const SortMobile = () => {
-    const { sortMethod } = useHandleFilter();
+    const { sortMethod } = useHandleQuery();
     return (
         <Sheet>
             <SheetTrigger className="flex gap-2 items-center">

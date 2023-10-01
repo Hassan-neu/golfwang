@@ -1,6 +1,6 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-const useHandleFilter = () => {
+const useHandleQuery = () => {
     const router = useRouter();
     const path = usePathname();
     const searchParams = useSearchParams();
@@ -52,4 +52,4 @@ const useHandleFilter = () => {
     };
 };
 
-export default useHandleFilter;
+export default useHandleQuery;

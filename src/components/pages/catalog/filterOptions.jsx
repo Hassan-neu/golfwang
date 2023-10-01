@@ -1,5 +1,5 @@
 "use client";
-import useHandleFilter from "@/utils/functions/handleFilter";
+import useHandleQuery from "@/utils/functions/handleQuery";
 import Btn from "@/components/shared/buttons/btn";
 import Checkbox from "@/components/shared/checkbox";
 import {
@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 const FilterOptions = () => {
     const router = useRouter();
     const { handleFilter, resetFilter, filterMethod, filterOption } =
-        useHandleFilter();
+        useHandleQuery();
     return (
         <div className="hidden gap-7 font-light lg:flex">
             <HoverCard onOpenChange={(state) => !state && resetFilter}>
@@ -39,7 +39,7 @@ const FilterOptions = () => {
                                 value={"jacket"}
                                 onChange={handleFilter}
                             >
-                                <p className="text-[10px]">JACKET</p>
+                                <p className="text-[10px]">JACKETS</p>
                             </Checkbox>
                             <Checkbox
                                 checked={filterOption.value.includes(
@@ -50,13 +50,13 @@ const FilterOptions = () => {
                                 value={"knitwear"}
                                 onChange={handleFilter}
                             >
-                                <p className="text-[10px]">KNITWEAR</p>
+                                <p className="text-[10px]">KNITWEARS</p>
                             </Checkbox>
                             <Checkbox
-                                checked={filterOption.value.includes("tees")}
+                                checked={filterOption.value.includes("tee")}
                                 name="tops"
                                 id="tops"
-                                value={"tees"}
+                                value={"tee"}
                                 onChange={handleFilter}
                             >
                                 <p className="text-[10px]">TEES</p>
@@ -64,13 +64,13 @@ const FilterOptions = () => {
                         </div>
                         <div className="flex gap-2">
                             <Btn
-                                className=" px-10 py-1.5 text-[9px] bg-yellow-300"
+                                className=" px-9 py-1.5 text-[9px] bg-yellow-300"
                                 onClick={filterMethod}
                             >
                                 APPLY
                             </Btn>
                             <Btn
-                                className={" px-10 py-1.5 text-[9px] border"}
+                                className={" px-9 py-1.5 text-[9px] border"}
                                 onClick={resetFilter}
                             >
                                 RESET
@@ -96,7 +96,7 @@ const FilterOptions = () => {
                                 value={"pant"}
                                 onChange={handleFilter}
                             >
-                                <p className="text-[10px]">PANT</p>
+                                <p className="text-[10px]">PANTS</p>
                             </Checkbox>
                             <Checkbox
                                 checked={filterOption.value.includes(
@@ -107,7 +107,7 @@ const FilterOptions = () => {
                                 value={"underwear"}
                                 onChange={handleFilter}
                             >
-                                <p className="text-[10px]">UNDERWEAR</p>
+                                <p className="text-[10px]">UNDERWEARS</p>
                             </Checkbox>
                             <Checkbox
                                 checked={filterOption.value.includes("short")}
@@ -116,18 +116,18 @@ const FilterOptions = () => {
                                 value={"short"}
                                 onChange={handleFilter}
                             >
-                                <p className="text-[10px]">SHORT</p>
+                                <p className="text-[10px]">SHORTS</p>
                             </Checkbox>
                         </div>
                         <div className="flex gap-2">
                             <Btn
-                                className=" px-10 py-1.5 text-[9px] bg-yellow-300"
+                                className=" px-9 py-1.5 text-[9px] bg-yellow-300"
                                 onClick={filterMethod}
                             >
                                 APPLY
                             </Btn>
                             <Btn
-                                className={" px-10 py-1.5 text-[9px] border"}
+                                className={" px-9 py-1.5 text-[9px] border"}
                                 onClick={resetFilter}
                             >
                                 RESET
@@ -153,7 +153,7 @@ const FilterOptions = () => {
                                 value={"beanie"}
                                 onChange={handleFilter}
                             >
-                                <p className="text-[10px]">BEANIE</p>
+                                <p className="text-[10px]">BEANIES</p>
                             </Checkbox>
                             <Checkbox
                                 checked={filterOption.value.includes("cap")}
@@ -162,18 +162,18 @@ const FilterOptions = () => {
                                 value={"cap"}
                                 onChange={handleFilter}
                             >
-                                <p className="text-[10px]">CAP</p>
+                                <p className="text-[10px]">CAPS</p>
                             </Checkbox>
                         </div>
                         <div className="flex gap-2">
                             <Btn
-                                className=" px-10 py-1.5 text-[9px] bg-yellow-300"
+                                className=" px-9 py-1.5 text-[9px] bg-yellow-300"
                                 onClick={filterMethod}
                             >
                                 APPLY
                             </Btn>
                             <Btn
-                                className={" px-10 py-1.5 text-[9px] border"}
+                                className={" px-9 py-1.5 text-[9px] border"}
                                 onClick={resetFilter}
                             >
                                 RESET
@@ -199,7 +199,7 @@ const FilterOptions = () => {
                                 value={"bag"}
                                 onChange={handleFilter}
                             >
-                                <p className="text-[10px]">BAG</p>
+                                <p className="text-[10px]">BAGS</p>
                             </Checkbox>
                             <Checkbox
                                 checked={filterOption.value.includes("sticker")}
@@ -208,7 +208,7 @@ const FilterOptions = () => {
                                 value={"sticker"}
                                 onChange={handleFilter}
                             >
-                                <p className="text-[10px]">STICKER</p>
+                                <p className="text-[10px]">STICKERS</p>
                             </Checkbox>
                             <Checkbox
                                 checked={filterOption.value.includes("slides")}
@@ -222,13 +222,13 @@ const FilterOptions = () => {
                         </div>
                         <div className="flex gap-2">
                             <Btn
-                                className=" px-10 py-1.5 text-[9px] bg-yellow-300"
+                                className=" px-9 py-1.5 text-[9px] bg-yellow-300"
                                 onClick={filterMethod}
                             >
                                 APPLY
                             </Btn>
                             <Btn
-                                className={" px-10 py-1.5 text-[9px] border"}
+                                className={" px-9 py-1.5 text-[9px] border"}
                                 onClick={resetFilter}
                             >
                                 RESET
@@ -254,7 +254,7 @@ const FilterOptions = () => {
                                 value={"vinyl"}
                                 onChange={handleFilter}
                             >
-                                <p className="text-[10px]">VINYL</p>
+                                <p className="text-[10px]">VINYLS</p>
                             </Checkbox>
                             <Checkbox
                                 checked={filterOption.value.includes(
@@ -265,18 +265,18 @@ const FilterOptions = () => {
                                 value={"cassette"}
                                 onChange={handleFilter}
                             >
-                                <p className="text-[10px]">CASSETTE</p>
+                                <p className="text-[10px]">CASSETTES</p>
                             </Checkbox>
                         </div>
                         <div className="flex gap-2">
                             <Btn
-                                className="px-10 py-1.5 text-[9px] bg-yellow-300"
+                                className="px-9 py-1.5 text-[9px] bg-yellow-300"
                                 onClick={filterMethod}
                             >
                                 APPLY
                             </Btn>
                             <Btn
-                                className={" px-10 py-1.5 text-[9px] border"}
+                                className={" px-9 py-1.5 text-[9px] border"}
                                 data-name="music"
                                 onClick={resetFilter}
                             >

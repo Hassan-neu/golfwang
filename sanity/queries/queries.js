@@ -81,7 +81,7 @@ const getCategoryProduct = async (category, sort, filter) => {
 //     return res;
 // };
 
-export const catalogProducts = async (category, sort, filter) =>
+export const catalogProducts = (category, sort, filter) =>
     category === "all"
         ? getAllProducts(sort)
         : getCategoryProduct(category, sort, filter);

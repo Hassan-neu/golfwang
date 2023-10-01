@@ -10,11 +10,11 @@ import {
 } from "@/components/ui/sheet";
 import { IoIosArrowDown } from "react-icons/io";
 import { useRouter } from "next/navigation";
-import useHandleFilter from "@/utils/functions/handleFilter";
+import useHandleQuery from "@/utils/functions/handleQuery";
 const FilterMobile = () => {
     const router = useRouter();
     const { handleFilter, resetFilter, filterMethod, filterOption } =
-        useHandleFilter();
+        useHandleQuery();
     return (
         <Sheet onOpenChange={resetFilter}>
             <SheetTrigger className="flex gap-2 items-center">
@@ -47,7 +47,7 @@ const FilterMobile = () => {
                                     value={"jacket"}
                                     onChange={handleFilter}
                                 >
-                                    <p className="text-[10px]">JACKET</p>
+                                    <p className="text-[10px]">JACKETS</p>
                                 </Checkbox>
                                 <Checkbox
                                     checked={filterOption.value.includes(
@@ -58,15 +58,13 @@ const FilterMobile = () => {
                                     value={"knitwear"}
                                     onChange={handleFilter}
                                 >
-                                    <p className="text-[10px]">KNITWEAR</p>
+                                    <p className="text-[10px]">KNITWEARS</p>
                                 </Checkbox>
                                 <Checkbox
-                                    checked={filterOption.value.includes(
-                                        "tees"
-                                    )}
+                                    checked={filterOption.value.includes("tee")}
                                     name="tops"
                                     id="tops"
-                                    value={"tees"}
+                                    value={"tee"}
                                     onChange={handleFilter}
                                 >
                                     <p className="text-[10px]">TEES</p>
@@ -98,7 +96,7 @@ const FilterMobile = () => {
                                     value={"pant"}
                                     onChange={handleFilter}
                                 >
-                                    <p className="text-[10px]">PANT</p>
+                                    <p className="text-[10px]">PANTS</p>
                                 </Checkbox>
                                 <Checkbox
                                     checked={filterOption.value.includes(
@@ -109,7 +107,7 @@ const FilterMobile = () => {
                                     value={"underwear"}
                                     onChange={handleFilter}
                                 >
-                                    <p className="text-[10px]">UNDERWEAR</p>
+                                    <p className="text-[10px]">UNDERWEARS</p>
                                 </Checkbox>
                                 <Checkbox
                                     checked={filterOption.value.includes(
@@ -120,7 +118,7 @@ const FilterMobile = () => {
                                     value={"short"}
                                     onChange={handleFilter}
                                 >
-                                    <p className="text-[10px]">SHORT</p>
+                                    <p className="text-[10px]">SHORTS</p>
                                 </Checkbox>
                             </div>
                         </div>
@@ -149,7 +147,7 @@ const FilterMobile = () => {
                                     value={"beanie"}
                                     onChange={handleFilter}
                                 >
-                                    <p className="text-[10px]">BEANIE</p>
+                                    <p className="text-[10px]">BEANIES</p>
                                 </Checkbox>
                                 <Checkbox
                                     checked={filterOption.value.includes("cap")}
@@ -158,7 +156,7 @@ const FilterMobile = () => {
                                     value={"cap"}
                                     onChange={handleFilter}
                                 >
-                                    <p className="text-[10px]">CAP</p>
+                                    <p className="text-[10px]">CAPS</p>
                                 </Checkbox>
                             </div>
                         </div>
@@ -187,7 +185,7 @@ const FilterMobile = () => {
                                     value={"bag"}
                                     onChange={handleFilter}
                                 >
-                                    <p className="text-[10px]">BAG</p>
+                                    <p className="text-[10px]">BAGS</p>
                                 </Checkbox>
                                 <Checkbox
                                     checked={filterOption.value.includes(
@@ -198,7 +196,7 @@ const FilterMobile = () => {
                                     value={"sticker"}
                                     onChange={handleFilter}
                                 >
-                                    <p className="text-[10px]">STICKER</p>
+                                    <p className="text-[10px]">STICKERS</p>
                                 </Checkbox>
                                 <Checkbox
                                     checked={filterOption.value.includes(
@@ -238,7 +236,7 @@ const FilterMobile = () => {
                                     value={"vinyl"}
                                     onChange={handleFilter}
                                 >
-                                    <p className="text-[10px]">VINYL</p>
+                                    <p className="text-[10px]">VINYLS</p>
                                 </Checkbox>
                                 <Checkbox
                                     checked={filterOption.value.includes(
@@ -249,7 +247,7 @@ const FilterMobile = () => {
                                     value={"cassette"}
                                     onChange={handleFilter}
                                 >
-                                    <p className="text-[10px]">CASSETTE</p>
+                                    <p className="text-[10px]">CASSETTES</p>
                                 </Checkbox>
                             </div>
                         </div>
@@ -262,7 +260,7 @@ const FilterMobile = () => {
                             APPLY
                         </Btn>
                         <Btn
-                            className={" px-6 py-3 text-[9px]"}
+                            className={" px-6 py-3 text-[9px] border"}
                             onClick={resetFilter}
                         >
                             RESET

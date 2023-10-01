@@ -6,9 +6,9 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import useHandleFilter from "@/utils/functions/handleFilter";
+import useHandleQuery from "@/utils/functions/handleQuery";
 const SortOptions = () => {
-    const { sortMethod } = useHandleFilter();
+    const { sortMethod } = useHandleQuery();
     return (
         <Select onValueChange={sortMethod} defaultValue="newest">
             <SelectTrigger className="w-max underline border-0 focus:ring-0 shadow-none text-xs">
