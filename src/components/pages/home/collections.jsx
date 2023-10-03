@@ -11,7 +11,7 @@ const Collections = () => {
                 <div className="text-xl md:text-4xl font-medium">
                     <h2>COLLECTIONS</h2>
                 </div>
-                <Btn className={"hidden md:block"}>
+                <Btn className={"hidden md:block border"}>
                     <Link href={"/collections"}>SHOW MORE</Link>
                 </Btn>
             </div>

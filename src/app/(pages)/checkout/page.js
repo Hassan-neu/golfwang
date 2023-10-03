@@ -8,9 +8,10 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import useWindowSize from "@/utils/functions/windowSize";
 import Btn from "@/components/shared/buttons/btn";
 const Page = () => {
-    const { size, smallScreen, largeScreen } = useWindowSize();
+    const { smallScreen, largeScreen } = useWindowSize();
     const [openCart, setOpenCart] = useState(false);
     const products = useCartStore((cart) => cart.products);
+    const totalQty = useCartStore((cart) => cart.totalQty);
     return (
         <div className="flex flex-col gap-6 px-2 md:px-5 lg:px-10 min-h-screen">
             <div className="text-4xl md:text-6xl font-semibold border-b py-4">
@@ -22,7 +23,7 @@ const Page = () => {
                         className="text-xl flex justify-between border-0"
                         onClick={() => setOpenCart(!openCart)}
                     >
-                        <span>YOUR CART (0)</span>
+                        <span>YOUR CART ({totalQty})</span>
                         <span>
                             {openCart ? <IoIosArrowUp /> : <IoIosArrowDown />}
                         </span>
@@ -31,7 +32,7 @@ const Page = () => {
                         <div className="flex flex-col gap-2">
                             {products.map((product) => (
                                 <ProductCard
-                                    key={product.id}
+                                    key={product._id}
                                     product={product}
                                 />
                             ))}
@@ -45,7 +46,7 @@ const Page = () => {
                 {largeScreen && (
                     <CartItem>
                         {products.map((product) => (
-                            <ProductCard key={product.id} product={product} />
+                            <ProductCard key={product._id} product={product} />
                         ))}
                     </CartItem>
                 )}

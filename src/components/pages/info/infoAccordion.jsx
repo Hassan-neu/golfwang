@@ -10,7 +10,7 @@ const Accordion = ({ policy }) => {
         <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
                 <Btn
-                    className={`px-0 py-0 font-semibold text-xs md:text-sm uppercase cursor-pointer flex items-center gap-1 self-start ${
+                    className={`p-0 font-semibold text-xs md:text-sm uppercase cursor-pointer flex items-center gap-1 self-start ${
                         open ? "border-b border-neutral-950" : ""
                     }`}
                     onClick={() => setOpen(!open)}

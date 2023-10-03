@@ -10,6 +10,7 @@ import Image from "next/image";
 import { urlForImage } from "../../../../../sanity/lib/image";
 import Link from "next/link";
 import { MdArrowForwardIos } from "react-icons/md";
+import Loading from "@/app/loading";
 const Page = ({ params: { slug } }) => {
     const [product, setProduct] = useState({});
     const addProduct = useCartStore((cart) => cart.addProduct);
@@ -39,15 +40,18 @@ const Page = ({ params: { slug } }) => {
         getProduct();
     }, [getProduct]);
     const addToCart = () => {
-        ghostSwipe(ghost);
-        addProduct({ ...product, order, qty: 1, itemTotal: product.price });
+        // ghostSwipe(ghost);
+        addProduct(
+            { ...product, order, qty: 1, itemTotal: product.price },
+            ghost
+        );
         updatePrice();
         updateTotalQty();
     };
     return (
         <div className="mt-10 flex flex-col gap-2 px-2 md:px-5 lg:px-10 min-h-[calc(100vh_-_100px)] ">
             {isLoading ? (
-                <div className="m-auto"> Loading...</div>
+                <Loading />
             ) : (
                 <>
                     <div className="text-xs font-semibold">

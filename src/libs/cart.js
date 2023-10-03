@@ -2,11 +2,12 @@ import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { toast } from "@/components/ui/use-toast";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
+import ghostSwipe from "@/utils/functions/ghostSwipe";
 const CartStore = (set) => ({
     products: [],
     totalPrice: 0,
     totalQty: 0,
-    addProduct: (product) =>
+    addProduct: (product, ghost) =>
         set((prev) => {
             const checkItem = prev.products.some(
                 (pp) => pp._id === product._id
@@ -17,6 +18,7 @@ const CartStore = (set) => ({
                 });
             }
             return (
+                ghostSwipe(ghost),
                 toast({
                     description: `${product.name.toUpperCase()} added to cart`,
                 }),

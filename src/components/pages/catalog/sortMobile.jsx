@@ -1,4 +1,5 @@
 "use client";
+import Radio from "@/components/shared/radio";
 import {
     Sheet,
     SheetContent,
@@ -27,7 +28,7 @@ const SortMobile = () => {
                 </SheetHeader>
 
                 <div className="flex flex-col gap-3">
-                    <div className="flex gap-1">
+                    <div className="flex gap-1 items-center">
                         <Radio
                             value="newest"
                             id="newest"
@@ -36,18 +37,20 @@ const SortMobile = () => {
                         />
                         <label htmlFor="newest">NEWEST</label>
                     </div>
-                    <div className="flex gap-1">
+                    <div className="flex gap-1 items-center">
                         <Radio
                             value="priceAsc"
+                            name="sort"
                             id="priceAsc"
                             onChange={(e) => sortMethod(e.target.value)}
                             onClick={closePanel}
                         />
                         <label htmlFor="priceAsc">PRICE LOW</label>
                     </div>
-                    <div className="flex gap-1">
+                    <div className="flex gap-1 items-center">
                         <Radio
                             value="priceDesc"
+                            name="sort"
                             id="priceDesc"
                             onChange={(e) => sortMethod(e.target.value)}
                             onClick={closePanel}
@@ -59,16 +62,5 @@ const SortMobile = () => {
         </Sheet>
     );
 };
-const Radio = ({ ...props }) => {
-    return (
-        <span className="w-[14px] h-[14px] rounded-full border border-black flex justify-center items-center self-center">
-            <input
-                type="radio"
-                name="sort"
-                className="appearance-none m-auto w-[8px] h-[8px] rounded-full checked:bg-black"
-                {...props}
-            />
-        </span>
-    );
-};
+
 export default SortMobile;

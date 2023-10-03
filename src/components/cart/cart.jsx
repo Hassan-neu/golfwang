@@ -4,7 +4,12 @@ import ProductCard from "./productCard";
 import { RxCross2 } from "react-icons/rx";
 import { useCartStore } from "@/libs/cart";
 import Btn from "../shared/buttons/btn";
+import { useRouter } from "next/navigation";
+import { PiShoppingCartThin } from "react-icons/pi";
+import { FaRegFaceMeh } from "react-icons/fa6";
+import Link from "next/link";
 const Cart = ({ setOpenCart }) => {
+    const router = useRouter();
     const products = useCartStore((cart) => cart.products);
     const totalPrice = useCartStore((cart) => cart.totalPrice);
     const totalQty = useCartStore((cart) => cart.totalQty);
@@ -16,13 +21,14 @@ const Cart = ({ setOpenCart }) => {
                     <RxCross2 size={25} />
                 </Btn>
             </div>
-            <div className="h-full overflow-scroll hidescroll pt-2">
-                {/* <p className="text-gray-400 text-sm">
-                    Your cart is currently empty
-                </p> */}
-                {products.map((product) => (
-                    <ProductCard key={product._id} product={product} />
-                ))}
+            <div className="h-full flex flex-col overflow-scroll hidescroll pt-2">
+                {products.length <= 0 ? (
+                    <EmptyCart />
+                ) : (
+                    products.map((product) => (
+                        <ProductCard key={product._id} product={product} />
+                    ))
+                )}
             </div>
             <div className="flex flex-col gap-3">
                 <div className="flex justify-between text-xl py-2 border-b">
@@ -32,12 +38,35 @@ const Cart = ({ setOpenCart }) => {
                 </div>
                 <div>
                     <Btn
-                        disabled
+                        disabled={totalPrice <= 0}
+                        onClick={() => {
+                            router.push("/checkout");
+                            setTimeout(() => setOpenCart(false), 500);
+                        }}
                         className="w-full py-3 text-white font-semibold bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black"
                     >
                         CHECKOUT
                     </Btn>
                 </div>
+            </div>
+        </div>
+    );
+};
+
+const EmptyCart = () => {
+    return (
+        <div className="m-auto text-lg flex flex-col items-center">
+            <PiShoppingCartThin size={150} fill="rgba(156, 163, 175,0.5)" />
+            <div className="text-sm uppercase">
+                Your cart is currently empty
+            </div>
+            <div>
+                <Link
+                    href={"/catalog/all"}
+                    className="underline uppercase text-sm"
+                >
+                    start shopping
+                </Link>
             </div>
         </div>
     );

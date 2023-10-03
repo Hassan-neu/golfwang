@@ -5,12 +5,16 @@ const useWindowSize = () => {
     const smallScreen = size <= 1024;
     const largeScreen = size > 1024;
     useEffect(() => {
-        window.addEventListener("resize", () => setSize(window.innerWidth));
-        return () =>
-            window.removeEventListener("resize", () =>
-                setSize(window.innerWidth)
-            );
-    });
+        if (typeof window !== undefined) {
+            function checkWindowSize() {
+                setSize(window.innerWidth);
+            }
+            window.addEventListener("resize", () => checkWindowSize);
+            checkWindowSize();
+            return () =>
+                window.removeEventListener("resize", () => checkWindowSize);
+        }
+    }, []);
     return { size, smallScreen, largeScreen };
 };
 

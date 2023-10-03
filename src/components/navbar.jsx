@@ -45,7 +45,7 @@ const Navbar = () => {
                             <Link href="/collections/w2022">LOOKBOOK</Link>
                         </li>
                         <li>
-                            <Link href="/info/shippinginfo">INFO</Link>
+                            <Link href="/information-page">INFO</Link>
                         </li>
                     </ul>
                 </div>
