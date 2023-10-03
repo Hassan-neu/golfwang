@@ -8,48 +8,74 @@ import { useRouter } from "next/navigation";
 import { PiShoppingCartThin } from "react-icons/pi";
 import { FaRegFaceMeh } from "react-icons/fa6";
 import Link from "next/link";
-const Cart = ({ setOpenCart }) => {
+import {
+    Sheet,
+    SheetContent,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "../ui/sheet";
+import { BsHandbag } from "react-icons/bs";
+const Cart = ({ children }) => {
+    // const [openPan, setOpenPan] = useState(false);
     const router = useRouter();
     const products = useCartStore((cart) => cart.products);
     const totalPrice = useCartStore((cart) => cart.totalPrice);
     const totalQty = useCartStore((cart) => cart.totalQty);
+    // const closeCart = () => setTimeout(() => setOpenPan(false), 500);
     return (
-        <div className="flex flex-col h-screen w-full lg:w-[45%] py-4 px-2 md:px-5 lg:px-10 fixed top-0 right-0  bg-white z-50 ">
-            <div className="flex justify-between pb-4 border-b">
-                <h2 className="text-xl">YOUR CART ({totalQty})</h2>
-                <Btn className="text-2xl" onClick={() => setOpenCart(false)}>
-                    <RxCross2 size={25} />
-                </Btn>
-            </div>
-            <div className="h-full flex flex-col overflow-scroll hidescroll pt-2">
-                {products.length <= 0 ? (
-                    <EmptyCart />
-                ) : (
-                    products.map((product) => (
-                        <ProductCard key={product._id} product={product} />
-                    ))
-                )}
-            </div>
-            <div className="flex flex-col gap-3">
-                <div className="flex justify-between text-xl py-2 border-b">
-                    <h2>SUBTOTAL</h2>
+        <Sheet>
+            <SheetTrigger>
+                <li className="hidden lg:flex">
+                    CART
+                    <p className=" text-gray-400">({totalQty})</p>
+                </li>
+                <li className="relative lg:hidden">
+                    <BsHandbag size={20} />
+                    <p className="absolute px-1 top-1/2 left-1/2 bg-gray-400 text-gray-900 rounded-full">
+                        {totalQty}
+                    </p>
+                </li>
+            </SheetTrigger>
+            <SheetContent className="flex flex-col h-screen  sm:max-w-full  lg:w-[45%] py-4 px-2 md:px-5 lg:px-10 fixed top-0 right-0  bg-white z-50 ">
+                <SheetHeader className={"pb-4 border-b"}>
+                    <SheetTitle className="relative -top-1">
+                        <h2 className="text-xl font-normal">
+                            YOUR CART ({totalQty})
+                        </h2>
+                    </SheetTitle>
+                </SheetHeader>
+                <div className="h-full flex flex-col overflow-scroll hidescroll pt-2">
+                    {products.length <= 0 ? (
+                        <EmptyCart />
+                    ) : (
+                        products.map((product) => (
+                            <ProductCard key={product._id} product={product} />
+                        ))
+                    )}
+                </div>
+                <div className="flex flex-col gap-3">
+                    <div className="flex justify-between text-xl py-2 border-b">
+                        <h2>SUBTOTAL</h2>
 
-                    <h4>${totalPrice}</h4>
+                        <h4>${totalPrice}</h4>
+                    </div>
+                    <SheetFooter>
+                        <Btn
+                            disabled={totalPrice <= 0}
+                            onClick={() => {
+                                router.push("/checkout");
+                                // closeCart();
+                            }}
+                            className="w-full py-3 text-white font-semibold bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black"
+                        >
+                            CHECKOUT
+                        </Btn>
+                    </SheetFooter>
                 </div>
-                <div>
-                    <Btn
-                        disabled={totalPrice <= 0}
-                        onClick={() => {
-                            router.push("/checkout");
-                            setTimeout(() => setOpenCart(false), 500);
-                        }}
-                        className="w-full py-3 text-white font-semibold bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black"
-                    >
-                        CHECKOUT
-                    </Btn>
-                </div>
-            </div>
-        </div>
+            </SheetContent>
+        </Sheet>
     );
 };
 

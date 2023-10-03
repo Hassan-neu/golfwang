@@ -8,17 +8,21 @@ import React, { useState } from "react";
 import { useCartStore } from "@/libs/cart";
 const DeliveryDetails = () => {
     const totalPrice = useCartStore((cart) => cart.totalPrice);
+    const updateTotalCost = useCartStore((cart) => cart.updateTotalCost);
     const [isChecked, setIsChecked] = useState(false);
-    const [deliveryDetails, setDeliveryDetails] = useState({
+    // const [shippingFee, setShippingFee] = useState(0);
+    const [details, setDetails] = useState({
         firstname: "",
         lastname: "",
         email: "",
         phone: "",
-        shippingType: "",
+        shipping: "",
+        shippingFee: 0,
         paymentMode: "",
     });
+    const fee = details.shipping === "international" ? 30 : 0;
     const handleChange = (e) => {
-        setDeliveryDetails((prev) => ({
+        setDetails((prev) => ({
             ...prev,
             [e.target.name]: e.target.value,
         }));
@@ -75,7 +79,7 @@ const DeliveryDetails = () => {
                             <div className="flex gap-2 items-baseline">
                                 <Radio
                                     type="radio"
-                                    name="shippingType"
+                                    name="shipping"
                                     id="domestic"
                                     value={"domestic"}
                                     onChange={handleChange}
@@ -94,9 +98,7 @@ const DeliveryDetails = () => {
                                 <h2>FREE</h2>
                             </div>
                         </div>
-                        {deliveryDetails.shippingType === "domestic" && (
-                            <p>Hello</p>
-                        )}
+                        {details.shipping === "domestic" && <p>Hello</p>}
                     </div>
 
                     <div className="flex flex-col gap-2 border-b pb-4">
@@ -104,7 +106,7 @@ const DeliveryDetails = () => {
                             <div className="flex gap-2 items-baseline">
                                 <Radio
                                     type="radio"
-                                    name="shippingType"
+                                    name="shipping"
                                     id="international"
                                     value={"international"}
                                     onChange={handleChange}
@@ -123,9 +125,7 @@ const DeliveryDetails = () => {
                                 <h2>$30</h2>
                             </div>
                         </div>
-                        {deliveryDetails.shippingType === "international" && (
-                            <p>Hello</p>
-                        )}
+                        {details.shipping === "international" && <p>Hello</p>}
                     </div>
                 </div>
             </div>
@@ -195,7 +195,7 @@ const DeliveryDetails = () => {
                 </div>
                 <div className="flex justify-between pb-3 border-b text-gray-400">
                     <h3 className="text-sm font-medium">SHIPPING</h3>
-                    <p>$0</p>
+                    <p>${fee}</p>
                 </div>
                 <div className="flex justify-between pb-3 border-b text-4xl text-black">
                     <h3>TOTAL</h3>
@@ -218,6 +218,7 @@ const DeliveryDetails = () => {
                 <Btn
                     className="w-full py-3 text-sm text-white bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black"
                     disabled={!isChecked}
+                    onClick={() => updateTotalCost(fee)}
                 >
                     PAY AND MAKE ORDER
                 </Btn>

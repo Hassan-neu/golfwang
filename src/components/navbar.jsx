@@ -10,10 +10,10 @@ import { signIn } from "next-auth/react";
 import { useCartStore } from "@/libs/cart";
 import { useSession } from "next-auth/react";
 import Btn from "./shared/buttons/btn";
+import { SheetTrigger } from "./ui/sheet";
 const Navbar = () => {
     const { data: session } = useSession();
     const [openNav, setOpenNav] = useState(false);
-    const [openCart, setOpenCart] = useState(false);
     const totalQty = useCartStore((cart) => cart.totalQty);
     const slideNav = openNav ? "left-0" : "-left-[100vw]";
     return (
@@ -65,23 +65,10 @@ const Navbar = () => {
                                 <AiOutlineUser size={20} />
                             </Btn>
                         </li>
-                        <li className="hidden lg:flex">
-                            <Btn onClick={() => setOpenCart(true)}>CART</Btn>
-                            <p className=" text-gray-400">({totalQty})</p>
-                        </li>
-                        <li
-                            className="relative lg:hidden"
-                            onClick={() => setOpenCart(true)}
-                        >
-                            <BsHandbag size={20} />
-                            <p className="absolute px-1 top-1/2 left-1/2 bg-gray-400 text-gray-900 rounded-full">
-                                {totalQty}
-                            </p>
-                        </li>
+                        <Cart />
                     </ul>
                 </div>
             </div>
-            {openCart && <Cart setOpenCart={setOpenCart} />}
         </div>
     );
 };

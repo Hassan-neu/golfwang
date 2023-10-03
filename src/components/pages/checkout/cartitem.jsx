@@ -8,10 +8,8 @@ const CartItem = ({ children }) => {
 
     return (
         <div className="hidden lg:flex flex-col gap-2 w-1/2">
-            <h2 className="text-xl ">YOUR CART ({totalQty})</h2>
-            <div className="flex flex-col gap-2 h-min overflow-scroll hidescroll">
-                {children}
-            </div>
+            <h2 className="text-xl ">YOUR CART ({totalQty}):</h2>
+            <div className="flex flex-col gap-2 h-min">{children}</div>
             <div className="flex gap-2 border-b pb-5">
                 <input
                     type="text"

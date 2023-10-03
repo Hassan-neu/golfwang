@@ -6,6 +6,7 @@ import ghostSwipe from "@/utils/functions/ghostSwipe";
 const CartStore = (set) => ({
     products: [],
     totalPrice: 0,
+    totalCost: 0,
     totalQty: 0,
     addProduct: (product, ghost) =>
         set((prev) => {
@@ -57,6 +58,8 @@ const CartStore = (set) => ({
                 0
             ),
         })),
+    updateTotalCost: (fee) =>
+        set((prev) => ({ totalCost: prev.totalPrice + fee })),
 });
 
 export const useCartStore = create(devtools(CartStore));
