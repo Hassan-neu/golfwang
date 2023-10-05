@@ -11,6 +11,7 @@ import { urlForImage } from "../../../../../sanity/lib/image";
 import Link from "next/link";
 import { MdArrowForwardIos } from "react-icons/md";
 import Loading from "@/app/loading";
+import Itemcard from "@/components/pages/catalog/itemcard";
 const Page = ({ params: { slug } }) => {
     const [product, setProduct] = useState({});
     const addProduct = useCartStore((cart) => cart.addProduct);
@@ -49,7 +50,7 @@ const Page = ({ params: { slug } }) => {
         updateTotalQty();
     };
     return (
-        <div className="mt-10 flex flex-col gap-2 px-2 md:px-5 lg:px-10 min-h-[calc(100vh_-_100px)] ">
+        <div className="mt-10 flex flex-col gap-2 px-2 md:px-5 lg:px-10 min-h-screen">
             {isLoading ? (
                 <Loading />
             ) : (
@@ -199,8 +200,45 @@ const Page = ({ params: { slug } }) => {
                             </div>
                         </div>
                     </div>
+                    <SimilarProducts
+                        slug={slug}
+                        category={product.category.name}
+                    />
                 </>
             )}
+        </div>
+    );
+};
+
+const SimilarProducts = ({ slug, category }) => {
+    const [products, setProducts] = useState([]);
+    const getProducts = useCallback(async () => {
+        const res = await client.fetch(
+            `*[_type=='product' && category._ref in *[_type=='category' && name=='${category}']._id && slug.current!='${slug}'][0...4]`
+        );
+        setProducts(res);
+    }, [slug, category]);
+    useEffect(() => {
+        getProducts();
+    }, [getProducts]);
+    return (
+        <div className="flex flex-col gap-2 mt-16">
+            <div className="flex justify-between">
+                <div className="text-xl md:text-4xl font-medium">
+                    <h2>YOU MAY ALSO LIKE</h2>
+                </div>
+                <Btn className="hidden border md:block">
+                    <Link href={`/catalog/${category}`}>SHOW MORE</Link>
+                </Btn>
+            </div>
+            <div className="flex flex-row overflow-scroll hidescroll gap-3 py-2  [&>a]:shrink-0">
+                {products?.map((product) => (
+                    <Itemcard key={product._id} product={product} />
+                ))}
+            </div>
+            <Btn className="bg-black self-stretch text-white py-4 md:hidden">
+                <Link href={`/catalog/${category}`}>SHOW MORE</Link>
+            </Btn>
         </div>
     );
 };

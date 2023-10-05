@@ -16,10 +16,10 @@ const Itemcard = ({ product }) => {
                 <p className="text-neutral-400 text-xs uppercase self-end">
                     {`${colors.length} colors`}
                 </p>
-                <div className="w-full max-w-[350px] self-center relative h-64">
+                <div className="w-72 h-72 self-center relative lg:w-64 lg:h-64">
                     <Image
                         src={urlForImage(images[0]).url()}
-                        alt={"itemplaceholder"}
+                        alt={name}
                         fill={true}
                         className="lg:hover:scale-110 [transition:transform_.5s_ease-in]"
                     />

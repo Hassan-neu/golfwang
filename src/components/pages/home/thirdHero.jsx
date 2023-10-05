@@ -121,7 +121,7 @@ const ThirdHero = () => {
                             a store. It&apos;s ran like a line. Don&apos;t call
                             it merch&quot;
                         </div>
-                        <div className="text-sm border-b-2 border-transparent md:underline md:underline-offset-2 lg:hover:text-yellow-400 lg:hover:border-yellow-400 transition-all">
+                        <div className="text-sm border-b-2 border-black lg:hover:text-yellow-400 lg:hover:border-yellow-400 transition-all">
                             <Link href="/catalog/all">SHOP NOW</Link>
                         </div>
                     </div>

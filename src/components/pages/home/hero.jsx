@@ -126,7 +126,7 @@ const Hero = () => {
                         hello
                         {/* <Image src="" width={200} height={250} alt="hello" /> */}
                     </div>
-                    <div className="border-b-2 border-black text-xs md:text-sm font-semibold self-center">
+                    <div className="border-b-2 border-black text-xs md:text-sm font-semibold self-center lg:hover:text-yellow-400 lg:hover:border-yellow-400 transition-all">
                         <Link href="/catalog/all">SHOP NOW</Link>
                     </div>
                 </div>

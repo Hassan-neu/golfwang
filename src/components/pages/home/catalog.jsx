@@ -15,7 +15,7 @@ const Catalog = () => {
                     <Link href={"/catalog/all"}>SHOP NOW</Link>
                 </Btn>
             </div>
-            <div className="flex gap-2 overflow-scroll lg:overflow-hidden md:[&>a]:h-96 [&>a]:h-96 lg:[&>a:nth-child(4n+1)]:h-[430px] lg:[&>a:nth-child(2n+2)]:h-96 lg:[&>a:nth-child(3)]:h-[480px] [&>a]:w-64 md:[&>a]:w-2/5 [&>a]:shrink-0 lg:[&>a]:shrink items-start hidescroll ">
+            <div className="flex gap-2 overflow-scroll lg:overflow-hidden md:[&>a]:h-96 [&>a]:h-96 lg:[&>a:nth-child(4n+1)]:h-[430px] lg:[&>a:nth-child(2n+2)]:h-96 lg:[&>a:nth-child(3)]:h-[480px] [&>a]:w-72 md:[&>a]:w-2/5 [&>a]:shrink-0 lg:[&>a]:shrink items-start hidescroll ">
                 <Link href={"/catalog/tops"}>
                     <CatalogItem item={"Tops"}>
                         <Image

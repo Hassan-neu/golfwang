@@ -27,8 +27,17 @@ const DeliveryDetails = () => {
             [e.target.name]: e.target.value,
         }));
     };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const formJson = Object.fromEntries(formData.entries());
+        console.log(formJson);
+    };
     return (
-        <form className="flex flex-col gap-6 w-full lg:w-1/2 h-full sticky top-14">
+        <form
+            className="flex flex-col gap-6 w-full lg:w-1/2 h-full sticky top-14"
+            onSubmit={handleSubmit}
+        >
             <div className="flex flex-col gap-4">
                 <h3 className="text-xl font-medium">CONTACT INFORMATION</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 auto-rows-auto gap-2">

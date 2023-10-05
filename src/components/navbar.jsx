@@ -14,7 +14,6 @@ import { SheetTrigger } from "./ui/sheet";
 const Navbar = () => {
     const { data: session } = useSession();
     const [openNav, setOpenNav] = useState(false);
-    const totalQty = useCartStore((cart) => cart.totalQty);
     const slideNav = openNav ? "left-0" : "-left-[100vw]";
     return (
         <div
@@ -29,7 +28,7 @@ const Navbar = () => {
                 </div>
 
                 <div
-                    className={`text-sm font-normal flex fixed  top-0 ${slideNav} px-5 py-2 md:px-4 w-screen md:w-[45%] h-screen z-50 [transition:left_.2s_linear] bg-white lg:static  lg:items-center lg:text-xs lg:w-auto lg:h-auto lg:p-0 lg:translate-x-0`}
+                    className={`text-sm font-normal flex fixed  top-0 ${slideNav} px-5 py-2 md:px-4 w-screen md:w-[45%] h-screen z-50 [transition:left_.5s_cubic-bezier(0.4,_0,_0.2,_1)] bg-white lg:static  lg:items-center lg:text-xs lg:w-auto lg:h-auto lg:p-0 lg:translate-x-0`}
                 >
                     <ul className="flex flex-col w-full gap-4 lg:gap-10 lg:flex-row lg:font-semibold">
                         <li className="text-lg flex justify-between items-center py-2 border-b lg:hidden">

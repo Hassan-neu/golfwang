@@ -25,17 +25,17 @@ const NewArrivals = async () => {
                     <h2>NEW ARRIVALS</h2>
                 </div>
                 <Btn className="hidden border md:block">
-                    <Link href={"/catalog/new"}>SHOW MORE</Link>
+                    <Link href={"/catalog/all"}>SHOW MORE</Link>
                 </Btn>
             </div>
             <div className="flex gap-3 w-full flex-nowrap overflow-x-scroll py-2 lg:py-10 hidescroll transition">
-                {products.map((product) => (
+                {products?.map((product) => (
                     <NewItem key={product._id} product={product} />
                 ))}
                 {/* <div className="hidden lg:block w-[594px] max-w-[594px] h-[600px] max-h-[600px] border relative bg-yellow-400 shrink-0"></div> */}
             </div>
             <Btn className="bg-black self-stretch text-white py-4 md:hidden">
-                <Link href={"/catalog/new"}>SHOW MORE</Link>
+                <Link href={"/catalog/all"}>SHOW MORE</Link>
             </Btn>
             <div className="hidden lg:flex gap-1">
                 <Btn className="rounded-full w-10 h-10 border flex items-center justify-center text-gray-500">

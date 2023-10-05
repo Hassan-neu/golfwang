@@ -1,12 +1,10 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import ProductCard from "./productCard";
-import { RxCross2 } from "react-icons/rx";
 import { useCartStore } from "@/libs/cart";
 import Btn from "../shared/buttons/btn";
 import { useRouter } from "next/navigation";
 import { PiShoppingCartThin } from "react-icons/pi";
-import { FaRegFaceMeh } from "react-icons/fa6";
 import Link from "next/link";
 import {
     Sheet,
@@ -17,15 +15,15 @@ import {
     SheetTrigger,
 } from "../ui/sheet";
 import { BsHandbag } from "react-icons/bs";
-const Cart = ({ children }) => {
-    // const [openPan, setOpenPan] = useState(false);
+const Cart = () => {
+    const [openPan, setOpenPan] = useState(false);
     const router = useRouter();
     const products = useCartStore((cart) => cart.products);
     const totalPrice = useCartStore((cart) => cart.totalPrice);
     const totalQty = useCartStore((cart) => cart.totalQty);
-    // const closeCart = () => setTimeout(() => setOpenPan(false), 500);
+    const closeCart = () => setTimeout(() => setOpenPan(false), 500);
     return (
-        <Sheet>
+        <Sheet open={openPan} onOpenChange={() => setOpenPan(!openPan)}>
             <SheetTrigger>
                 <li className="hidden lg:flex">
                     CART
@@ -38,8 +36,8 @@ const Cart = ({ children }) => {
                     </p>
                 </li>
             </SheetTrigger>
-            <SheetContent className="flex flex-col h-screen  sm:max-w-full  lg:w-[45%] py-4 px-2 md:px-5 lg:px-10 fixed top-0 right-0  bg-white z-50 ">
-                <SheetHeader className={"pb-4 border-b"}>
+            <SheetContent className="flex flex-col h-screen w-full sm:max-w-full  lg:w-[45%] py-4 px-2 md:px-5 lg:px-10  bg-white">
+                <SheetHeader className={"pb-4 border-b self-start"}>
                     <SheetTitle className="relative -top-1">
                         <h2 className="text-xl font-normal">
                             YOUR CART ({totalQty})
@@ -66,7 +64,7 @@ const Cart = ({ children }) => {
                             disabled={totalPrice <= 0}
                             onClick={() => {
                                 router.push("/checkout");
-                                // closeCart();
+                                closeCart();
                             }}
                             className="w-full py-3 text-white font-semibold bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black"
                         >
@@ -83,7 +81,7 @@ const EmptyCart = () => {
     return (
         <div className="m-auto text-lg flex flex-col items-center">
             <PiShoppingCartThin size={150} fill="rgba(156, 163, 175,0.5)" />
-            <div className="text-sm uppercase">
+            <div className="text-sm uppercase text-[rgba(156,163,175,0.5)]">
                 Your cart is currently empty
             </div>
             <div>
