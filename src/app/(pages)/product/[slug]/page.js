@@ -10,6 +10,7 @@ import { urlForImage } from "../../../../../sanity/lib/image";
 import Link from "next/link";
 import { MdArrowForwardIos } from "react-icons/md";
 import Loading from "@/app/loading";
+import Itemcard from "@/components/pages/catalog/itemcard";
 const Page = ({ params: { slug } }) => {
     const [product, setProduct] = useState({});
     const addProduct = useCartStore((cart) => cart.addProduct);
@@ -39,7 +40,6 @@ const Page = ({ params: { slug } }) => {
         getProduct();
     }, [getProduct]);
     const addToCart = () => {
-        // ghostSwipe(ghost);
         addProduct(
             { ...product, order, qty: 1, itemTotal: product.price },
             ghost
@@ -167,15 +167,39 @@ const Page = ({ params: { slug } }) => {
                                     </Btn>
                                     {showDetails && (
                                         <div className="w-4/5 text-justify">
-                                            Lorem ipsum dolor sit, amet
-                                            consectetur adipisicing elit. Quam
-                                            perferendis ex dignissimos,
-                                            recusandae sit sapiente quia nobis
-                                            modi nisi exercitationem illo
-                                            pariatur excepturi consectetur iusto
-                                            expedita a deleniti dolor aliquid
-                                            explicabo aut, non placeat ea.
-                                            Maxime eaque voluptas totam nostrum!
+                                            <table className="w-full">
+                                                <thead className="font-semibold">
+                                                    <tr>
+                                                        {product.details.rows[0].cells.map(
+                                                            (cell, i) => (
+                                                                <td key={i}>
+                                                                    {cell}
+                                                                </td>
+                                                            )
+                                                        )}
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr className="[&>td:nth-child(1)]:font-semibold">
+                                                        {product.details.rows[1].cells.map(
+                                                            (cell, i) => (
+                                                                <td key={i}>
+                                                                    {cell}
+                                                                </td>
+                                                            )
+                                                        )}
+                                                    </tr>
+                                                    <tr className="[&>td:nth-child(1)]:font-semibold">
+                                                        {product.details.rows[2].cells.map(
+                                                            (cell, i) => (
+                                                                <td key={i}>
+                                                                    {cell}
+                                                                </td>
+                                                            )
+                                                        )}
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     )}
                                 </div>
@@ -238,36 +262,6 @@ const SimilarProducts = ({ slug, category }) => {
                 <Link href={`/catalog/${category}`}>SHOW MORE</Link>
             </Btn>
         </div>
-    );
-};
-
-const Itemcard = ({ product }) => {
-    const {
-        name,
-        price,
-        images,
-        colors,
-        slug: { current },
-    } = product;
-    return (
-        <Link href={`/product/${current}`} className="flex flex-col gap-1">
-            <div className="flex flex-col p-5 relative border border-neutral-400 bg-[#f2f2f2] bg-[url('/home/noise.png')] bg-cover overflow-hidden">
-                <p className="text-neutral-400 text-xs uppercase self-end ">
-                    {`${colors.length} colors`}
-                </p>
-                <div className="w-72 h-72 self-center relative lg:w-64 lg:h-64">
-                    <Image
-                        src={urlForImage(images[0]).url()}
-                        alt={name}
-                        fill={true}
-                    />
-                </div>
-            </div>
-            <div className="flex flex-col gap-1">
-                <p className="text-xs font-semibold uppercase">{name}</p>
-                <p className="text-sm text-neutral-400">$ {price}</p>
-            </div>
-        </Link>
     );
 };
 
