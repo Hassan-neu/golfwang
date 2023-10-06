@@ -2,7 +2,6 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { useState } from "react";
 import OptionsBtn from "@/components/shared/buttons/optionsBtn";
-import ghostSwipe from "@/utils/functions/ghostSwipe";
 import Btn from "@/components/shared/buttons/btn";
 import { useCartStore } from "@/libs/cart";
 import { client } from "../../../../../sanity/lib/client";
@@ -11,7 +10,6 @@ import { urlForImage } from "../../../../../sanity/lib/image";
 import Link from "next/link";
 import { MdArrowForwardIos } from "react-icons/md";
 import Loading from "@/app/loading";
-import Itemcard from "@/components/pages/catalog/itemcard";
 const Page = ({ params: { slug } }) => {
     const [product, setProduct] = useState({});
     const addProduct = useCartStore((cart) => cart.addProduct);
@@ -240,6 +238,36 @@ const SimilarProducts = ({ slug, category }) => {
                 <Link href={`/catalog/${category}`}>SHOW MORE</Link>
             </Btn>
         </div>
+    );
+};
+
+const Itemcard = ({ product }) => {
+    const {
+        name,
+        price,
+        images,
+        colors,
+        slug: { current },
+    } = product;
+    return (
+        <Link href={`/product/${current}`} className="flex flex-col gap-1">
+            <div className="flex flex-col p-5 relative border border-neutral-400 bg-[#f2f2f2] bg-[url('/home/noise.png')] bg-cover overflow-hidden">
+                <p className="text-neutral-400 text-xs uppercase self-end ">
+                    {`${colors.length} colors`}
+                </p>
+                <div className="w-72 h-72 self-center relative lg:w-64 lg:h-64">
+                    <Image
+                        src={urlForImage(images[0]).url()}
+                        alt={name}
+                        fill={true}
+                    />
+                </div>
+            </div>
+            <div className="flex flex-col gap-1">
+                <p className="text-xs font-semibold uppercase">{name}</p>
+                <p className="text-sm text-neutral-400">$ {price}</p>
+            </div>
+        </Link>
     );
 };
 

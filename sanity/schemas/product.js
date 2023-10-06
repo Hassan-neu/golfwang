@@ -57,6 +57,7 @@ export const product = {
             name: "class",
             title: "Class",
             type: "string",
+            validation: (rule) => rule.required(),
         },
         {
             name: "slug",

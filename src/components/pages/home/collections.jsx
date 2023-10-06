@@ -15,7 +15,7 @@ const Collections = () => {
                     <Link href={"/collections"}>SHOW MORE</Link>
                 </Btn>
             </div>
-            <div className="hidden overflow-hidden border-t lg:flex justify-center items-center gap-[32rem] py-2 h-3/5 relative">
+            <div className="hidden overflow-hidden border-t lg:flex justify-center items-center gap-[30.4rem] py-2 h-3/5 relative">
                 <div className="-rotate-90 flex flex-col items-center gap-1 h-min">
                     <div className="text-5xl font-light inline text-gray-400 ">
                         <p className="hover:text-black cursor-pointer season">
