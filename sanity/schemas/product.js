@@ -1,4 +1,3 @@
-import { table } from "@sanity/table";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 export const product = {
     name: "product",

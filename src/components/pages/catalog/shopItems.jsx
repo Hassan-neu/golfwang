@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Btn from "@/components/shared/buttons/btn";
 import SortOptions from "./sortOption";
 import FilterOptions from "./filterOptions";
@@ -10,30 +9,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 const ShopItems = ({ category, children, count }) => {
-    const shopImage = useRef();
-    useEffect(() => {
-        const mm = gsap.matchMedia();
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: shopImage.current,
-                start: "top 20px",
-                end: "bottom 90%",
-                toggleActions: "play none reverse",
-            },
-        });
-        mm.add("(min-width:1024px)", () => {
-            tl.to(
-                shopImage.current,
-                {
-                    scale: 1.15,
-                    duration: 1,
-                },
-                "-=1"
-            );
-        });
-
-        return () => mm.revert();
-    }, []);
     return (
         <main className="flex flex-col gap-2 md:gap-4 lg:gap-6 min-h-screen mt-4">
             <div className="flex justify-between text-xs ">
@@ -67,10 +42,13 @@ const ShopItems = ({ category, children, count }) => {
             <div className="flex flex-col gap-2 h-full">
                 <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] md:grid-cols-2 lg:grid-cols-5 auto-rows-auto gap-4 md:gap-3 md:gap-y-7 md:[&>a:nth-child(5)]:col-span-full md:[&>a:nth-child(8)]:col-span-full lg:[&>a:nth-child(5)]:col-span-1 lg:[&>a:nth-child(8)]:col-span-1">
                     {children}
-                    <div className="hidden lg:flex flex-col gap-[2px] col-start-4 col-end-6 row-start-1 row-end-3 ">
+                    <div
+                        className={`hidden lg:${
+                            count < 4 ? "hidden" : "flex"
+                        } flex-col gap-[2px] col-start-4 col-end-6 row-start-1 row-end-3 `}
+                    >
                         <div className="w-full self-center relative h-full overflow-hidden">
                             <Image
-                                ref={shopImage}
                                 src={"/shop/shop1.png"}
                                 alt={"itemplaceholder"}
                                 fill={true}
