@@ -1,14 +1,15 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Btn from "@/components/shared/buttons/btn";
 import SortOptions from "./sortOption";
 import FilterOptions from "./filterOptions";
 import FilterMobile from "./filterMobile";
 import SortMobile from "./sortMobile";
 import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
-const ShopItems = ({ category, children, count }) => {
+import { catalogProducts } from "../../../../sanity/queries/queries";
+import Itemcard from "./itemcard";
+const ShopItems = async ({ category, searchParams: { sort, filter } }) => {
+    await new Promise((resolve) => setTimeout(resolve, 50000));
+    const products = await catalogProducts(category, sort, filter);
     return (
         <main className="flex flex-col gap-2 md:gap-4 lg:gap-6 min-h-screen mt-4">
             <div className="flex justify-between text-xs ">
@@ -35,16 +36,18 @@ const ShopItems = ({ category, children, count }) => {
                 <div className="flex gap-3">
                     <h3 className="uppercase">{category}</h3>
                     <p className="text-sm self-start text-gray-400">
-                        ({count})
+                        ({products.length})
                     </p>
                 </div>
             </div>
             <div className="flex flex-col gap-2 h-full">
                 <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] md:grid-cols-2 lg:grid-cols-5 auto-rows-auto gap-4 md:gap-3 md:gap-y-7 md:[&>a:nth-child(5)]:col-span-full md:[&>a:nth-child(8)]:col-span-full lg:[&>a:nth-child(5)]:col-span-1 lg:[&>a:nth-child(8)]:col-span-1">
-                    {children}
+                    {products?.map((product) => (
+                        <Itemcard key={product._id} product={product} />
+                    ))}
                     <div
                         className={`hidden lg:${
-                            count < 4 ? "hidden" : "flex"
+                            products.length < 4 ? "hidden" : "flex"
                         } flex-col gap-[2px] col-start-4 col-end-6 row-start-1 row-end-3 `}
                     >
                         <div className="w-full self-center relative h-full overflow-hidden">

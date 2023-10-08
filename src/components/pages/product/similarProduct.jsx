@@ -10,6 +10,7 @@ const SimilarProducts = async ({ slug, category }) => {
         );
         return res;
     };
+    await new Promise((resolve) => setTimeout(resolve, 5000));
     const products = await getProducts();
     return (
         <div className="flex flex-col gap-2 mt-16">

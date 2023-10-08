@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { client } from "../../../../../sanity/lib/client";
 import SimilarProducts from "@/components/pages/product/similarProduct";
 import SingleProduct from "@/components/pages/product/singleProduct";
+import ItemsLoading from "@/components/pages/product/itemsLoading";
 export const generateMetadata = async ({ params: { slug } }) => {
     const getProduct = async () => {
         const res = await client.fetch(
@@ -25,7 +26,12 @@ const Page = async ({ params: { slug } }) => {
     return (
         <>
             <SingleProduct product={product}>
-                <SimilarProducts slug={slug} category={product.category.name} />
+                <Suspense fallback={<ItemsLoading />}>
+                    <SimilarProducts
+                        slug={slug}
+                        category={product.category.name}
+                    />
+                </Suspense>
             </SingleProduct>
         </>
     );

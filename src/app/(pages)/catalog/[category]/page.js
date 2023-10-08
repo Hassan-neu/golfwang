@@ -1,13 +1,13 @@
 import Banner from "@/components/pages/catalog/banner";
 import ShopItems from "@/components/pages/catalog/shopItems";
-import React from "react";
-import Itemcard from "@/components/pages/catalog/itemcard";
+import React, { Suspense } from "react";
 import NotFound from "@/app/not-found";
-import { catalogProducts } from "../../../../../sanity/queries/queries";
-const Page = async ({
-    params: { category },
-    searchParams: { sort, filter },
-}) => {
+import ItemsLoading from "@/components/pages/catalog/itemsLoading";
+
+export const metadata = {
+    title: "SHOP",
+};
+const Page = async ({ params: { category }, searchParams }) => {
     const matcher = [
         "all",
         "accessories",
@@ -19,17 +19,12 @@ const Page = async ({
     if (!matcher) {
         return <NotFound />;
     }
-    await new Promise((resolve) => setTimeout(resolve, 5000));
-    const products = await catalogProducts(category, sort, filter);
     return (
         <div className="px-2 md:px-5 lg:px-10">
             <Banner />
-
-            <ShopItems category={category} count={products.length}>
-                {products?.map((product) => (
-                    <Itemcard key={product._id} product={product} />
-                ))}
-            </ShopItems>
+            <Suspense fallback={<ItemsLoading />}>
+                <ShopItems category={category} searchParams={searchParams} />
+            </Suspense>
         </div>
     );
 };
