@@ -12,12 +12,13 @@ import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 const SortMobile = () => {
     const [openPan, setOpenPan] = useState(false);
+    const [action, setAction] = useState("NEWEST");
     const { sortMethod } = useHandleQuery();
     const closePanel = () => setTimeout(() => setOpenPan(false), 500);
     return (
         <Sheet open={openPan} onOpenChange={() => setOpenPan(!openPan)}>
             <SheetTrigger className="flex gap-2 items-center">
-                <span>NEWEST</span>
+                <span>{action}</span>
                 <IoIosArrowDown size={18} />
             </SheetTrigger>
             <SheetContent className="w-full">
@@ -32,7 +33,10 @@ const SortMobile = () => {
                         <Radio
                             value="newest"
                             id="newest"
-                            onChange={(e) => sortMethod(e.target.value)}
+                            onChange={(e) => {
+                                sortMethod(e.target.value);
+                                setAction("NEWEST");
+                            }}
                             onClick={closePanel}
                         />
                         <label htmlFor="newest">NEWEST</label>
@@ -42,7 +46,10 @@ const SortMobile = () => {
                             value="priceAsc"
                             name="sort"
                             id="priceAsc"
-                            onChange={(e) => sortMethod(e.target.value)}
+                            onChange={(e) => {
+                                sortMethod(e.target.value);
+                                setAction("PRICE: LOW TO HIGH");
+                            }}
                             onClick={closePanel}
                         />
                         <label htmlFor="priceAsc">PRICE LOW</label>
@@ -52,7 +59,10 @@ const SortMobile = () => {
                             value="priceDesc"
                             name="sort"
                             id="priceDesc"
-                            onChange={(e) => sortMethod(e.target.value)}
+                            onChange={(e) => {
+                                sortMethod(e.target.value);
+                                setAction("PRICE: HIGH TO LOW");
+                            }}
                             onClick={closePanel}
                         />
                         <label htmlFor="priceDesc">PRICE HIGH</label>

@@ -9,14 +9,14 @@ const ItemsLoading = () => {
                 <div className="text-xl md:text-4xl font-medium">
                     <h2>YOU MAY ALSO LIKE</h2>
                 </div>
-                <Skeleton className="px-2 py-1 w-32 hidden md:block" />
+                <Skeleton className="px-2 py-1 w-32 rounded-none hidden md:block" />
             </div>
-            <div className="grid grid-cols-5 auto-rows-auto gap-3 py-2 ">
+            <div className="grid grid-flow-col auto-rows-auto gap-3 py-2 [&>div]:w-72 [&>div]:lg:w-64 ">
                 {Array.from({ length: 4 }, (_, i) => (
                     <ItemLoading key={i} />
                 ))}
             </div>
-            <Skeleton className="px-2 self-stretch py-4 md:hidden" />
+            <Skeleton className="h-11 self-stretch py-4 md:hidden" />
         </div>
     );
 };

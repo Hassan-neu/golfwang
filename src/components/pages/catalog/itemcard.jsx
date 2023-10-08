@@ -15,7 +15,7 @@ const Itemcard = ({ product }) => {
     } = product;
     return (
         <Link href={`/product/${current}`} className="flex flex-col gap-1">
-            <div className="flex flex-col p-5 relative border border-neutral-400 bg-[#f2f2f2] hover:bg-transparent bg-[url('/home/noise.png')] bg-cover overflow-hidden">
+            <div className="flex flex-col p-5 relative border border-neutral-400 bg-[#f2f2f2] lg:hover:bg-transparent bg-[url('/home/noise.png')] bg-cover overflow-hidden">
                 <p className="text-neutral-400 text-xs uppercase self-end ">
                     {`${colors.length} colors`}
                 </p>
@@ -30,7 +30,7 @@ const Itemcard = ({ product }) => {
 
                 <Lottie
                     animationData={hover}
-                    className="w-[610px] h-auto absolute top-0 -left-5 -z-[1]"
+                    className="w-[610px] h-auto absolute top-0 -left-5 -z-[1] hidden lg:block"
                 />
             </div>
             <div className="flex flex-col gap-1">

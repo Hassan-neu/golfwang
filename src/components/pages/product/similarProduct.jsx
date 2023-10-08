@@ -6,7 +6,7 @@ import { client } from "../../../../sanity/lib/client";
 const SimilarProducts = async ({ slug, category }) => {
     const getProducts = async () => {
         const res = await client.fetch(
-            `*[_type=='product' && category._ref in *[_type=='category' && name=='${category}']._id && slug.current!='${slug}'][0...4]`
+            `*[_type=='product' && slug.current!='${slug}'][0...4]`
         );
         return res;
     };

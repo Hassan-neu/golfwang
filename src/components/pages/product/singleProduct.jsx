@@ -9,7 +9,7 @@ import { urlForImage } from "../../../../sanity/lib/image";
 import Link from "next/link";
 import { MdArrowForwardIos } from "react-icons/md";
 
-const SingleProduct = ({ product, children }) => {
+const SingleProduct = ({ product }) => {
     const addProduct = useCartStore((cart) => cart.addProduct);
     const updatePrice = useCartStore((cart) => cart.updatePrice);
     const updateTotalQty = useCartStore((cart) => cart.updateTotalQty);
@@ -36,7 +36,7 @@ const SingleProduct = ({ product, children }) => {
         updateTotalQty();
     };
     return (
-        <div className="mt-10 flex flex-col gap-2 px-2 md:px-5 lg:px-10 min-h-screen">
+        <>
             <div className="text-xs font-semibold">
                 <div className="flex gap-2 items-center">
                     <Link
@@ -202,8 +202,7 @@ const SingleProduct = ({ product, children }) => {
                     </div>
                 </div>
             </div>
-            {children}
-        </div>
+        </>
     );
 };
 

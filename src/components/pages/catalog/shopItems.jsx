@@ -8,7 +8,6 @@ import Image from "next/image";
 import { catalogProducts } from "../../../../sanity/queries/queries";
 import Itemcard from "./itemcard";
 const ShopItems = async ({ category, searchParams: { sort, filter } }) => {
-    await new Promise((resolve) => setTimeout(resolve, 50000));
     const products = await catalogProducts(category, sort, filter);
     return (
         <main className="flex flex-col gap-2 md:gap-4 lg:gap-6 min-h-screen mt-4">

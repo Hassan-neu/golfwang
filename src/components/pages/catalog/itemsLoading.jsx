@@ -40,7 +40,7 @@ const ItemsLoading = () => {
                     />
                 </div>
             </div>
-            <Skeleton className="py-4 text-white md:self-center md:px-20 rounded-none" />
+            <Skeleton className="py-6 text-white md:self-center md:px-20 rounded-none" />
         </main>
     );
 };
