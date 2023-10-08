@@ -6,12 +6,13 @@ import { client } from "../../../../sanity/lib/client";
 const SimilarProducts = async ({ slug, category }) => {
     const getProducts = async () => {
         const res = await client.fetch(
-            `*[_type=='product' && slug.current!='${slug}'][0...4]`
+            `*[_type=='product' && slug.current=='${slug}'][0]{'similar':*[_type=='product' && slug.current!='${slug}' && category._ref == ^.category._ref]}`
         );
         return res;
     };
-    await new Promise((resolve) => setTimeout(resolve, 5000));
-    const products = await getProducts();
+    await new Promise((resolve) => setTimeout(resolve, 50000));
+    const { similar } = await getProducts();
+
     return (
         <div className="flex flex-col gap-2 mt-16">
             <div className="flex justify-between">
@@ -23,7 +24,7 @@ const SimilarProducts = async ({ slug, category }) => {
                 </Btn>
             </div>
             <div className="flex flex-row overflow-scroll hidescroll gap-3 py-2  [&>a]:shrink-0">
-                {products?.map((product) => (
+                {similar?.map((product) => (
                     <Itemcard key={product._id} product={product} />
                 ))}
             </div>

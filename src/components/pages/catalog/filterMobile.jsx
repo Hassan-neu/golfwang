@@ -242,6 +242,21 @@ const FilterMobile = () => {
                                 </Checkbox>
                             </div>
                         </div>
+                        <div className="flex flex-col gap-3 items-start">
+                            <h1 className="text-xs font-medium text-neutral-500">
+                                CATALOG
+                            </h1>
+                            <div className="flex flex-col gap-2">
+                                <Checkbox
+                                    name="music"
+                                    id="music"
+                                    value={"all"}
+                                    onClick={() => router.push("all")}
+                                >
+                                    <p className="text-[10px]">ALL</p>
+                                </Checkbox>
+                            </div>
+                        </div>
                     </div>
                     <div className="flex flex-col gap-2">
                         <Btn

@@ -11,7 +11,7 @@ const ItemsLoading = () => {
                 </div>
                 <Skeleton className="px-2 py-1 w-32 rounded-none hidden md:block" />
             </div>
-            <div className="grid grid-flow-col auto-rows-auto gap-3 py-2 [&>div]:w-72 [&>div]:lg:w-64 ">
+            <div className="grid grid-flow-col auto-rows-auto gap-3 py-2 overflow-scroll hidescroll">
                 {Array.from({ length: 4 }, (_, i) => (
                     <ItemLoading key={i} />
                 ))}
