@@ -1,12 +1,21 @@
 "use client";
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Btn from "../../shared/buttons/btn";
 import Link from "next/link";
 import Image from "next/image";
 import Checkbox from "@/components/shared/checkbox";
 const Collections = () => {
+    const imagesLeft = useRef();
+    const seasonLeft = useRef();
+    const handler = (e) => {
+        Array.from(imagesLeft.current.children).map((child) =>
+            child.dataset.name === e.target.dataset.name
+                ? child.style.setProperty("opacity", 1)
+                : child.style.setProperty("opacity", 0)
+        );
+    };
     return (
-        <div className="flex flex-col gap-3 lg:gap-6 px-2 md:px-5 lg:p-10 lg:h-[110vh] justify-center lg:border border-gray-400 rounded-3xl mt-14 lg:mt-5">
+        <div className="flex flex-col gap-3 lg:gap-6 px-2 md:px-5 lg:p-10 lg:min-h-[110vh] justify-center lg:border border-gray-400 rounded-3xl mt-14 lg:mt-5">
             <div className="flex justify-between">
                 <div className="text-xl md:text-4xl font-medium">
                     <h2>COLLECTIONS</h2>
@@ -15,384 +24,393 @@ const Collections = () => {
                     <Link href={"/collections"}>SHOW MORE</Link>
                 </Btn>
             </div>
-            <div className="hidden overflow-hidden border-t lg:flex justify-center items-center gap-[30.4rem] py-2 h-3/5 relative">
-                <div className="-rotate-90 flex flex-col items-center gap-1 h-min">
-                    <div className="text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+            <div className="hidden overflow-hidden border-t lg:grid grid-cols-[1fr_240px_1fr] grid-rows-1 justify-center items-center py-2 h-3/5 relative">
+                <div
+                    className="[grid-column:2/3] h-full relative"
+                    ref={imagesLeft}
+                >
+                    <div
+                        className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-1/2 -translate-y-1/2 left-0 opacity-1"
+                        data-name="winter22"
+                    >
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/winter/wmodel9.png"}
+                                alt="winter-2022"
+                                fill={true}
+                            />
+                        </div>
+                        <p className="text-sm self-center text-neutral-800">
+                            F/W 2022 collection
+                        </p>
+                    </div>
+                    <div
+                        className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-1/2 -translate-y-1/2 left-0 opacity-0"
+                        data-name="autumn22"
+                    >
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/autumn/autmodel9.png"}
+                                alt="autumn-2022"
+                                fill={true}
+                            />
+                        </div>
+                        <p className="text-sm self-center text-neutral-800">
+                            Autumn 2022 collection
+                        </p>
+                    </div>
+                    <div
+                        className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-1/2 -translate-y-1/2 left-0 opacity-0"
+                        data-name="summ22"
+                    >
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/summer/summodel9.png"}
+                                alt="summer-2022"
+                                fill={true}
+                            />
+                        </div>
+                        <p className="text-sm self-center text-neutral-800">
+                            Summer 2022 collection
+                        </p>
+                    </div>
+                    <div
+                        className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-1/2 -translate-y-1/2 left-0 opacity-0"
+                        data-name="winter21"
+                    >
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/winter/wmodel21.png"}
+                                alt="winter-2021"
+                                fill={true}
+                            />
+                        </div>
+                        <p className="text-sm self-center text-neutral-800">
+                            Winter 2021 collection
+                        </p>
+                    </div>
+                    <div
+                        className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-1/2 -translate-y-1/2 left-0 opacity-0"
+                        data-name="summ21"
+                    >
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/summer/summodel21.png"}
+                                alt="summer-2021"
+                                fill={true}
+                            />
+                        </div>
+                        <p className="text-sm self-center text-neutral-800">
+                            Summer 2021 collection
+                        </p>
+                    </div>
+                    <div
+                        className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-1/2 -translate-y-1/2 left-0 opacity-0"
+                        data-name="spring21"
+                    >
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/summer/springmodel21.png"}
+                                alt="spring-2021"
+                                fill={true}
+                            />
+                        </div>
+                        <p className="text-sm self-center text-neutral-800">
+                            Spring 2021 collection
+                        </p>
+                    </div>
+                    <div
+                        className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-1/2 -translate-y-1/2 left-0 opacity-0"
+                        data-name="winter20"
+                    >
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/winter/wmodel20.png"}
+                                alt="winter-2020"
+                                fill={true}
+                            />
+                        </div>
+                        <p className="text-sm self-center text-neutral-800">
+                            Winter 2020 collection
+                        </p>
+                    </div>
+                    <div
+                        className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-1/2 -translate-y-1/2 left-0 opacity-0"
+                        data-name="summ20"
+                    >
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/summer/summodel20.png"}
+                                alt="summer-2020"
+                                fill={true}
+                            />
+                        </div>
+                        <p className="text-sm self-center text-neutral-800">
+                            Summer 2020 collection
+                        </p>
+                    </div>
+                    <div
+                        className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-1/2 -translate-y-1/2 left-0 opacity-0"
+                        data-name="autumn20"
+                    >
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/autumn/autmodel20.png"}
+                                alt="autumn-2020"
+                                fill={true}
+                            />
+                        </div>
+                        <p className="text-sm self-center text-neutral-800">
+                            S/Autumn 2020 collection
+                        </p>
+                    </div>
+                    <div
+                        className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-1/2 -translate-y-1/2 left-0 opacity-0"
+                        data-name="winter19"
+                    >
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/winter/wmodel19.png"}
+                                alt="winter-19"
+                                fill={true}
+                            />
+                        </div>
+                        <p className="text-sm self-center text-neutral-800">
+                            Winter 2019 collection
+                        </p>
+                    </div>
+                    <div
+                        className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-1/2 -translate-y-1/2 left-0 opacity-0"
+                        data-name="winter17"
+                    >
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/winter/wmodel17.png"}
+                                alt="winter-2017"
+                                fill={true}
+                            />
+                        </div>
+                        <p className="text-sm self-center text-neutral-800">
+                            Winter 2017 collection
+                        </p>
+                    </div>
+                    <div
+                        className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-1/2 -translate-y-1/2 left-0"
+                        data-name="summ17"
+                    >
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/summer/summodel17.png"}
+                                alt="summer-2017"
+                                fill={true}
+                            />
+                        </div>
+                        <p className="text-sm self-center text-neutral-800">
+                            Summer 2017 collection
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    className="-rotate-90 flex flex-col items-center gap-1 h-min leading-8 [grid-column:1/2] [grid-row:1/2] cursor-pointer [font-size:max(1.5em,_1em_+_1.5cqi)] font-light text-gray-400"
+                    ref={seasonLeft}
+                >
+                    <div className="hover:text-black">
+                        <p data-name="winter22" onMouseOver={handler}>
                             W2022
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-full -translate-y-[6%] left-1/2 -translate-x-1/2 opacity- rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/winter/wmodel9.png"}
-                                    alt="winter-2022"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                F/W 2022 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className="text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black" data-name="autumn22">
+                        <p
+                            className="season"
+                            data-name="autumn22"
+                            onMouseOver={handler}
+                        >
                             AUT2022
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-full -translate-y-[6%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/autumn/autmodel9.png"}
-                                    alt="autumn-2022"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Autumn 2022 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black" data-name="summ22">
+                        <p
+                            className="season"
+                            data-name="summ22"
+                            onMouseOver={handler}
+                        >
                             SUMM2022
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-full -translate-y-[6%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/summer/summodel9.png"}
-                                    alt="summer-2022"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Summer 2022 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black" data-name="winter21">
+                        <p
+                            className="season"
+                            data-name="winter21"
+                            onMouseOver={handler}
+                        >
                             WINTER 2021
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-full -translate-y-[6%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/winter/wmodel21.png"}
-                                    alt="winter-2021"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Winter 2021 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black" data-name="summ21">
+                        <p
+                            className="season"
+                            data-name="summ21"
+                            onMouseOver={handler}
+                        >
                             SUMM 2021
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-full -translate-y-[6%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/summer/summodel21.png"}
-                                    alt="summer-2021"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Summer 2021 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black" data-name="spring21">
+                        <p
+                            className="season"
+                            data-name="spring21"
+                            onMouseOver={handler}
+                        >
                             SPR 2021
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-full -translate-y-[6%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/summer/springmodel21.png"}
-                                    alt="spring-2021"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Spring 2021 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black" data-name="winter20">
+                        <p
+                            className="season"
+                            data-name="winter20"
+                            onMouseOver={handler}
+                        >
                             W2020
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-full -translate-y-[6%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/winter/wmodel20.png"}
-                                    alt="winter-2020"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Winter 2020 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black" data-name="summ20">
+                        <p
+                            className="season"
+                            data-name="summ20"
+                            onMouseOver={handler}
+                        >
                             SUM2020
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-full -translate-y-[6%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/summer/summodel20.png"}
-                                    alt="summer-2020"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Summer 2020 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black" data-name="autumn20">
+                        <p
+                            className="season"
+                            data-name="autumn20"
+                            onMouseOver={handler}
+                        >
                             S/AUT2020
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-full -translate-y-[6%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/autumn/autmodel20.png"}
-                                    alt="autumn-2020"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                S/Autumn 2020 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black" data-name="winter19">
+                        <p
+                            className="season"
+                            data-name="winter19"
+                            onMouseOver={handler}
+                        >
                             WINTER 2019
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-full -translate-y-[6%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/winter/wmodel19.png"}
-                                    alt="winter-19"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Winter 2019 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black" data-name="winter17">
+                        <p
+                            className="season"
+                            data-name="winter17"
+                            onMouseOver={handler}
+                        >
                             WINTR 2017
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute top-full -translate-y-[6%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/winter/wmodel17.png"}
-                                    alt="winter-2017"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Winter 2017 collection
-                            </p>
-                        </div>
                     </div>
                 </div>
                 {/* break here */}
-                <div className="-rotate-90 flex flex-col items-center gap-1 h-min">
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                <div className="-rotate-90 flex flex-col items-center gap-1 h-min [grid-column:3/-1] leading-8 cursor-pointer [font-size:max(1.5em,_1em_+_1.5cqi)] font-light text-gray-400">
+                    <div className="hover:text-black  ">
+                        <p
+                            className="season"
+                            data-name="summ17"
+                            onMouseOver={handler}
+                        >
                             SUM2017
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute -top-[9px] -translate-y-[90%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/summer/summodel17.png"}
-                                    alt="summer-2017"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Summer 2017 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black  ">
+                        <p
+                            className="season"
+                            data-name="winter22"
+                            onMouseOver={handler}
+                        >
                             W2022
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute -top-[9px] -translate-y-[90%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/winter/wmodel9.png"}
-                                    alt="winter-2022"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                F/W 2022 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black  ">
+                        <p
+                            className="season"
+                            data-name="autumn22"
+                            onMouseOver={handler}
+                        >
                             AUT2022
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute -top-[9px] -translate-y-[90%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/autumn/autmodel9.png"}
-                                    alt="autumn-2022"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Autumn 2022 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black  ">
+                        <p
+                            className="season"
+                            data-name="summ22"
+                            onMouseOver={handler}
+                        >
                             SUMM2022
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute -top-[9px] -translate-y-[90%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/summer/summodel9.png"}
-                                    alt="summer-2022"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Summer 2022
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black  ">
+                        <p
+                            className="season"
+                            data-name="winter21"
+                            onMouseOver={handler}
+                        >
                             WINTER 2021
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute -top-[9px] -translate-y-[90%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/winter/wmodel21.png"}
-                                    alt="winter-2021"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Winter 2021 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black  ">
+                        <p
+                            className="season"
+                            data-name="summ21"
+                            onMouseOver={handler}
+                        >
                             SUMM 2021
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute -top-[9px] -translate-y-[90%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/summer/summodel21.png"}
-                                    alt="summer-2021"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Summer 2021 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black  ">
+                        <p
+                            className="season"
+                            data-name="spring21"
+                            onMouseOver={handler}
+                        >
                             SPR 2021
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute -top-[9px] -translate-y-[90%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/summer/springmodel21.png"}
-                                    alt="spring-2021"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Spring 2021 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black  ">
+                        <p
+                            className="season"
+                            data-name="winter20"
+                            onMouseOver={handler}
+                        >
                             W2020
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute -top-[9px] -translate-y-[90%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/winter/wmodel20.png"}
-                                    alt="winter-2020"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center-text-neutral-800">
-                                Winter 2020 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black  ">
+                        <p
+                            className="season"
+                            data-name="summ20"
+                            onMouseOver={handler}
+                        >
                             SUM2020
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute -top-[9px] -translate-y-[90%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/summer/summodel20.png"}
-                                    alt="summer-2020"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Summer 2020 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black  ">
+                        <p
+                            className="season"
+                            data-name="autumn20"
+                            onMouseOver={handler}
+                        >
                             S/AUT2020
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute -top-[9px] -translate-y-[90%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/autumn/autmodel20.png"}
-                                    alt="autumn-2020"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                S/Autumn 2020 collection
-                            </p>
-                        </div>
                     </div>
-                    <div className=" text-5xl font-light inline text-gray-400 ">
-                        <p className="hover:text-black cursor-pointer season">
+                    <div className="hover:text-black">
+                        <p
+                            className="season"
+                            data-name="winter19"
+                            onMouseOver={handler}
+                        >
                             WINTER 2019
                         </p>
-                        <div className="flex flex-col gap-1 w-60 h-72 bg-white absolute -top-[9px] -translate-y-[90%] left-1/2 -translate-x-1/2 opacity-0 rotate-90">
-                            <div className="relative h-[95%]">
-                                <Image
-                                    src={"/winter/wmodel19.png"}
-                                    alt="winter-19"
-                                    fill={true}
-                                />
-                            </div>
-                            <p className="text-sm self-center text-neutral-800">
-                                Winter 2019 collection
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -445,7 +463,7 @@ const Collections = () => {
                         Winter 2021
                     </p>
                 </div>
-                <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
+                <div className="w-64 h-80 md:w-2/5 md:h-96 gap-1 shrink-0  flex flex-col">
                     <div className="relative h-[95%]">
                         <Image
                             src={"/summer/summodel21.png"}

@@ -5,15 +5,12 @@ import Image from "next/image";
 import { client } from "../../../../sanity/lib/client";
 import { IoArrowForward, IoArrowBack } from "react-icons/io5";
 import { urlForImage } from "../../../../sanity/lib/image";
+import { Skeleton } from "@/components/ui/skeleton";
+import ItemLoading from "@/components/ui/itemLoading";
 const NewArrivals = async () => {
     const getProducts = async () => {
         const res = await client.fetch(
-            `*[_type=='product'] | order(_createdAt desc)[0..5]`,
-            {
-                next: {
-                    revalidate: 3600,
-                },
-            }
+            `*[_type=='product'] | order(_createdAt desc)[0..5]`
         );
         return res;
     };
@@ -84,3 +81,26 @@ const NewItem = ({ product }) => {
 };
 
 export default NewArrivals;
+
+export const ArrivalsLoading = () => {
+    return (
+        <div className="flex flex-col gap-2 lg:gap-4 px-2 md:px-5 lg:p-10 lg:min-h-screen justify-start lg:justify-center lg:border lg:border-gray-400 lg:rounded-3xl mt-14  md:mt-20 lg:mt-5 ">
+            <div className="flex justify-between">
+                <div className="text-xl md:text-4xl font-medium">
+                    <h2>NEW ARRIVALS</h2>
+                </div>
+                <Skeleton className="px-2 py-1 w-32 rounded-none hidden md:block" />
+            </div>
+            <div className="grid grid-flow-col auto-rows-auto gap-3 py-2 overflow-scroll hidescroll">
+                {Array.from({ length: 4 }, (_, i) => (
+                    <ItemLoading key={i} />
+                ))}
+            </div>
+            <Skeleton className="h-11 self-stretch py-4 md:hidden" />
+            <div className="hidden lg:flex gap-1">
+                <Skeleton className="rounded-full w-10 h-10" />
+                <Skeleton className="rounded-full w-10 h-10 " />
+            </div>
+        </div>
+    );
+};
