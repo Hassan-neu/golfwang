@@ -7,7 +7,7 @@ import TabBtn from "@/components/pages/info/tabBtn";
 const Page = () => {
     const [info, setInfo] = useState("shipping");
     return (
-        <main className="flex flex-col gap-6 px-2 md:px-5 lg:px-10 min-h-screen border-t">
+        <main className="flex flex-col gap-6 px-2 md:px-5 lg:px-10 min-h-screen border-t mb-5">
             <div className="text-5xl lg:text-6xl font-semibold border-b py-4 lg:py-6">
                 <h1>INFO</h1>
             </div>

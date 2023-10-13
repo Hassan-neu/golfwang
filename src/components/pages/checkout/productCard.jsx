@@ -12,12 +12,14 @@ const ProductCard = ({ product }) => {
     } = product;
     return (
         <div className="flex gap-2 border-b w-full py-2">
-            <div className="w-[180px] h-[210px] relative border shrink-0 bg-[#f2f2f2] bg-[url('/home/noise.png')]">
-                <Image
-                    src={urlForImage(images[0]).url()}
-                    alt={name}
-                    fill={true}
-                />
+            <div className="w-[180px] h-[210px] border shrink-0 bg-[#f2f2f2] bg-[url('/home/noise.png')] flex">
+                <div className="relative w-40 h-40 m-auto">
+                    <Image
+                        src={urlForImage(images[0]).url()}
+                        alt={name}
+                        fill={true}
+                    />
+                </div>
             </div>
             <div className="flex text-sm font-medium flex-col md:flex-row md:w-full">
                 <div className="flex flex-col gap-2 text-opacity-50 text-black">

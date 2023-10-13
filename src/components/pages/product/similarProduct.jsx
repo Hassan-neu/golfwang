@@ -10,7 +10,6 @@ const SimilarProducts = async ({ slug, category }) => {
         );
         return res;
     };
-    await new Promise((resolve) => setTimeout(resolve, 50000));
     const { similar } = await getProducts();
 
     return (

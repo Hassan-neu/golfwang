@@ -20,7 +20,7 @@ const Page = async ({ params: { category }, searchParams }) => {
         return <NotFound />;
     }
     return (
-        <div className="px-2 md:px-5 lg:px-10">
+        <div className="px-2 md:px-5 lg:px-10 mb-5">
             <Banner />
             <Suspense fallback={<ItemsLoading />}>
                 <ShopItems category={category} searchParams={searchParams} />

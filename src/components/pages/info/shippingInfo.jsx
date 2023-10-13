@@ -1,6 +1,11 @@
 import React from "react";
-import Accordion from "./infoAccordion";
 import { policies } from "@/utils/policies";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
 const ShippingInfo = () => {
     return (
         <div className="flex flex-col gap-6 w-full md:w-3/5">
@@ -10,9 +15,22 @@ const ShippingInfo = () => {
                 items in transit once the order has been shipped from the
                 warehouse.
             </p>
-            {policies.map((policy) => (
-                <Accordion key={policy.id} policy={policy} />
-            ))}
+            <Accordion type="multiple">
+                {policies.map((policy) => (
+                    <AccordionItem
+                        key={policy.id}
+                        value={policy.title}
+                        className="border-none"
+                    >
+                        <AccordionTrigger className="font-semibold text-xs md:text-sm uppercase data-[state=open]:underline">
+                            {policy.title}
+                        </AccordionTrigger>
+                        <AccordionContent className="text-xs md:text-sm lg:text-base">
+                            {policy.content}
+                        </AccordionContent>
+                    </AccordionItem>
+                ))}
+            </Accordion>
         </div>
     );
 };

@@ -10,9 +10,6 @@
 .hidescroll::-webkit-scrollbar {
     display: none;
 }
-.season:hover + div {
-    opacity: 1;
-}
 .marquee {
     animation: marquee 100s infinite linear;
 }

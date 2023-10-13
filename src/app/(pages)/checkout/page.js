@@ -13,7 +13,7 @@ const Page = () => {
     const products = useCartStore((cart) => cart.products);
     const totalQty = useCartStore((cart) => cart.totalQty);
     return (
-        <div className="flex flex-col gap-6 px-2 md:px-5 lg:px-10 min-h-screen">
+        <div className="flex flex-col gap-6 px-2 md:px-5 lg:px-10 min-h-screen mb-5">
             <div className="text-4xl md:text-6xl font-semibold border-b py-4">
                 <h1>CHECKOUT</h1>
             </div>

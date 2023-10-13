@@ -9,7 +9,7 @@ const Product = async ({ slug }) => {
         );
         return res;
     };
-    await new Promise((resolve) => setTimeout(resolve, 10000));
+
     const product = await getProduct();
     return <SingleProduct product={product} />;
 };

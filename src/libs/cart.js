@@ -15,7 +15,7 @@ const CartStore = (set) => ({
             );
             if (checkItem) {
                 return toast({
-                    description: `${product.name.toUpperCase()} already in cart`,
+                    description: `${product.name.toUpperCase()} is already in cart`,
                 });
             }
             return (

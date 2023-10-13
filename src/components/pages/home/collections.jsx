@@ -1,18 +1,24 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import Btn from "../../shared/buttons/btn";
 import Link from "next/link";
 import Image from "next/image";
 import Checkbox from "@/components/shared/checkbox";
 const Collections = () => {
+    const [agreeStatus, setAgreeStatus] = useState(false);
     const imagesLeft = useRef();
-    const seasonLeft = useRef();
     const handler = (e) => {
         Array.from(imagesLeft.current.children).map((child) =>
             child.dataset.name === e.target.dataset.name
                 ? child.style.setProperty("opacity", 1)
                 : child.style.setProperty("opacity", 0)
         );
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const formJSON = Object.fromEntries(formData.entries());
+        console.log(formJSON);
     };
     return (
         <div className="flex flex-col gap-3 lg:gap-6 px-2 md:px-5 lg:p-10 lg:min-h-[110vh] justify-center lg:border border-gray-400 rounded-3xl mt-14 lg:mt-5">
@@ -24,7 +30,7 @@ const Collections = () => {
                     <Link href={"/collections"}>SHOW MORE</Link>
                 </Btn>
             </div>
-            <div className="hidden overflow-hidden border-t lg:grid grid-cols-[1fr_240px_1fr] grid-rows-1 justify-center items-center py-2 h-3/5 relative">
+            <div className="hidden overflow-hidden border-t lg:grid grid-cols-[1fr_minmax(200px,240px)_1fr] grid-rows-1 justify-center items-center py-2 h-3/5 relative">
                 <div
                     className="[grid-column:2/3] h-full relative"
                     ref={imagesLeft}
@@ -211,102 +217,59 @@ const Collections = () => {
                     </div>
                 </div>
 
-                <div
-                    className="-rotate-90 flex flex-col items-center gap-1 h-min leading-8 [grid-column:1/2] [grid-row:1/2] cursor-pointer [font-size:max(1.5em,_1em_+_1.5cqi)] font-light text-gray-400"
-                    ref={seasonLeft}
-                >
+                <div className="-rotate-90 flex flex-col items-center gap-1 h-min leading-8 [grid-column:1/2] [grid-row:1/2] cursor-pointer [font-size:max(1.5em,_1em_+_1.5cqi)] font-light text-gray-400">
                     <div className="hover:text-black">
                         <p data-name="winter22" onMouseOver={handler}>
                             W2022
                         </p>
                     </div>
                     <div className="hover:text-black" data-name="autumn22">
-                        <p
-                            className="season"
-                            data-name="autumn22"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="autumn22" onMouseOver={handler}>
                             AUT2022
                         </p>
                     </div>
                     <div className="hover:text-black" data-name="summ22">
-                        <p
-                            className="season"
-                            data-name="summ22"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="summ22" onMouseOver={handler}>
                             SUMM2022
                         </p>
                     </div>
                     <div className="hover:text-black" data-name="winter21">
-                        <p
-                            className="season"
-                            data-name="winter21"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="winter21" onMouseOver={handler}>
                             WINTER 2021
                         </p>
                     </div>
                     <div className="hover:text-black" data-name="summ21">
-                        <p
-                            className="season"
-                            data-name="summ21"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="summ21" onMouseOver={handler}>
                             SUMM 2021
                         </p>
                     </div>
                     <div className="hover:text-black" data-name="spring21">
-                        <p
-                            className="season"
-                            data-name="spring21"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="spring21" onMouseOver={handler}>
                             SPR 2021
                         </p>
                     </div>
                     <div className="hover:text-black" data-name="winter20">
-                        <p
-                            className="season"
-                            data-name="winter20"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="winter20" onMouseOver={handler}>
                             W2020
                         </p>
                     </div>
                     <div className="hover:text-black" data-name="summ20">
-                        <p
-                            className="season"
-                            data-name="summ20"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="summ20" onMouseOver={handler}>
                             SUM2020
                         </p>
                     </div>
                     <div className="hover:text-black" data-name="autumn20">
-                        <p
-                            className="season"
-                            data-name="autumn20"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="autumn20" onMouseOver={handler}>
                             S/AUT2020
                         </p>
                     </div>
                     <div className="hover:text-black" data-name="winter19">
-                        <p
-                            className="season"
-                            data-name="winter19"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="winter19" onMouseOver={handler}>
                             WINTER 2019
                         </p>
                     </div>
                     <div className="hover:text-black" data-name="winter17">
-                        <p
-                            className="season"
-                            data-name="winter17"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="winter17" onMouseOver={handler}>
                             WINTR 2017
                         </p>
                     </div>
@@ -314,101 +277,57 @@ const Collections = () => {
                 {/* break here */}
                 <div className="-rotate-90 flex flex-col items-center gap-1 h-min [grid-column:3/-1] leading-8 cursor-pointer [font-size:max(1.5em,_1em_+_1.5cqi)] font-light text-gray-400">
                     <div className="hover:text-black  ">
-                        <p
-                            className="season"
-                            data-name="summ17"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="summ17" onMouseOver={handler}>
                             SUM2017
                         </p>
                     </div>
                     <div className="hover:text-black  ">
-                        <p
-                            className="season"
-                            data-name="winter22"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="winter22" onMouseOver={handler}>
                             W2022
                         </p>
                     </div>
                     <div className="hover:text-black  ">
-                        <p
-                            className="season"
-                            data-name="autumn22"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="autumn22" onMouseOver={handler}>
                             AUT2022
                         </p>
                     </div>
                     <div className="hover:text-black  ">
-                        <p
-                            className="season"
-                            data-name="summ22"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="summ22" onMouseOver={handler}>
                             SUMM2022
                         </p>
                     </div>
                     <div className="hover:text-black  ">
-                        <p
-                            className="season"
-                            data-name="winter21"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="winter21" onMouseOver={handler}>
                             WINTER 2021
                         </p>
                     </div>
                     <div className="hover:text-black  ">
-                        <p
-                            className="season"
-                            data-name="summ21"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="summ21" onMouseOver={handler}>
                             SUMM 2021
                         </p>
                     </div>
                     <div className="hover:text-black  ">
-                        <p
-                            className="season"
-                            data-name="spring21"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="spring21" onMouseOver={handler}>
                             SPR 2021
                         </p>
                     </div>
                     <div className="hover:text-black  ">
-                        <p
-                            className="season"
-                            data-name="winter20"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="winter20" onMouseOver={handler}>
                             W2020
                         </p>
                     </div>
                     <div className="hover:text-black  ">
-                        <p
-                            className="season"
-                            data-name="summ20"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="summ20" onMouseOver={handler}>
                             SUM2020
                         </p>
                     </div>
                     <div className="hover:text-black  ">
-                        <p
-                            className="season"
-                            data-name="autumn20"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="autumn20" onMouseOver={handler}>
                             S/AUT2020
                         </p>
                     </div>
                     <div className="hover:text-black">
-                        <p
-                            className="season"
-                            data-name="winter19"
-                            onMouseOver={handler}
-                        >
+                        <p data-name="winter19" onMouseOver={handler}>
                             WINTER 2019
                         </p>
                     </div>
@@ -574,7 +493,10 @@ const Collections = () => {
                             and special offers
                         </p>
                     </div>
-                    <form className="flex flex-col md:flex-row gap-4 md:gap-2 w-full">
+                    <form
+                        className="flex flex-col md:flex-row gap-4 md:gap-2 w-full"
+                        onSubmit={handleSubmit}
+                    >
                         <input
                             type="email"
                             name="email"
@@ -582,13 +504,17 @@ const Collections = () => {
                             placeholder="E-mail"
                             className="border border-black focus:outline-none px-4 py-3 lg:py-2 w-full placeholder:text-sm"
                         />
-                        <Btn className="bg-black px-4 py-4  lg:py-2 text-white text-xs">
+                        <Btn
+                            className="bg-black px-4 py-4  lg:py-2 text-white text-xs"
+                            disabled={!agreeStatus}
+                        >
                             SUBSCRIBE
                         </Btn>
                     </form>
                     <Checkbox
                         name="agreement"
-                        onChange={(e) => console.log(e.target.checked)}
+                        checked={agreeStatus}
+                        onChange={() => setAgreeStatus(!agreeStatus)}
                     >
                         <p className="text-xs">
                             I agree to{" "}

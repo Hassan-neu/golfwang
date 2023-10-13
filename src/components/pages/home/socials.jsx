@@ -5,7 +5,7 @@ import Btn from "../../shared/buttons/btn";
 
 const Socials = () => {
     return (
-        <div className="flex flex-col gap-2 lg:gap-6 px-2 py-2 md:px-5 lg:px-10 lg:justify-end md:h-[50vh] lg:h-[70vh] lg:border border-gray-400 rounded-3xl mt-14 lg:mt-5">
+        <div className="flex flex-col gap-2 lg:gap-6 px-2 py-2 md:px-5 lg:px-10 lg:justify-end md:h-[50vh] lg:h-[70vh] lg:border border-gray-400 rounded-3xl my-14 lg:my-5">
             <div className="text-xl md:text-4xl font-medium">
                 <h2>SOCIAL MEDIA</h2>
             </div>
