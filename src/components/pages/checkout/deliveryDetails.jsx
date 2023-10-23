@@ -15,83 +15,70 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useFormik } from "formik";
 const DeliveryDetails = () => {
     const totalPrice = useCartStore((cart) => cart.totalPrice);
     const updateTotalCost = useCartStore((cart) => cart.updateTotalCost);
     const [isChecked, setIsChecked] = useState(false);
     const router = useRouter();
     // const [shippingFee, setShippingFee] = useState(0);
-    const [details, setDetails] = useState({
-        firstname: "",
-        lastname: "",
-        email: "",
-        phone: "",
-        shipping: "",
-        shippingFee: 0,
-        paymentMode: "",
+    const formik = useFormik({
+        initialValues: {
+            firstname: "",
+            lastname: "",
+            email: "",
+            phone: "",
+            shipping: "",
+            payment: "",
+        },
+        onSubmit,
     });
-    const fee = details.shipping === "international" ? 30 : 0;
+    async function onSubmit(values, { resetForm }) {
+        console.log(values);
+    }
     const handleChange = (e) => {
-        setDetails((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-        }));
-    };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const formJson = Object.fromEntries(formData.entries());
-        console.log(formJson);
-        router.push(details.paymentMode);
+        console.log({ [e.target.name]: e.target.value });
     };
     return (
         <div className="flex flex-col gap-6 w-full lg:w-1/2 h-full sticky top-14">
-            <form
-                className="flex flex-col gap-6"
-                onSubmit={handleSubmit}
-                id="details"
-            >
+            <form className="flex flex-col gap-6">
                 <div className="flex flex-col gap-4">
                     <h3 className="text-xl font-medium">CONTACT INFORMATION</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 auto-rows-auto gap-2">
                         <input
                             type="text"
                             name="firstname"
-                            id="firstname"
                             required={true}
                             placeholder="First name"
                             className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm"
-                            onChange={handleChange}
+                            {...formik.getFieldProps("firstname")}
                         />
                         <input
                             type="text"
                             name="lastname"
-                            id="lastname"
                             required={true}
                             placeholder="Last name"
                             className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm"
-                            onChange={handleChange}
+                            {...formik.getFieldProps("lastname")}
                         />
                         <input
                             type="email"
                             name="email"
-                            id="email"
                             required={true}
                             placeholder="E-mail"
                             className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm"
-                            onChange={handleChange}
+                            {...formik.getFieldProps("email")}
                         />
                         <input
                             type="tel"
                             name="phone"
-                            id="phone"
                             placeholder="Phone"
                             className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm"
-                            onChange={handleChange}
+                            {...formik.getFieldProps("phone")}
                         />
                     </div>
                 </div>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2">
                     <div className="flex justify-between items-center pb-3 border-b">
                         <h3 className="text-xl font-medium ">DELIVERY</h3>
                         <div className="text-xs underline">
@@ -104,22 +91,25 @@ const DeliveryDetails = () => {
                     <Accordion
                         type="single"
                         className="flex flex-col gap-2"
-                        onValueChange={(value) => console.log(value)}
+                        onValueChange={(value) =>
+                            formik.setFieldValue("shipping", value)
+                        }
                     >
                         <AccordionItem value="domestic">
-                            <AccordionTrigger className="hover:no-underline flex [&>svg]:hidden py-2">
-                                <div className="flex gap-2 items-baseline w-full">
+                            <AccordionTrigger className="hover:no-underline flex [&>svg]:hidden p-0">
+                                <div className="flex gap-2 items-baseline w-full h-full">
                                     <Radio
                                         type="radio"
                                         name="shipping"
                                         id="domestic"
                                         value={"domestic"}
-                                        onChange={handleChange}
+                                        checked={
+                                            formik.values.shipping ===
+                                            "domestic"
+                                        }
+                                        readOnly={true}
                                     />
-                                    <label
-                                        htmlFor="domestic"
-                                        className="flex justify-between w-full"
-                                    >
+                                    <div className="flex justify-between w-full">
                                         <div className="flex flex-col gap-[2px] items-start">
                                             <h2 className="text-sm font-medium">
                                                 DOMESTIC SHIPPING
@@ -132,7 +122,7 @@ const DeliveryDetails = () => {
                                         <div className="text-sm font-medium self-start">
                                             <h2>FREE</h2>
                                         </div>
-                                    </label>
+                                    </div>
                                 </div>
                             </AccordionTrigger>
                             <AccordionContent>
@@ -140,20 +130,20 @@ const DeliveryDetails = () => {
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="international">
-                            <AccordionTrigger className="hover:no-underline [&>svg]:hidden py-2">
-                                <div className="flex gap-2 items-baseline w-full">
+                            <AccordionTrigger className="hover:no-underline [&>svg]:hidden py-0">
+                                <div className="flex gap-2 items-baseline w-full h-full">
                                     <Radio
                                         type="radio"
                                         name="shipping"
                                         id="international"
                                         value={"international"}
-                                        onChange={handleChange}
+                                        checked={
+                                            formik.values.shipping ===
+                                            "international"
+                                        }
+                                        readOnly={true}
                                     />
-
-                                    <label
-                                        htmlFor="international"
-                                        className="flex justify-between w-full"
-                                    >
+                                    <div className="flex justify-between w-full">
                                         <div className="flex flex-col gap-[2px] items-start">
                                             <h2 className="text-sm font-medium">
                                                 INTERNATIONAL SHIPPING
@@ -165,7 +155,7 @@ const DeliveryDetails = () => {
                                         <div className="text-sm font-medium self-start">
                                             <h2>$30</h2>
                                         </div>
-                                    </label>
+                                    </div>
                                 </div>
                             </AccordionTrigger>
                             <AccordionContent>
@@ -183,10 +173,15 @@ const DeliveryDetails = () => {
                             <div className="flex gap-2 items-center">
                                 <Radio
                                     type="radio"
-                                    name="paymentMode"
+                                    name="payment"
                                     id="flutterwave"
                                     value={"flutterwave"}
-                                    onChange={handleChange}
+                                    checked={
+                                        formik.values.payment === "flutterwave"
+                                    }
+                                    onChange={
+                                        formik.getFieldProps("payment").onChange
+                                    }
                                 />
 
                                 <h2 className="text-sm font-medium">
@@ -206,10 +201,15 @@ const DeliveryDetails = () => {
                             <div className="flex gap-2 items-center">
                                 <Radio
                                     type="radio"
-                                    name="paymentMode"
+                                    name="payment"
                                     id="paystack"
                                     value={"paystack"}
-                                    onChange={handleChange}
+                                    checked={
+                                        formik.values.payment === "paystack"
+                                    }
+                                    onChange={
+                                        formik.getFieldProps("payment").onChange
+                                    }
                                 />
 
                                 <h2 className="text-sm font-medium">
@@ -247,7 +247,7 @@ const DeliveryDetails = () => {
                 </div>
                 <div className="flex justify-between pb-3 border-b text-gray-400">
                     <h3 className="text-sm font-medium">SHIPPING</h3>
-                    <p>${fee}</p>
+                    <p>$30</p>
                 </div>
                 <div className="flex justify-between pb-3 border-b text-4xl text-black">
                     <h3>TOTAL</h3>
@@ -270,7 +270,7 @@ const DeliveryDetails = () => {
                 <Btn
                     className="w-full py-3 text-sm text-white bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black"
                     disabled={!isChecked}
-                    form="details"
+                    onClick={() => formik.submitForm()}
                 >
                     PAY AND MAKE ORDER
                 </Btn>

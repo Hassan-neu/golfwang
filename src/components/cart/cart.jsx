@@ -37,11 +37,9 @@ const Cart = () => {
                 </li>
             </SheetTrigger>
             <SheetContent className="flex flex-col h-screen w-full sm:max-w-full  lg:w-[45%] py-4 px-2 md:px-5 lg:px-10  bg-white">
-                <SheetHeader className={"pb-4 border-b self-start"}>
-                    <SheetTitle className="relative -top-1">
-                        <h2 className="text-xl font-normal">
-                            YOUR CART ({totalQty})
-                        </h2>
+                <SheetHeader className={"pb-4 border-b "}>
+                    <SheetTitle className="relative -top-1 text-xl font-normal text-left">
+                        YOUR CART ({totalQty})
                     </SheetTitle>
                 </SheetHeader>
                 <div className="h-full flex flex-col overflow-scroll hidescroll pt-2">
