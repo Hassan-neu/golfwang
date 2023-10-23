@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Domestic = ({ handleChange }) => {
+export const Domestic = ({ formik }) => {
     return (
         <div className="grid grid-cols-2 auto-rows-auto gap-2">
             <input
@@ -9,14 +9,14 @@ export const Domestic = ({ handleChange }) => {
                 placeholder="Address"
                 required={true}
                 className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3]"
-                onChange={handleChange}
+                {...formik.getFieldProps("address")}
             />
             <input
                 type="text"
                 name="apartment"
                 placeholder="Apartment, suite, etc (optional)"
                 className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3]"
-                onChange={handleChange}
+                {...formik.getFieldProps("apartment")}
             />
             <input
                 type="text"
@@ -24,7 +24,7 @@ export const Domestic = ({ handleChange }) => {
                 placeholder="City"
                 required={true}
                 className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/2]"
-                onChange={handleChange}
+                {...formik.getFieldProps("city")}
             />
             <input
                 type="number"
@@ -33,13 +33,13 @@ export const Domestic = ({ handleChange }) => {
                 required={true}
                 className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm
                 [grid-column:2/3]"
-                onChange={handleChange}
+                {...formik.getFieldProps("zipcode")}
             />
         </div>
     );
 };
 
-export const International = ({ handleChange }) => {
+export const International = ({ formik }) => {
     return (
         <div className="grid grid-cols-2 auto-rows-auto gap-2">
             <input
@@ -48,7 +48,7 @@ export const International = ({ handleChange }) => {
                 placeholder="Country"
                 required={true}
                 className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3]"
-                onChange={handleChange}
+                {...formik.getFieldProps("country")}
             />
             <input
                 type="text"
@@ -56,14 +56,14 @@ export const International = ({ handleChange }) => {
                 placeholder="Address"
                 required={true}
                 className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3]"
-                onChange={handleChange}
+                {...formik.getFieldProps("address")}
             />
             <input
                 type="text"
                 name="apartment"
                 placeholder="Apartment, suite, etc (optional)"
                 className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3]"
-                onChange={handleChange}
+                {...formik.getFieldProps("apartment")}
             />
             <input
                 type="text"
@@ -71,7 +71,7 @@ export const International = ({ handleChange }) => {
                 placeholder="City"
                 required={true}
                 className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/2]"
-                onChange={handleChange}
+                {...formik.getFieldProps("city")}
             />
             <input
                 type="number"
@@ -80,7 +80,7 @@ export const International = ({ handleChange }) => {
                 required={true}
                 className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm
                 [grid-column:2/3]"
-                onChange={handleChange}
+                {...formik.getFieldProps("zipcode")}
             />
         </div>
     );

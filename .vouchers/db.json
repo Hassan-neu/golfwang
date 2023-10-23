@@ -1,0 +1,28 @@
+{
+    "vouchers": [
+        {
+            "id": "VOUCHER123",
+            "code": "VOUCHER123",
+            "value": 25.0,
+            "expirationDate": "2023-12-31",
+            "redeemed": false,
+            "redeemedDate": null
+        },
+        {
+            "id": "DISCOUNT50",
+            "code": "DISCOUNT50",
+            "value": 50.0,
+            "expirationDate": "2024-06-30",
+            "redeemed": false,
+            "redeemedDate": null
+        },
+        {
+            "id": "FREESHIP",
+            "code": "FREESHIP",
+            "value": 0.0,
+            "expirationDate": "2023-10-31",
+            "redeemed": true,
+            "redeemedDate": "2023-10-15"
+        }
+    ]
+}

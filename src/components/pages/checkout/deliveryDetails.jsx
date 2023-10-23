@@ -30,6 +30,11 @@ const DeliveryDetails = () => {
             phone: "",
             shipping: "",
             payment: "",
+            address: "",
+            apartment: "",
+            city: "",
+            zipcode: "",
+            country: "",
         },
         onSubmit,
     });
@@ -126,7 +131,7 @@ const DeliveryDetails = () => {
                                 </div>
                             </AccordionTrigger>
                             <AccordionContent>
-                                <Domestic handleChange={handleChange} />
+                                <Domestic formik={formik} />
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="international">
@@ -159,7 +164,7 @@ const DeliveryDetails = () => {
                                 </div>
                             </AccordionTrigger>
                             <AccordionContent>
-                                <International handleChange={handleChange} />
+                                <International formik={formik} />
                             </AccordionContent>
                         </AccordionItem>
                     </Accordion>
