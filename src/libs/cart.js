@@ -1,12 +1,13 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { toast } from "@/components/ui/use-toast";
-import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import ghostSwipe from "@/utils/functions/ghostSwipe";
 const CartStore = (set) => ({
     products: [],
     totalPrice: 0,
     totalCost: 0,
+    shipping: 0,
+    discount: 0,
     totalQty: 0,
     addProduct: (product, ghost) =>
         set((prev) => {
@@ -58,8 +59,15 @@ const CartStore = (set) => ({
                 0
             ),
         })),
-    updateTotalCost: (fee) =>
-        set((prev) => ({ totalCost: prev.totalPrice + fee })),
+    updateTotalCost: () =>
+        set((prev) => ({
+            totalCost: prev.totalPrice + prev.shipping - prev.discount,
+        })),
+    updateShipping: (ship) =>
+        set(() =>
+            ship === "international" ? { shipping: 30 } : { shipping: 0 }
+        ),
+    updateDiscount: (value) => set(() => ({ discount: value })),
 });
 
 export const useCartStore = create(devtools(CartStore));

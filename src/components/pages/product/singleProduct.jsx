@@ -12,6 +12,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 const SingleProduct = ({ product }) => {
     const addProduct = useCartStore((cart) => cart.addProduct);
     const updatePrice = useCartStore((cart) => cart.updatePrice);
+    const updateTotalCost = useCartStore((cart) => cart.updateTotalCost);
     const updateTotalQty = useCartStore((cart) => cart.updateTotalQty);
     const ghost = useRef();
     const [order, setOrder] = useState({
@@ -33,6 +34,7 @@ const SingleProduct = ({ product }) => {
             ghost
         );
         updatePrice();
+        updateTotalCost();
         updateTotalQty();
     };
     return (

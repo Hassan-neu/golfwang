@@ -18,6 +18,7 @@ const ProductCard = ({ product }) => {
     const deleteProduct = useCartStore((cart) => cart.deleteProduct);
     const updateQty = useCartStore((cart) => cart.updateQty);
     const updatePrice = useCartStore((cart) => cart.updatePrice);
+    const updateTotalCost = useCartStore((cart) => cart.updateTotalCost);
     const updateTotalQty = useCartStore((cart) => cart.updateTotalQty);
     const updateItemTotal = useCartStore((cart) => cart.itemTotal);
     const removeItem = () => {
@@ -30,6 +31,7 @@ const ProductCard = ({ product }) => {
         updateItemTotal(_id);
         updateTotalQty();
         updatePrice();
+        updateTotalCost();
     };
     return (
         <div className="flex gap-4 border-b w-full py-2">
