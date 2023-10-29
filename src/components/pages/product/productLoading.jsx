@@ -10,7 +10,7 @@ const ProductLoading = () => {
                 </div>
             </div>
             <div className="flex flex-col lg:flex-row gap-4 h-full">
-                <div className="flex lg:w-3/5 h-full md:h-[80vh] lg:h-screen relative">
+                <div className="flex lg:w-3/5 h-full md:h-[60vh] lg:h-screen relative">
                     <Skeleton className="w-full h-80 md:h-full" />
                 </div>
                 <div className="flex flex-col gap-7 lg:gap-14 lg:w-2/5">

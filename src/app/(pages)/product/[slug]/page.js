@@ -18,7 +18,7 @@ export const generateMetadata = async ({ params: { slug } }) => {
 };
 const Page = async ({ params: { slug } }) => {
     return (
-        <div className="mt-10 flex flex-col gap-2 px-2 md:px-5 lg:px-10 min-h-screen mb-5">
+        <div className="mt-5 lg:mt-10 flex flex-col gap-2 px-2 md:px-5 lg:px-10 min-h-screen mb-5">
             <Suspense fallback={<ProductLoading />}>
                 <Product slug={slug} />
             </Suspense>

@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
     };
     return (
         <div className="flex gap-4 border-b w-full py-2">
-            <div className="w-56 h-60 relative border shrink-0 bg-[#f2f2f2] bg-[url('/home/noise.png')]">
+            <div className="w-36 h-40 md:w-[180px] md:h-[210px] lg:w-56 lg:h-60 relative border shrink-0 bg-[#f2f2f2] bg-[url('/home/noise.png')]">
                 <Image
                     src={urlForImage(images[0]).url()}
                     alt={name}
@@ -45,13 +45,17 @@ const ProductCard = ({ product }) => {
             <div className="flex flex-col w-full">
                 <div className="flex flex-col md:flex-row">
                     <div className="flex flex-col gap-2">
-                        <h3 className="text-sm font-bold uppercase">{name}</h3>
-                        <p className="text-neutral-400 text-sm">
-                            Color: <span>{color.toUpperCase()}</span>
+                        <h3 className="text-xs md:text-sm font-bold uppercase">
+                            {name}
+                        </h3>
+                        <p className="text-neutral-400 text-xs md:text-sm capitalize">
+                            Color: <span>{color}</span>
                         </p>
-                        <p className="block text-neutral-900">${price}</p>
+                        <p className="text-neutral-900 text-xs md:text-sm">
+                            ${price}
+                        </p>
                     </div>
-                    <div className="flex flex-col md:flex-row gap-10 md:ml-auto">
+                    <div className="hidden md:flex flex-col md:flex-row gap-10 md:ml-auto">
                         <h3 className="text-sm font-bold">${itemTotal}</h3>
                     </div>
                 </div>
@@ -61,9 +65,12 @@ const ProductCard = ({ product }) => {
                         value={qty}
                         min={1}
                         onChange={changeQty}
-                        className="border border-black p-1 w-14"
+                        className="border border-black p-1 w-14 h-7 md:h-auto"
                     />
-                    <Btn className="underline" onClick={removeItem}>
+                    <Btn
+                        className="underline text-[10px] md:text-base"
+                        onClick={removeItem}
+                    >
                         REMOVE
                     </Btn>
                 </div>

@@ -30,7 +30,7 @@ const CartItem = ({ children }) => {
                     onChange={(e) => setVoucher(e.target.value)}
                 />
                 <Btn
-                    className="text-gray-400 hover:bg-black hover:text-white py-3 w-1/5 text-sm border disabled:bg-transparent disabled:hover:bg-transparent disabled:hover:text-gray-400"
+                    className="text-gray-400 lg:hover:bg-black lg:hover:text-white py-3 w-1/5 text-sm border disabled:bg-transparent lg:disabled:hover:bg-transparent lg:disabled:hover:text-gray-400"
                     onClick={handleVoucher}
                     disabled={!voucher}
                 >

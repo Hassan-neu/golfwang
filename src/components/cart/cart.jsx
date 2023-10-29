@@ -59,12 +59,12 @@ const Cart = () => {
                     </div>
                     <SheetFooter>
                         <Btn
-                            disabled={totalPrice <= 0}
+                            disabled={products.length <= 0}
                             onClick={() => {
                                 router.push("/checkout");
                                 closeCart();
                             }}
-                            className="w-full py-3 text-white font-semibold bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black"
+                            className="w-full py-3 text-white font-semibold lg:bg-[size:200%,100%] lg:bg-right lg:bg-gradient-to-r from-yellow-400 from-50% to-black to-50% lg:[transition:background_.5s] lg:hover:bg-left lg:hover:text-black bg-black disabled:bg-neutral-500 lg:disabled:bg-none lg:disabled:hover:text-white"
                         >
                             CHECKOUT
                         </Btn>
