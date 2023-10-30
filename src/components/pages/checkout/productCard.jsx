@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
                     />
                 </div>
             </div>
-            <div className="flex text-sm font-medium flex-col md:flex-row md:w-full">
+            <div className="flex text-xs md:text-sm font-medium flex-col md:flex-row md:w-full">
                 <div className="flex flex-col gap-2 text-opacity-50 text-black">
                     <h1 className="uppercase text-black">{name}</h1>
                     <p>
@@ -30,14 +30,14 @@ const ProductCard = ({ product }) => {
                     </p>
                     <p>
                         Size:&nbsp;
-                        <span className=" uppercase">{size}</span>
+                        <span className="capitalize">{size}</span>
                     </p>
                     <p className="hidden md:block">
                         Price:&nbsp;
                         <span>$&nbsp;{price}</span>
                     </p>
                 </div>
-                <div className="flex flex-col md:flex-row gap-10 md:ml-auto">
+                <div className="flex flex-col gap-2 mt-2 md:m-0 md:flex-row md:gap-10 md:ml-auto">
                     <h3 className="text-opacity-50 text-black md:uppercase">
                         Quantity:&nbsp;<span>{qty}</span>
                     </h3>

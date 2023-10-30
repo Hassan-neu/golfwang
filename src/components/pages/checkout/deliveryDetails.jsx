@@ -253,8 +253,9 @@ const DeliveryDetails = () => {
                         onChange={(e) => setVoucher(e.target.value)}
                     />
                     <Btn
-                        className="bg-black text-white py-3 md:w-1/5 text-sm border"
+                        className="bg-black text-white py-3 md:w-1/5 text-sm border disabled:bg-transparent disabled:text-black border-black border-opacity-50"
                         onClick={handleVoucher}
+                        disabled={!voucher}
                     >
                         APPLY
                     </Btn>

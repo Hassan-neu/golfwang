@@ -23,7 +23,7 @@ export const Domestic = ({ formik }) => {
                 name="city"
                 placeholder="City"
                 required={true}
-                className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/2]"
+                className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3] lg:[grid-column:1/2]"
                 {...formik.getFieldProps("city")}
             />
             <input
@@ -32,7 +32,7 @@ export const Domestic = ({ formik }) => {
                 placeholder="Zip / Postcode"
                 required={true}
                 className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm
-                [grid-column:2/3]"
+                [grid-column:1/3] lg:[grid-column:2/3]"
                 {...formik.getFieldProps("zipcode")}
             />
         </div>
@@ -47,7 +47,7 @@ export const International = ({ formik }) => {
                 name="country"
                 placeholder="Country"
                 required={true}
-                className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3]"
+                className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3] lg:[grid-column:1/3]"
                 {...formik.getFieldProps("country")}
             />
             <input
@@ -70,7 +70,7 @@ export const International = ({ formik }) => {
                 name="city"
                 placeholder="City"
                 required={true}
-                className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/2]"
+                className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3] lg:[grid-column:1/2]"
                 {...formik.getFieldProps("city")}
             />
             <input
@@ -79,7 +79,7 @@ export const International = ({ formik }) => {
                 placeholder="Zip / Postcode"
                 required={true}
                 className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm
-                [grid-column:2/3]"
+                [grid-column:1/3] lg:[grid-column:2/3]"
                 {...formik.getFieldProps("zipcode")}
             />
         </div>
