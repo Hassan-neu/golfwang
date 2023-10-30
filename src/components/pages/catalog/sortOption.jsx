@@ -6,7 +6,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import useHandleQuery from "@/utils/functions/handleQuery";
+import useHandleQuery from "@/utils/hooks/handleQuery";
 const SortOptions = () => {
     const { sortMethod } = useHandleQuery();
     return (

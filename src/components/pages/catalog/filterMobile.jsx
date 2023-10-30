@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/sheet";
 import { IoIosArrowDown } from "react-icons/io";
 import { useRouter } from "next/navigation";
-import useHandleQuery from "@/utils/functions/handleQuery";
+import useHandleQuery from "@/utils/hooks/handleQuery";
 import { useState } from "react";
 const FilterMobile = () => {
     const [openPan, setOpenPan] = useState(false);

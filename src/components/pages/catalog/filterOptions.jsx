@@ -1,5 +1,5 @@
 "use client";
-import useHandleQuery from "@/utils/functions/handleQuery";
+import useHandleQuery from "@/utils/hooks/handleQuery";
 import Btn from "@/components/shared/buttons/btn";
 import Checkbox from "@/components/shared/checkbox";
 import {

@@ -16,16 +16,17 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useFormik } from "formik";
+import { useVoucher } from "@/utils/hooks/handleDiscount";
 const DeliveryDetails = () => {
+    const { voucher, handleChange, error, handleVoucher } = useVoucher();
     const totalCost = useCartStore((cart) => cart.totalCost);
     const updateTotalCost = useCartStore((cart) => cart.updateTotalCost);
     const updateShipping = useCartStore((cart) => cart.updateShipping);
     const shipping = useCartStore((cart) => cart.shipping);
     const discount = useCartStore((cart) => cart.discount);
-    const updateDiscount = useCartStore((cart) => cart.updateDiscount);
     const [isChecked, setIsChecked] = useState(false);
     const router = useRouter();
-    const [voucher, setVoucher] = useState("");
+
     const formik = useFormik({
         initialValues: {
             firstname: "",
@@ -45,12 +46,6 @@ const DeliveryDetails = () => {
     async function onSubmit(values, { resetForm }) {
         console.log(values);
     }
-    const handleVoucher = async () => {
-        const data = await fetch(`/api/voucher?code=${voucher}`);
-        const res = await data.json();
-        updateDiscount(res.value);
-        updateTotalCost();
-    };
     return (
         <div className="flex flex-col gap-6 w-full lg:w-1/2 h-full sticky top-14">
             <form className="flex flex-col gap-6">
@@ -243,14 +238,16 @@ const DeliveryDetails = () => {
                 </div>
             </form>
             <div className="flex flex-col gap-2 lg:hidden">
-                <div className="flex flex-col md:flex-row gap-2 border-b pb-5">
+                <div className="flex flex-col md:flex-row gap-2 border-b pb-5 relative">
                     <input
                         type="text"
                         name="voucher"
                         id="voucher"
                         placeholder="Discount code"
-                        className="px-3 py-3 w-full md:w-4/5 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm"
-                        onChange={(e) => setVoucher(e.target.value)}
+                        className={`px-3 py-3 w-full md:w-4/5 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm ${
+                            error ? "border-red-500" : ""
+                        }`}
+                        onChange={handleChange}
                     />
                     <Btn
                         className="bg-black text-white py-3 md:w-1/5 text-sm border disabled:bg-transparent disabled:text-black border-black border-opacity-50"
@@ -259,6 +256,9 @@ const DeliveryDetails = () => {
                     >
                         APPLY
                     </Btn>
+                    <p className="text-red-500 text-xs absolute left-0 bottom-0 italic">
+                        {error}
+                    </p>
                 </div>
                 <div className="flex justify-between pb-3 border-b text-gray-400">
                     <h3 className="text-sm font-medium">DISCOUNT</h3>

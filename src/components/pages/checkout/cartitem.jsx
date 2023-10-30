@@ -1,31 +1,14 @@
 "use client";
 import Btn from "@/components/shared/buttons/btn";
-import React, { useState } from "react";
+import React from "react";
 import { useCartStore } from "@/libs/cart";
+import { useVoucher } from "@/utils/hooks/handleDiscount";
 const CartItem = ({ children }) => {
+    const { voucher, handleChange, error, handleVoucher } = useVoucher();
     const totalQty = useCartStore((cart) => cart.totalQty);
     const totalCost = useCartStore((cart) => cart.totalCost);
-    const totalPrice = useCartStore((cart) => cart.totalPrice);
     const shipping = useCartStore((cart) => cart.shipping);
-    const updateTotalCost = useCartStore((cart) => cart.updateTotalCost);
     const discount = useCartStore((cart) => cart.discount);
-    const updateDiscount = useCartStore((cart) => cart.updateDiscount);
-    const [voucher, setVoucher] = useState("");
-    const [error, setError] = useState("");
-    const handleVoucher = async () => {
-        const res = await fetch(
-            `/api/voucher?code=${voucher}&price=${totalPrice}`
-        );
-        const data = await res.json();
-        if (res.ok) {
-            updateDiscount(data.value);
-            updateTotalCost();
-            setError("");
-        } else {
-            setError(data.error);
-            console.log(data.error);
-        }
-    };
     return (
         <div className="hidden lg:flex flex-col gap-2 w-1/2">
             <h2 className="text-xl ">YOUR CART ({totalQty}):</h2>
@@ -39,7 +22,7 @@ const CartItem = ({ children }) => {
                     className={`px-3 py-2 w-4/5 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm ${
                         error ? "border-red-500" : ""
                     }`}
-                    onChange={(e) => setVoucher(e.target.value)}
+                    onChange={handleChange}
                 />
                 <Btn
                     className="text-gray-400 hover:bg-black hover:text-white py-3 w-1/5 text-sm border disabled:bg-transparent disabled:hover:bg-transparent disabled:hover:text-gray-400"

@@ -7,7 +7,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
-import useHandleQuery from "@/utils/functions/handleQuery";
+import useHandleQuery from "@/utils/hooks/handleQuery";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 const SortMobile = () => {
