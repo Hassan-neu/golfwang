@@ -1,10 +1,10 @@
 "use client";
 import Btn from "@/components/shared/buttons/btn";
-import React from "react";
+import React, { useEffect } from "react";
 import { useCartStore } from "@/libs/cart";
-import { useVoucher } from "@/utils/hooks/handleDiscount";
+import { useCoupon } from "@/utils/hooks/handleDiscount";
 const CartItem = ({ children }) => {
-    const { voucher, handleChange, error, handleVoucher } = useVoucher();
+    const { coupon, handleChange, error, handleCoupon } = useCoupon();
     const totalQty = useCartStore((cart) => cart.totalQty);
     const totalCost = useCartStore((cart) => cart.totalCost);
     const shipping = useCartStore((cart) => cart.shipping);
@@ -16,8 +16,8 @@ const CartItem = ({ children }) => {
             <div className="flex gap-2 border-b pb-5 relative">
                 <input
                     type="text"
-                    name="voucher"
-                    id="voucher"
+                    name="coupon"
+                    id="coupon"
                     placeholder="Discount code"
                     className={`px-3 py-2 w-4/5 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm ${
                         error ? "border-red-500" : ""
@@ -26,8 +26,8 @@ const CartItem = ({ children }) => {
                 />
                 <Btn
                     className="text-gray-400 hover:bg-black hover:text-white py-3 w-1/5 text-sm border disabled:bg-transparent disabled:hover:bg-transparent disabled:hover:text-gray-400"
-                    onClick={handleVoucher}
-                    disabled={!voucher}
+                    onClick={handleCoupon}
+                    disabled={!coupon}
                 >
                     APPLY
                 </Btn>

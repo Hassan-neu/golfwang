@@ -31,7 +31,7 @@ const Cart = () => {
                 </li>
                 <li className="relative lg:hidden">
                     <BsHandbag size={20} />
-                    <p className="absolute px-1 top-1/2 left-1/2 bg-gray-400 text-gray-900 rounded-full">
+                    <p className="absolute px-1 top-0 left-0 bg-gray-400 text-gray-900 rounded-full">
                         {totalQty}
                     </p>
                 </li>

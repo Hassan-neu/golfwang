@@ -1,3 +1,4 @@
+import { client } from "../../../../sanity/lib/client";
 export async function GET(req) {
     try {
         const { searchParams } = new URL(req.url);
@@ -12,10 +13,10 @@ export async function GET(req) {
                     { status: 400 }
                 );
             }
-            const res = await fetch("http://localhost:8000/vouchers/" + code);
-            const data = await res.json();
-            if (res.ok) {
-                return new Response(JSON.stringify(data), { status: 200 });
+            const query = `*[_type=='coupon' && code=='${code.toLowerCase()}'][0]`;
+            const res = await client.fetch(query);
+            if (res) {
+                return new Response(JSON.stringify(res), { status: 200 });
             } else {
                 return new Response(
                     JSON.stringify({ error: "invalid coupon code" }),
