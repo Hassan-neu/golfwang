@@ -17,7 +17,11 @@ import {
 } from "@/components/ui/accordion";
 import { useFormik } from "formik";
 import { useCoupon } from "@/utils/hooks/handleDiscount";
+import { usePayWithFlutter } from "@/utils/payment/flutterwave";
+import { usePayWithPaystack } from "@/utils/payment/paystack";
 const DeliveryDetails = () => {
+    const { initializePayment, onClose, onSuccess } = usePayWithPaystack();
+    const { handleFlutterPayment, closePaymentModal } = usePayWithFlutter();
     const { coupon, handleChange, error, handleCoupon } = useCoupon();
     const totalCost = useCartStore((cart) => cart.totalCost);
     const updateTotalCost = useCartStore((cart) => cart.updateTotalCost);
@@ -44,7 +48,17 @@ const DeliveryDetails = () => {
         onSubmit,
     });
     async function onSubmit(values, { resetForm }) {
-        console.log(values);
+        if (values.payment === "flutterwave") {
+            return handleFlutterPayment({
+                callback: (response) => {
+                    console.log(response);
+                    closePaymentModal();
+                },
+                onClose: () => {},
+            });
+        } else {
+            return initializePayment(onSuccess, onClose);
+        }
     }
     return (
         <div className="flex flex-col gap-6 w-full lg:w-1/2 h-full sticky top-14">
