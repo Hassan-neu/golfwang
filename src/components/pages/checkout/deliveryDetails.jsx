@@ -1,4 +1,5 @@
 "use client";
+import emailjs from "@emailjs/browser";
 import Btn from "@/components/shared/buttons/btn";
 import Checkbox from "@/components/shared/checkbox";
 import Radio from "@/components/shared/radio";
@@ -7,8 +8,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useCartStore } from "@/libs/cart";
 import { useRouter } from "next/navigation";
-import { Domestic } from "./address";
-import { International } from "./address";
+import { Domestic, International } from "./address";
 import {
     Accordion,
     AccordionContent,
@@ -17,20 +17,8 @@ import {
 } from "@/components/ui/accordion";
 import { useFormik } from "formik";
 import { useCoupon } from "@/utils/hooks/handleDiscount";
-import { usePayWithFlutter } from "@/utils/payment/flutterwave";
-import { usePayWithPaystack } from "@/utils/payment/paystack";
+import { usePayWithFlutter, usePayWithPaystack } from "@/utils/payment";
 const DeliveryDetails = () => {
-    const { initializePayment, onClose, onSuccess } = usePayWithPaystack();
-    const { handleFlutterPayment, closePaymentModal } = usePayWithFlutter();
-    const { coupon, handleChange, error, handleCoupon } = useCoupon();
-    const totalCost = useCartStore((cart) => cart.totalCost);
-    const updateTotalCost = useCartStore((cart) => cart.updateTotalCost);
-    const updateShipping = useCartStore((cart) => cart.updateShipping);
-    const shipping = useCartStore((cart) => cart.shipping);
-    const discount = useCartStore((cart) => cart.discount);
-    const [isChecked, setIsChecked] = useState(false);
-    const router = useRouter();
-
     const formik = useFormik({
         initialValues: {
             firstname: "",
@@ -47,13 +35,21 @@ const DeliveryDetails = () => {
         },
         onSubmit,
     });
+
+    const { coupon, handleChange, error, handleCoupon } = useCoupon();
+    const totalCost = useCartStore((cart) => cart.totalCost);
+    const updateTotalCost = useCartStore((cart) => cart.updateTotalCost);
+    const updateShipping = useCartStore((cart) => cart.updateShipping);
+    const shipping = useCartStore((cart) => cart.shipping);
+    const discount = useCartStore((cart) => cart.discount);
+    const [isChecked, setIsChecked] = useState(false);
+    const { handleFlutterPayment, payCallback } = usePayWithFlutter(formik);
+    const { initializePayment, onClose, onSuccess } =
+        usePayWithPaystack(formik);
     async function onSubmit(values, { resetForm }) {
         if (values.payment === "flutterwave") {
             return handleFlutterPayment({
-                callback: (response) => {
-                    console.log(response);
-                    closePaymentModal();
-                },
+                callback: (res) => payCallback(res),
                 onClose: () => {},
             });
         } else {
@@ -303,7 +299,10 @@ const DeliveryDetails = () => {
                 <Btn
                     className="w-full py-3 text-sm text-white bg-[size:200%,100%] bg-right bg-gradient-to-r from-yellow-400 from-50% to-black to-50% [transition:background_.5s] hover:bg-left hover:text-black"
                     disabled={!isChecked}
-                    onClick={() => formik.submitForm()}
+                    onClick={() => {
+                        if (totalCost <= 0) return;
+                        formik.submitForm();
+                    }}
                 >
                     PAY AND MAKE ORDER
                 </Btn>
