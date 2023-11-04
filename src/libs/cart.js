@@ -27,6 +27,15 @@ const CartStore = (set) => ({
                 { products: [...prev.products, product] }
             );
         }),
+    resetProducts: () =>
+        set(() => ({
+            products: [],
+            totalPrice: 0,
+            totalCost: 0,
+            shipping: 0,
+            discount: 0,
+            totalQty: 0,
+        })),
     deleteProduct: (id) =>
         set((prev) => ({
             products: prev.products.filter((product) => product._id !== id),

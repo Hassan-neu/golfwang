@@ -1,10 +1,13 @@
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 import { sendReceipt } from "./sendReceipt";
 import { useCartStore } from "@/libs/cart";
+import { useRouter } from "next/navigation";
 export const usePayWithFlutter = (formik) => {
+    const router = useRouter();
     const totalCost = useCartStore((cart) => cart.totalCost);
     const shipping = useCartStore((cart) => cart.shipping);
     const discount = useCartStore((cart) => cart.discount);
+    const resetCart = useCartStore((cart) => cart.resetProducts);
     const {
         values: { email, firstname, lastname, phone, address, payment },
     } = formik;
@@ -39,8 +42,10 @@ export const usePayWithFlutter = (formik) => {
     const payCallback = (res) => {
         console.log(res);
         if (res.status === "successful") {
-            sendReceipt(data, res.transaction_id, res.tx_ref);
+            // sendReceipt(data, res.transaction_id, res.tx_ref);
         }
+        formik.resetForm();
+        resetCart();
         closePaymentModal();
     };
     const handleFlutterPayment = useFlutterwave(config);
@@ -49,9 +54,11 @@ export const usePayWithFlutter = (formik) => {
 
 import { usePaystackPayment } from "react-paystack";
 export const usePayWithPaystack = (formik) => {
+    const router = useRouter();
     const totalCost = useCartStore((cart) => cart.totalCost);
     const shipping = useCartStore((cart) => cart.shipping);
     const discount = useCartStore((cart) => cart.discount);
+    const resetCart = useCartStore((cart) => cart.resetProducts);
     const {
         values: { email, firstname, lastname, phone, address, payment },
     } = formik;
@@ -79,7 +86,9 @@ export const usePayWithPaystack = (formik) => {
     };
     const onSuccess = (res) => {
         console.log(res);
-        sendReceipt(data, res.trans, res.trxref);
+        // sendReceipt(data, res.trans, res.trxref);
+        resetCart();
+        formik.resetForm();
     };
     const onClose = () => {
         console.log("closed");
