@@ -1,5 +1,4 @@
 "use client";
-import emailjs from "@emailjs/browser";
 import Btn from "@/components/shared/buttons/btn";
 import Checkbox from "@/components/shared/checkbox";
 import Radio from "@/components/shared/radio";
@@ -46,7 +45,7 @@ const DeliveryDetails = () => {
     const { handleFlutterPayment, payCallback } = usePayWithFlutter(formik);
     const { initializePayment, onClose, onSuccess } =
         usePayWithPaystack(formik);
-    async function onSubmit(values, { resetForm }) {
+    async function onSubmit(values) {
         if (values.payment === "flutterwave") {
             return handleFlutterPayment({
                 callback: (res) => payCallback(res),

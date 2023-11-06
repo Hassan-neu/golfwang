@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import AuthSessionProvider from "@/components/AuthSession";
+import ZustandHydration from "@/components/hydration";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -18,12 +19,14 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body className={`${inter.className} flex flex-col`}>
-                <AuthSessionProvider>
-                    <Navbar />
-                    <Toaster />
-                    {children}
-                    <Footer />
-                </AuthSessionProvider>
+                <ZustandHydration>
+                    <AuthSessionProvider>
+                        <Navbar />
+                        <Toaster />
+                        {children}
+                        <Footer />
+                    </AuthSessionProvider>
+                </ZustandHydration>
             </body>
         </html>
     );

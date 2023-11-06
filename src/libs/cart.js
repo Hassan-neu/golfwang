@@ -9,6 +9,7 @@ const CartStore = (set) => ({
     shipping: 0,
     discount: 0,
     totalQty: 0,
+    successModal: false,
     addProduct: (product, ghost) =>
         set((prev) => {
             const checkItem = prev.products.some(
@@ -28,14 +29,14 @@ const CartStore = (set) => ({
             );
         }),
     resetProducts: () =>
-        set(() => ({
+        set({
             products: [],
             totalPrice: 0,
             totalCost: 0,
             shipping: 0,
             discount: 0,
             totalQty: 0,
-        })),
+        }),
     deleteProduct: (id) =>
         set((prev) => ({
             products: prev.products.filter((product) => product._id !== id),
@@ -73,10 +74,12 @@ const CartStore = (set) => ({
             totalCost: prev.totalPrice + prev.shipping - prev.discount,
         })),
     updateShipping: (ship) =>
-        set(() =>
-            ship === "international" ? { shipping: 30 } : { shipping: 0 }
-        ),
-    updateDiscount: (value) => set(() => ({ discount: value })),
+        set(ship === "international" ? { shipping: 30 } : { shipping: 0 }),
+    updateDiscount: (value) => set({ discount: value }),
+    setSuccessModal: () =>
+        set((prev) => ({ successModal: !prev.successModal })),
 });
 
-export const useCartStore = create(devtools(CartStore));
+export const useCartStore = create(
+    persist(devtools(CartStore), { name: "cart" })
+);

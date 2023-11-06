@@ -7,11 +7,13 @@ import { useCartStore } from "@/libs/cart";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import useWindowSize from "@/utils/functions/windowSize";
 import Btn from "@/components/shared/buttons/btn";
+import Modal from "@/components/pages/checkout/modal";
 const Page = () => {
     const { smallScreen, largeScreen } = useWindowSize();
     const [openCart, setOpenCart] = useState(false);
     const products = useCartStore((cart) => cart.products);
     const totalQty = useCartStore((cart) => cart.totalQty);
+    const showModal = useCartStore((cart) => cart.successModal);
     return (
         <div className="flex flex-col gap-6 px-2 md:px-5 lg:px-10 min-h-screen mb-5">
             <div className="text-4xl md:text-6xl font-semibold border-b py-4">
@@ -51,6 +53,7 @@ const Page = () => {
                     </CartItem>
                 )}
             </div>
+            {showModal && <Modal />}
         </div>
     );
 };

@@ -8,6 +8,7 @@ export const usePayWithFlutter = (formik) => {
     const shipping = useCartStore((cart) => cart.shipping);
     const discount = useCartStore((cart) => cart.discount);
     const resetCart = useCartStore((cart) => cart.resetProducts);
+    const setModal = useCartStore((cart) => cart.setSuccessModal);
     const {
         values: { email, firstname, lastname, phone, address, payment },
     } = formik;
@@ -46,6 +47,7 @@ export const usePayWithFlutter = (formik) => {
         }
         formik.resetForm();
         resetCart();
+        setModal();
         closePaymentModal();
     };
     const handleFlutterPayment = useFlutterwave(config);
@@ -59,6 +61,7 @@ export const usePayWithPaystack = (formik) => {
     const shipping = useCartStore((cart) => cart.shipping);
     const discount = useCartStore((cart) => cart.discount);
     const resetCart = useCartStore((cart) => cart.resetProducts);
+    const setModal = useCartStore((cart) => cart.setSuccessModal);
     const {
         values: { email, firstname, lastname, phone, address, payment },
     } = formik;
@@ -88,6 +91,7 @@ export const usePayWithPaystack = (formik) => {
         console.log(res);
         // sendReceipt(data, res.trans, res.trxref);
         resetCart();
+        setModal();
         formik.resetForm();
     };
     const onClose = () => {
