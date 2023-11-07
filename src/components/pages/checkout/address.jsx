@@ -8,7 +8,11 @@ export const Domestic = ({ formik }) => {
                 name="address"
                 placeholder="Address"
                 required={true}
-                className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3]"
+                className={`px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3] ${
+                    formik.errors.address && formik.touched.address
+                        ? "border-red-500"
+                        : null
+                }`}
                 {...formik.getFieldProps("address")}
             />
             <input
@@ -23,7 +27,11 @@ export const Domestic = ({ formik }) => {
                 name="city"
                 placeholder="City"
                 required={true}
-                className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3] lg:[grid-column:1/2]"
+                className={`px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3] lg:[grid-column:1/2] ${
+                    formik.errors.city && formik.touched.city
+                        ? "border-red-500"
+                        : null
+                }`}
                 {...formik.getFieldProps("city")}
             />
             <input
@@ -31,8 +39,12 @@ export const Domestic = ({ formik }) => {
                 name="zipcode"
                 placeholder="Zip / Postcode"
                 required={true}
-                className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm
-                [grid-column:1/3] lg:[grid-column:2/3]"
+                className={`px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm
+                [grid-column:1/3] lg:[grid-column:2/3] ${
+                    formik.errors.zipcode && formik.touched.zipcode
+                        ? "border-red-500"
+                        : null
+                }`}
                 {...formik.getFieldProps("zipcode")}
             />
         </div>
@@ -47,7 +59,11 @@ export const International = ({ formik }) => {
                 name="country"
                 placeholder="Country"
                 required={true}
-                className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3] lg:[grid-column:1/3]"
+                className={`px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3] lg:[grid-column:1/3] ${
+                    formik.errors.country && formik.touched.country
+                        ? "border-red-500"
+                        : null
+                }`}
                 {...formik.getFieldProps("country")}
             />
             <input
@@ -55,7 +71,11 @@ export const International = ({ formik }) => {
                 name="address"
                 placeholder="Address"
                 required={true}
-                className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3]"
+                className={`px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3] ${
+                    formik.errors.address && formik.touched.address
+                        ? "border-red-500"
+                        : null
+                }`}
                 {...formik.getFieldProps("address")}
             />
             <input
@@ -70,7 +90,11 @@ export const International = ({ formik }) => {
                 name="city"
                 placeholder="City"
                 required={true}
-                className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3] lg:[grid-column:1/2]"
+                className={`px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm [grid-column:1/3] lg:[grid-column:1/2] ${
+                    formik.errors.city && formik.touched.city
+                        ? "border-red-500"
+                        : null
+                }`}
                 {...formik.getFieldProps("city")}
             />
             <input
@@ -78,8 +102,12 @@ export const International = ({ formik }) => {
                 name="zipcode"
                 placeholder="Zip / Postcode"
                 required={true}
-                className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm
-                [grid-column:1/3] lg:[grid-column:2/3]"
+                className={`px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm
+                [grid-column:1/3] lg:[grid-column:2/3] ${
+                    formik.errors.zipcode && formik.touched.zipcode
+                        ? "border-red-500"
+                        : null
+                }`}
                 {...formik.getFieldProps("zipcode")}
             />
         </div>

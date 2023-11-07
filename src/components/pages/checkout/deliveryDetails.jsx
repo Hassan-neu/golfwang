@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import { useCartStore } from "@/libs/cart";
 import { useRouter } from "next/navigation";
 import { Domestic, International } from "./address";
+import { validateForm } from "@/libs/validateForm";
 import {
     Accordion,
     AccordionContent,
@@ -17,6 +18,7 @@ import {
 import { useFormik } from "formik";
 import { useCoupon } from "@/utils/hooks/handleDiscount";
 import { usePayWithFlutter, usePayWithPaystack } from "@/utils/payment";
+import { Toast, ToastDescription, ToastProvider } from "@/components/ui/toast";
 const DeliveryDetails = () => {
     const formik = useFormik({
         initialValues: {
@@ -32,6 +34,7 @@ const DeliveryDetails = () => {
             zipcode: "",
             country: "",
         },
+        validate: validateForm,
         onSubmit,
     });
 
@@ -66,7 +69,12 @@ const DeliveryDetails = () => {
                             name="firstname"
                             required={true}
                             placeholder="First name"
-                            className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm"
+                            className={`px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm ${
+                                formik.errors.firstname &&
+                                formik.touched.firstname
+                                    ? "border-red-500"
+                                    : ""
+                            }`}
                             {...formik.getFieldProps("firstname")}
                         />
                         <input
@@ -74,7 +82,12 @@ const DeliveryDetails = () => {
                             name="lastname"
                             required={true}
                             placeholder="Last name"
-                            className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm"
+                            className={`px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm ${
+                                formik.errors.lastname &&
+                                formik.touched.lastname
+                                    ? "border-red-500"
+                                    : ""
+                            }`}
                             {...formik.getFieldProps("lastname")}
                         />
                         <input
@@ -82,21 +95,35 @@ const DeliveryDetails = () => {
                             name="email"
                             required={true}
                             placeholder="E-mail"
-                            className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm"
+                            className={`px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm ${
+                                formik.errors.email && formik.touched.email
+                                    ? "border-red-500"
+                                    : ""
+                            }`}
                             {...formik.getFieldProps("email")}
                         />
                         <input
                             type="tel"
                             name="phone"
                             placeholder="Phone"
-                            className="px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm"
+                            className={`px-3 py-3 border border-black border-opacity-50 focus:border-opacity-100 focus:outline-none text-sm ${
+                                formik.errors.phone && formik.touched.phone
+                                    ? "border-red-500"
+                                    : ""
+                            }`}
                             {...formik.getFieldProps("phone")}
                         />
                     </div>
                 </div>
                 <div className="flex flex-col gap-2">
                     <div className="flex justify-between items-center pb-3 border-b">
-                        <h3 className="text-xl font-medium ">DELIVERY</h3>
+                        <h3
+                            className={`text-xl font-medium ${
+                                formik.errors.shipping ? "text-red-500" : ""
+                            }`}
+                        >
+                            DELIVERY
+                        </h3>
                         <div className="text-xs underline">
                             <Link href="/info/shippinginfo">
                                 {" "}
@@ -106,7 +133,7 @@ const DeliveryDetails = () => {
                     </div>
                     <Accordion
                         type="single"
-                        className="flex flex-col gap-2"
+                        className={`flex flex-col gap-2`}
                         onValueChange={(value) => {
                             formik.setFieldValue("shipping", value);
                             updateShipping(value);
@@ -148,7 +175,7 @@ const DeliveryDetails = () => {
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="international">
-                            <AccordionTrigger className="hover:no-underline [&>svg]:hidden py-0">
+                            <AccordionTrigger className="hover:no-underline [&>svg]:hidden py-0 pt-2">
                                 <div className="flex gap-2 items-baseline w-full h-full">
                                     <Radio
                                         type="radio"
@@ -183,7 +210,11 @@ const DeliveryDetails = () => {
                     </Accordion>
                 </div>
                 <div className="flex flex-col gap-4">
-                    <h3 className="text-xl font-medium border-b pb-3">
+                    <h3
+                        className={`text-xl font-medium border-b pb-3 ${
+                            formik.errors.payment ? "text-red-500" : ""
+                        }`}
+                    >
                         PAYMENT
                     </h3>
                     <div className="flex flex-col gap-3">
@@ -202,9 +233,18 @@ const DeliveryDetails = () => {
                                     }
                                 />
 
-                                <h2 className="text-sm font-medium">
+                                <button
+                                    type="button"
+                                    className="text-sm font-medium"
+                                    onClick={() =>
+                                        formik.setFieldValue(
+                                            "payment",
+                                            "flutterwave"
+                                        )
+                                    }
+                                >
                                     FLUTTERWAVE
-                                </h2>
+                                </button>
                             </div>
                             <div className="text-sm font-medium">
                                 <Image
@@ -230,9 +270,18 @@ const DeliveryDetails = () => {
                                     }
                                 />
 
-                                <h2 className="text-sm font-medium">
+                                <button
+                                    type="button"
+                                    className="text-sm font-medium"
+                                    onClick={() =>
+                                        formik.setFieldValue(
+                                            "payment",
+                                            "paystack"
+                                        )
+                                    }
+                                >
                                     PAYSTACK
-                                </h2>
+                                </button>
                             </div>
                             <div className="text-sm font-medium">
                                 <Image
@@ -306,6 +355,11 @@ const DeliveryDetails = () => {
                     PAY AND MAKE ORDER
                 </Btn>
             </div>
+            {/* <ToastProvider>
+                <Toast>
+                    <ToastDescription>Hello</ToastDescription>
+                </Toast>
+            </ToastProvider> */}
         </div>
     );
 };
