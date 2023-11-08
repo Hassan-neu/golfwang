@@ -5,13 +5,19 @@ import FilterOptions from "./filterOptions";
 import FilterMobile from "./filterMobile";
 import SortMobile from "./sortMobile";
 import Image from "next/image";
-import { catalogProducts } from "../../../../sanity/queries/queries";
+import {
+    catalogProducts,
+    getAllPages,
+    getTotalPages,
+} from "../../../../sanity/queries/queries";
 import { Itemcard, EmptyItem } from "./itemcard";
 import Pagination from "./pagination";
 import { client } from "../../../../sanity/lib/client";
-const ShopItems = async ({ category, searchParams: { sort, filter } }) => {
-    const products = await catalogProducts(category, sort, filter);
-    const totalPages = await client.fetch(`count(*[_type=='product'])`);
+const ShopItems = async ({ category, searchParams }) => {
+    const { sort, filter, page } = searchParams;
+    const products = await catalogProducts(category, sort, filter, page);
+    const totalPages = await getAllPages();
+    console.log(totalPages);
     return (
         <main className="flex flex-col gap-2 md:gap-4 lg:gap-6 min-h-screen mt-4">
             <div className="flex justify-between text-xs ">
@@ -76,7 +82,7 @@ const ShopItems = async ({ category, searchParams: { sort, filter } }) => {
                     Show More
                 </Btn>
             )}
-            <Pagination totalPages={totalPages} />
+            <Pagination totalPages={Number(totalPages)} page={page} />
         </main>
     );
 };

@@ -4,7 +4,7 @@ import React from "react";
 const Loading = () => {
     return (
         <div className="h-screen flex justify-center items-center bg-yellow-400">
-            <div className="w-20 h-20 lg:w-40 lg:h-40 relative animate-spin">
+            <div className="w-16 h-16 lg:w-40 lg:h-40 relative animate-spin">
                 <Image
                     src={"/golfwang.svg"}
                     alt={"golfwang-logo"}
