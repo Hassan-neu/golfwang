@@ -8,7 +8,7 @@ const useHandleQuery = () => {
         const params = new URLSearchParams(searchParams);
         params.set("sort", value);
         params.toString();
-        return router.push(`${path}?${params}`);
+        return router.replace(`${path}?${params}`, { scroll: false });
     };
     const [filterOption, setFilterOption] = useState({
         key: "",
@@ -40,7 +40,9 @@ const useHandleQuery = () => {
         const params = new URLSearchParams(searchParams);
         params.set("filter", filterOption.value.join(","));
         params.toString();
-        return router.push(`${filterOption.key}?${params}`);
+        return router.replace(`${filterOption.key}?${params}`, {
+            scroll: false,
+        });
     };
 
     return {

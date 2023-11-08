@@ -5,7 +5,7 @@ import Link from "next/link";
 import { urlForImage } from "../../../../sanity/lib/image";
 import Lottie from "lottie-react";
 import hover from "@/utils/lottie-ani.json";
-const Itemcard = ({ product }) => {
+export const Itemcard = ({ product }) => {
     const {
         name,
         price,
@@ -40,5 +40,10 @@ const Itemcard = ({ product }) => {
         </Link>
     );
 };
-
-export default Itemcard;
+export const EmptyItem = () => {
+    return (
+        <div className="[grid-column:1/6] flex justify-center my-auto mx-0">
+            <h1>NO MATCHING ITEM</h1>
+        </div>
+    );
+};

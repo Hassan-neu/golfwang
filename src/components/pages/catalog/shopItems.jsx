@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import Btn from "@/components/shared/buttons/btn";
 import SortOptions from "./sortOption";
 import FilterOptions from "./filterOptions";
@@ -6,9 +6,12 @@ import FilterMobile from "./filterMobile";
 import SortMobile from "./sortMobile";
 import Image from "next/image";
 import { catalogProducts } from "../../../../sanity/queries/queries";
-import Itemcard from "./itemcard";
+import { Itemcard, EmptyItem } from "./itemcard";
+import Pagination from "./pagination";
+import { client } from "../../../../sanity/lib/client";
 const ShopItems = async ({ category, searchParams: { sort, filter } }) => {
     const products = await catalogProducts(category, sort, filter);
+    const totalPages = await client.fetch(`count(*[_type=='product'])`);
     return (
         <main className="flex flex-col gap-2 md:gap-4 lg:gap-6 min-h-screen mt-4">
             <div className="flex justify-between text-xs ">
@@ -41,9 +44,14 @@ const ShopItems = async ({ category, searchParams: { sort, filter } }) => {
             </div>
             <div className="flex flex-col gap-2 h-full">
                 <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] md:grid-cols-2 lg:grid-cols-5 auto-rows-auto gap-4 md:gap-3 md:gap-y-7 md:[&>a:nth-child(5)]:col-span-full md:[&>a:nth-child(8)]:col-span-full lg:[&>a:nth-child(5)]:col-span-1 lg:[&>a:nth-child(8)]:col-span-1">
-                    {products?.map((product) => (
-                        <Itemcard key={product._id} product={product} />
-                    ))}
+                    {products.length > 0 ? (
+                        products?.map((product) => (
+                            <Itemcard key={product._id} product={product} />
+                        ))
+                    ) : (
+                        <EmptyItem />
+                    )}
+
                     <div
                         className={`hidden lg:${
                             products.length < 4 ? "hidden" : "flex"
@@ -63,11 +71,13 @@ const ShopItems = async ({ category, searchParams: { sort, filter } }) => {
                     </div>
                 </div>
             </div>
-            <Btn className="py-4 uppercase bg-black text-white md:self-center md:px-20">
-                Show More
-            </Btn>
+            {products.length > 0 && (
+                <Btn className="py-4 uppercase bg-black text-white md:self-center md:px-20">
+                    Show More
+                </Btn>
+            )}
+            <Pagination totalPages={totalPages} />
         </main>
     );
 };
-
 export default ShopItems;
