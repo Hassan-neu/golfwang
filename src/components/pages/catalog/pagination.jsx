@@ -13,9 +13,16 @@ const Pagination = ({ totalPages, page }) => {
         params.toString();
         return router.replace(`${path}?${params}`, { scroll: false });
     };
+    const length = Math.ceil(totalPages / 11);
     return (
         <div className="self-center">
-            <div className="flex gap-2">
+            <div
+                className={`flex gap-2 ${
+                    !page
+                        ? "[&>button:nth-child(2)]:bg-black [&>button:nth-child(2)]:text-white"
+                        : ""
+                }`}
+            >
                 <button
                     type="button"
                     onClick={() => setPagination(0)}
@@ -23,7 +30,7 @@ const Pagination = ({ totalPages, page }) => {
                 >
                     <BiArrowBack />
                 </button>
-                {Array.from({ length: Math.ceil(totalPages / 11) }, (_v, i) => (
+                {Array.from({ length }, (_v, i) => (
                     <button
                         type="button"
                         key={i}
@@ -32,12 +39,15 @@ const Pagination = ({ totalPages, page }) => {
                             page == i + 1 ? "bg-black text-white" : ""
                         }`}
                     >
+                        {console.log(!page && length <= 1)}
                         {i + 1}
                     </button>
                 ))}
                 <button
                     type="button"
-                    onClick={() => setPagination(totalPages - 1)}
+                    onClick={() =>
+                        setPagination(Math.ceil(totalPages / 11) - 1)
+                    }
                     className="p-2 border rounded-lg w-10 h-10 flex justify-center items-center"
                 >
                     <BiArrowBack className="rotate-180" />

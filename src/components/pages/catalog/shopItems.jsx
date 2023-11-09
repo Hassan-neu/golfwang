@@ -7,17 +7,14 @@ import SortMobile from "./sortMobile";
 import Image from "next/image";
 import {
     catalogProducts,
-    getAllPages,
     getTotalPages,
 } from "../../../../sanity/queries/queries";
 import { Itemcard, EmptyItem } from "./itemcard";
 import Pagination from "./pagination";
-import { client } from "../../../../sanity/lib/client";
 const ShopItems = async ({ category, searchParams }) => {
     const { sort, filter, page } = searchParams;
     const products = await catalogProducts(category, sort, filter, page);
-    const totalPages = await getAllPages();
-    console.log(totalPages);
+    const totalPages = await getTotalPages(category, filter);
     return (
         <main className="flex flex-col gap-2 md:gap-4 lg:gap-6 min-h-screen mt-4">
             <div className="flex justify-between text-xs ">

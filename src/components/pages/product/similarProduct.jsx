@@ -1,7 +1,7 @@
 import React from "react";
 import Btn from "@/components/shared/buttons/btn";
 import Link from "next/link";
-import Itemcard from "../catalog/itemcard";
+import { Itemcard } from "../catalog/itemcard";
 import { client } from "../../../../sanity/lib/client";
 const SimilarProducts = async ({ slug }) => {
     const getProducts = async () => {
