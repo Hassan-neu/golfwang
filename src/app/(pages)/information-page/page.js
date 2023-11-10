@@ -16,18 +16,21 @@ const Page = () => {
                     <TabBtn
                         isActive={info === "shipping"}
                         onClick={() => setInfo("shipping")}
+                        aria-label="Shipping Info"
                     >
                         SHIPPING INFO
                     </TabBtn>
                     <TabBtn
                         isActive={info === "misc"}
                         onClick={() => setInfo("misc")}
+                        aria-label="Misc Info"
                     >
                         MISC. INFO
                     </TabBtn>
                     <TabBtn
                         isActive={info === "privacyinfo"}
                         onClick={() => setInfo("privacyinfo")}
+                        aria-label="Privacy Statement"
                     >
                         PRIVACY STATEMENT
                     </TabBtn>

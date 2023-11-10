@@ -1,20 +1,31 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
+    const [indx, setIndx] = useState(0);
     const main = useRef();
     const text = useRef();
     const img = useRef();
     const frameOne = useRef();
     const frameTwo = useRef();
     const frameThree = useRef();
-    const elements = gsap.utils.toArray([frameOne, frameTwo]);
-    console.log(elements);
-    useEffect(() => {
+    const frameFour = useRef();
+    const frameFive = useRef();
+    const frameSix = useRef();
+    const frameSeven = useRef();
+    useLayoutEffect(() => {
+        const elements = gsap.utils.toArray([
+            frameTwo.current,
+            frameThree.current,
+            frameFour.current,
+            frameFive.current,
+            frameSix.current,
+            frameSeven.current,
+        ]);
         const mm = gsap.matchMedia();
         gsap.to(img.current, {
             rotate: 720,
@@ -27,14 +38,8 @@ const Hero = () => {
             () => {
                 const tl = gsap.timeline({
                     repeat: -1,
-
-                    // scrollTrigger: {
-                    //     trigger: main.current,
-                    //     start: "top top",
-                    //     // end: "+=1500px",
-                    //     pin: true,
-                    //     scrub: 1,
-                    // },
+                    yoyo: true,
+                    repeatDelay: 0.5,
                 });
 
                 gsap.to(text.current, {
@@ -43,39 +48,15 @@ const Hero = () => {
                     yoyo: true,
                     duration: 2,
                 });
-                tl.to(frameThree.current, {
-                    // top: "80%",
-                    // yPercent: -50,
-                    // left: "66%",
-                    // xPercent: -50,
-                    // rotate: -90,
-                    rotate: 12,
-                    duration: 2,
-                });
-                tl.to(frameTwo.current, {
-                    rotate: 6,
-                    duration: 2,
-                });
-                tl.to(
-                    frameOne.current,
-                    {
-                        // zIndex: 2,
+                tl.from(elements, {
+                    rotate: -12,
+                    duration: 5,
+                    ease: "easeInOut",
+                    opacity: 0,
+                    stagger: {
+                        each: 4,
                     },
-                    "-=0.5"
-                );
-                // tl.to(
-                //     frameThree.current,
-                //     {
-                //         top: "50%",
-                //         yPercent: -50,
-                //         left: "50%",
-                //         zIndex: 1,
-                //         // xPercent: -50,
-                //         rotate: -192,
-                //         duration: 2,
-                //     },
-                //     "-=0.4"
-                // );
+                });
             },
             main
         );
@@ -113,25 +94,61 @@ const Hero = () => {
                             </h1>
                         </div>
                     </div>
+                    <div className="border-2 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-6 w-48 md:w-80 h-56 md:h-[400px]">
+                        <Image
+                            src="/home/pinkbg.png"
+                            fill={true}
+                            className="object-cover"
+                            alt="hello"
+                        />
+                    </div>
                     <div
                         ref={frameOne}
-                        className="border-2 bg-red-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-12 w-48 md:w-80 h-56 md:h-[400px]"
+                        className="border-2 bg-red-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-3 w-48 md:w-80 h-56 md:h-[400px] opacity-1"
                     >
                         {/* <Image src="" width={200} height={250} alt="hello" /> */}
                     </div>
                     <div
                         ref={frameTwo}
-                        className="border-2 bg-violet-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-48 md:w-80 h-56 md:h-[400px]"
+                        className="border-2 bg-violet-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[5deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
                     >
                         {/* <Image src="" width={200} height={250} alt="hello" /> */}
                     </div>
-                    {/* <div
+                    <div
                         ref={frameThree}
-                        className="border-2 bg-green-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-6 w-48 md:w-80 h-56 md:h-[400px]"
+                        className="border-2 bg-green-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[7deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
                     >
                         hello
-                        <Image src="" width={200} height={250} alt="hello" />
-                    </div> */}
+                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                    </div>
+                    <div
+                        ref={frameFour}
+                        className="border-2 bg-yellow-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[9deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                    >
+                        hello
+                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                    </div>
+                    <div
+                        ref={frameFive}
+                        className="border-2 bg-gray-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[11deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                    >
+                        hello
+                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                    </div>
+                    <div
+                        ref={frameSix}
+                        className="border-2 bg-lime-800 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[13deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                    >
+                        hello
+                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                    </div>
+                    <div
+                        ref={frameSeven}
+                        className="border-2 bg-sky-900 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[15deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                    >
+                        hello
+                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                    </div>
                     <div className="border-b-2 border-black text-xs md:text-sm font-semibold self-center lg:hover:text-yellow-400 lg:hover:border-yellow-400 transition-all">
                         <Link href="/catalog/all">SHOP NOW</Link>
                     </div>
