@@ -25,16 +25,16 @@ const Cart = () => {
     return (
         <Sheet open={openPan} onOpenChange={() => setOpenPan(!openPan)}>
             <SheetTrigger>
-                <li className="hidden lg:flex">
+                <div className="hidden lg:flex">
                     CART
                     <p className=" text-gray-400">({totalQty})</p>
-                </li>
-                <li className="relative lg:hidden">
+                </div>
+                <div className="relative lg:hidden">
                     <BsHandbag size={20} />
                     <p className="absolute px-1 top-0 left-0 bg-gray-400 text-gray-900 rounded-full">
                         {totalQty}
                     </p>
-                </li>
+                </div>
             </SheetTrigger>
             <SheetContent className="flex flex-col h-screen w-full sm:max-w-full  lg:w-[45%] py-4 px-2 md:px-5 lg:px-10  bg-white">
                 <SheetHeader className={"pb-4 border-b "}>

@@ -82,6 +82,7 @@ const ThirdHero = () => {
                         alt="tyler-home-3"
                         width={300}
                         height={400}
+                        loading="lazy"
                         className="w-full h-full"
                     />
                 </div>
@@ -93,6 +94,7 @@ const ThirdHero = () => {
                         src="/home/tylerhome2.png"
                         width={300}
                         height={400}
+                        loading="lazy"
                         alt="tyler-home2"
                         className="w-full h-full"
                     />
@@ -106,6 +108,7 @@ const ThirdHero = () => {
                         alt="tyler-home-6"
                         width={300}
                         height={400}
+                        loading="lazy"
                         className="w-full h-full"
                     />
                 </div>
@@ -132,6 +135,8 @@ const ThirdHero = () => {
                         src="/home/tylerhome1.png"
                         alt="tyler-home-1"
                         fill={true}
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="md:max-h-full md:max-w-full mt-4  overflow-visible"
                     />
                 </div>

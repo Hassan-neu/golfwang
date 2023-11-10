@@ -74,11 +74,6 @@ const ShopItems = async ({ category, searchParams }) => {
                     </div>
                 </div>
             </div>
-            {products.length > 0 && (
-                <Btn className="py-4 uppercase bg-black text-white md:self-center md:px-20">
-                    Show More
-                </Btn>
-            )}
             <Pagination totalPages={Number(totalPages)} page={page} />
         </main>
     );

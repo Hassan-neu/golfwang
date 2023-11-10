@@ -55,17 +55,17 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div className="text-xs flex items-center">
-                    <ul className="flex gap-7 items-center lg:gap-10">
-                        <li className="hidden lg:block">
+                    <div className="flex gap-7 items-center lg:gap-10">
+                        <div className="hidden lg:block">
                             <Btn onClick={() => signIn("google")}>LOGIN</Btn>
-                        </li>
-                        <li className="lg:hidden">
+                        </div>
+                        <div className="lg:hidden">
                             <Btn onClick={() => signIn("google")}>
                                 <AiOutlineUser size={20} />
                             </Btn>
-                        </li>
+                        </div>
                         <Cart />
-                    </ul>
+                    </div>
                 </div>
             </div>
         </div>

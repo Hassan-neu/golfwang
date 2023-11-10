@@ -11,7 +11,7 @@ const Catalog = () => {
                 <div className="text-xl md:text-4xl font-medium">
                     <h2>CATALOG</h2>
                 </div>
-                <Btn className={"hidden border md:block"}>
+                <Btn className={"hidden border md:block"} aria-label="Shop Now">
                     <Link href={"/catalog/all"}>SHOP NOW</Link>
                 </Btn>
             </div>
@@ -21,6 +21,8 @@ const Catalog = () => {
                         <Image
                             src={"/home/tops.png"}
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             alt="tops"
                             className="lg:hover:scale-110 [transition:transform_.5s_ease-in]"
                         />
@@ -31,6 +33,8 @@ const Catalog = () => {
                         <Image
                             src={"/home/hats.png"}
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             alt="hat"
                             className="lg:hover:scale-110 [transition:transform_.5s_ease-in]"
                         />
@@ -41,6 +45,8 @@ const Catalog = () => {
                         <Image
                             src={"/home/bottoms.png"}
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             alt="bottoms"
                             className="lg:hover:scale-110 [transition:transform_.5s_ease-in]"
                         />
@@ -51,6 +57,8 @@ const Catalog = () => {
                         <Image
                             src={"/home/accessories.png"}
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             alt="accessories"
                             className="lg:hover:scale-110 [transition:transform_.5s_ease-in]"
                         />
@@ -61,6 +69,8 @@ const Catalog = () => {
                         <Image
                             src={"/home/music.png"}
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             alt="music"
                             className="lg:hover:scale-110 [transition:transform_.5s_ease-in]"
                         />

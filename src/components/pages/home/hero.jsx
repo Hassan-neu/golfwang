@@ -12,7 +12,8 @@ const Hero = () => {
     const frameOne = useRef();
     const frameTwo = useRef();
     const frameThree = useRef();
-
+    const elements = gsap.utils.toArray([frameOne, frameTwo]);
+    console.log(elements);
     useEffect(() => {
         const mm = gsap.matchMedia();
         gsap.to(img.current, {
@@ -25,13 +26,15 @@ const Hero = () => {
             "(min-width:1024px)",
             () => {
                 const tl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: main.current,
-                        start: "top top",
-                        // end: "+=1500px",
-                        pin: true,
-                        scrub: 1,
-                    },
+                    repeat: -1,
+
+                    // scrollTrigger: {
+                    //     trigger: main.current,
+                    //     start: "top top",
+                    //     // end: "+=1500px",
+                    //     pin: true,
+                    //     scrub: 1,
+                    // },
                 });
 
                 gsap.to(text.current, {
@@ -41,35 +44,38 @@ const Hero = () => {
                     duration: 2,
                 });
                 tl.to(frameThree.current, {
-                    top: "80%",
-                    yPercent: -50,
-                    left: "66%",
-                    xPercent: -50,
-                    rotate: -90,
+                    // top: "80%",
+                    // yPercent: -50,
+                    // left: "66%",
+                    // xPercent: -50,
+                    // rotate: -90,
+                    rotate: 12,
+                    duration: 2,
                 });
                 tl.to(frameTwo.current, {
                     rotate: 6,
-                    zIndex: 3,
+                    duration: 2,
                 });
                 tl.to(
                     frameOne.current,
                     {
-                        zIndex: 2,
+                        // zIndex: 2,
                     },
                     "-=0.5"
                 );
-                tl.to(
-                    frameThree.current,
-                    {
-                        top: "50%",
-                        yPercent: -50,
-                        left: "50%",
-                        zIndex: 1,
-                        // xPercent: -50,
-                        rotate: -192,
-                    },
-                    "-=0.4"
-                );
+                // tl.to(
+                //     frameThree.current,
+                //     {
+                //         top: "50%",
+                //         yPercent: -50,
+                //         left: "50%",
+                //         zIndex: 1,
+                //         // xPercent: -50,
+                //         rotate: -192,
+                //         duration: 2,
+                //     },
+                //     "-=0.4"
+                // );
             },
             main
         );
@@ -119,13 +125,13 @@ const Hero = () => {
                     >
                         {/* <Image src="" width={200} height={250} alt="hello" /> */}
                     </div>
-                    <div
+                    {/* <div
                         ref={frameThree}
                         className="border-2 bg-green-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-6 w-48 md:w-80 h-56 md:h-[400px]"
                     >
                         hello
-                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
-                    </div>
+                        <Image src="" width={200} height={250} alt="hello" />
+                    </div> */}
                     <div className="border-b-2 border-black text-xs md:text-sm font-semibold self-center lg:hover:text-yellow-400 lg:hover:border-yellow-400 transition-all">
                         <Link href="/catalog/all">SHOP NOW</Link>
                     </div>

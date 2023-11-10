@@ -26,7 +26,10 @@ const Collections = () => {
                 <div className="text-xl md:text-4xl font-medium">
                     <h2>COLLECTIONS</h2>
                 </div>
-                <Btn className={"hidden md:block border"}>
+                <Btn
+                    className={"hidden md:block border"}
+                    aria-label="Show More"
+                >
                     <Link href={"/collections"}>SHOW MORE</Link>
                 </Btn>
             </div>
@@ -44,6 +47,8 @@ const Collections = () => {
                                 src={"/winter/wmodel9.png"}
                                 alt="winter-2022"
                                 fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
                         <p className="text-sm self-center text-neutral-800">
@@ -59,6 +64,8 @@ const Collections = () => {
                                 src={"/autumn/autmodel9.png"}
                                 alt="autumn-2022"
                                 fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
                         <p className="text-sm self-center text-neutral-800">
@@ -74,6 +81,8 @@ const Collections = () => {
                                 src={"/summer/summodel9.png"}
                                 alt="summer-2022"
                                 fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
                         <p className="text-sm self-center text-neutral-800">
@@ -89,6 +98,8 @@ const Collections = () => {
                                 src={"/winter/wmodel21.png"}
                                 alt="winter-2021"
                                 fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
                         <p className="text-sm self-center text-neutral-800">
@@ -104,6 +115,8 @@ const Collections = () => {
                                 src={"/summer/summodel21.png"}
                                 alt="summer-2021"
                                 fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
                         <p className="text-sm self-center text-neutral-800">
@@ -119,6 +132,8 @@ const Collections = () => {
                                 src={"/summer/springmodel21.png"}
                                 alt="spring-2021"
                                 fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
                         <p className="text-sm self-center text-neutral-800">
@@ -134,6 +149,8 @@ const Collections = () => {
                                 src={"/winter/wmodel20.png"}
                                 alt="winter-2020"
                                 fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
                         <p className="text-sm self-center text-neutral-800">
@@ -149,6 +166,8 @@ const Collections = () => {
                                 src={"/summer/summodel20.png"}
                                 alt="summer-2020"
                                 fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
                         <p className="text-sm self-center text-neutral-800">
@@ -164,6 +183,8 @@ const Collections = () => {
                                 src={"/autumn/autmodel20.png"}
                                 alt="autumn-2020"
                                 fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
                         <p className="text-sm self-center text-neutral-800">
@@ -179,6 +200,8 @@ const Collections = () => {
                                 src={"/winter/wmodel19.png"}
                                 alt="winter-19"
                                 fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
                         <p className="text-sm self-center text-neutral-800">
@@ -194,6 +217,8 @@ const Collections = () => {
                                 src={"/winter/wmodel17.png"}
                                 alt="winter-2017"
                                 fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
                         <p className="text-sm self-center text-neutral-800">
@@ -209,6 +234,8 @@ const Collections = () => {
                                 src={"/summer/summodel17.png"}
                                 alt="summer-2017"
                                 fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </div>
                         <p className="text-sm self-center text-neutral-800">
@@ -340,6 +367,8 @@ const Collections = () => {
                             src={"/winter/wmodel9.png"}
                             alt="fall/winter-2022"
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                     <p className="text-xs md:text-sm uppercase md:self-center">
@@ -352,6 +381,8 @@ const Collections = () => {
                             src={"/autumn/autmodel9.png"}
                             alt="autumn-2022"
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                     <p className="text-xs md:text-sm uppercase md:self-center">
@@ -364,6 +395,8 @@ const Collections = () => {
                             src={"/summer/summodel9.png"}
                             alt="summer-2022"
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                     <p className="text-xs md:text-sm uppercase md:self-center">
@@ -376,6 +409,8 @@ const Collections = () => {
                             src={"/winter/wmodel21.png"}
                             alt="winter-2021"
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                     <p className="text-xs md:text-sm uppercase md:self-center">
@@ -388,6 +423,8 @@ const Collections = () => {
                             src={"/summer/summodel21.png"}
                             alt="summer-2021"
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                     <p className="text-xs md:text-sm uppercase md:self-center">
@@ -400,6 +437,8 @@ const Collections = () => {
                             src={"/summer/springmodel21.png"}
                             alt="spring-2022"
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                     <p className="text-xs md:text-sm uppercase md:self-center">
@@ -412,6 +451,8 @@ const Collections = () => {
                             src={"/winter/wmodel20.png"}
                             alt="winter-2020"
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                     <p className="text-xs md:text-sm uppercase md:self-center">
@@ -424,6 +465,8 @@ const Collections = () => {
                             src={"/summer/summodel20.png"}
                             alt="summer-2020"
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                     <p className="text-xs md:text-sm uppercase md:self-center">
@@ -436,6 +479,8 @@ const Collections = () => {
                             src={"/autumn/autmodel20.png"}
                             alt="autumn-2020"
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                     <p className="text-xs md:text-sm uppercase md:self-center">
@@ -448,6 +493,8 @@ const Collections = () => {
                             src={"/winter/wmodel19.png"}
                             alt="winter-2019"
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                     <p className="text-xs md:text-sm uppercase md:self-center">
@@ -460,6 +507,8 @@ const Collections = () => {
                             src={"/winter/wmodel17.png"}
                             alt="winter-2017"
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                     <p className="text-xs md:text-sm uppercase md:self-center">
@@ -472,6 +521,8 @@ const Collections = () => {
                             src={"/summer/summodel17.png"}
                             alt="summer-2017"
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                     <p className="text-xs md:text-sm uppercase md:self-center">
@@ -507,6 +558,7 @@ const Collections = () => {
                         <Btn
                             className="bg-black px-4 py-4  lg:py-2 text-white text-xs"
                             disabled={!agreeStatus}
+                            aria-label="Subscribe to Newsletter"
                         >
                             SUBSCRIBE
                         </Btn>
@@ -514,6 +566,7 @@ const Collections = () => {
                     <Checkbox
                         name="agreement"
                         checked={agreeStatus}
+                        aria-label="Policy Agreement"
                         onChange={() => setAgreeStatus(!agreeStatus)}
                     >
                         <p className="text-xs">

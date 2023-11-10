@@ -59,7 +59,10 @@ const About = () => {
                         <div className="text-xl md:text-4xl font-medium">
                             <h2>ABOUT US</h2>
                         </div>
-                        <Btn className="hidden border md:block bg-white">
+                        <Btn
+                            className="hidden border md:block bg-white"
+                            aria-label="Read More"
+                        >
                             READ MORE
                         </Btn>
                     </div>

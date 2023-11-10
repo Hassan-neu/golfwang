@@ -18,6 +18,8 @@ const Socials = () => {
                         <Image
                             src={"/home/social1.png"}
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             alt="social-image-1"
                             className="lg:hover:scale-105 [transition:transform_.5s_ease-in]"
                         />
@@ -37,6 +39,8 @@ const Socials = () => {
                         <Image
                             src={"/home/social2.png"}
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             alt="social-image-2"
                             className="lg:hover:scale-105 [transition:transform_.5s_ease-in]"
                         />
@@ -50,6 +54,8 @@ const Socials = () => {
                         <Image
                             src={"/home/social3.png"}
                             fill={true}
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             alt="social-image-3"
                             className="lg:hover:scale-105 [transition:transform_.5s_ease-in]"
                         />

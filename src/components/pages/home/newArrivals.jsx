@@ -21,7 +21,7 @@ const NewArrivals = async () => {
                 <div className="text-xl md:text-4xl font-medium">
                     <h2>NEW ARRIVALS</h2>
                 </div>
-                <Btn className="hidden border md:block">
+                <Btn className="hidden border md:block" aria-label="Show More">
                     <Link href={"/catalog/all"}>SHOW MORE</Link>
                 </Btn>
             </div>
@@ -35,10 +35,16 @@ const NewArrivals = async () => {
                 <Link href={"/catalog/all"}>SHOW MORE</Link>
             </Btn>
             <div className="hidden lg:flex gap-1">
-                <Btn className="rounded-full w-10 h-10 border flex items-center justify-center text-gray-500">
+                <Btn
+                    className="rounded-full w-10 h-10 border flex items-center justify-center text-gray-500"
+                    aria-label="Scroll left"
+                >
                     <IoArrowBack />
                 </Btn>
-                <Btn className="rounded-full w-10 h-10 border flex items-center justify-center text-gray-500">
+                <Btn
+                    className="rounded-full w-10 h-10 border flex items-center justify-center text-gray-500"
+                    aria-label="Scroll right"
+                >
                     <IoArrowForward />
                 </Btn>
             </div>
@@ -68,6 +74,8 @@ const NewItem = ({ product }) => {
                         src={urlForImage(images[0]).url()}
                         alt={"itemplaceholder"}
                         fill={true}
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="lg:hover:scale-110 [transition:transform_.5s_ease-in]"
                     />
                 </div>

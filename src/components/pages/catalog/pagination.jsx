@@ -11,7 +11,7 @@ const Pagination = ({ totalPages, page }) => {
         const params = new URLSearchParams(searchParams);
         params.set("page", pageNumber + 1);
         params.toString();
-        return router.replace(`${path}?${params}`, { scroll: false });
+        return router.replace(`${path}?${params}`);
     };
     const length = Math.ceil(totalPages / 11);
     return (
