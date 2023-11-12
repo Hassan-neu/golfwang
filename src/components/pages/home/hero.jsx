@@ -50,7 +50,7 @@ const Hero = () => {
                 });
                 tl.from(elements, {
                     rotate: -12,
-                    duration: 5,
+                    duration: 3,
                     ease: "easeInOut",
                     opacity: 0,
                     stagger: {
@@ -68,7 +68,7 @@ const Hero = () => {
             ref={main}
             className="md:h-[80vh] px-2 md:px-5 lg:px-0 lg:h-screen overflow-hidden"
         >
-            <div className="md:h-[80vh] lg:h-screen lg:rounded-b-3xl bg-[url('/home/noise.png')] bg-[color:#f2f2f2] flex flex-col gap-4 lg:gap-40 lg:border-2">
+            <div className="md:h-[80vh] lg:h-screen lg:rounded-b-3xl bg-[url('/home/noise.png')] bg-[color:#f2f2f2] flex flex-col gap-4 lg:gap-40 lg:">
                 <div className="flex h-full flex-col gap-40 pt-40 pb-10 md:p-10 lg:self-stretch text-center lg:gap-28 relative border border-neutral-400 lg:border-none">
                     <div className="h-full lg:flex lg:flex-col lg:justify-center">
                         <div className="flex gap-[530px] mt-5 md:mt-10 lg:mt-0 lg:h-[30%]">
@@ -94,7 +94,7 @@ const Hero = () => {
                             </h1>
                         </div>
                     </div>
-                    <div className="border-2 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-6 w-48 md:w-80 h-56 md:h-[400px]">
+                    <div className=" absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-6 w-48 md:w-80 h-56 md:h-[400px]">
                         <Image
                             src="/home/pinkbg.png"
                             fill={true}
@@ -104,50 +104,87 @@ const Hero = () => {
                     </div>
                     <div
                         ref={frameOne}
-                        className="border-2 bg-red-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-3 w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className=" absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-3 w-48 md:w-80 h-56 md:h-[400px] opacity-1"
                     >
-                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                        <Image
+                            src="/home/hero1.png"
+                            fill={true}
+                            alt="hello"
+                            loading="lazy"
+                            className="object-cover"
+                        />
                     </div>
                     <div
                         ref={frameTwo}
-                        className="border-2 bg-violet-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[5deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className="border absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[5deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
                     >
-                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                        <Image
+                            src="/home/hero2.png"
+                            fill={true}
+                            alt="hello"
+                            loading="lazy"
+                            className="object-cover"
+                        />
                     </div>
                     <div
                         ref={frameThree}
-                        className="border-2 bg-green-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[7deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className="border absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[7deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
                     >
-                        hello
-                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                        <Image
+                            src="/home/hero3.png"
+                            fill={true}
+                            alt="hello"
+                            loading="lazy"
+                            className="object-cover"
+                        />
                     </div>
                     <div
                         ref={frameFour}
-                        className="border-2 bg-yellow-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[9deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className="border absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[9deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
                     >
-                        hello
-                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                        <Image
+                            src="/home/hero4.png"
+                            fill={true}
+                            alt="hello"
+                            loading="lazy"
+                            className="object-cover"
+                        />
                     </div>
                     <div
                         ref={frameFive}
-                        className="border-2 bg-gray-500 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[11deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className="border absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[11deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
                     >
-                        hello
-                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                        <Image
+                            src="/home/hero5.png"
+                            fill={true}
+                            alt="hello"
+                            loading="lazy"
+                            className="object-cover"
+                        />
                     </div>
                     <div
                         ref={frameSix}
-                        className="border-2 bg-lime-800 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[13deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className="border absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[13deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
                     >
-                        hello
-                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                        <Image
+                            src="/home/hero6.png"
+                            fill={true}
+                            alt="hello"
+                            loading="lazy"
+                            className="object-cover"
+                        />
                     </div>
                     <div
                         ref={frameSeven}
-                        className="border-2 bg-sky-900 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[15deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className="border absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[15deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
                     >
-                        hello
-                        {/* <Image src="" width={200} height={250} alt="hello" /> */}
+                        <Image
+                            src="/home/hero7.png"
+                            fill={true}
+                            alt="hello"
+                            loading="lazy"
+                            className="object-cover"
+                        />
                     </div>
                     <div className="border-b-2 border-black text-xs md:text-sm font-semibold self-center lg:hover:text-yellow-400 lg:hover:border-yellow-400 transition-all">
                         <Link href="/catalog/all">SHOP NOW</Link>
