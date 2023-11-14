@@ -9,6 +9,8 @@ const Hero = () => {
     const [indx, setIndx] = useState(0);
     const main = useRef();
     const text = useRef();
+    const textOne = useRef();
+    const textTwo = useRef();
     const img = useRef();
     const frameOne = useRef();
     const frameTwo = useRef();
@@ -26,6 +28,7 @@ const Hero = () => {
             frameSix.current,
             frameSeven.current,
         ]);
+        const textEl = gsap.utils.toArray([textOne.current, textTwo.current]);
         const mm = gsap.matchMedia();
         gsap.to(img.current, {
             rotate: 720,
@@ -42,11 +45,13 @@ const Hero = () => {
                     repeatDelay: 0.5,
                 });
 
-                gsap.to(text.current, {
-                    textShadow: "5px 20px yellow,10px 30px red",
+                gsap.from(textEl, {
+                    top: 0,
+                    left: 0,
+                    stagger: 0.2,
                     repeat: 2,
                     yoyo: true,
-                    duration: 2,
+                    duration: 1,
                 });
                 tl.from(elements, {
                     rotate: -12,
@@ -87,14 +92,28 @@ const Hero = () => {
                         </div>
                         <div
                             ref={text}
-                            className="hidden text-[9vw] font-black  lg:flex lg:h-1/2 lg:justify-center"
+                            className="hidden text-[9vw] font-black  lg:flex lg:h-1/2 lg:justify-center relative z-0"
                         >
-                            <h1 className=" [transform:scale(1.7,1)]">
+                            <h1 className=" [transform:scale(1.7,1)] z-30 w-full">
+                                GOLF WANG
+                            </h1>
+                            <h1
+                                ref={textOne}
+                                className="absolute text-yellow-300 [transform:scale(1.7,1)] top-[20px] left-[5px] z-20 w-full"
+                            >
+                                GOLF WANG
+                            </h1>
+                            <h1
+                                ref={textTwo}
+                                className="absolute text-white [filter:drop-shadow(0_0_#000)]  [transform:scale(1.7,1)] z-10 top-[30px] left-[10px] w-full"
+                            >
                                 GOLF WANG
                             </h1>
                         </div>
+                        {/* <div className="hidden text-[9vw] font-black  lg:flex lg:h-1/2 lg:justify-center absolute top-[54%] -translate-y-1/2 left-[5px]  z-20 w-full"></div>
+                            <div className="my-auto hidden text-[9vw] font-black text-white [filter:drop-shadow(0_0_#000)]  lg:flex lg:h-1/2 lg:justify-center absolute top-[58%] -translate-y-1/2 left-[10px] z-10 w-full"></div> */}
                     </div>
-                    <div className=" absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-6 w-48 md:w-80 h-56 md:h-[400px]">
+                    <div className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 -rotate-6 w-48 md:w-80 h-56 md:h-[400px]">
                         <Image
                             src="/home/pinkbg.png"
                             fill={true}
@@ -104,19 +123,18 @@ const Hero = () => {
                     </div>
                     <div
                         ref={frameOne}
-                        className=" absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-3 w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-3 w-48 md:w-80 h-56 md:h-[400px] opacity-100"
                     >
                         <Image
                             src="/home/hero1.png"
                             fill={true}
                             alt="hello"
-                            loading="lazy"
                             className="object-cover"
                         />
                     </div>
                     <div
                         ref={frameTwo}
-                        className="border absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[5deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[5deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
                     >
                         <Image
                             src="/home/hero2.png"
@@ -128,7 +146,7 @@ const Hero = () => {
                     </div>
                     <div
                         ref={frameThree}
-                        className="border absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[7deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[7deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
                     >
                         <Image
                             src="/home/hero3.png"
@@ -140,7 +158,7 @@ const Hero = () => {
                     </div>
                     <div
                         ref={frameFour}
-                        className="border absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[9deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[9deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
                     >
                         <Image
                             src="/home/hero4.png"
@@ -152,7 +170,7 @@ const Hero = () => {
                     </div>
                     <div
                         ref={frameFive}
-                        className="border absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[11deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[11deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
                     >
                         <Image
                             src="/home/hero5.png"
@@ -164,7 +182,7 @@ const Hero = () => {
                     </div>
                     <div
                         ref={frameSix}
-                        className="border absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[13deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[13deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
                     >
                         <Image
                             src="/home/hero6.png"
@@ -176,7 +194,7 @@ const Hero = () => {
                     </div>
                     <div
                         ref={frameSeven}
-                        className="border absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[15deg] w-48 md:w-80 h-56 md:h-[400px] opacity-1"
+                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[15deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
                     >
                         <Image
                             src="/home/hero7.png"

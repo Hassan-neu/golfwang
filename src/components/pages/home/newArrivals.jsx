@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useLayoutEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Btn from "../../shared/buttons/btn";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,24 +19,20 @@ const NewArrivals = () => {
     //     return res;
     // };
     // const products = await getProducts();
-    const [scroll, setScroll] = useState(0);
     const items = useRef();
-    useLayoutEffect(() => {
-        const sections = gsap.utils.toArray(items.current.children);
-        const tl = gsap.timeline();
-        const mm = gsap.matchMedia();
-        // console.log(sections[4].offsetLeft, sections[4]);
-        mm.add("(min-width:1024px)", () => {
-            gsap.to(items.current, {
-                duration: 5,
-                scrollTo: {
-                    x: scroll,
-                },
-                onComplete: (res) => console.log(res),
-            });
+    const [distance, setDistance] = useState(0);
+    const carousel = (scroll) => {
+        gsap.to(items.current, {
+            scrollTo: {
+                x: items.current.scrollLeft + scroll,
+            },
         });
-        return () => mm.revert();
-    }, [scroll]);
+        // return (items.current.scrollLeft = items.current.scrollLeft + scroll);
+    };
+    useEffect(() => {
+        setDistance(items.current.offsetWidth / 5);
+    }, []);
+    // const distance = items.current.offsetWidth / 8 + 13;
     return (
         <div className="flex flex-col gap-2 lg:gap-4 px-2 md:px-5 lg:p-10 lg:min-h-screen justify-start lg:justify-center lg:border lg:border-gray-400 lg:rounded-3xl mt-14  md:mt-20 lg:mt-5 ">
             <div className="flex justify-between">
@@ -48,13 +44,13 @@ const NewArrivals = () => {
                 </Btn>
             </div>
             <div
-                className="flex gap-3 w-full flex-nowrap overflow-x-scroll py-2 lg:py-10 hidescroll transition"
+                className="flex gap-[10px] w-full flex-nowrap overflow-x-scroll py-2 lg:py-10 hidescroll transition"
                 ref={items}
             >
-                {Array.from({ length: 7 }, (_v, i) => (
+                {Array.from({ length: 10 }, (_v, i) => (
                     <Link
                         href={`/product/#`}
-                        className="w-72 lg:w-72 h-96 lg:h-96 shrink-0 flex flex-col gap-1"
+                        className="w-72 lg:w-[278px] h-96 lg:h-96 shrink-0 flex flex-col gap-1"
                         key={i}
                     >
                         <div className="flex flex-col p-5 relative border border-neutral-400 bg-[#f2f2f2] bg-[url('/home/noise.png')] ">
@@ -63,7 +59,7 @@ const NewArrivals = () => {
                             </p>
                             <div className="w-full max-w-[350px] self-center relative h-64">
                                 <Image
-                                    src=""
+                                    src="/#"
                                     alt={"itemplaceholder"}
                                     fill={true}
                                     loading="lazy"
@@ -87,15 +83,17 @@ const NewArrivals = () => {
                 ))} */}
                 {/* <div className="hidden lg:block w-[594px] max-w-[594px] h-[600px] max-h-[600px] border relative bg-yellow-400 shrink-0"></div> */}
             </div>
+
             <Btn className="bg-black self-stretch text-white py-4 md:hidden">
                 <Link href={"/catalog/all"}>SHOW MORE</Link>
             </Btn>
+
             <div className="hidden lg:flex gap-1">
                 <Btn
                     className="rounded-full w-10 h-10 border flex items-center justify-center text-gray-500"
                     aria-label="Scroll left"
                     onClick={() => {
-                        setScroll((prev) => prev - 1000);
+                        carousel(-distance);
                     }}
                 >
                     <IoArrowBack />
@@ -104,7 +102,7 @@ const NewArrivals = () => {
                     className="rounded-full w-10 h-10 border flex items-center justify-center text-gray-500"
                     aria-label="Scroll right"
                     onClick={() => {
-                        setScroll(1000);
+                        carousel(distance);
                     }}
                 >
                     <IoArrowForward />
