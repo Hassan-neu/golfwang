@@ -12,15 +12,11 @@ import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
 const NewArrivals = () => {
-    // const getProducts = async () => {
-    //     const res = await client.fetch(
-    //         `*[_type=='product'] | order(_createdAt desc)[0..5]`
-    //     );
-    //     return res;
-    // };
-    // const products = await getProducts();
+    const [products, setProducts] = useState([]);
     const items = useRef();
     const [distance, setDistance] = useState(0);
+    const [start, setStart] = useState(0);
+    const [end, setEnd] = useState(3);
     const carousel = (scroll) => {
         gsap.to(items.current, {
             scrollTo: {
@@ -29,86 +25,87 @@ const NewArrivals = () => {
         });
         // return (items.current.scrollLeft = items.current.scrollLeft + scroll);
     };
+    // useEffect(() => {
+    //     setDistance(items.current.offsetWidth / 5);
+    // }, []);
+    const getProducts = async () => {
+        const res = await client.fetch(
+            `*[_type=='product'] | order(_createdAt desc)[0..5]`
+        );
+        setProducts(res);
+    };
     useEffect(() => {
-        setDistance(items.current.offsetWidth / 5);
-    }, []);
+        getProducts();
+    });
     // const distance = items.current.offsetWidth / 8 + 13;
     return (
-        <div className="flex flex-col gap-2 lg:gap-4 px-2 md:px-5 lg:p-10 lg:min-h-screen justify-start lg:justify-center lg:border lg:border-gray-400 lg:rounded-3xl mt-14  md:mt-20 lg:mt-5 ">
-            <div className="flex justify-between">
-                <div className="text-xl md:text-4xl font-medium">
-                    <h2>NEW ARRIVALS</h2>
-                </div>
-                <Btn className="hidden border md:block" aria-label="Show More">
-                    <Link href={"/catalog/all"}>SHOW MORE</Link>
-                </Btn>
-            </div>
-            <div
-                className="flex gap-[10px] w-full flex-nowrap overflow-x-scroll py-2 lg:py-10 hidescroll transition"
-                ref={items}
-            >
-                {Array.from({ length: 10 }, (_v, i) => (
-                    <Link
-                        href={`/product/#`}
-                        className="w-72 lg:w-[278px] h-96 lg:h-96 shrink-0 flex flex-col gap-1"
-                        key={i}
+        <>
+            {products.length > 0 ? (
+                <div className="flex flex-col gap-2 lg:gap-4 px-2 md:px-5 lg:p-10 lg:min-h-screen justify-start lg:justify-center lg:border lg:border-gray-400 lg:rounded-3xl mt-14  md:mt-20 lg:mt-5 ">
+                    <div className="flex justify-between">
+                        <div className="text-xl md:text-4xl font-medium">
+                            <h2>NEW ARRIVALS</h2>
+                        </div>
+                        <Btn
+                            className="hidden border md:block"
+                            aria-label="Show More"
+                        >
+                            <Link href={"/catalog/all"}>SHOW MORE</Link>
+                        </Btn>
+                    </div>
+
+                    <div
+                        className="grid  lg:grid-cols-[repeat(5,278px)] grid-flow-col gap-[10px] w-full py-2 overflow-x-scroll lg:py-10 hidescroll transition"
+                        ref={items}
                     >
-                        <div className="flex flex-col p-5 relative border border-neutral-400 bg-[#f2f2f2] bg-[url('/home/noise.png')] ">
-                            <p className="text-neutral-400 text-xs uppercase self-end">
-                                {i + " " + "colors"}
-                            </p>
-                            <div className="w-full max-w-[350px] self-center relative h-64">
-                                <Image
-                                    src="/#"
-                                    alt={"itemplaceholder"}
-                                    fill={true}
-                                    loading="lazy"
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    className="lg:hover:scale-110 [transition:transform_.5s_ease-in]"
-                                />
-                            </div>
+                        {products?.slice(start, end).map((product) => (
+                            <NewItem key={product._id} product={product} />
+                        ))}
+                        <div className="hidden lg:block lg:[grid-column:3/5] h-[600px] max-h-[600px] relative bg-yellow-400 shrink-0">
+                            <Image
+                                src={"/home/arrival.png"}
+                                alt="new-arrivalsImg"
+                                fill={true}
+                                sizes="(max-width: 991px) 100vw, 594px"
+                            />
                         </div>
-                        <div className="flex flex-col gap-1">
-                            <p className="text-xs font-semibold uppercase">
-                                Hello {i}
-                            </p>
-                            <p className="text-sm text-neutral-400">
-                                $ Price {i}
-                            </p>
-                        </div>
-                    </Link>
-                ))}
-                {/* {products?.map((product) => (
-                    <NewItem key={product._id} product={product} />
-                ))} */}
-                {/* <div className="hidden lg:block w-[594px] max-w-[594px] h-[600px] max-h-[600px] border relative bg-yellow-400 shrink-0"></div> */}
-            </div>
+                    </div>
 
-            <Btn className="bg-black self-stretch text-white py-4 md:hidden">
-                <Link href={"/catalog/all"}>SHOW MORE</Link>
-            </Btn>
+                    <Btn className="bg-black self-stretch text-white py-4 md:hidden">
+                        <Link href={"/catalog/all"}>SHOW MORE</Link>
+                    </Btn>
 
-            <div className="hidden lg:flex gap-1">
-                <Btn
-                    className="rounded-full w-10 h-10 border flex items-center justify-center text-gray-500"
-                    aria-label="Scroll left"
-                    onClick={() => {
-                        carousel(-distance);
-                    }}
-                >
-                    <IoArrowBack />
-                </Btn>
-                <Btn
-                    className="rounded-full w-10 h-10 border flex items-center justify-center text-gray-500"
-                    aria-label="Scroll right"
-                    onClick={() => {
-                        carousel(distance);
-                    }}
-                >
-                    <IoArrowForward />
-                </Btn>
-            </div>
-        </div>
+                    <div className="hidden lg:flex gap-1">
+                        <Btn
+                            className="rounded-full w-10 h-10 border flex items-center justify-center disabled:text-[rgb(229,_231,_235)] text-gray-500"
+                            aria-label="Scroll left"
+                            onClick={() => {
+                                if (start === 0) return;
+                                setStart((prev) => prev - 1);
+                                setEnd((prev) => prev - 1);
+                            }}
+                            disabled={start === 0}
+                        >
+                            <IoArrowBack />
+                        </Btn>
+                        <Btn
+                            className="rounded-full w-10 h-10 border flex items-center justify-center disabled:text-[rgb(229,_231,_235)] text-gray-500"
+                            aria-label="Scroll right"
+                            onClick={() => {
+                                if (end === products.length) return;
+                                setStart((prev) => prev + 1);
+                                setEnd((prev) => prev + 1);
+                            }}
+                            disabled={end === products.length}
+                        >
+                            <IoArrowForward />
+                        </Btn>
+                    </div>
+                </div>
+            ) : (
+                <ArrivalsLoading />
+            )}
+        </>
     );
 };
 
@@ -123,7 +120,7 @@ const NewItem = ({ product }) => {
     return (
         <Link
             href={`/product/${current}`}
-            className="w-72 lg:w-72 h-96 lg:h-96 shrink-0 flex flex-col gap-1"
+            className="w-72 lg:w-[278px] h-96 lg:h-96 shrink-0 flex flex-col gap-1"
         >
             <div className="flex flex-col p-5 relative border border-neutral-400 bg-[#f2f2f2] bg-[url('/home/noise.png')] ">
                 <p className="text-neutral-400 text-xs uppercase self-end">

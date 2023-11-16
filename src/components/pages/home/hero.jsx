@@ -119,6 +119,7 @@ const Hero = () => {
                             fill={true}
                             className="object-cover"
                             alt="hello"
+                            sizes="(max-width: 479px) 195px, 380px"
                         />
                     </div>
                     <div
@@ -129,7 +130,7 @@ const Hero = () => {
                             src="/home/hero1.png"
                             fill={true}
                             alt="hello"
-                            className="object-cover"
+                            sizes="(max-width: 479px) 195px, 380px"
                         />
                     </div>
                     <div
@@ -141,7 +142,7 @@ const Hero = () => {
                             fill={true}
                             alt="hello"
                             loading="lazy"
-                            className="object-cover"
+                            sizes="(max-width: 479px) 195px, 380px"
                         />
                     </div>
                     <div
@@ -153,7 +154,7 @@ const Hero = () => {
                             fill={true}
                             alt="hello"
                             loading="lazy"
-                            className="object-cover"
+                            sizes="(max-width: 479px) 195px, 380px"
                         />
                     </div>
                     <div
@@ -165,7 +166,7 @@ const Hero = () => {
                             fill={true}
                             alt="hello"
                             loading="lazy"
-                            className="object-cover"
+                            sizes="(max-width: 479px) 195px, 380px"
                         />
                     </div>
                     <div
@@ -177,7 +178,7 @@ const Hero = () => {
                             fill={true}
                             alt="hello"
                             loading="lazy"
-                            className="object-cover"
+                            sizes="(max-width: 479px) 195px, 380px"
                         />
                     </div>
                     <div
@@ -189,7 +190,7 @@ const Hero = () => {
                             fill={true}
                             alt="hello"
                             loading="lazy"
-                            className="object-cover"
+                            sizes="(max-width: 479px) 195px, 380px"
                         />
                     </div>
                     <div
@@ -201,7 +202,7 @@ const Hero = () => {
                             fill={true}
                             alt="hello"
                             loading="lazy"
-                            className="object-cover"
+                            sizes="(max-width: 479px) 195px, 380px"
                         />
                     </div>
                     <div className="border-b-2 border-black text-xs md:text-sm font-semibold self-center lg:hover:text-yellow-400 lg:hover:border-yellow-400 transition-all">

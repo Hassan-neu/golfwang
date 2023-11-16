@@ -102,6 +102,7 @@ const About = () => {
                         src={"/home/tylerhome8.png"}
                         fill={true}
                         alt="slide-in"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                 </div>
             </div>
