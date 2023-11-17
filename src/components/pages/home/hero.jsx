@@ -30,21 +30,30 @@ const Hero = () => {
         ]);
         const textEl = gsap.utils.toArray([textOne.current, textTwo.current]);
         const mm = gsap.matchMedia();
+        const tl = gsap.timeline({
+            repeat: -1,
+            yoyo: true,
+            repeatDelay: 0.5,
+        });
         gsap.to(img.current, {
             rotate: 720,
             duration: 100,
             ease: "linear",
             repeat: -1,
         });
+        tl.from(elements, {
+            rotate: -12,
+            duration: 3,
+            ease: "easeInOut",
+            opacity: 0,
+            stagger: {
+                each: 4,
+            },
+            onComplete: () => console.log("complete"),
+        });
         mm.add(
             "(min-width:1024px)",
             () => {
-                const tl = gsap.timeline({
-                    repeat: -1,
-                    yoyo: true,
-                    repeatDelay: 0.5,
-                });
-
                 gsap.from(textEl, {
                     top: 0,
                     left: 0,
@@ -52,15 +61,6 @@ const Hero = () => {
                     repeat: 2,
                     yoyo: true,
                     duration: 1,
-                });
-                tl.from(elements, {
-                    rotate: -12,
-                    duration: 3,
-                    ease: "easeInOut",
-                    opacity: 0,
-                    stagger: {
-                        each: 4,
-                    },
                 });
             },
             main
@@ -74,7 +74,7 @@ const Hero = () => {
             className="md:h-[80vh] px-2 md:px-5 lg:px-0 lg:h-screen overflow-hidden"
         >
             <div className="md:h-[80vh] lg:h-screen lg:rounded-b-3xl bg-[url('/home/noise.png')] bg-[color:#f2f2f2] flex flex-col gap-4 lg:gap-40 lg:">
-                <div className="flex h-full flex-col gap-40 pt-40 pb-10 md:p-10 lg:self-stretch text-center lg:gap-28 relative border border-neutral-400 lg:border-none">
+                <div className="flex h-full flex-col gap-40 pt-40 pb-10 md:p-10 lg:self-stretch text-center lg:gap-10 relative border border-neutral-400 lg:border-none">
                     <div className="h-full lg:flex lg:flex-col lg:justify-center">
                         <div className="flex gap-[530px] mt-5 md:mt-10 lg:mt-0 lg:h-[30%]">
                             <div className="hidden  md:absolute md:top-1/2 md:left-28 md:z-30 lg:static md:flex md:flex-col md:items-start lg:ml-32 text-sm self-end">
@@ -124,7 +124,7 @@ const Hero = () => {
                     </div>
                     <div
                         ref={frameOne}
-                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-3 w-48 md:w-80 h-56 md:h-[400px] opacity-100"
+                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[9deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
                     >
                         <Image
                             src="/home/hero1.png"
@@ -135,7 +135,7 @@ const Hero = () => {
                     </div>
                     <div
                         ref={frameTwo}
-                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[5deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
+                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[8deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
                     >
                         <Image
                             src="/home/hero2.png"
@@ -159,7 +159,7 @@ const Hero = () => {
                     </div>
                     <div
                         ref={frameFour}
-                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[9deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
+                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[6deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
                     >
                         <Image
                             src="/home/hero4.png"
@@ -171,7 +171,7 @@ const Hero = () => {
                     </div>
                     <div
                         ref={frameFive}
-                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[11deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
+                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[5deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
                     >
                         <Image
                             src="/home/hero5.png"
@@ -183,7 +183,7 @@ const Hero = () => {
                     </div>
                     <div
                         ref={frameSix}
-                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[13deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
+                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[4deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
                     >
                         <Image
                             src="/home/hero6.png"
@@ -195,7 +195,7 @@ const Hero = () => {
                     </div>
                     <div
                         ref={frameSeven}
-                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-[15deg] w-48 md:w-80 h-56 md:h-[400px] opacity-100"
+                        className="border border-neutral-600 absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 rotate-3 w-48 md:w-80 h-56 md:h-[400px] opacity-100"
                     >
                         <Image
                             src="/home/hero7.png"

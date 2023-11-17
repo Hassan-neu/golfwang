@@ -19,7 +19,7 @@ const ShippingInfo = () => {
                 {policies.map((policy) => (
                     <AccordionItem
                         key={policy.id}
-                        value={policy.title}
+                        value={policy.id}
                         className="border-none"
                     >
                         <AccordionTrigger className="font-semibold text-xs md:text-sm uppercase data-[state=open]:underline justify-start [&>svg]:text-black [&>svg]:w-6 [&>svg]:h-6">

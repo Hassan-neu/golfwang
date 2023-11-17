@@ -77,7 +77,11 @@ const Catalog = () => {
                     </CatalogItem>
                 </Link>
             </div>
-            <Btn className={"py-4 self-stretch bg-black text-white md:hidden"}>
+            <Btn
+                className={
+                    "py-4 self-stretch text-xs bg-black text-white md:hidden"
+                }
+            >
                 <Link href={"/catalog/all"}>SHOP NOW</Link>
             </Btn>
         </div>

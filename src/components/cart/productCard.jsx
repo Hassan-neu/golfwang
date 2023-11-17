@@ -65,6 +65,7 @@ const ProductCard = ({ product }) => {
                         value={qty}
                         min={1}
                         onChange={changeQty}
+                        onKeyDown={(e) => e.preventDefault()}
                         className="border border-black p-1 w-14 h-7 md:h-auto"
                     />
                     <Btn

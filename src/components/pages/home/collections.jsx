@@ -30,7 +30,7 @@ const Collections = () => {
                     className={"hidden md:block border"}
                     aria-label="Show More"
                 >
-                    <Link href={"/collections"}>SHOW MORE</Link>
+                    <Link href={"/collections/w2022"}>SHOW MORE</Link>
                 </Btn>
             </div>
             <div className="hidden overflow-hidden border-t lg:grid grid-cols-[1fr_minmax(200px,240px)_1fr] grid-rows-1 justify-center items-center py-2 h-3/5 relative">
@@ -530,8 +530,8 @@ const Collections = () => {
                     </p>
                 </div>
             </div>
-            <Btn className={"py-4 bg-black text-white md:hidden"}>
-                <Link href={"/collections"}>SHOW MORE</Link>
+            <Btn className={"py-4 bg-black text-xs text-white md:hidden"}>
+                <Link href={"/collections/w2022"}>SHOW MORE</Link>
             </Btn>
             <div className="flex md:justify-center md:mt-auto md:items-center bg-[url('/home/yellow.png')] bg-cover bg-center lg:rounded-[30px] px-3 py-10 border-2 lg:border-black">
                 <div className="flex flex-col gap-3 lg:gap-4 w-full md:w-3/4 lg:w-2/5 lg:items-start">

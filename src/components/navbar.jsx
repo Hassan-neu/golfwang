@@ -5,12 +5,11 @@ import Cart from "./cart/cart";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
 import { AiOutlineUser } from "react-icons/ai";
-import { BsHandbag } from "react-icons/bs";
 import { signIn } from "next-auth/react";
 import { useCartStore } from "@/libs/cart";
 import { useSession } from "next-auth/react";
 import Btn from "./shared/buttons/btn";
-import { SheetTrigger } from "./ui/sheet";
+
 const Navbar = () => {
     const { data: session } = useSession();
     const [openNav, setOpenNav] = useState(false);

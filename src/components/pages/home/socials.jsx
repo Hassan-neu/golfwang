@@ -27,9 +27,11 @@ const Socials = () => {
                 </Link>
                 <div className="hidden lg:block lg:w-1/2 lg:h-80 shrink-0 lg:shrink"></div>
                 <div className="hidden md:w-2/5 md:h-96 lg:w-1/2 lg:h-80 md:flex flex-col justify-center items-center border shrink-0 lg:shrink">
-                    <p className="text-sm text-gray-400">Follow us</p>
+                    <p className="text-sm text-gray-400">Follow me</p>
                     <p className="text-sm text-gray-400">on Twitter</p>
-                    <p className="font-bold">@d_dimeji</p>
+                    <Link href="https://twitter.com/hnxoweb" target="_blank">
+                        @hnxoweb
+                    </Link>
                 </div>
                 <Link
                     href=""
@@ -64,10 +66,12 @@ const Socials = () => {
             </div>
             <Btn
                 className={
-                    "py-4 bg-black text-white uppercase md:hidden lg:hidden"
+                    "py-4 bg-black text-white uppercase text-xs md:hidden"
                 }
             >
-                <Link href="">Follow on Instagram</Link>
+                <Link href="https://www.instagram.com/hnxoweb" target="_blank">
+                    Follow on Instagram
+                </Link>
             </Btn>
         </div>
     );

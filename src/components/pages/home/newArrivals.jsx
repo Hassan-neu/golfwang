@@ -8,40 +8,23 @@ import { IoArrowForward, IoArrowBack } from "react-icons/io5";
 import { urlForImage } from "../../../../sanity/lib/image";
 import { Skeleton } from "@/components/ui/skeleton";
 import ItemLoading from "@/components/ui/itemLoading";
-import { gsap } from "gsap";
-import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
-gsap.registerPlugin(ScrollToPlugin);
 const NewArrivals = () => {
     const [products, setProducts] = useState([]);
-    const items = useRef();
-    const [distance, setDistance] = useState(0);
     const [start, setStart] = useState(0);
     const [end, setEnd] = useState(3);
-    const carousel = (scroll) => {
-        gsap.to(items.current, {
-            scrollTo: {
-                x: items.current.scrollLeft + scroll,
-            },
-        });
-        // return (items.current.scrollLeft = items.current.scrollLeft + scroll);
-    };
-    // useEffect(() => {
-    //     setDistance(items.current.offsetWidth / 5);
-    // }, []);
     const getProducts = async () => {
         const res = await client.fetch(
-            `*[_type=='product'] | order(_createdAt desc)[0..5]`
+            `*[_type=='product'] | order(_createdAt desc)[0..9]`
         );
         setProducts(res);
     };
     useEffect(() => {
         getProducts();
     });
-    // const distance = items.current.offsetWidth / 8 + 13;
     return (
         <>
             {products.length > 0 ? (
-                <div className="flex flex-col gap-2 lg:gap-4 px-2 md:px-5 lg:p-10 lg:min-h-screen justify-start lg:justify-center lg:border lg:border-gray-400 lg:rounded-3xl mt-14  md:mt-20 lg:mt-5 ">
+                <div className="flex flex-col gap-2 lg:gap-4 px-2 md:px-5 lg:p-10 lg:min-h-screen justify-start lg:justify-center lg:border lg:border-gray-400 lg:rounded-3xl mt-14 md:mt-20 lg:mt-5 ">
                     <div className="flex justify-between">
                         <div className="text-xl md:text-4xl font-medium">
                             <h2>NEW ARRIVALS</h2>
@@ -54,10 +37,7 @@ const NewArrivals = () => {
                         </Btn>
                     </div>
 
-                    <div
-                        className="grid  lg:grid-cols-[repeat(5,278px)] grid-flow-col gap-[10px] w-full py-2 overflow-x-scroll lg:py-10 hidescroll transition"
-                        ref={items}
-                    >
+                    <div className="grid  lg:grid-cols-[repeat(5,278px)] grid-flow-col gap-[10px] w-full py-2 overflow-x-scroll border-t hidescroll transition">
                         {products?.slice(start, end).map((product) => (
                             <NewItem key={product._id} product={product} />
                         ))}
@@ -71,7 +51,7 @@ const NewArrivals = () => {
                         </div>
                     </div>
 
-                    <Btn className="bg-black self-stretch text-white py-4 md:hidden">
+                    <Btn className="bg-black text-xs self-stretch text-white py-4 md:hidden">
                         <Link href={"/catalog/all"}>SHOW MORE</Link>
                     </Btn>
 
