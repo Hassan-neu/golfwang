@@ -49,7 +49,6 @@ const Hero = () => {
             stagger: {
                 each: 4,
             },
-            onComplete: () => console.log("complete"),
         });
         mm.add(
             "(min-width:1024px)",

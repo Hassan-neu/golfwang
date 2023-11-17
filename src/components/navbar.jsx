@@ -5,7 +5,7 @@ import Cart from "./cart/cart";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { RxCross1 } from "react-icons/rx";
 import { AiOutlineUser } from "react-icons/ai";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { useCartStore } from "@/libs/cart";
 import { useSession } from "next-auth/react";
 import Btn from "./shared/buttons/btn";
@@ -56,12 +56,24 @@ const Navbar = () => {
                 <div className="text-xs flex items-center">
                     <div className="flex gap-7 items-center lg:gap-10">
                         <div className="hidden lg:block">
-                            <Btn onClick={() => signIn("google")}>LOGIN</Btn>
+                            {session ? (
+                                <Btn onClick={() => signOut()}>
+                                    WELCOME, {session?.user?.name.split(" ")[0]}
+                                </Btn>
+                            ) : (
+                                <Btn onClick={() => signIn()}>LOGIN</Btn>
+                            )}
                         </div>
                         <div className="lg:hidden">
-                            <Btn onClick={() => signIn("google")}>
-                                <AiOutlineUser size={20} />
-                            </Btn>
+                            {session ? (
+                                <Btn onClick={() => signOut()}>
+                                    {session?.user?.name.split(" ")[0]}
+                                </Btn>
+                            ) : (
+                                <Btn onClick={() => signIn()}>
+                                    <AiOutlineUser size={20} />
+                                </Btn>
+                            )}
                         </div>
                         <Cart />
                     </div>

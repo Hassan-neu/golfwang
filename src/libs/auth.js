@@ -3,6 +3,10 @@ export const authOptions = {
     session: {
         strategy: "jwt",
     },
+    pages: {
+        signIn: "/signin",
+        error: "/error",
+    },
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_ID,

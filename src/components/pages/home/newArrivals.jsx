@@ -20,7 +20,7 @@ const NewArrivals = () => {
     };
     useEffect(() => {
         getProducts();
-    });
+    }, []);
     return (
         <>
             {products.length > 0 ? (
