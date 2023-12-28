@@ -1,11 +1,15 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import Btn from "../../shared/buttons/btn";
 import Link from "next/link";
 import Image from "next/image";
 import Checkbox from "@/components/shared/checkbox";
+import { IoArrowBack, IoArrowForward } from "react-icons/io5";
+import { gsap } from "gsap";
 const Collections = () => {
+    const collectionScroll = useRef();
     const [agreeStatus, setAgreeStatus] = useState(false);
+    const [distance, setDistance] = useState(0);
     const imagesLeft = useRef();
     const handler = (e) => {
         Array.from(imagesLeft.current.children).map((child) =>
@@ -19,6 +23,18 @@ const Collections = () => {
         const formData = new FormData(e.target);
         const formJSON = Object.fromEntries(formData.entries());
         console.log(formJSON);
+    };
+    const collectionList = useCallback((node) => {
+        if (node != null) {
+            setDistance(node.scrollWidth / 12);
+        }
+    }, []);
+    const carousel = (scroll) => {
+        gsap.to(collectionScroll.current, {
+            scrollTo: {
+                x: collectionScroll.current.scrollLeft + scroll,
+            },
+        });
     };
     return (
         <div className="flex flex-col gap-3 lg:gap-6 px-2 md:px-5 lg:p-10 lg:min-h-[110vh] justify-center lg:border border-gray-400 rounded-3xl mt-14 lg:mt-5">
@@ -360,175 +376,197 @@ const Collections = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex gap-3 overflow-scroll lg:hidden hidescroll">
-                <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1  shrink-0  flex flex-col">
-                    <div className="relative h-[95%]">
-                        <Image
-                            src={"/winter/wmodel9.png"}
-                            alt="fall/winter-2022"
-                            fill={true}
-                            loading="lazy"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
+            <div ref={collectionScroll} className="overflow-hidden hidescroll">
+                <div
+                    ref={collectionList}
+                    className="flex gap-3 lg:hidden hidescroll"
+                >
+                    <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1  shrink-0  flex flex-col">
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/winter/wmodel9.png"}
+                                alt="fall/winter-2022"
+                                fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        </div>
+                        <p className="text-xs md:text-sm uppercase md:self-center">
+                            Fall/Winter 2022
+                        </p>
                     </div>
-                    <p className="text-xs md:text-sm uppercase md:self-center">
-                        Fall/Winter 2022
-                    </p>
-                </div>
-                <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
-                    <div className="relative h-[95%]">
-                        <Image
-                            src={"/autumn/autmodel9.png"}
-                            alt="autumn-2022"
-                            fill={true}
-                            loading="lazy"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
+                    <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/autumn/autmodel9.png"}
+                                alt="autumn-2022"
+                                fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        </div>
+                        <p className="text-xs md:text-sm uppercase md:self-center">
+                            Autumn 2022
+                        </p>
                     </div>
-                    <p className="text-xs md:text-sm uppercase md:self-center">
-                        Autumn 2022
-                    </p>
-                </div>
-                <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col ">
-                    <div className="relative h-[95%]">
-                        <Image
-                            src={"/summer/summodel9.png"}
-                            alt="summer-2022"
-                            fill={true}
-                            loading="lazy"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
+                    <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col ">
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/summer/summodel9.png"}
+                                alt="summer-2022"
+                                fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        </div>
+                        <p className="text-xs md:text-sm uppercase md:self-center">
+                            Summer 2022
+                        </p>
                     </div>
-                    <p className="text-xs md:text-sm uppercase md:self-center">
-                        Summer 2022
-                    </p>
-                </div>
-                <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
-                    <div className="relative h-[95%]">
-                        <Image
-                            src={"/winter/wmodel21.png"}
-                            alt="winter-2021"
-                            fill={true}
-                            loading="lazy"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
+                    <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/winter/wmodel21.png"}
+                                alt="winter-2021"
+                                fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        </div>
+                        <p className="text-xs md:text-sm uppercase md:self-center">
+                            Winter 2021
+                        </p>
                     </div>
-                    <p className="text-xs md:text-sm uppercase md:self-center">
-                        Winter 2021
-                    </p>
-                </div>
-                <div className="w-64 h-80 md:w-2/5 md:h-96 gap-1 shrink-0  flex flex-col">
-                    <div className="relative h-[95%]">
-                        <Image
-                            src={"/summer/summodel21.png"}
-                            alt="summer-2021"
-                            fill={true}
-                            loading="lazy"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
+                    <div className="w-64 h-80 md:w-2/5 md:h-96 gap-1 shrink-0  flex flex-col">
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/summer/summodel21.png"}
+                                alt="summer-2021"
+                                fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        </div>
+                        <p className="text-xs md:text-sm uppercase md:self-center">
+                            Summer 2021
+                        </p>
                     </div>
-                    <p className="text-xs md:text-sm uppercase md:self-center">
-                        Summer 2021
-                    </p>
-                </div>
-                <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
-                    <div className="relative h-[95%]">
-                        <Image
-                            src={"/summer/springmodel21.png"}
-                            alt="spring-2022"
-                            fill={true}
-                            loading="lazy"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
+                    <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/summer/springmodel21.png"}
+                                alt="spring-2022"
+                                fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        </div>
+                        <p className="text-xs md:text-sm uppercase md:self-center">
+                            Spring 2021
+                        </p>
                     </div>
-                    <p className="text-xs md:text-sm uppercase md:self-center">
-                        Spring 2021
-                    </p>
-                </div>
-                <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
-                    <div className="relative h-[95%]">
-                        <Image
-                            src={"/winter/wmodel20.png"}
-                            alt="winter-2020"
-                            fill={true}
-                            loading="lazy"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
+                    <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/winter/wmodel20.png"}
+                                alt="winter-2020"
+                                fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        </div>
+                        <p className="text-xs md:text-sm uppercase md:self-center">
+                            Winter 2020
+                        </p>
                     </div>
-                    <p className="text-xs md:text-sm uppercase md:self-center">
-                        Winter 2020
-                    </p>
-                </div>
-                <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
-                    <div className="relative h-[95%]">
-                        <Image
-                            src={"/summer/summodel20.png"}
-                            alt="summer-2020"
-                            fill={true}
-                            loading="lazy"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
+                    <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/summer/summodel20.png"}
+                                alt="summer-2020"
+                                fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        </div>
+                        <p className="text-xs md:text-sm uppercase md:self-center">
+                            Summer 2020
+                        </p>
                     </div>
-                    <p className="text-xs md:text-sm uppercase md:self-center">
-                        Summer 2020
-                    </p>
-                </div>
-                <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
-                    <div className="relative h-[95%]">
-                        <Image
-                            src={"/autumn/autmodel20.png"}
-                            alt="autumn-2020"
-                            fill={true}
-                            loading="lazy"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
+                    <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/autumn/autmodel20.png"}
+                                alt="autumn-2020"
+                                fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        </div>
+                        <p className="text-xs md:text-sm uppercase md:self-center">
+                            Summer/Aut 2020
+                        </p>
                     </div>
-                    <p className="text-xs md:text-sm uppercase md:self-center">
-                        Summer/Aut 2020
-                    </p>
-                </div>
-                <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
-                    <div className="relative h-[95%]">
-                        <Image
-                            src={"/winter/wmodel19.png"}
-                            alt="winter-2019"
-                            fill={true}
-                            loading="lazy"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
+                    <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/winter/wmodel19.png"}
+                                alt="winter-2019"
+                                fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        </div>
+                        <p className="text-xs md:text-sm uppercase md:self-center">
+                            winter 2019
+                        </p>
                     </div>
-                    <p className="text-xs md:text-sm uppercase md:self-center">
-                        winter 2019
-                    </p>
-                </div>
-                <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
-                    <div className="relative h-[95%]">
-                        <Image
-                            src={"/winter/wmodel17.png"}
-                            alt="winter-2017"
-                            fill={true}
-                            loading="lazy"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
+                    <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/winter/wmodel17.png"}
+                                alt="winter-2017"
+                                fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        </div>
+                        <p className="text-xs md:text-sm uppercase md:self-center">
+                            winter 2017
+                        </p>
                     </div>
-                    <p className="text-xs md:text-sm uppercase md:self-center">
-                        winter 2017
-                    </p>
-                </div>
-                <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
-                    <div className="relative h-[95%]">
-                        <Image
-                            src={"/summer/summodel17.png"}
-                            alt="summer-2017"
-                            fill={true}
-                            loading="lazy"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
+                    <div className="w-64 h-80 md:w-2/5 md:h-96  gap-1 shrink-0  flex flex-col">
+                        <div className="relative h-[95%]">
+                            <Image
+                                src={"/summer/summodel17.png"}
+                                alt="summer-2017"
+                                fill={true}
+                                loading="lazy"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                        </div>
+                        <p className="text-xs md:text-sm uppercase md:self-center">
+                            summer 2017
+                        </p>
                     </div>
-                    <p className="text-xs md:text-sm uppercase md:self-center">
-                        summer 2017
-                    </p>
                 </div>
+            </div>
+
+            <div className="flex lg:hidden justify-between gap-1">
+                <Btn
+                    className="rounded-full w-10 h-10 border flex items-center justify-center disabled:text-[rgb(229,_231,_235)] text-gray-500"
+                    aria-label="Scroll left"
+                    onClick={() => carousel(-distance)}
+                >
+                    <IoArrowBack />
+                </Btn>
+                <Btn
+                    className="rounded-full w-10 h-10 border flex items-center justify-center disabled:text-[rgb(229,_231,_235)] text-gray-500"
+                    aria-label="Scroll right"
+                    onClick={() => carousel(distance)}
+                >
+                    <IoArrowForward />
+                </Btn>
             </div>
             <Btn className={"py-4 bg-black text-xs text-white md:hidden"}>
                 <Link href={"/collections/w2022"}>SHOW MORE</Link>
