@@ -43,7 +43,7 @@ export const usePayWithFlutter = (formik) => {
     const payCallback = (res) => {
         console.log(res);
         if (res.status === "successful") {
-            // sendReceipt(data, res.transaction_id, res.tx_ref);
+            sendReceipt(data, res.transaction_id, res.tx_ref);
         }
         formik.resetForm();
         resetCart();
