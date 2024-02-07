@@ -1,9 +1,10 @@
 "use client";
 import { useCartStore } from "@/libs/cart";
 import Image from "next/image";
-import React from "react";
+import React, { useCallback, useState } from "react";
 import Btn from "../shared/buttons/btn";
 import { urlForImage } from "../../../sanity/lib/image";
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 
 const ProductCard = ({ product }) => {
     const {
@@ -26,8 +27,15 @@ const ProductCard = ({ product }) => {
         updatePrice();
         updateTotalQty();
     };
-    const changeQty = (e) => {
-        updateQty(_id, parseInt(e.target.value));
+    const incQty = () => {
+        updateQty(_id, qty + 1);
+        updateItemTotal(_id);
+        updateTotalQty();
+        updatePrice();
+        updateTotalCost();
+    };
+    const decQty = () => {
+        updateQty(_id, qty - 1 < 1 ? 1 : qty - 1);
         updateItemTotal(_id);
         updateTotalQty();
         updatePrice();
@@ -60,14 +68,23 @@ const ProductCard = ({ product }) => {
                     </div>
                 </div>
                 <div className="flex justify-between mt-auto">
-                    <input
-                        type="number"
-                        value={qty}
-                        min={1}
-                        onChange={changeQty}
-                        onKeyDown={(e) => e.preventDefault()}
-                        className="border border-black p-1 w-14 h-7 md:h-auto"
-                    />
+                    <div className="flex gap-2">
+                        <button
+                            className="border p-0.5 flex justify-center items-center"
+                            onClick={() => decQty()}
+                        >
+                            <IoMdArrowDropup className="-rotate-90" />
+                        </button>
+                        <span className="border flex justify-center items-center border-black p-0.5 w-14 h-7 rounded-sm md:h-auto">
+                            {qty}
+                        </span>
+                        <button
+                            className="border p-0.5 flex justify-center items-center"
+                            onClick={() => incQty()}
+                        >
+                            <IoMdArrowDropdown className="-rotate-90" />
+                        </button>
+                    </div>
                     <Btn
                         className="underline text-[10px] md:text-base"
                         onClick={removeItem}
